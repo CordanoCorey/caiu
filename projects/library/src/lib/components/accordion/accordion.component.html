@@ -1,0 +1,8 @@
+<div class="accordion">
+  <div class="trigger-wrapper" (click)="onClickTrigger()" [class.active]="active">
+    <ng-content select=".accordion-trigger"></ng-content>
+  </div>
+  <div class="content-wrapper" [@toggle]="opened ? 'show' : 'hide'" (@toggle.start)="onStart($event)" (@toggle.done)="onDone($event)">
+    <ng-content select=".accordion-content"></ng-content>
+  </div>
+</div>

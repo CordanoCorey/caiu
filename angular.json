@@ -131,6 +131,11 @@
       "sourceRoot": "projects/library/src",
       "projectType": "library",
       "prefix": "iu",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
