@@ -1,0 +1,25 @@
+.mat-card {
+  display: block;
+  clear: both;
+  padding: 1px 3px 1px 1px;
+  border-radius: 2px;
+}
+
+#expand-editor {
+  font-size: 36px;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  color: #fff;
+  text-align: center;
+  min-width: 36px;
+  line-height: 24px;
+  padding: 2px;
+}
+
+.mat-icon {
+  font-size: 36px;
+  position: relative;
+  left: -6px;
+  top: -7px;
+}

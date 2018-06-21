@@ -1,0 +1,13 @@
+<mat-card class="file-preview" [style.cursor]="cursorStyle">
+  <div class="graphic">
+    <img *ngIf="showImage" [src]="file.src" [style.height]="height" [style.width]="width">
+    <mat-icon *ngIf="!showImage" class="icon-graphic">{{ graphic }}</mat-icon>
+  </div>
+  <mat-progress-bar mode="indeterminate" *ngIf="file.loading"></mat-progress-bar>
+  <div class="file-info">
+    <span class="file-name">{{ file.name }}</span>
+  </div>
+  <mat-icon *ngIf="showUpArrow" class="up-arrow" (click)="onMoveUp()">keyboard_arrow_up</mat-icon>
+  <mat-icon *ngIf="showDownArrow" class="down-arrow" (click)="onMoveDown()">keyboard_arrow_down</mat-icon>
+  <mat-icon class="remove-upload" (click)="onRemove()">cancel</mat-icon>
+</mat-card>

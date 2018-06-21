@@ -1,3 +1,47 @@
-<p>
-  grid works!
-</p>
+<mat-card class="grid mat-primary" [class.mat-card]="!export">
+  <kendo-grid [data]="gridData" [filter]="filter" [filterable]="showFilters" [groupable]="groupable" [height]="dynamicHeight"
+    [pageSize]="pageSize" [pageable]="pagerSettings" [rowHeight]="rowHeight" [scrollable]="scrollable" [selectable]="selectable"
+    [skip]="skip" [sortable]="sortable" [group]="group" [sort]="sort" (dataStateChange)="dataStateChange($event)" #kendoGridInstance="kendoGrid">
+
+    <!-- Toolbar Template -->
+    <ng-template kendoGridToolbarTemplate *ngIf="export">
+      <button mat-raised-button class="toolbar-button pdf-button" kendoGridPDFCommand>
+        <mat-icon>picture_as_pdf</mat-icon>Export to PDF</button>
+      <button mat-raised-button class="toolbar-button excel-button" (click)="save(excelexport)">
+        <mat-icon>import_export</mat-icon>Export To Excel</button>
+    </ng-template>
+
+    <!-- Grid Columns -->
+    <kendo-grid-column *ngFor="let col of columns" [class]="col.class" [editable]="col.editable" [editor]="col.editor" [field]="col.colField"
+      [filter]="col.filter" [filterable]="col.filterable" [footerClass]="col.footerClass" [footerStyle]="col.footerStyle" [format]="col.format"
+      [headerClass]="col.headerClass" [headerStyle]="col.headerStyle" [hidden]="col.hidden" [locked]="col.locked" [media]="col.media"
+      [sortable]="col.sortable" [style]="col.style" [title]="col.colTitle" [width]="col.width">
+      <ng-template *ngIf="col.templateRef" kendoGridCellTemplate let-dataItem>
+        <iu-grid-cell [templateRef]="col.templateRef" [dataItem]="dataItem"></iu-grid-cell>
+      </ng-template>
+    </kendo-grid-column>
+
+    <!-- Export to PDF -->
+    <kendo-grid-pdf *ngIf="export" [fileName]="pdfFileName" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">
+      <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+      <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+        <div class="page-template">
+          <div class="header">
+            <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
+            {{ pdfHeader }}
+          </div>
+          <div class="footer">
+            Page {{ pageNum }} of {{ totalPages }}
+          </div>
+        </div>
+      </ng-template>
+    </kendo-grid-pdf>
+
+    <!-- Export to Excel -->
+    <kendo-excelexport [data]="activeRows" [fileName]="excelFileName" [filterable]="true" #excelexport>
+      <kendo-excelexport-column *ngFor="let col of columns" [field]="col.colField" [title]="col.colTitle">
+      </kendo-excelexport-column>
+    </kendo-excelexport>
+
+  </kendo-grid>
+</mat-card>

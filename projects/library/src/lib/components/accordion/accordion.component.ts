@@ -14,6 +14,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         animate('300ms ease-out')
       ])
     ])
+  ]
 })
 export class AccordionComponent implements OnInit {
 

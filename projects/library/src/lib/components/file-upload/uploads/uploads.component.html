@@ -1,0 +1,4 @@
+<div class="uploads" [style.height]="height" [style.width]="width">
+  <iu-file-preview *ngFor="let upload of uploads; let first = first; let last = last;" [file]="upload" [first]="first" [last]="last"
+    [ordered]="ordered" (moveUp)="onMoveUp($event)" (moveDown)="onMoveDown($event)" (remove)="onRemove($event)"></iu-file-preview>
+</div>

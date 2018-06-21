@@ -1,3 +1,10 @@
-<p>
-  daterange works!
-</p>
+<div class="daterange">
+  <div class="start-date" [class.date]="!inline" [class.inline-date]="inline">
+    <label class="lbl-date iu-primary">{{ startLabel }}:</label>
+    <iu-datepicker #startDate (selectedChanged)="changeStartDate($event)" [value]="startDateValue"></iu-datepicker>
+  </div>
+  <div class="end-date" [class.date]="!inline" [class.inline-date]="inline">
+    <label class="lbl-date iu-primary">{{ endLabel }}:</label>
+    <iu-datepicker #endDate (selectedChanged)="changeEndDate($event)" [value]="endDateValue"></iu-datepicker>
+  </div>
+</div>

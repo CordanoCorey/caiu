@@ -1,0 +1,10 @@
+.uploads {
+  max-height: 420px;
+  max-width: 600px;
+  overflow-y: scroll;
+  margin: 10px 20px;
+}
+
+.uploads .dragging {
+  background-color: #424242;
+}

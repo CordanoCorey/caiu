@@ -1,3 +1,7 @@
-<p>
-  file-upload works!
-</p>
+<div class="file-upload">
+  <input *ngIf="preview && multiple" type="file" (change)="onInputChange($event)" [id]="id" multiple/>
+  <input *ngIf="!multiple" type="file" (change)="onInputChange($event)" [id]="id" />
+  <iu-uploads *ngIf="multiple" [uploads]="uploads" [ordered]="ordered" (moveUp)="moveUp($event)" (moveDown)="moveDown($event)"
+    (remove)="remove($event)"></iu-uploads>
+  <iu-upload *ngIf="preview && !multiple && hasUploads" [upload]="activeFile" [height]="200" (remove)="remove()"></iu-upload>
+</div>

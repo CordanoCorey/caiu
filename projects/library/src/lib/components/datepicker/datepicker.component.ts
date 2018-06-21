@@ -14,7 +14,7 @@ import { MatDatepicker } from '@angular/material';
 import { DateHelper } from '../../shared/date';
 
 
-export const DATEPICKER_ACCESSOR = {
+export const DATEPICKER_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => DatepickerComponent),
   multi: true

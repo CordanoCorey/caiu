@@ -1,0 +1,11 @@
+<div class="upload" [style.height]="img?.style?.height">
+  <div class="graphic" #img>
+    <img *ngIf="showImage" [src]="upload.src" [style.max-height.px]="height" [style.max-width.px]="width">
+    <mat-icon *ngIf="!showImage" class="icon-graphic" [style.max-height.px]="height" [style.max-width.px]="width">{{ graphic }}</mat-icon>
+    <mat-icon *ngIf="!upload.loading" class="remove-upload" (click)="onRemove()">cancel</mat-icon>
+  </div>
+  <mat-spinner mode="indeterminate" *ngIf="upload.loading"></mat-spinner>
+  <div class="file-info" *ngIf="!upload.loading">
+    <span class="file-name">{{ upload.name }}</span>
+  </div>
+</div>

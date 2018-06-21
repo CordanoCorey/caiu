@@ -1,30 +1,53 @@
 import { OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { Store, Action } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-
-import { getValue } from '../shared/utils';
 
 export class DumbComponent implements OnDestroy {
 
+    dialog: MatDialog;
     dialogRef: Subscription;
-    form: FormGroup;
+    requestState: 'DEFAULT' | 'SUCCESS' | 'ERROR' = 'DEFAULT';
     subscriptions: Subscription[] = [];
 
     constructor() {
+    }
+
+    get inErrorState(): boolean {
+        return this.requestState === 'ERROR';
+    }
+
+    get inSuccessState(): boolean {
+        return this.requestState === 'SUCCESS';
+    }
+
+    get message(): string {
+        return this.inErrorState ? `An error has occurred. Please try again later.`
+            : this.inSuccessState ? `Saved successfully!` : '';
+    }
+
+    get showMessage(): boolean {
+        return this.inErrorState || this.inSuccessState;
     }
 
     ngOnDestroy() {
         this.removeSubscriptions();
     }
 
-    subscribe(subscriptions: Subscription[]) {
-        subscriptions.forEach(s => {
-            this.addSubscription(s);
-        });
-    }
-
     addSubscription(subscription: Subscription) {
         this.subscriptions.push(subscription);
+    }
+
+    closeDialog(result: any) {
+        this.dialogRef.unsubscribe();
+    }
+
+    openDialog(component: any, config = {}) {
+        const dialogRef = this.dialog.open(component, config);
+        this.dialogRef = dialogRef.afterClosed().subscribe(result => {
+            this.closeDialog(result);
+        });
     }
 
     removeSubscriptions() {
@@ -33,10 +56,44 @@ export class DumbComponent implements OnDestroy {
         });
     }
 
-    setValue(value: any) {
-        if (this.form && this.form.setValue) {
-            this.form.setValue(getValue(value));
-        }
+    subscribe(subscriptions: Subscription[]) {
+        subscriptions.forEach(s => {
+            this.addSubscription(s);
+        });
+    }
+
+    flashErrorMessage(duration = 5000) {
+        this.toErrorState();
+        setTimeout(() => {
+            this.resetRequestState();
+        }, duration);
+    }
+
+    flashSuccessMessage(duration = 5000) {
+        this.toSucessState();
+        setTimeout(() => {
+            this.resetRequestState();
+        }, duration);
+    }
+
+    onError(e: any) {
+        this.flashErrorMessage();
+    }
+
+    onSuccess(e: any) {
+        this.flashSuccessMessage();
+    }
+
+    resetRequestState() {
+        this.requestState = 'DEFAULT';
+    }
+
+    toErrorState() {
+        this.requestState = 'ERROR';
+    }
+
+    toSucessState() {
+        this.requestState = 'SUCCESS';
     }
 
 }
@@ -50,6 +107,36 @@ export class FormComponent extends DumbComponent {
         Object.keys(this.form.controls).forEach(key => {
             this.form.controls[key].markAsTouched();
         });
+    }
+
+}
+
+export class SmartComponent extends DumbComponent {
+
+    events;
+
+    constructor(public store: Store<any>) {
+        super();
+    }
+
+    dispatch(action: Action) {
+        this.store.dispatch(action);
+    }
+
+    dispatchAndSubscribe(action: Action, onSuccess?: (e: any) => void, onError?: (e: any) => void) {
+        const f1 = onSuccess ? onSuccess : e => {
+            this.flashSuccessMessage();
+        };
+
+        const f2 = onError ? onError : e => {
+            this.flashErrorMessage();
+        };
+
+        if (this.events && this.events.dispatch) {
+            this.addSubscription(this.events.dispatch(action).subscribe(f1, f2));
+        } else {
+            this.store.dispatch(action);
+        }
     }
 
 }

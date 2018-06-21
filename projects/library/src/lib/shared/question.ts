@@ -1,11 +1,10 @@
 import { Collection } from './collection';
 import { DateHelper } from './date';
-import { LookupValue } from './lookup';
 import { build } from './utils';
 
 export class Question {
     answer?: any;
-    lookup?: LookupValue;
+    lookup?: any;
     key: string | number;
     question = '';
     title?= '';

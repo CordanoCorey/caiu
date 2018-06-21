@@ -9,17 +9,22 @@ import { GridModule } from './components/grid/grid.module';
 
 @NgModule({
   imports: [
-  ],
-  declarations: [
-    LibraryComponent,
     AccordionModule,
     DatepickerModule,
     DialogModule,
     FileUploadModule,
     GridModule,
   ],
+  declarations: [
+    LibraryComponent,
+  ],
   exports: [
     LibraryComponent,
+    AccordionModule,
+    DatepickerModule,
+    DialogModule,
+    FileUploadModule,
+    GridModule,
   ]
 })
 export class LibraryModule { }

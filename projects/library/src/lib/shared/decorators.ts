@@ -77,13 +77,6 @@ export const LifecycleHook = () => {
     };
 };
 
-export const Mapper = () => {
-
-    return (target: any, propertySignature: string) => {
-        return target;
-    };
-};
-
 /**
  * Method Decorator Factory
  * Decorates a method.

@@ -1,3 +1,9 @@
-<p>
-  editor works!
-</p>
+<mat-card class="editor">
+  <textarea [id]="elementId">
+    <ng-content *ngIf="!hasValue"></ng-content>
+    <span *ngIf="hasValue">{{ value }}</span>
+  </textarea>
+  <button *ngIf="showExpand" id="expand-editor" (click)="expand($event)" mat-button>
+    <mat-icon>fullscreen</mat-icon>
+  </button>
+</mat-card>

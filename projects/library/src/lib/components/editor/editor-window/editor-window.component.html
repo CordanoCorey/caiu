@@ -1,0 +1,18 @@
+<span id="editor-window">
+  <mat-toolbar color="primary" mat-dialog-title>
+    <span class="dialog-title">
+      {{ title }}
+      <button mat-button [mat-dialog-close]="null">
+        <mat-icon>close</mat-icon>
+      </button>
+    </span>
+  </mat-toolbar>
+  <mat-dialog-content>
+    <div id="expanded-editor">
+      <iu-editor [value]="data" [expanded]="true" [height]="380" (changes)="update($event)"></iu-editor>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="close()" [style.width]="actionWidth" color="accent">Save and Close</button>
+  </mat-dialog-actions>
+</span>

@@ -1,0 +1,23 @@
+.daterange {
+  display: inline-block;
+  line-height: 18px;
+  padding: 0 10px;
+  border-radius: 3px;
+  .date {
+    display: flex;
+    padding: 6px;
+  }
+  .inline-date {
+    display: inline-flex;
+    padding: 0px;
+  }
+  .inline-date.end-date {
+    margin-left: 32px;
+  }
+  .lbl-date {
+    width: 76px;
+    display: inline-block;
+    font-size: 14px;
+    padding-top: 22px;
+  }
+}

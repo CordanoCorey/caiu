@@ -1,0 +1,53 @@
+.upload {
+  max-height: 420px;
+  max-width: 600px;
+  margin: 10px 20px;
+  position: relative;
+  display: flex;
+}
+
+.upload img {
+  max-height: 400px;
+}
+
+.graphic {
+  padding: 0px !important;
+  float: left;
+  margin: 10px;
+  position: relative;
+}
+
+.icon-graphic {
+  font-size: 72px;
+  height: 72px;
+  width: 72px;
+}
+
+.mat-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 73px;
+}
+
+.file-info {
+  float: right;
+}
+
+.file-name {
+  margin: 18px 6px;
+  display: inline-block;
+  line-height: 36px;
+  font-size: 20px;
+  height: 36px;
+  font-weight: bold;
+}
+
+.remove-upload {
+  cursor: pointer;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+}

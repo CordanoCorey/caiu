@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-export type Action<T> = (item: T) => void;
+export type ActionDef<T> = (item: T) => void;
 
 export class Address {
     firstName = '';
@@ -273,9 +273,49 @@ export class Search<T> {
     total = 0;
 }
 
-export type Selector<T> = (store: any) => T;
+export type SelectorDef<T> = (store: any) => T;
 
-export type SelectorAsync<T> = (store: Observable<any>) => Observable<T>;
+export type SelectorAsyncDef<T> = (store: Observable<any>) => Observable<T>;
+
+export class StyleModel {
+    backgroundColor: string;
+    border: string;
+    borderRadius: number | string;
+    color: string;
+    cursor: string;
+    display: string;
+    fontSize: number | string;
+    height: number | string;
+    lineHeight: number | string;
+    padding: number | string;
+    paddingTop: number | string;
+    paddingBottom: number | string;
+    paddingLeft: number | string;
+    paddingRight: number | string;
+    textDecoration: string;
+    width: number;
+
+    get styles(): any {
+        const s = {};
+        if (this.backgroundColor) { s['backgroundColor'] = this.backgroundColor; }
+        if (this.border) { s['border'] = this.border; }
+        if (this.borderRadius) { s['borderRadius.px'] = this.borderRadius; }
+        if (this.color) { s['color'] = this.color; }
+        if (this.cursor) { s['color'] = this.cursor; }
+        if (this.display) { s['display'] = this.display; }
+        if (this.fontSize) { s['fontSize'] = this.fontSize; }
+        if (this.height) { s['height.px'] = this.height; }
+        if (this.lineHeight) { s['line-height.px'] = this.lineHeight; }
+        if (this.padding) { s['padding.px'] = this.padding; }
+        if (this.paddingTop) { s['padding-top.px'] = this.paddingTop; }
+        if (this.paddingBottom) { s['padding-bottom.px'] = this.paddingBottom; }
+        if (this.paddingLeft) { s['padding-left.px'] = this.paddingLeft; }
+        if (this.paddingRight) { s['padding-right.px'] = this.paddingRight; }
+        if (this.textDecoration) { s['textDecoration'] = this.textDecoration; }
+        if (this.width) { s['width.px'] = this.width; }
+        return s;
+    }
+}
 
 export interface Type<T> extends Function { new(...args: any[]): T; }
 
