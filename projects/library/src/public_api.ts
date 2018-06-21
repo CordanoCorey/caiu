@@ -7,6 +7,11 @@ export * from './lib/library.component';
 export * from './lib/library.module';
 
 /**
+ * Animations
+ */
+export * from './lib/animations/animations.module';
+
+/**
  * Components
  */
 export * from './lib/components/accordion/accordion.module';
@@ -49,6 +54,22 @@ export * from './lib/errors/errors.reducer';
 export * from './lib/errors/errors.selectors';
 export * from './lib/errors/errors.service';
 export * from './lib/errors/global-errors.service';
+
+/**
+ * Events
+ */
+export * from './lib/events/events.module';
+export * from './lib/events/events.actions';
+export * from './lib/events/events.effects';
+export * from './lib/events/events.models';
+export * from './lib/events/events.reducer';
+export * from './lib/events/events.selectors';
+export * from './lib/events/events.service';
+
+/**
+ * Forms
+ */
+export * from './lib/forms/forms.module';
 
 /**
  * HTTP
@@ -96,6 +117,11 @@ export * from './lib/shared/question';
 export * from './lib/shared/token';
 export * from './lib/shared/tree';
 export * from './lib/shared/utils';
+
+/**
+ * Storage
+ */
+export * from './lib/storage/storage.module';
 
 /**
  * Store
