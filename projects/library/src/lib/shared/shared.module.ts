@@ -13,11 +13,13 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 import 'hammerjs';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -33,6 +35,7 @@ import 'hammerjs';
   declarations: [],
   exports: [
     CommonModule,
+    RouterModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,

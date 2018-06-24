@@ -1,5 +1,6 @@
 import { Action } from './store.models';
-import { Config, WindowResize } from '../shared/models';
+import { Config } from '../shared/config';
+import { WindowResize } from '../shared/window';
 
 export class AppActions {
     static INIT_STORE = '[Storage] Init Store';

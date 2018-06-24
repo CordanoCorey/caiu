@@ -70,6 +70,10 @@ export * from './lib/events/events.service';
  * Forms
  */
 export * from './lib/forms/forms.module';
+export * from './lib/forms/forms.actions';
+export * from './lib/forms/forms.decorators';
+export * from './lib/forms/forms.models';
+export * from './lib/forms/forms.utils';
 
 /**
  * HTTP
@@ -99,6 +103,7 @@ export * from './lib/router/router.actions';
 export * from './lib/router/router.effects';
 export * from './lib/router/router.models';
 export * from './lib/router/router.reducer';
+export * from './lib/router/router.selectors';
 export * from './lib/router/router.service';
 
 /**
@@ -108,6 +113,7 @@ export * from './lib/shared/shared.module';
 export * from './lib/shared/base-entity';
 export * from './lib/shared/collection';
 export * from './lib/shared/component';
+export * from './lib/shared/config';
 export * from './lib/shared/date';
 export * from './lib/shared/decorators';
 export * from './lib/shared/kendo';
@@ -116,12 +122,18 @@ export * from './lib/shared/ordering';
 export * from './lib/shared/question';
 export * from './lib/shared/token';
 export * from './lib/shared/tree';
+export * from './lib/shared/user';
 export * from './lib/shared/utils';
+export * from './lib/shared/window';
 
 /**
  * Storage
  */
 export * from './lib/storage/storage.module';
+export * from './lib/storage/storage.actions';
+export * from './lib/storage/storage.effects';
+export * from './lib/storage/storage.models';
+export * from './lib/storage/storage.service';
 
 /**
  * Store

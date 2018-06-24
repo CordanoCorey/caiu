@@ -1,10 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { FormsModule as Ng2FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    Ng2FormsModule,
+    ReactiveFormsModule,
   ],
-  declarations: []
+  exports: [
+    Ng2FormsModule,
+    ReactiveFormsModule,
+  ]
 })
-export class FormsModule { }
+export class FormsModule {
+
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: FormsModule,
+      providers: []
+    };
+  }
+
+}

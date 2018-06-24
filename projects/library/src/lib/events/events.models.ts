@@ -1,6 +1,7 @@
 import { Action } from '../store/store.models';
 import { Collection } from '../shared/collection';
 import { Dictionary } from '../shared/models';
+import { build } from '../shared/utils';
 
 export class Event {
     emittedCount = 0;
@@ -37,8 +38,35 @@ export class Events extends Collection<Event> {
         }, {});
     }
 
+    addEvent(payload: Event): Events {
+        return build(Events, this.addItem(payload, payload.key));
+    }
+
     getActionEvents(actionType: string): Event[] {
         return this.eventsByAction[actionType];
+    }
+
+    removeEvent(payload: string): Events {
+        return build(Events, this.removeItem(payload));
+    }
+
+    replaceEvents(payload: Event[]): Events {
+        const events = this.copyItems();
+        payload.forEach(e => {
+            events[e.key] = e;
+        });
+        return build(Events, this, { items: events });
+    }
+
+    triggerEvent(payload: Action): Events {
+        const events = this.getActionEvents(payload.type)
+            .map(e => build(Event, e, { value: e.handler ? e.handler(payload) : payload }));
+        return this.replaceEvents(events);
+    }
+
+    updateValue(payload: UpdateValuePayload): Events {
+        const event = build(Event, this.items[payload.key], { value: payload.value });
+        return build(Events, this.updateItem(event, payload.key, Event));
     }
 
 }

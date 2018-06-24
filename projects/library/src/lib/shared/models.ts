@@ -1,7 +1,3 @@
-import { Observable } from 'rxjs';
-
-export type ActionDef<T> = (item: T) => void;
-
 export class Address {
     firstName = '';
     lastName = '';
@@ -53,15 +49,6 @@ export class Alert {
     type: 'ERROR' | 'SUCCESS';
 }
 
-export class Config {
-    dev?= false;
-    test?= false;
-    staging?= false;
-    production = false;
-    apiBase = '';
-    viewMode?: 'Default' | 'Classic' | 'Material' = 'Default';
-}
-
 export interface Dictionary<T> {
     [id: string]: T;
 }
@@ -100,12 +87,6 @@ export interface HasId {
 
 export interface HasMetadata {
     metadata: Metadata;
-}
-
-export class Login {
-    grant_type = 'password';
-    userName = '';
-    password = '';
 }
 
 export class Metadata {
@@ -261,21 +242,11 @@ export class QueryModel<T> {
     }
 }
 
-export class ResetPassword {
-    passwordResetCode = '';
-    password = '';
-    confirmPassword = '';
-}
-
 export class Search<T> {
     query: QueryModel<T> = new QueryModel<T>();
     results: T[] = [];
     total = 0;
 }
-
-export type SelectorDef<T> = (store: any) => T;
-
-export type SelectorAsyncDef<T> = (store: Observable<any>) => Observable<T>;
 
 export class StyleModel {
     backgroundColor: string;
@@ -321,26 +292,4 @@ export interface Type<T> extends Function { new(...args: any[]): T; }
 
 export interface TypeConstructor<T> {
     new(): T;
-}
-
-export class Window {
-    windowHeight = 0;
-    windowWidth = 0;
-
-    get windowWidthSmall(): boolean {
-        return this.windowWidth < 1200;
-    }
-
-    get windowWidthMedium(): boolean {
-        return !this.windowWidthSmall && this.windowWidth < 1300;
-    }
-
-    get windowWidthLarge(): boolean {
-        return this.windowWidth >= 1300;
-    }
-}
-
-export class WindowResize {
-    windowHeight = 0;
-    windowWidth = 0;
 }

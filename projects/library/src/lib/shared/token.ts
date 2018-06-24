@@ -27,13 +27,8 @@ export class Token {
         return this.access_token && this.expiresIn && this.expiresInDate ? now > this.expirationDate : true;
     }
 
-}
+    toString(): string {
+        return this.expired ? '' : this.access_token;
+    }
 
-export function mapApiBase(s: any): string {
-    return s.config.apiBase;
-}
-
-export function mapToken(state: any): string {
-    const token: Token = state['currentUser']['token'];
-    return token.expires_in > 0 ? token.access_token : null;
 }

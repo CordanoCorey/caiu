@@ -1,7 +1,8 @@
 import { WindowActions, ConfigActions, SidenavActions } from './store.actions';
 import { Action } from './store.models';
-import { Window, WindowResize, Config } from '../shared/models';
+import { Config } from '../shared/config';
 import { build } from '../shared/utils';
+import { Window, WindowResize } from '../shared/window';
 
 export function configReducer(state: Config = new Config(), action: Action): Config {
     switch (action.type) {

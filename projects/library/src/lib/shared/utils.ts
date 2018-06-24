@@ -1,6 +1,7 @@
 import { SimpleChanges } from '@angular/core';
 
 import { Metadata, Dictionary, TypeConstructor, HasMetadata } from './models';
+import { Action } from '../store/store.models';
 
 /**
  * @param derivedCtor The clas Constructor 
@@ -157,6 +158,13 @@ export function extendObject(dest: any, ...sources: any[]): any {
 
 export function falsy(value: any): boolean {
     return value === null || value === 0 || value === '' || value === undefined;
+}
+
+/**
+   * Remove problematic or undesired store properties.
+   */
+export function filterState(obj: any): any {
+    return removeCycles(removeProps(obj));
 }
 
 export function findMetadata(ctor: TypeConstructor<HasMetadata | any>) {
@@ -380,6 +388,27 @@ export function nextState(fromState: any, dState: any): any {
     return toState;
 }
 
+/**
+ * Remove store props that contain cycles.
+ */
+export function removeCycles(obj: any): any {
+    if (obj && typeof obj === 'object') {
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key) && this.isCyclic(obj[key])) {
+                delete obj[key];
+            }
+        }
+    }
+    return obj;
+}
+
+/**
+ * Remove any props that should not appear in the store.
+ */
+export function removeProps(obj: any): any {
+    return obj;
+}
+
 export function serialize(model: any) {
     if (Array.isArray(model)) {
         return model.map(x => serialize(x));
@@ -471,6 +500,10 @@ export function toArray(val: any): any[] {
 
 export function toInt(val: string | number): number {
     return val && val.toString ? str2int(val.toString()) : 0;
+}
+
+export function toPayload(action: Action): any {
+    return action ? action.payload : null;
 }
 
 export function toPx(n: number): string {

@@ -6,9 +6,11 @@ import { DatepickerModule } from './components/datepicker/datepicker.module';
 import { DialogModule } from './components/dialog/dialog.module';
 import { FileUploadModule } from './components/file-upload/file-upload.module';
 import { GridModule } from './components/grid/grid.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
+    SharedModule,
     AccordionModule,
     DatepickerModule,
     DialogModule,
@@ -20,6 +22,7 @@ import { GridModule } from './components/grid/grid.module';
   ],
   exports: [
     LibraryComponent,
+    SharedModule,
     AccordionModule,
     DatepickerModule,
     DialogModule,

@@ -1,4 +1,5 @@
 import { NgModule, ModuleWithProviders, InjectionToken } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 
 import { HttpCommands } from './http.commands';
@@ -36,8 +37,12 @@ export function provideHttpContext(urlSelector: Selector<string>, authTokenSelec
 }
 
 @NgModule({
-  imports: [],
-  declarations: []
+  imports: [
+    HttpClientModule,
+  ],
+  exports: [
+    HttpClientModule,
+  ]
 })
 export class HttpModule {
 
