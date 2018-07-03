@@ -1,4 +1,127 @@
+@import '~@angular/material/_theming';
 .file-upload {
   margin: 10px;
   padding: 10px;
+  input[type="file"] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  .box {
+    padding: 100px 20px;
+    margin: 10px;
+    display: flex;
+    width: 50%;
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-offset: -10px;
+    position: relative;
+    #dragdrop-message {
+      position: absolute;
+      top: 60px;
+      max-width: 80%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+      display: inline-block;
+      overflow: hidden;
+      font-size: 24px;
+      span {
+        display: inline;
+      }
+    }
+  }
+  .custom-file-upload {
+    @include mat-elevation(1);
+    max-width: 80%;
+    font-size: 20px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 10px 20px;
+    margin-top: 50px;
+    figure {
+      width: 50px;
+      height: 70px;
+      display: flex;
+      position: relative;
+      padding: 30px;
+      margin: 0 auto 10px;
+      mat-icon {
+        font-size: 50px;
+        height: 50px;
+        width: 50px;
+      }
+    }
+    figure::before,
+    figure::after {
+      width: 0;
+      height: 0;
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    figure::before {
+      border-left: 20px solid transparent;
+    }
+    figure::after {
+      border-right: 20px solid transparent;
+    }
+  }
+}
+
+@mixin file-upload-color($primary, $darker, $lighter, $font: #fff, $scrollbar: #fff, $action: #000) {
+  .file-upload {
+    .box {
+      background-color: $lighter;
+      outline: 2px dashed $darker;
+    }
+    .custom-file-upload {
+      figure {
+        background-color: $primary;
+        mat-icon {
+          color: $font;
+        }
+      }
+      figure::before {
+        border-top: 20px solid $lighter;
+      }
+      figure::after {
+        border-bottom: 20px solid $darker;
+      }
+      figure:hover {
+        background-color: $darker;
+      }
+      figure:hover::after {
+        border-bottom: 20px solid $primary;
+      }
+    }
+  }
+  .uploads::-webkit-scrollbar-thumb {
+    background-color: $scrollbar;
+  }
+  .file-preview {
+    border-left: 10px solid $scrollbar;
+  }
+  .icon-graphic {
+    color: $font;
+  }
+  .up-arrow,
+  .down-arrow {
+    color: $action;
+  }
+  .up-arrow:hover,
+  .down-arrow:hover {
+    background-color: $action;
+  }
+}
+
+@mixin file-upload-palette($primary) {
+  @include file-upload-color(mat-color($primary, 500), mat-color($primary, 900), mat-color($primary, 50));
 }

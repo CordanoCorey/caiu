@@ -5,6 +5,22 @@
   margin: 10px 20px;
 }
 
+.uploads::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #424242;
+}
+
+.uploads::-webkit-scrollbar {
+  width: 12px;
+  background-color: #424242;
+}
+
+.uploads::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
 .uploads .dragging {
   background-color: #424242;
 }

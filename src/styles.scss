@@ -1,1 +1,139 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/_theming';
+$material-primary-color: ( 50: #bfe6e3, 100: #a3dbd7, 200: #86d0cb, 300: #6ac5bf, 400: #4ebab3, 500: #296965, 600: #029087, 700: #078b82, 800: #0d857e, 900: #137f79, A100: #78cac5, A200: #5cbfb9, A400: #45b0a9, A700: #3fa19b, contrast: ( 50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: $black-87-opacity, 400: $black-87-opacity, 500: white, 600: white, 700: white, 800: $white-87-opacity, 900: $white-87-opacity, A100: $black-87-opacity, A200: white, A400: white, A700: white, ));
+$material-accent-color: ( 50: #fde2d6, 100: #fcd5c4, 200: #fbc8b1, 300: #fabb9e, 400: #f9ae8c, 500: #f8a179, 600: #f79466, 700: #f68754, 800: #f57a41, 900: #f46d2e, A100: #f9b291, A200: #f8a179, A400: #f79061, A700: #f57f49, contrast: ( 50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: $black-87-opacity, 400: $black-87-opacity, 500: $black-87-opacity, 600: $black-87-opacity, 700: $black-87-opacity, 800: white, 900: white, A100: $black-87-opacity, A200: $black-87-opacity, A400: $black-87-opacity, A700: $black-87-opacity, ));
+$primary-color: mat-color($material-primary-color, 500);
+$accent-color: mat-color($material-accent-color, 500);
+$light-accent-color: mat-color($material-accent-color, 50);
+$dark-accent-color: mat-color($material-accent-color, 900);
+$light-primary-color: mat-color($material-primary-color, 50);
+$dark-primary-color: mat-color($material-primary-color, 900);
+$primary-palette: mat-palette($material-primary-color);
+$accent-palette: mat-palette($material-accent-color);
+$theme: mat-light-theme($primary-palette, $accent-palette);
+@mixin file-upload-color($primary, $darker, $lighter, $font: #fff, $scrollbar: #fff, $action: #000) {
+  .file-upload {
+    margin: 10px;
+    padding: 10px;
+    input[type="file"] {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+    .box {
+      padding: 100px 20px;
+      margin: 10px;
+      background-color: $lighter;
+      display: flex;
+      width: 50%;
+      outline: -webkit-focus-ring-color auto 5px;
+      outline: 2px dashed $darker;
+      outline-offset: -10px;
+      position: relative;
+      #dragdrop-message {
+        position: absolute;
+        top: 60px;
+        max-width: 80%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        font-size: 24px;
+        span {
+          display: inline;
+        }
+      }
+    }
+    .custom-file-upload {
+      @include mat-elevation(1);
+      max-width: 80%;
+      font-size: 20px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+      display: inline-block;
+      overflow: hidden;
+      padding: 10px 20px;
+      margin-top: 50px;
+      figure {
+        width: 50px;
+        height: 70px;
+        background-color: $primary;
+        display: flex;
+        position: relative;
+        padding: 30px;
+        margin: 0 auto 10px;
+        mat-icon {
+          font-size: 50px;
+          height: 50px;
+          width: 50px;
+          color: $font;
+        }
+      }
+      figure::before,
+      figure::after {
+        width: 0;
+        height: 0;
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      figure::before {
+        border-top: 20px solid $lighter;
+        border-left: 20px solid transparent;
+      }
+      figure::after {
+        border-bottom: 20px solid $darker;
+        border-right: 20px solid transparent;
+      }
+      figure:hover {
+        background-color: $darker;
+      }
+      figure:hover::after {
+        border-bottom: 20px solid $primary;
+      }
+    }
+  }
+  .uploads::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #424242;
+  }
+  .uploads::-webkit-scrollbar {
+    width: 12px;
+    background-color: #424242;
+  }
+  .uploads::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: $scrollbar;
+  }
+  .file-preview {
+    border-left: 10px solid $scrollbar;
+  }
+  .file-name,
+  .icon-graphic {
+    color: $font;
+  }
+  .up-arrow,
+  .down-arrow {
+    color: $action;
+  }
+  .up-arrow:hover,
+  .down-arrow:hover {
+    color: #fff;
+    background-color: $action;
+  }
+  .remove-upload {
+    color: red;
+  }
+}
+
+@mixin file-upload-palette($primary) {
+  @include file-upload-color(mat-color($primary, 500), mat-color($primary, 900), mat-color($primary, 50));
+}

@@ -49,6 +49,7 @@
   font-size: 16px;
   height: 36px;
   font-weight: bold;
+  color: #000;
 }
 
 .arrow {
@@ -85,4 +86,9 @@
   font-size: 40px;
   height: 40px;
   width: 40px;
+}
+
+.up-arrow:hover,
+.down-arrow:hover {
+  color: #fff;
 }

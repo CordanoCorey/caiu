@@ -11,9 +11,9 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
-import { FileUpload } from './file-upload.model';
+import { FileUpload, getReadyState } from './file-upload.model';
 import { Ordering } from '../../shared/ordering';
-import { build, guid } from '../../shared/utils';
+import { build, guid, equals } from '../../shared/utils';
 
 export const FILE_UPLOAD_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -33,7 +33,7 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
   @Input() multiple = false;
   @Input() ordered = true;
   @Input() preview = true;
-  @Output() upload = new EventEmitter<FileUpload[]>();
+  @Output() upload = new EventEmitter<FileUpload | FileUpload[]>();
   private onModelChange: Function;
   private onTouch: Function;
   changes$: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>(new FileUpload());
@@ -49,6 +49,10 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
 
   get hasUploads(): boolean {
     return this.uploads.length > 0;
+  }
+
+  get showMultiple(): boolean {
+    return this.preview && this.multiple
   }
 
   get uploads(): FileUpload[] {
@@ -75,6 +79,16 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
       this.remove();
     }
     this.uploads = this.ordering.addItem(f);
+  }
+
+  emit() {
+    if (this.value.length > 0) {
+      if (this.multiple) {
+        this.upload.emit(this.value);
+      } else {
+        this.upload.emit(this.value[0]);
+      }
+    }
   }
 
   moveUp(f: FileUpload) {
@@ -114,10 +128,14 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
   }
 
   onChange(value: FileUpload[]) {
-    this.value = value;
-    this.upload.emit(this.value);
-    if (this.onModelChange) {
-      this.onModelChange(value);
+    if (!equals(this.value, value)) {
+      this.value = value;
+      if (value.every(x => x.readyState === 'DONE')) {
+        this.emit();
+      }
+      if (this.onModelChange) {
+        this.onModelChange(value);
+      }
     }
   }
 

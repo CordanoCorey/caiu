@@ -1,0 +1,57 @@
+.address {
+  mat-card-content {
+    .item {
+      color: #1b1b1b;
+      font-size: 14px;
+    }
+    .edit-icon {
+      font-size: 10pt;
+      color: #1b1b1b;
+    }
+    .activate-text {
+      color: #6d6d6d;
+    }
+    .edit-icon:hover {
+      color: #aebfbe;
+    }
+    h2 {
+      //margin: 10px;
+      // background-color: white;
+      font-size: 14px;
+      letter-spacing: 1px;
+      line-height: 24px;
+      text-decoration: none;
+      color: #6d6d6d;
+      background-color: #F5F5F6;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      margin: 0;
+      margin-left: 5px;
+      border-color: rgba(0, 0, 0, 0.06); //display: list-item;
+      text-align: -webkit-match-parent;
+    }
+    p {
+      font-size: 14px;
+      color: #1b1b1b;
+      margin: 5px 5px 0 20px;
+    }
+  }
+}
+
+mat-card-header {
+  background-color: #aebfbe;
+  .example-form-field {
+    width: 200px;
+    float: right;
+  }
+}
+
+mat-list-item {
+  width: 100%;
+}
+
+td {
+  font-size: 10pt;
+  color: #1b1b1b;
+  margin: 5px 5px 0 20px;
+}

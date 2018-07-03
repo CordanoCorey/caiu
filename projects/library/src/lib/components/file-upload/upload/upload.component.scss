@@ -40,9 +40,11 @@
   font-size: 20px;
   height: 36px;
   font-weight: bold;
+  color: #000;
 }
 
 .remove-upload {
+  color: red;
   cursor: pointer;
   position: absolute;
   right: -20px;

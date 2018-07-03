@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatButtonModule,
   MatCardModule,
@@ -20,6 +21,7 @@ import 'hammerjs';
   imports: [
     CommonModule,
     RouterModule,
+    FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -36,6 +38,7 @@ import 'hammerjs';
   exports: [
     CommonModule,
     RouterModule,
+    FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,

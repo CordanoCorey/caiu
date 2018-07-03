@@ -1,0 +1,4 @@
+@import '../styles';
+iu-file-upload {
+  @include file-upload-color($primary-color, $dark-primary-color, $light-primary-color, #fff);
+}
