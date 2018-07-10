@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Control, FileUpload } from 'library';
+import { Control, FileUpload, DateHelper } from 'library';
 
 import { ExampleForm } from './shared/models';
 
@@ -11,6 +11,8 @@ import { ExampleForm } from './shared/models';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
+
+  timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
 
   @Control(ExampleForm) form: FormGroup;
 
