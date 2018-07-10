@@ -1,4 +1,5 @@
 @import '../styles';
+$theme: mat-light-theme($primary-palette, $accent-palette);
 iu-file-upload {
-  @include file-upload-color($primary-color, $dark-primary-color, $light-primary-color, #fff);
+    @include file-upload-color($primary-color, $dark-primary-color, $light-primary-color, #fff);
 }
