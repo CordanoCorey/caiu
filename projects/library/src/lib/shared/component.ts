@@ -8,6 +8,7 @@ export class DumbComponent implements OnDestroy {
 
     dialog: MatDialog;
     dialogRef: Subscription;
+    form: FormGroup;
     requestState: 'DEFAULT' | 'SUCCESS' | 'ERROR' = 'DEFAULT';
     subscriptions: Subscription[] = [];
 
@@ -86,6 +87,12 @@ export class DumbComponent implements OnDestroy {
 
     resetRequestState() {
         this.requestState = 'DEFAULT';
+    }
+
+    setValue(value: any) {
+        if (this.form && this.form.setValue) {
+            this.form.setValue(getValue(value));
+        }
     }
 
     toErrorState() {
