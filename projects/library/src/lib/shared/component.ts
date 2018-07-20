@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material';
 import { Store, Action } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
+import { getValue } from './utils';
+
 export class DumbComponent implements OnDestroy {
 
     dialog: MatDialog;

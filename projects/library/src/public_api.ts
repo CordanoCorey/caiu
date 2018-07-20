@@ -96,6 +96,14 @@ export * from './lib/lookup/lookup.selectors';
 export * from './lib/lookup/lookup.service';
 
 /**
+ * Pipes
+ */
+export * from './lib/pipes/list.pipe';
+export * from './lib/pipes/phone-number.pipe';
+export * from './lib/pipes/time-ago.pipe';
+export * from './lib/pipes/yes-no.pipe';
+
+/**
  * Router
  */
 export * from './lib/router/router.module';
