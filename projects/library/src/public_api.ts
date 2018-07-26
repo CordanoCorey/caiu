@@ -16,6 +16,9 @@ export * from './lib/animations/animations.module';
  */
 export * from './lib/components/accordion/accordion.module';
 export * from './lib/components/accordion/accordion.component';
+export * from './lib/components/collage/collage.module';
+export * from './lib/components/collage/collage.component';
+export * from './lib/components/collage/collage.model';
 export * from './lib/components/datepicker/datepicker.module';
 export * from './lib/components/datepicker/datepicker.component';
 export * from './lib/components/datepicker/daterange/daterange.component';
@@ -37,6 +40,11 @@ export * from './lib/components/grid/grid.model';
 export * from './lib/components/grid/grid-column/grid-column.component';
 export * from './lib/components/grid/grid-column/grid-column.model';
 export * from './lib/components/grid/simple-grid/simple-grid.component';
+export * from './lib/components/tile/tile.module';
+export * from './lib/components/tile/tile.component';
+export * from './lib/components/tile/tile.model';
+export * from './lib/components/wallpaper/wallpaper.module';
+export * from './lib/components/wallpaper/wallpaper.component';
 
 /**
  * Effects

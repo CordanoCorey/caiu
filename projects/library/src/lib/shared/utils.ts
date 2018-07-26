@@ -4,7 +4,7 @@ import { Metadata, Dictionary, TypeConstructor, HasMetadata } from './models';
 import { Action } from '../store/store.models';
 
 /**
- * @param derivedCtor The clas Constructor 
+ * @param derivedCtor The clas Constructor
  * @param baseCtor The mixins to apply
  * Example Usage: applyMixins(UniversityProfessor, [Employee, Researcher])
  */
@@ -17,7 +17,7 @@ export function applyDecorators(derived: any, baseCtors: any[]) {
 }
 
 /**
- * @param derivedCtor The clas Constructor 
+ * @param derivedCtor The clas Constructor
  * @param baseCtor The mixins to apply
  * Example Usage: applyMixins(UniversityProfessor, [Employee, Researcher])
  */
@@ -31,15 +31,16 @@ export function applyMixins(derivedCtor: any, baseCtors: any[]) {
 
 /**
  * Find distinct elements in the union of 2 arrays.
- * @param array1 
- * @param array2 
+ * @param array1
+ * @param array2
  */
 export function arrayUnion(array1, array2) {
-    let a = [...array1, ...array2];
+    const a = [...array1, ...array2];
     for (let i = 0; i < a.length; ++i) {
         for (let j = i + 1; j < a.length; ++j) {
-            if (a[i] === a[j])
+            if (a[i] === a[j]) {
                 a.splice(j--, 1);
+            }
         }
     }
 
@@ -60,8 +61,7 @@ export function build<T>(ctor: TypeConstructor<T>, ...args): T {
         let ret;
         try {
             ret = Object.assign(acc, next);
-        }
-        catch (e) {
+        } catch (e) {
             console.warn(e);
             ret = acc;
         }
@@ -240,7 +240,7 @@ export function getAllProps(obj: any): string[] {
 
 export function getGetters(obj: any): string[] {
     return Object.keys(obj.constructor.prototype).filter(name => {
-        return typeof Object.getOwnPropertyDescriptor(obj.constructor.prototype, name)["get"] === "function";
+        return typeof Object.getOwnPropertyDescriptor(obj.constructor.prototype, name)['get'] === 'function';
     });
 }
 
@@ -253,7 +253,7 @@ export function getKeyValues(model: any): any {
 
 export function getSetters(obj: any): string[] {
     return Object.keys(obj.prototype).filter(name => {
-        return typeof Object.getOwnPropertyDescriptor(obj.prototype, name)["set"] === "function";
+        return typeof Object.getOwnPropertyDescriptor(obj.prototype, name)['set'] === 'function';
     });
 }
 
@@ -346,9 +346,9 @@ export function isBetweenDates(dateFrom, dateTo, dateCheck) {
     const d2 = dateTo.toLocaleDateString().split('/');
     const c = dateCheck.toLocaleDateString().split('/');
 
-    const from = new Date(d1[2], parseInt(d1[1]) - 1, d1[0]);  // -1 because months are from 0 to 11
-    const to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
-    const check = new Date(c[2], parseInt(c[1]) - 1, c[0]);
+    const from = new Date(d1[2], toInt(d1[1]) - 1, d1[0]);  // -1 because months are from 0 to 11
+    const to = new Date(d2[2], toInt(d2[1]) - 1, d2[0]);
+    const check = new Date(c[2], toInt(c[1]) - 1, c[0]);
 
     return (check >= from && check <= to);
 }
@@ -360,14 +360,14 @@ export function isBetweenDates(dateFrom, dateTo, dateCheck) {
 export function isCyclic(obj: any) {
     const seenObjects: any[] = [];
 
-    const detect = (obj: any) => {
-        if (obj && typeof obj === 'object') {
-            if (seenObjects.indexOf(obj) !== -1) {
+    const detect = (x: any) => {
+        if (x && typeof x === 'object') {
+            if (seenObjects.indexOf(x) !== -1) {
                 return true;
             }
-            seenObjects.push(obj);
-            for (const key in obj) {
-                if (obj.hasOwnProperty(key) && detect(obj[key])) {
+            seenObjects.push(x);
+            for (const key in x) {
+                if (x.hasOwnProperty(key) && detect(x[key])) {
                     return true;
                 }
             }
@@ -386,6 +386,10 @@ export function isCyclic(obj: any) {
 export function nextState(fromState: any, dState: any): any {
     const toState: any = Object.assign({}, fromState, dState);
     return toState;
+}
+
+export function positiveIntegerArray(n: number): number[] {
+    return integerArray(n).map(x => x + 1);
 }
 
 /**
@@ -525,9 +529,9 @@ export function tryCast(obj: any, type: any): any {
 }
 
 export function valueChanged(changes: SimpleChanges, key = '') {
-    return key ? changes[key].currentValue != changes[key].previousValue
+    return key ? changes[key].currentValue !== changes[key].previousValue
         : Object.keys(changes).reduce((acc, currentKey) => {
-            return acc ? true : changes[currentKey].currentValue != changes[currentKey].previousValue;
+            return acc ? true : changes[currentKey].currentValue !== changes[currentKey].previousValue;
         }, false);
 }
 

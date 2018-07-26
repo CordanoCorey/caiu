@@ -95,7 +95,7 @@ export class GridComponent implements OnChanges, OnInit, AfterContentInit {
   }
 
   private _setElementColor(color: string, isAdd: boolean) {
-    if (color != null && color != '') {
+    if (color != null && color !== '') {
       const element = this._elementRef.nativeElement;
 
       if (isAdd) {
@@ -205,7 +205,7 @@ export class GridComponent implements OnChanges, OnInit, AfterContentInit {
 
     let altIdx = 0;
     rows.forEach((row) => {
-      if (row.type == 'data') {
+      if (row.type === 'data') {
         if (altIdx % 2 !== 0) {
           row.cells.forEach((cell) => {
             cell.background = '#aabbcc';
