@@ -1,4 +1,17 @@
 import { NgModule } from '@angular/core';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatInputModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatTabsModule,
+  MatToolbarModule
+} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 
 import { LibraryComponent } from './library.component';
 import { AccordionModule } from './components/accordion/accordion.module';
@@ -7,13 +20,13 @@ import { DatepickerModule } from './components/datepicker/datepicker.module';
 import { DialogModule } from './components/dialog/dialog.module';
 import { FileUploadModule } from './components/file-upload/file-upload.module';
 import { GridModule } from './components/grid/grid.module';
+import { TileModule } from './components/tile/tile.module';
+import { WallpaperModule } from './components/wallpaper/wallpaper.module';
 import { ListPipe } from './pipes/list.pipe';
 import { PhoneNumberPipe } from './pipes/phone-number.pipe';
-import { TileModule } from './components/tile/tile.module';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { YesNoPipe } from './pipes/yes-no.pipe';
 import { SharedModule } from './shared/shared.module';
-import { WallpaperModule } from './components/wallpaper/wallpaper.module';
 
 @NgModule({
   imports: [
@@ -23,6 +36,17 @@ import { WallpaperModule } from './components/wallpaper/wallpaper.module';
     DialogModule,
     FileUploadModule,
     GridModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatToolbarModule,
   ],
   declarations: [
     LibraryComponent,
@@ -46,6 +70,17 @@ import { WallpaperModule } from './components/wallpaper/wallpaper.module';
     TimeAgoPipe,
     WallpaperModule,
     YesNoPipe,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatToolbarModule,
   ]
 })
 export class LibraryModule { }

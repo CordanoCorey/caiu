@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatCardModule, MatIconModule } from '@angular/material';
 import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
 import { GridModule as KendoGridModule, PDFModule } from '@progress/kendo-angular-grid';
 
@@ -14,6 +15,8 @@ import { SharedModule } from '../../shared/shared.module';
     ExcelExportModule,
     KendoGridModule,
     PDFModule,
+    MatCardModule,
+    MatIconModule
   ],
   declarations: [
     GridComponent,

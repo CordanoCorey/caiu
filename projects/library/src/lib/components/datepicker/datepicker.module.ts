@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 
 import { DatepickerComponent } from './datepicker.component';
 import { DaterangeComponent } from './daterange/daterange.component';
@@ -10,6 +10,7 @@ import { SharedModule } from '../../shared/shared.module';
     SharedModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatInputModule,
   ],
   declarations: [
     DatepickerComponent,

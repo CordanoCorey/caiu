@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatToolbarModule } from '@angular/material';
 
 import { EditorComponent } from './editor.component';
 import { EditorWindowComponent } from './editor-window/editor-window.component';
@@ -16,6 +16,7 @@ import { SharedModule } from '../../shared/shared.module';
     MatCardModule,
     MatDialogModule,
     MatIconModule,
+    MatToolbarModule,
   ],
   declarations: [
     EditorComponent,

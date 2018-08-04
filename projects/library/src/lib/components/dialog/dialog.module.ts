@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatIconModule, MatToolbarModule } from '@angular/material';
 
 import { DialogComponent } from './dialog.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -8,6 +8,8 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     SharedModule,
     MatDialogModule,
+    MatIconModule,
+    MatToolbarModule,
   ],
   declarations: [
     DialogComponent,

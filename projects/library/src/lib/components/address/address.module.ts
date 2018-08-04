@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatIconModule, MatInputModule } from '@angular/material';
 
 import { AddressComponent } from './address.component';
 import { AddressPipe } from './address.pipe';
@@ -15,6 +16,8 @@ import { SharedModule } from '../../shared/shared.module';
     AddressFormComponent,
     InlineAddressComponent,
     AddressPipe,
+    MatIconModule,
+    MatInputModule,
   ],
   exports: [
     AddressComponent,
