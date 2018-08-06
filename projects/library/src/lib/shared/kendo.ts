@@ -222,3 +222,5 @@ export interface PageChangeEvent {
      */
     take: number;
 }
+
+export type orderBy<T> = (data: T[], descriptors: SortDescriptor[]) => T[];

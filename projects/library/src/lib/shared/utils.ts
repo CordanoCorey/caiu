@@ -398,7 +398,7 @@ export function positiveIntegerArray(n: number): number[] {
 export function removeCycles(obj: any): any {
     if (obj && typeof obj === 'object') {
         for (const key in obj) {
-            if (obj.hasOwnProperty(key) && this.isCyclic(obj[key])) {
+            if (obj.hasOwnProperty(key) && isCyclic(obj[key])) {
                 delete obj[key];
             }
         }

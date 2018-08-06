@@ -292,29 +292,6 @@ export class Search<T> {
     total = 0;
 }
 
-export declare const orderBy: <T>(data: T[], descriptors: SortDescriptor[]) => T[];
-
-/**
- * The sort descriptor used by the `orderBy` method.
- *
- * It has the following properties:
- */
-export interface SortDescriptor {
-    /**
-     * The field that is sorted.
-     */
-    field: string;
-    /**
-     * The sort direction.
-     * If no direction is set, the descriptor will be skipped during processing.
-     *
-     * The available values are:
-     * - `asc`
-     * - `desc`
-     */
-    dir?: 'asc' | 'desc';
-}
-
 export class StyleModel {
     backgroundColor: string;
     border: string;
