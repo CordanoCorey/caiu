@@ -1,10 +1,8 @@
-import { orderBy } from '@progress/kendo-data-query';
-
 import { GridComponent } from './grid.component';
 import { Collection } from '../../shared/collection';
 import { DateHelper } from '../../shared/date';
 import { CompositeFilterDescriptor, GroupableSettings, SortDescriptor, SortSettings } from '../../shared/kendo';
-import { QueryModel, StyleModel } from '../../shared/models';
+import { QueryModel, StyleModel, orderBy } from '../../shared/models';
 
 export class Grid<T> {
     query: QueryModel<T> = new QueryModel<T>();
