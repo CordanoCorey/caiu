@@ -136,8 +136,8 @@ export class Image {
 export class Metadata {
     controls?: string[] = [];
     ignore?: string[] = [];
-    label?= '';
-    name?= '';
+    label ?= '';
+    name ?= '';
     value?: any;
     [key: string]: any;
 }
@@ -153,8 +153,8 @@ export enum MetadataType {
 
 export class PropertyMetadata<T> {
     ignore?: string[] = [];
-    label?= '';
-    name?= '';
+    label ?= '';
+    name ?= '';
     value?: T;
 }
 
