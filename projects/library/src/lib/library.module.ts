@@ -20,6 +20,7 @@ import { DatepickerModule } from './components/datepicker/datepicker.module';
 import { DialogModule } from './components/dialog/dialog.module';
 import { FileUploadModule } from './components/file-upload/file-upload.module';
 import { GridModule } from './components/grid/grid.module';
+import { NotFoundModule } from './components/not-found/not-found.module';
 import { TileModule } from './components/tile/tile.module';
 import { WallpaperModule } from './components/wallpaper/wallpaper.module';
 import { ListPipe } from './pipes/list.pipe';
@@ -36,6 +37,7 @@ import { SharedModule } from './shared/shared.module';
     DialogModule,
     FileUploadModule,
     GridModule,
+    NotFoundModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -65,6 +67,7 @@ import { SharedModule } from './shared/shared.module';
     FileUploadModule,
     GridModule,
     ListPipe,
+    NotFoundModule,
     PhoneNumberPipe,
     TileModule,
     TimeAgoPipe,

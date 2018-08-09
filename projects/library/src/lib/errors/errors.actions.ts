@@ -1,5 +1,5 @@
 import { ErrorOutlet, ErrorPayload, Error } from './errors.models';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 export class ErrorActions {
     static ADD = '[Error] Add Error';

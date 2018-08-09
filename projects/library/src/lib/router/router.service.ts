@@ -15,7 +15,7 @@ import {
 import { Store } from '@ngrx/store';
 import { Observable, from } from 'rxjs';
 
-import { RouterActions } from './router.actions';
+import { RouterActions } from './actions';
 
 @Injectable({
   providedIn: 'root'

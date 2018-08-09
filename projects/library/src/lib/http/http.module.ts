@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { HttpCommands } from './http.commands';
 import { HttpEffects } from './http.effects';
 import { HttpService } from './http.service';
-import { Selector } from '../store/store.models';
+import { Selector } from '../store/models';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

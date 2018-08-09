@@ -1,7 +1,7 @@
 import { TypeConstructor } from '../shared/models';
 import { ValidatorFn, AsyncValidatorFn } from '@angular/forms';
 
-import { buildControlFromModel, buildArrayFromType } from './forms.utils';
+import { buildControlFromModel, buildArrayFromType } from './utils';
 
 /**
  * Decorates an abstract control property built using form builder.

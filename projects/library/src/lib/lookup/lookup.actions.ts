@@ -1,5 +1,5 @@
 import { AddLookupPayload, Lookup } from './lookup.models';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 export class LookupActions {
     static ADD_KEYS = '[Lookup] Add keys';

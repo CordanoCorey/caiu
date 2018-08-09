@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Control, FileUpload, DateHelper } from 'library';
+import { Control, FileUpload, DateHelper } from 'library/caiu-library';
 
 import { ExampleForm } from './shared/models';
 

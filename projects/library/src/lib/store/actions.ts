@@ -1,4 +1,4 @@
-import { Action } from './store.models';
+import { Action } from './models';
 import { Config } from '../shared/config';
 import { WindowResize } from '../shared/window';
 

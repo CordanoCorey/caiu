@@ -1,6 +1,6 @@
 import { FormGroup, FormBuilder, AbstractControl, FormControl, ValidatorFn, AsyncValidatorFn } from '@angular/forms';
 
-import { FormArray } from './forms.models';
+import { FormArray } from './models';
 import { Dictionary, TypeConstructor } from '../shared/models';
 import { getAllProps, ignoreKey, inArray, build, getValue } from '../shared/utils';
 

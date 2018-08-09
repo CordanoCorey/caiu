@@ -1,6 +1,6 @@
-import { RouterActions } from './router.actions';
-import { RouterState } from './router.models';
-import { Action } from '../store/store.models';
+import { RouterActions } from './actions';
+import { RouterState } from './models';
+import { Action } from '../store/models';
 
 export function routerReducer(state: RouterState = new RouterState(), action: Action): RouterState {
     switch (action.type) {

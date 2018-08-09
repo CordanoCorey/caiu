@@ -6,7 +6,7 @@ import { combineLatest, skip, take } from 'rxjs/operators';
 import { EventActions } from './events.actions';
 import { eventValueSelector } from './events.selectors';
 import { HttpAction } from '../http/http.models';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 @Injectable({
   providedIn: 'root'

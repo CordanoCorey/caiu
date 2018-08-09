@@ -2,7 +2,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
-import { RouterState, Breadcrumbs } from './router.models';
+import { RouterState, Breadcrumbs } from './models';
 import { QueryModel } from '../shared/models';
 import { toArray, toInt } from '../shared/utils';
 

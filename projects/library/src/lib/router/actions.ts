@@ -7,8 +7,8 @@ import {
     RoutesRecognized
 } from '@angular/router';
 
-import { ActivatedRoutePayload } from './router.models';
-import { Action } from '../store/store.models';
+import { ActivatedRoutePayload } from './models';
+import { Action } from '../store/models';
 
 export class RouterActions {
 

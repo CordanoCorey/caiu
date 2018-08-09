@@ -1,5 +1,5 @@
-import { WindowActions, ConfigActions, SidenavActions } from './store.actions';
-import { Action } from './store.models';
+import { WindowActions, ConfigActions, SidenavActions } from './actions';
+import { Action } from './models';
 import { Config } from '../shared/config';
 import { build } from '../shared/utils';
 import { Window, WindowResize } from '../shared/window';

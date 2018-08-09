@@ -8,7 +8,7 @@ import {
 } from './http.models';
 import { ErrorActions } from '../errors/errors.actions';
 import { ErrorOutlet, ErrorPayload } from '../errors/errors.models';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 import { inArray } from '../shared/utils';
 
 export class HttpActions {

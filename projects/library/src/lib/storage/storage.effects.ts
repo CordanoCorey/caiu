@@ -6,7 +6,7 @@ import { map, filter, withLatestFrom } from 'rxjs/operators';
 
 import { StorageActions } from './storage.actions';
 import { StorageService } from './storage.service';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 import { toPayload } from '../shared/utils';
 
 

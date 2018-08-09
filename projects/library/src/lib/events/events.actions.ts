@@ -1,5 +1,5 @@
 import { Event, UpdateValuePayload } from './events.models';
-import { Action, ActionWithKey } from '../store/store.models';
+import { Action, ActionWithKey } from '../store/models';
 import { build, guid } from '../shared/utils';
 
 export class EventActions {

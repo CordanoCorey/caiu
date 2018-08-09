@@ -1,7 +1,7 @@
 import { SimpleChanges } from '@angular/core';
 
 import { Metadata, Dictionary, TypeConstructor, HasMetadata } from './models';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 /**
  * @param derivedCtor The clas Constructor

@@ -6,7 +6,7 @@ import { filter, map } from 'rxjs/operators';
 
 import { EventActions } from './events.actions';
 import { Events } from './events.models';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 @Injectable()
 export class EventEffects {

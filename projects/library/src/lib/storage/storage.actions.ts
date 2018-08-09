@@ -1,4 +1,4 @@
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 export class StorageActions {
     static UPDATE_LOCAL_STORAGE = '[Storage] Update Local Storage';

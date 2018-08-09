@@ -1,4 +1,4 @@
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 import { Collection } from '../shared/collection';
 import { Dictionary } from '../shared/models';
 import { build } from '../shared/utils';

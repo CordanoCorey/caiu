@@ -1,6 +1,6 @@
 import { AbstractControl, Form } from '@angular/forms';
 
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 export class FormActions {
     static ADD = '[forms] Add Form';

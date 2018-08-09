@@ -1,6 +1,6 @@
 import { EventActions } from './events.actions';
 import { Events } from './events.models';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 export function eventsReducer(state: Events = new Events(), action: Action): Events {
     switch (action.type) {

@@ -1,7 +1,7 @@
 import { LookupActions } from './lookup.actions';
 import { Lookups, Lookup } from './lookup.models';
-import { AppActions } from '../store/store.actions';
-import { Action } from '../store/store.models';
+import { AppActions } from '../store/actions';
+import { Action } from '../store/models';
 import { build, toArray } from '../shared/utils';
 
 export function lookupReducer(state: Lookups = new Lookups(), action: Action): Lookups {

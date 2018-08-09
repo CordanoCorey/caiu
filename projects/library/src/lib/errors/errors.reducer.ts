@@ -1,7 +1,7 @@
 import { ErrorActions } from './errors.actions';
 import { Collection } from '../shared/collection';
 import { Dictionary } from '../shared/models';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 
 export function errorsReducer(state: Dictionary<Error> = {}, action: Action): Dictionary<Error> {

@@ -40,6 +40,8 @@ export * from './lib/components/grid/grid.model';
 export * from './lib/components/grid/grid-column/grid-column.component';
 export * from './lib/components/grid/grid-column/grid-column.model';
 export * from './lib/components/grid/simple-grid/simple-grid.component';
+export * from './lib/components/not-found/not-found.module';
+export * from './lib/components/not-found/not-found.component';
 export * from './lib/components/tile/tile.module';
 export * from './lib/components/tile/tile.component';
 export * from './lib/components/tile/tile.model';
@@ -78,10 +80,10 @@ export * from './lib/events/events.service';
  * Forms
  */
 export * from './lib/forms/forms.module';
-export * from './lib/forms/forms.actions';
-export * from './lib/forms/forms.decorators';
-export * from './lib/forms/forms.models';
-export * from './lib/forms/forms.utils';
+export * from './lib/forms/actions';
+export * from './lib/forms/decorators';
+export * from './lib/forms/models';
+export * from './lib/forms/utils';
 
 /**
  * HTTP
@@ -115,12 +117,13 @@ export * from './lib/pipes/yes-no.pipe';
  * Router
  */
 export * from './lib/router/router.module';
-export * from './lib/router/router.actions';
+export * from './lib/router/actions';
 export * from './lib/router/router.effects';
-export * from './lib/router/router.models';
+export * from './lib/router/models';
 export * from './lib/router/router.reducer';
-export * from './lib/router/router.selectors';
+export * from './lib/router/selectors';
 export * from './lib/router/router.service';
+export * from './lib/router/guards/authenticated.guard';
 
 /**
  * Shared
@@ -155,7 +158,7 @@ export * from './lib/storage/storage.service';
  * Store
  */
 export * from './lib/store/store.module';
-export * from './lib/store/store.actions';
-export * from './lib/store/store.models';
-export * from './lib/store/store.reducers';
-export * from './lib/store/store.selectors';
+export * from './lib/store/actions';
+export * from './lib/store/models';
+export * from './lib/store/reducers';
+export * from './lib/store/selectors';

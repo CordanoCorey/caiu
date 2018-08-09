@@ -22,6 +22,13 @@ export function currentUserSelector(store: Store<any>): Observable<CurrentUser> 
     return store.select('currentUser');
 }
 
+export function authenticatedSelector(store: Store<any>): Observable<boolean> {
+    return currentUserSelector(store).pipe(
+        map(user => user.authenticated),
+        distinctUntilChanged()
+    );
+}
+
 export function configSelector(store: Store<any>): Observable<Config> {
     return store.select('config');
 }

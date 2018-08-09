@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { StorageActions } from './storage.actions';
 import { ActionStore } from './storage.models';
 import { STORE_KEY } from './storage.module';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 import { build, inArray, filterState } from '../shared/utils';
 
 @Injectable({

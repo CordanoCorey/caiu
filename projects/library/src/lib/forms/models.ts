@@ -1,6 +1,6 @@
 import { AbstractControl, FormBuilder, FormArray as Ng2FormArray, ValidatorFn, AsyncValidatorFn } from '@angular/forms';
 
-import { buildAbstractControl, buildControlsConfig } from './forms.utils';
+import { buildAbstractControl, buildControlsConfig } from './utils';
 import { TypeConstructor } from '../shared/models';
 import { build, getValue, toArray } from '../shared/utils';
 

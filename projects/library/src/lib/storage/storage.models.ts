@@ -1,4 +1,4 @@
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 export class ActionStore {
     store: any;

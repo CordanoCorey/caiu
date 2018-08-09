@@ -3,9 +3,9 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
 
-import { RouterActions } from './router.actions';
+import { RouterActions } from './actions';
 import { RouterService } from './router.service';
-import { Action } from '../store/store.models';
+import { Action } from '../store/models';
 
 @Injectable()
 export class RouterEffects {
