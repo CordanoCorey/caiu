@@ -203,7 +203,6 @@ export class Collage {
     }
 
     set images(value: Image[]) {
-        console.dir(value);
         this._images = value;
         this.tiles = Collage.BuildTiles(this);
     }
@@ -213,14 +212,10 @@ export class Collage {
     }
 
     get tiles(): Tile[] {
-        console.log(this._tiles.reduce((acc, x) => {
-            return acc[x.id] ? Object.assign(acc, { [x.id]: acc[x.id] + 1 }) : Object.assign(acc, { [x.id]: 1 });
-        }, {}));
         return this._tiles;
     }
 
     set tiles(value: Tile[]) {
-        console.dir(value);
         this._tiles = Collage.PositionTiles(value, this);
     }
 

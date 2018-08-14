@@ -57,26 +57,26 @@ export class HttpService {
     }
 
     get defaultHeaders(): HttpHeaders {
-        const headers: HttpHeaders = new HttpHeaders();
-        headers.append('Content-type', 'application/json');
+        let headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Content-type', 'application/json');
         if (this.authToken) {
-            headers.append('Authorization', 'Bearer ' + this.authToken);
+            headers = headers.append('Authorization', 'Bearer ' + this.authToken);
         }
         return headers;
     }
 
     get requestHeaders(): HttpHeaders {
-        const headers: HttpHeaders = this.useDefaultHeaders ? this.defaultHeaders : new HttpHeaders();
+        let headers: HttpHeaders = this.useDefaultHeaders ? this.defaultHeaders : new HttpHeaders();
         Object.keys(this.headers).forEach(key => {
-            headers.append(key, this.headers[key]);
+            headers = headers.append(key, this.headers[key]);
         });
         return headers;
     }
 
     appendHeaders(headers = {}): HttpHeaders {
-        const requestHeaders = this.requestHeaders;
+        let requestHeaders = this.requestHeaders;
         Object.keys(headers).forEach(key => {
-            requestHeaders.append(key, this.headers[key]);
+            requestHeaders = requestHeaders.append(key, this.headers[key]);
         });
         return requestHeaders;
     }
