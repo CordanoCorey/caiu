@@ -1,22 +1,38 @@
-<form class="example-form">
-  <mat-form-field class="control">
-    <input matInput placeholder="Address1" type="text">
+<form class="address-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <mat-form-field class="control first-name">
+    <input matInput placeholder="First Name" type="text" formControlName="firstName">
   </mat-form-field>
-  <mat-form-field class="control">
-    <input matInput placeholder="Address2" type="text">
+
+  <mat-form-field class="control last-name">
+    <input matInput placeholder="Last Name" type="text" formControlName="lastName">
   </mat-form-field>
-  <mat-form-field class="control">
-    <input matInput placeholder="City" type="text">
+
+  <mat-form-field class="control address1">
+    <input matInput placeholder="Address 1" type="text" formControlName="streetAddress">
   </mat-form-field>
-  <mat-form-field class="control">
-    <input matInput placeholder="State" type="text" value="Pennsylvania">
+
+  <mat-form-field class="control address2">
+    <input matInput placeholder="Address 2" type="text" formControlName="address2">
   </mat-form-field>
-  <mat-form-field class="control">
-    <input matInput placeholder="Zipcode" type="number">
+
+  <mat-form-field class="control city">
+    <input matInput placeholder="City" type="text" formControlName="city">
   </mat-form-field>
-  <mat-form-field class="control">
+
+  <iu-state-picker class="control state" formControlName="state"></iu-state-picker>
+
+  <mat-form-field class="control zip">
+    <input matInput placeholder="Zip Code" type="text" formControlName="zipCode">
+  </mat-form-field>
+
+  <mat-form-field class="control active-date">
     <input matInput [matDatepicker]="picker2" placeholder="Effective Date">
     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
+
+  <button mat-raised-button color="accent" class="btn-save" (click)="onSubmit()">Save</button>
+  <button mat-raised-button color="primary" class="btn-save btn-activate" (click)="onActivate()">Save and Make Primary</button>
+
 </form>

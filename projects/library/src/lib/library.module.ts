@@ -15,11 +15,11 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { LibraryComponent } from './library.component';
 import { AccordionModule } from './components/accordion/accordion.module';
+import { AddressModule } from './components/address/address.module';
 import { CollageModule } from './components/collage/collage.module';
 import { DatepickerModule } from './components/datepicker/datepicker.module';
 import { DialogModule } from './components/dialog/dialog.module';
 import { FileUploadModule } from './components/file-upload/file-upload.module';
-// import { GridModule } from './components/grid/grid.module';
 import { NotFoundModule } from './components/not-found/not-found.module';
 import { TileModule } from './components/tile/tile.module';
 import { WallpaperModule } from './components/wallpaper/wallpaper.module';
@@ -33,10 +33,10 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     SharedModule,
     AccordionModule,
+    AddressModule,
     DatepickerModule,
     DialogModule,
     FileUploadModule,
-    // GridModule,
     NotFoundModule,
     MatButtonModule,
     MatCardModule,
@@ -61,11 +61,11 @@ import { SharedModule } from './shared/shared.module';
     LibraryComponent,
     SharedModule,
     AccordionModule,
+    AddressModule,
     CollageModule,
     DatepickerModule,
     DialogModule,
     FileUploadModule,
-    // GridModule,
     ListPipe,
     NotFoundModule,
     PhoneNumberPipe,

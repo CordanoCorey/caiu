@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material';
 import { Store, Action } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
-import { getValue } from './utils';
+import { HasId } from './models';
+import { getValue, truthy } from './utils';
 
 export class DumbComponent implements OnDestroy {
 
@@ -110,6 +111,19 @@ export class DumbComponent implements OnDestroy {
 export class FormComponent extends DumbComponent {
 
     form: FormGroup;
+    model: HasId;
+
+    get editing(): boolean {
+        return truthy(this.id);
+    }
+
+    get id(): number | string {
+        return this.model.id;
+    }
+
+    get isValid(): boolean {
+      return this.form.valid;
+    }
 
     markAsSubmitted() {
         this.form.markAsTouched();

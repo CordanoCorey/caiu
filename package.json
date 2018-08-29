@@ -8,10 +8,16 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "build_grid": "ng build --prod grid",
     "build_lib": "ng build --prod library",
-    "npm_pack": "cd dist/library && npm pack",
-    "package": "npm run build_lib && npm run npm_pack",
-    "publish": "npm run package && cd dist/library && npm publish"
+    "npm_pack": "npm_pack_grid && npm_pack_lib",
+    "npm_pack_grid": "cd dist/grid && npm pack",
+    "npm_pack_lib": "cd dist/library && npm pack",
+    "package_grid": "npm run build_grid && npm run npm_pack_grid",
+    "package_lib": "npm run build_lib && npm run npm_pack_lib",
+    "publish_grid": "npm run package_grid && cd dist/grid && npm publish",
+    "publish_lib": "npm run package_lib && cd dist/library && npm publish",
+    "publish": "npm run publish_grid && npm run publish_lib"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +33,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@caiu/library": "^6.2.1",
     "@ngrx/effects": "^6.0.1",
     "@ngrx/store": "^6.0.1",
     "@progress/kendo-angular-buttons": "^4.1.1",

@@ -1,4 +1,5 @@
 export class Address {
+    id = 0;
     firstName = '';
     lastName = '';
     streetAddress = '';
@@ -7,7 +8,16 @@ export class Address {
     state = '';
     stateId = 45;
     zipCode = 0;
+    isPrimaryAddress = false;
     metadata: Metadata = {
+        ignore: [
+            'id',
+            'cityStateZip',
+            'fullName',
+            'hasAddress',
+            'hasCityStateZip',
+            'hasStreetAddress',
+        ],
         streetAddress: {},
         address2: {},
         city: {},
@@ -136,8 +146,8 @@ export class Image {
 export class Metadata {
     controls?: string[] = [];
     ignore?: string[] = [];
-    label ?= '';
-    name ?= '';
+    label?= '';
+    name?= '';
     value?: any;
     [key: string]: any;
 }
@@ -153,8 +163,8 @@ export enum MetadataType {
 
 export class PropertyMetadata<T> {
     ignore?: string[] = [];
-    label ?= '';
-    name ?= '';
+    label?= '';
+    name?= '';
     value?: T;
 }
 

@@ -1,34 +1,39 @@
-<button mat-fab class="mat-mini-fab mat-accent" style="background-color:#e0f2f1; float: right; margin-top:-30px; margin-right:10px;">
-  <mat-icon style="color:#1b1b1b;">add</mat-icon>
-</button>
+<div class="card address">
 
-<div class="card-header">
-  <h4 class="card-title">Current Address</h4>
-</div>
+  <div class="card-header">
+    <h4 class="card-title">Address Information</h4>
+  </div>
 
-<div class="card-body">
-  <div class="body-content">
+  <button mat-mini-fab color="primary" class="add-address">
+    <mat-icon *ngIf="!editing" (click)="addNew()">add</mat-icon>
+    <mat-icon *ngIf="editing" (click)="back()">arrow_back</mat-icon>
+  </button>
 
-    <div class="row">
-      <div class="col">
-        428 Candlewyck Road, Camp Hill, PA 17011
-      </div>
-      <div class="col last">
-        <mat-icon class="edit-icon">edit</mat-icon>
+  <div *ngIf="!editing" class="card-body">
+    <div class="card-header">
+      <h4 class="card-title">Current Address</h4>
+    </div>
+    <div class="card-body">
+      <div class="body-content">
+        <div class="row">
+          <div class="col">
+            <iu-inline-address [address]="current" [canActivate]="false" [canDelete]="true" [canEdit]="true" (delete)="delete($event)"
+              (edit)="edit($event)"></iu-inline-address>
+          </div>
+        </div>
       </div>
     </div>
-
+    <div class="card-header">
+      <h4 class="card-title">Other Addresses</h4>
+    </div>
+    <div class="card-body">
+      <div class="body-content choose-address">
+        <iu-inline-address *ngFor="let choice of choices" [canActivate]="true" [canDelete]="true" [canEdit]="true"
+          [address]="choice" (activate)="activate($event)" (delete)="delete($event)" (edit)="edit($event)"></iu-inline-address>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="card-header">
-  <h4 class="card-title">Other Addresses</h4>
-</div>
+  <iu-address-form *ngIf="editing" [address]="current" (save)="save($event)"></iu-address-form>
 
-<div class="card-body">
-  <div class="body-content choose-address">
-
-    <iu-inline-address *ngFor="let choice of choices"></iu-inline-address>
-
-  </div>
 </div>

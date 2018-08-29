@@ -124,6 +124,34 @@ export class HttpService {
     };
 
     /**
+     * Make an autocomplete GET request.
+     * @param relativePath 
+     * @param headers 
+     * @param options 
+     */
+    autocomplete(relativePath: string, query: QueryModel<any>, headers = {}, options: HttpOptions = new HttpOptions()): Observable<any> {
+        if (!query.term || query.term.length < 1) {
+            return of([]);
+        }
+        const path = `${relativePath}/${QueryModel.BuildQueryString(query)}`;
+        const url = options.prependBaseUrl ? this.formatUrl(relativePath) : relativePath;
+        const httpHeaders = this.appendHeaders(headers);
+        const obs = this.http.get(url, {
+            headers: httpHeaders
+        });
+        return obs.pipe(
+            map(res => res && res['json'] && typeof res['json'] === 'function' ? res['json']() : res),
+            debounceTime(500),
+            distinctUntilChanged(),
+            map(json => HttpActions.matchPath(path, json)),
+            catchError(err => this.onError(err)),
+            finalize(() => {
+                this.onComplete('GET', url);
+            })
+        );
+    };
+
+    /**
      * Make a POST request.
      * @param relativePath 
      * @param body 

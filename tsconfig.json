@@ -22,6 +22,12 @@
       ],
       "library/*": [
         "dist/library/*"
+      ],
+      "grid": [
+        "dist/grid"
+      ],
+      "grid/*": [
+        "dist/grid/*"
       ]
     }
   }

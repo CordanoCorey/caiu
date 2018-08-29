@@ -1,6 +1,15 @@
 <form>
-  {{timeAgoTest}}
-  <iu-file-upload (upload)="onUpload($event)"></iu-file-upload>
-  <iu-file-upload [multiple]="true" (upload)="onUpload($event)"></iu-file-upload>
+  <div class="example">
+    {{timeAgoTest}}
+  </div>
+  <div class="example">
+    <iu-address [addresses]="addresses"></iu-address>
+  </div>
+  <div class="example">
+    <iu-file-upload (upload)="onUpload($event)"></iu-file-upload>
+  </div>
+  <div class="example">
+    <iu-file-upload [multiple]="true" (upload)="onUpload($event)"></iu-file-upload>
+  </div>
 </form>
 <router-outlet></router-outlet>

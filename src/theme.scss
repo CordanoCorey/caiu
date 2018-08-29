@@ -1,0 +1,16 @@
+@import '~@angular/material/_theming';
+@import 'common';
+@include mat-core();
+$primary-palette: mat-palette($material-primary-color);
+$accent-palette: mat-palette($material-accent-color);
+$theme: mat-light-theme($primary-palette, $accent-palette);
+@include angular-material-theme($theme);
+.dark-theme {
+  $dark-primary: mat-palette($material-primary-color);
+  $dark-accent: mat-palette($material-accent-color);
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent);
+  @include angular-material-theme($dark-theme);
+}
+
+@include iu-palette($primary-palette, $accent-palette);
+@include scrollable(#fff, $primary-color);

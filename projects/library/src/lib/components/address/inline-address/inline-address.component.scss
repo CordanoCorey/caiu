@@ -1,0 +1,29 @@
+.row.inline-address {
+  vertical-align: inherit;
+  border-color: inherit;
+  border-collapse: separate;
+
+  .col {
+    display: inline;
+    font-size: 10pt;
+    color: #1b1b1b;
+    margin: 5px 5px 10px 20px;
+    vertical-align: inherit;
+
+    .mat-icon {
+      cursor: pointer;
+    }
+
+    .mat-icon:hover {
+      color: #1b1b1b;
+    }
+  }
+
+  .col.mailing-address {
+    max-width: 50%;
+  }
+
+  .col.last {
+    padding-left: 25px;
+  }
+}
