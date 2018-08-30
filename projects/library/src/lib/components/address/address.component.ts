@@ -23,7 +23,9 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
 
   @Input() addresses: Address[] = [];
   @Input() editing = false;
+  @Output() activate = new EventEmitter<Address>();
   @Output() add = new EventEmitter<Address>();
+  @Output() delete = new EventEmitter<Address>();
   @Output() update = new EventEmitter<Address>();
   private onModelChange: Function;
   private onTouch: Function;
@@ -75,8 +77,9 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     this.value = value;
   }
 
-  activate(e: Address) {
+  makePrimary(e: Address) {
     this.current = e;
+    this.activate.emit(e);
   }
 
   addNew() {
@@ -86,7 +89,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
 
   back() {
     if (this.current.id === 0) {
-      this.delete(this.current);
+      this.remove(this.current);
     }
     this.editing = false;
   }
@@ -94,10 +97,11 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   closeDialog(e: boolean) {
     if (e) {
       this.addresses = this.removeAddress(this.toBeDeleted);
+      this.delete.emit(this.toBeDeleted);
     }
   }
 
-  delete(e: Address) {
+  remove(e: Address) {
     this.toBeDeleted = e;
     this.openDialog(ConfirmDeleteComponent);
   }
