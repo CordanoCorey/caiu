@@ -1,6 +1,8 @@
 import { Component, OnInit, forwardRef, Input, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 
+import { ConfirmDeleteComponent } from '../dialog/confirm-delete/confirm-delete.component';
 import { DumbComponent } from '../../shared/component';
 import { Address } from '../../shared/models';
 
@@ -26,7 +28,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   private onTouch: Function;
   value: Address;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     super();
   }
 
@@ -90,7 +92,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
 
   delete(e: Address) {
     this.addresses = this.removeAddress(e);
-    // this.openDialog();
+    this.openDialog(ConfirmDeleteComponent);
   }
 
   edit(e: Address) {

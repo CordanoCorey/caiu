@@ -18,6 +18,11 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
   ],
   exports: [
     DialogComponent,
+    ConfirmDeleteComponent,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    ConfirmDeleteComponent,
   ]
 })
 export class DialogModule { }

@@ -6,12 +6,14 @@ import { AddressPipe } from './address.pipe';
 import { AddressFormComponent } from './address-form/address-form.component';
 import { InlineAddressComponent } from './inline-address/inline-address.component';
 import { StatePickerComponent } from './state-picker/state-picker.component';
+import { DialogModule } from '../dialog/dialog.module';
 import { FormsModule } from '../../forms/forms.module';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
     SharedModule,
+    DialogModule,
     FormsModule,
     MatButtonModule,
     MatCardModule,

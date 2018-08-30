@@ -49,6 +49,12 @@ export class Collage {
         return collage;
     }
 
+    /**
+     * Initialize matrix of cells, each set to true.
+     * '/
+     * @param rows total # of rows
+     * @param cols Total # of columns
+     */
     static BuildEmptyCells(rows: number, cols: number): boolean[][] {
         return integerArray(rows).map(x => integerArray(cols).map(y => true));
     }

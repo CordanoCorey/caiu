@@ -58,8 +58,16 @@ export class WallpaperComponent implements OnInit {
     return 24;
   }
 
-  ngOnInit() {
+  ngOnChanges() {
+    console.log(
+      '\nElement Height:\t', this.elementHeight,
+      '\nElement Width:\t', this.elementWidth,
+      '\nCanvas Height:\t', this.canvasHeight,
+      '\nCanvas Width:\t', this.canvasWidth,
+    );
+  }
 
+  ngOnInit() {
   }
 
 }
