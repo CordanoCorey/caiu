@@ -10,8 +10,9 @@
   <ng-content></ng-content>
 </mat-dialog-content>
 <mat-dialog-actions *ngIf="showActions && actions.length > 0">
-  <button *ngFor="let action of actions" mat-raised-button [mat-dialog-close]="action.value" [style.width]="actionWidth" [style.color]="action.color">{{ action.label }}</button>
+  <button *ngFor="let action of actions" mat-raised-button [mat-dialog-close]="action.value" [style.width]="actionWidth"
+    color="primary">{{ action.label }}</button>
 </mat-dialog-actions>
 <mat-dialog-actions *ngIf="showCloseAction && actions.length === 0">
-  <button mat-raised-button mat-dialog-close="close" [style.width]="actionWidth" [style.color]="defaultActionColor">Close</button>
+  <button mat-raised-button mat-dialog-close="close" color="primary" [style.width]="actionWidth">Close</button>
 </mat-dialog-actions>

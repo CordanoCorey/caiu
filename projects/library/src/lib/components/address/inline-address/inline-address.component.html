@@ -1,14 +1,14 @@
 <div class="row inline-address">
-  <div class="col mailing-address">
+  <div class="col mailing-address" [class.primary]="isPrimary">
     {{ address | address }}
   </div>
-  <div class="col last" *ngIf="canActivate">
+  <div class="col" *ngIf="canActivate">
     <button color="primary" mat-button class="edit-icon activate-text" (click)="onActivate()">Activate</button>
   </div>
-  <div class="col last" *ngIf="canEdit">
+  <div class="col" *ngIf="canEdit">
     <mat-icon color="primary" class="edit-icon" (click)="onEdit()">edit</mat-icon>
   </div>
-  <div class="col last" *ngIf="canDelete">
+  <div class="col" *ngIf="canDelete">
     <mat-icon color="primary" class="edit-icon" (click)="onDelete()">delete</mat-icon>
   </div>
 </div>

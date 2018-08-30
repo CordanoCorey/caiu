@@ -34,7 +34,9 @@ export class AddressFormComponent extends DumbComponent implements OnChanges {
   }
 
   get valueOut(): Address {
-    return build(Address, this.form.value);
+    return build(Address, this.form.value, {
+      id: this.address.id
+    });
   }
 
   ngOnChanges() {

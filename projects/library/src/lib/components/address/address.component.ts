@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { ConfirmDeleteComponent } from '../dialog/confirm-delete/confirm-delete.component';
 import { DumbComponent } from '../../shared/component';
 import { Address } from '../../shared/models';
+import { build } from '../../shared/utils';
 
 export const ADDRESS_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -27,17 +28,21 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   private onModelChange: Function;
   private onTouch: Function;
   value: Address;
+  toBeDeleted: Address;
 
   constructor(public dialog: MatDialog) {
     super();
   }
 
   get current(): Address {
-    return this.addresses[0];
+    return this.addresses.find(x => x.isPrimaryAddress) || build(Address, this.addresses[0], { isPrimaryAddress: true });
   }
 
   set current(value: Address) {
-    this.addresses = [value, ...this.removeAddress(value)];
+    this.addresses = [
+      build(Address, value, { isPrimaryAddress: true }),
+      ...this.removeAddress(value).map(x => build(Address, x, { isPrimaryAddress: false }))
+    ];
   }
 
   get choices(): Address[] {
@@ -86,12 +91,14 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     this.editing = false;
   }
 
-  closeDialog(e: any) {
-    console.log(e);
+  closeDialog(e: boolean) {
+    if (e) {
+      this.addresses = this.removeAddress(this.toBeDeleted);
+    }
   }
 
   delete(e: Address) {
-    this.addresses = this.removeAddress(e);
+    this.toBeDeleted = e;
     this.openDialog(ConfirmDeleteComponent);
   }
 
@@ -101,6 +108,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   save(e: Address) {
+    this.addresses = this.addAddress(e);
     if (e.id) {
       this.add.emit(e);
     } else {
@@ -109,8 +117,20 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     this.editing = false;
   }
 
+  private addAddress(address: Address): Address[] {
+    return this.reorder([address, ...this.addresses
+      .filter(x => x.id !== address.id)
+      .map(x => address.isPrimaryAddress && x.isPrimaryAddress && x.id !== address.id ?
+        build(Address, x, { isPrimaryAddress: false }) : build(Address, x))
+    ]);
+  }
+
   private removeAddress(address: Address): Address[] {
     return this.addresses.filter(x => x !== address);
+  }
+
+  private reorder(addresses: Address[]): Address[] {
+    return addresses.reduce((acc, x) => x.isPrimaryAddress ? [x, ...acc] : [...acc, x], []);
   }
 
 }

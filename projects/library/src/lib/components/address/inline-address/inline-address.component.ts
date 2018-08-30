@@ -19,6 +19,10 @@ export class InlineAddressComponent implements OnInit {
 
   constructor() { }
 
+  get isPrimary(): boolean {
+    return this.address.isPrimaryAddress;
+  }
+
   ngOnInit() {
   }
 

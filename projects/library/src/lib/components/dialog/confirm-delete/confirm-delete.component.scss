@@ -5,9 +5,7 @@ iu-dialog#confirm-delete {
         margin: -24px -24px 24px -24px;
         width: calc(100% + 48px);
         min-height: 32px;
-        background-color: #aebfbe;
         padding: 10px 20px;
-        height: 48px;
     }
     .mat-toolbar-row {
         margin-left: -24px;
@@ -41,14 +39,11 @@ iu-dialog#confirm-delete {
             margin-top: -2px;
             -webkit-appearance: none;
             cursor: pointer;
-            background: 0 0;
             border: 0;
         }
         button:hover {
             color: #999999;
             cursor: pointer;
-            background: 0 0;
-            opacity: .9;
         }
     }
     .mat-raised-button {
