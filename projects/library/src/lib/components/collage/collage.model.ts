@@ -12,18 +12,41 @@ export class Collage {
     _images: Image[] = [];
     _tiles: Tile[] = [];
 
+    /**
+     * Find how many columns are available to the right of the active cell.
+     * @param startRow 
+     * @param startColumn 
+     * @param maxColumns 
+     * @param cells 
+     */
     static AvailableColumns(startRow: number, startColumn: number, maxColumns: number, cells: boolean[][]): number {
         const totalColumns = cells[0].length;
         return Math.max(...positiveIntegerArray(maxColumns)
             .map(k => k <= maxColumns && startColumn + k <= totalColumns && cells[startRow] && cells[startRow][startColumn + k] ? k : 1));
     }
 
+    /**
+     * Find how many rows are available below the active cell.
+     * @param startRow 
+     * @param startColumn 
+     * @param maxRows 
+     * @param cells 
+     */
     static AvailableRows(startRow: number, startColumn: number, maxRows: number, cells: boolean[][]): number {
         const totalRows = cells[0].length;
         return Math.max(...positiveIntegerArray(maxRows)
             .map(k => k <= maxRows && startRow + k <= totalRows && cells[startRow + k] && cells[startRow + k][startColumn] ? k : 1));
     }
 
+    /**
+     * Find subset of available dimensions by examining if cells yet to be traversed in sequence are empty.
+     * @param dimensions 
+     * @param startRow 
+     * @param startColumn 
+     * @param maxRows 
+     * @param maxColumns 
+     * @param cells 
+     */
     static AvailableDimensions(
         dimensions: Dimensions[],
         startRow: number,
@@ -36,6 +59,16 @@ export class Collage {
         return dimensions.filter(x => x.rows <= availableRows && x.columns <= availableColumns);
     }
 
+    /**
+     * Build new collage instance with given parameters.
+     * @param images 
+     * @param canvasHeight 
+     * @param canvasWidth 
+     * @param totalRows 
+     * @param totalColumns 
+     * @param maxRows 
+     * @param maxColumns 
+     */
     static Build(images: Image[], canvasHeight, canvasWidth, totalRows = 0, totalColumns = 0, maxRows = 0, maxColumns = 0): Collage {
         const collage = Object.assign(new Collage(), {
             canvasHeight,
@@ -59,6 +92,10 @@ export class Collage {
         return integerArray(rows).map(x => integerArray(cols).map(y => true));
     }
 
+    /**
+     * Map images to tiles after constructing a new collage.
+     * @param collage 
+     */
     static BuildTiles(collage: Collage): Tile[] {
         return collage.images.map((image, index) => {
             const dimensions = Collage.FindDimensions(image.height, image.width, collage.tileDimensions, collage.cellHeight, collage.cellWidth);
@@ -73,10 +110,21 @@ export class Collage {
         );
     }
 
+    /**
+     * Move selected tile ID to last priority for subsequent selection.
+     * @param id 
+     * @param tileIds 
+     */
     static ChooseTileId(id: number, tileIds: number[]): number[] {
         return [...tileIds.filter(x => x !== id), id];
     }
 
+    /**
+     * Find the x-y coordinates for a number in sequence.
+     * @param index 
+     * @param totalRows 
+     * @param totalColumns 
+     */
     static FindCoordinates(index: number, totalRows: number, totalColumns: number): Coordinates {
         const remainder = (index + totalColumns) % totalColumns;
         return {
@@ -85,14 +133,29 @@ export class Collage {
         };
     }
 
-    static FindCoordinatesNested(
-        index: number, totalRows: number, totalColumns: number, startRow: number, startColumn: number): Coordinates {
+    /**
+     * Find the x-y coordinates for a number in sequence given a starting position.
+     * @param index 
+     * @param totalRows 
+     * @param totalColumns 
+     * @param startRow 
+     * @param startColumn 
+     */
+    static FindCoordinatesNested(index: number, totalRows: number, totalColumns: number, startRow: number, startColumn: number): Coordinates {
         const coordinates = Collage.FindCoordinates(index, totalRows, totalColumns);
         coordinates.column += startColumn;
         coordinates.row += startRow;
         return coordinates;
     }
 
+    /**
+     * 
+     * @param height 
+     * @param width 
+     * @param dimensions 
+     * @param cellHeight 
+     * @param cellWidth 
+     */
     static FindDimensions(height: number, width: number, dimensions: Dimensions[], cellHeight: number, cellWidth: number): Dimensions {
         const filtered = dimensions.filter(x => x.rows * cellHeight <= height && x.columns * cellWidth <= width);
         const ordered = filtered.sort((a, b) => Math.abs(height / width - a.ratio) - Math.abs(height / width - b.ratio));
@@ -107,6 +170,12 @@ export class Collage {
         });
     }
 
+    /**
+     * m 
+     * @param tiles 
+     * @param tileIds 
+     * @param dimensions 
+     */
     static FindNextTileId(tiles: Tile[], tileIds: number[], dimensions: Dimensions): number {
         const nextMatch = Collage.FindNextMatchId(tiles, tileIds, dimensions);
         return nextMatch || Collage.FindBestMatchId(tiles, tileIds, dimensions);
@@ -165,6 +234,14 @@ export class Collage {
         }, []);
     }
 
+    /**
+     * 
+     * @param cells 
+     * @param startIndex 
+     * @param dimensions 
+     * @param totalRows 
+     * @param totalColumns 
+     */
     static MarkCellsAsFilled(cells: boolean[][], startIndex: number, dimensions: Dimensions, totalRows: number, totalColumns: number): boolean[][] {
         const start = Collage.FindCoordinates(startIndex, totalRows, totalColumns);
         return integerArray(dimensions.rows * dimensions.columns).reduce((acc, i) => {
