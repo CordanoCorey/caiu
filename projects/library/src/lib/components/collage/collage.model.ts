@@ -220,7 +220,7 @@ export class Collage {
             return acc;
         }, new Tile()) || Collage.FindBestMatch(tiles, tileIds, dimensions[0]);
     }
-
+m,
     static GetTileDimensions(cellHeight: number, cellWidth: number, maxRows: number, maxColumns: number): Dimensions[] {
         return positiveIntegerArray(maxRows).reduce((acc, x) => {
             const dimensions = positiveIntegerArray(maxColumns)
