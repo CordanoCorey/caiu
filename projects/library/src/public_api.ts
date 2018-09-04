@@ -16,6 +16,13 @@ export * from './lib/animations/animations.module';
  */
 export * from './lib/components/accordion/accordion.module';
 export * from './lib/components/accordion/accordion.component';
+export * from './lib/components/address/address.module';
+export * from './lib/components/address/address.pipe';
+export * from './lib/components/address/address.component';
+export * from './lib/components/address/address-form/address-form.component';
+export * from './lib/components/address/inline-address/inline-address.component';
+export * from './lib/components/address/state-picker/state-picker.component';
+export * from './lib/components/address/address.component';
 export * from './lib/components/collage/collage.module';
 export * from './lib/components/collage/collage.component';
 export * from './lib/components/collage/collage.model';
