@@ -23,10 +23,7 @@ import { FileUploadModule } from './components/file-upload/file-upload.module';
 import { NotFoundModule } from './components/not-found/not-found.module';
 import { TileModule } from './components/tile/tile.module';
 import { WallpaperModule } from './components/wallpaper/wallpaper.module';
-import { ListPipe } from './pipes/list.pipe';
-import { PhoneNumberPipe } from './pipes/phone-number.pipe';
-import { TimeAgoPipe } from './pipes/time-ago.pipe';
-import { YesNoPipe } from './pipes/yes-no.pipe';
+import { PipesModule } from './pipes/pipes.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -49,13 +46,10 @@ import { SharedModule } from './shared/shared.module';
     MatSelectModule,
     MatTabsModule,
     MatToolbarModule,
+    PipesModule,
   ],
   declarations: [
     LibraryComponent,
-    ListPipe,
-    PhoneNumberPipe,
-    TimeAgoPipe,
-    YesNoPipe,
   ],
   exports: [
     LibraryComponent,
@@ -66,13 +60,8 @@ import { SharedModule } from './shared/shared.module';
     DatepickerModule,
     DialogModule,
     FileUploadModule,
-    ListPipe,
-    NotFoundModule,
-    PhoneNumberPipe,
     TileModule,
-    TimeAgoPipe,
     WallpaperModule,
-    YesNoPipe,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -84,6 +73,7 @@ import { SharedModule } from './shared/shared.module';
     MatSelectModule,
     MatTabsModule,
     MatToolbarModule,
+    PipesModule,
   ]
 })
 export class LibraryModule { }

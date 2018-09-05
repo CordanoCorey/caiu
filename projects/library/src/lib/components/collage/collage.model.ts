@@ -1,12 +1,15 @@
 import { Tile } from '../tile/tile.model';
 import { Image, Dimensions, Coordinates } from '../../shared/models';
-import { integerArray, positiveIntegerArray } from '../../shared/utils';
+import { integerArray, positiveIntegerArray, build } from '../../shared/utils';
 
 export class Collage {
     canvasHeight = 0;
     canvasWidth = 0;
+    cellHeight = 0;
+    cellWidth = 0;
     maxColumns = 4;
     maxRows = 4;
+    tileDimensions: Dimensions[] = [];
     totalColumns = 0;
     totalRows = 0;
     _images: Image[] = [];
@@ -47,13 +50,7 @@ export class Collage {
      * @param maxColumns 
      * @param cells 
      */
-    static AvailableDimensions(
-        dimensions: Dimensions[],
-        startRow: number,
-        startColumn: number,
-        maxRows: number,
-        maxColumns: number,
-        cells: boolean[][]): Dimensions[] {
+    static AvailableDimensions(dimensions: Dimensions[], startRow: number, startColumn: number, maxRows: number, maxColumns: number, cells: boolean[][]): Dimensions[] {
         const availableRows = Collage.AvailableRows(startRow, startColumn, maxRows, cells);
         const availableColumns = Collage.AvailableColumns(startRow, startColumn, maxColumns, cells);
         return dimensions.filter(x => x.rows <= availableRows && x.columns <= availableColumns);
@@ -70,13 +67,19 @@ export class Collage {
      * @param maxColumns 
      */
     static Build(images: Image[], canvasHeight, canvasWidth, totalRows = 0, totalColumns = 0, maxRows = 0, maxColumns = 0): Collage {
+        const cellHeight = canvasHeight / totalRows;
+        const cellWidth = canvasWidth / totalColumns;
+        const tileDimensions = Collage.GetTileDimensions(cellHeight, cellWidth, maxRows, maxColumns);
         const collage = Object.assign(new Collage(), {
             canvasHeight,
             canvasWidth,
             totalRows,
             totalColumns,
             maxRows,
-            maxColumns
+            maxColumns,
+            cellHeight,
+            cellWidth,
+            tileDimensions,
         });
         collage.images = images;
         return collage;
@@ -99,7 +102,7 @@ export class Collage {
     static BuildTiles(collage: Collage): Tile[] {
         return collage.images.map((image, index) => {
             const dimensions = Collage.FindDimensions(image.height, image.width, collage.tileDimensions, collage.cellHeight, collage.cellWidth);
-            return Object.assign(new Tile(), {
+            return build(Tile, {
                 image,
                 dimensions,
                 id: index + 1,
@@ -149,7 +152,7 @@ export class Collage {
     }
 
     /**
-     * 
+     * Find optimal (best fit) dimensions for a single tile in the collage.
      * @param height 
      * @param width 
      * @param dimensions 
@@ -162,7 +165,7 @@ export class Collage {
         const closestMatch = ordered[0];
         const rows = closestMatch && closestMatch.rows ? closestMatch.rows : [];
         const columns = closestMatch && closestMatch.columns ? closestMatch.columns : [];
-        return Object.assign(new Dimensions(), {
+        return build(Dimensions, {
             rows,
             columns,
             height,
@@ -171,7 +174,7 @@ export class Collage {
     }
 
     /**
-     * m 
+     * Find tile with dimensions equal to given dimensions.
      * @param tiles 
      * @param tileIds 
      * @param dimensions 
@@ -181,6 +184,12 @@ export class Collage {
         return nextMatch || Collage.FindBestMatchId(tiles, tileIds, dimensions);
     }
 
+    /**
+     * Find the ID of the tile with ratio closest to ratio for given dimensions.
+     * @param tiles 
+     * @param tileIds 
+     * @param dimensions 
+     */
     static FindBestMatchId(tiles: Tile[], tileIds: number[], dimensions: Dimensions): number {
         let diff = 999;
         return tileIds.reduce((acc, id) => {
@@ -190,28 +199,47 @@ export class Collage {
         }, 0);
     }
 
+    /**
+     * Find the ID of the tile with dimensions equal to given dimensions.
+     * @param tiles 
+     * @param tileIds 
+     * @param dimensions 
+     */
     static FindNextMatchId(tiles: Tile[], tileIds: number[], dimensions: Dimensions): number {
         return tileIds.reduce((acc, id) => {
             if (acc !== 0) {
-                return acc;
+                return acc; // match already found
             }
             const tile = tiles.find(x => x.id === id);
             return tile && tile.rows === dimensions.rows && tile.columns === dimensions.columns ? tile.id : 0;
         }, 0);
     }
 
+    /**
+     * Find tile with ratio closest to ratio for given dimensions.
+     * @param tiles 
+     * @param tiles 
+     * @param tileIds 
+     * @param dimensions 
+     */
     static FindBestMatch(tiles: Tile[], tileIds: number[], dimensions: Dimensions): Tile {
         const id = Collage.FindBestMatchId(tiles, tileIds, dimensions);
         return tiles.find(x => x.id === id);
     }
 
+    /**
+     * Find the tile to position next in sequence, and assign # rows and # columns to its dimensions.
+     * @param tiles 
+     * @param tileIds 
+     * @param dimensions 
+     */
     static FindNextTile(tiles: Tile[], tileIds: number[], dimensions: Dimensions[]): Tile {
         return tileIds.reduce((acc, id) => {
             if (acc === null || acc.id === 0) {
                 const tile = tiles.find(x => x.id === id);
                 const dim = dimensions.find(x => tile.rows === x.rows && tile.columns === x.columns);
-                return dim ? Object.assign(new Tile(), tile, {
-                    dimensions: Object.assign(new Dimensions(), tile.dimensions, {
+                return dim ? build(Tile, tile, {
+                    dimensions: build(Dimensions, tile.dimensions, {
                         rows: dim.rows,
                         columns: dim.columns
                     })
@@ -220,11 +248,18 @@ export class Collage {
             return acc;
         }, new Tile()) || Collage.FindBestMatch(tiles, tileIds, dimensions[0]);
     }
-m,
+
+    /**
+     * Build array of all possible dimensions for a single tile in the collage.
+     * @param cellHeight 
+     * @param cellWidth 
+     * @param maxRows 
+     * @param maxColumns 
+     */
     static GetTileDimensions(cellHeight: number, cellWidth: number, maxRows: number, maxColumns: number): Dimensions[] {
         return positiveIntegerArray(maxRows).reduce((acc, x) => {
             const dimensions = positiveIntegerArray(maxColumns)
-                .map(y => Object.assign(new Dimensions(), {
+                .map(y => build(Dimensions, {
                     rows: x,
                     columns: y,
                     height: x * cellHeight,
@@ -235,7 +270,7 @@ m,
     }
 
     /**
-     * 
+     * Assign true to cells that have been filled by positioning tile.
      * @param cells 
      * @param startIndex 
      * @param dimensions 
@@ -251,6 +286,11 @@ m,
         }, cells);
     }
 
+    /**
+     * Iterate through each cell to position tiles such that all cells are covered.
+     * @param tiles mapped 1-1 from images
+     * @param collage new instance of collage
+     */
     static PositionTiles(tiles: Tile[], collage: Collage): Tile[] {
         let cells = Collage.BuildEmptyCells(collage.totalRows, collage.totalColumns);
         let tileIds = tiles.map(x => x.id);
@@ -269,14 +309,6 @@ m,
         }, []);
     }
 
-    get cellHeight(): number {
-        return this.canvasHeight / this.totalRows;
-    }
-
-    get cellWidth(): number {
-        return this.canvasWidth / this.totalColumns;
-    }
-
     get emptyCells(): boolean[][] {
         return Collage.BuildEmptyCells(this.totalRows, this.totalColumns);
     }
@@ -288,10 +320,6 @@ m,
     set images(value: Image[]) {
         this._images = value;
         this.tiles = Collage.BuildTiles(this);
-    }
-
-    get tileDimensions(): Dimensions[] {
-        return Collage.GetTileDimensions(this.cellHeight, this.cellWidth, this.maxRows, this.maxColumns);
     }
 
     get tiles(): Tile[] {
