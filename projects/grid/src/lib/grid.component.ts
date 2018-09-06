@@ -13,19 +13,11 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import {
-  CompositeFilterDescriptor,
-  GroupableSettings,
-  SortDescriptor,
-  SortSettings,
-  GridDataResult,
-  DataStateChangeEvent,
-  PageChangeEvent,
-  str2int
-} from '@caiu/library';
+import { str2int } from '@caiu/library';
 
 import { Grid } from './grid.model';
 import { GridColumnComponent } from './grid-column/grid-column.component';
+import { SortDescriptor, CompositeFilterDescriptor, GroupableSettings, SortSettings, GridDataResult, DataStateChangeEvent, PageChangeEvent } from './shared/kendo';
 
 @Component({
   selector: 'iu-grid',

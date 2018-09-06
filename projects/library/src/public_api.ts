@@ -136,7 +136,6 @@ export * from './lib/shared/component';
 export * from './lib/shared/config';
 export * from './lib/shared/date';
 export * from './lib/shared/decorators';
-export * from './lib/shared/kendo';
 export * from './lib/shared/lookup';
 export * from './lib/shared/models';
 export * from './lib/shared/ordering';

@@ -1,16 +1,8 @@
-import {
-    Collection,
-    DateHelper,
-    CompositeFilterDescriptor,
-    GroupableSettings,
-    SortDescriptor,
-    SortSettings,
-    QueryModel,
-    StyleModel
-} from '@caiu/library';
+import { Collection, DateHelper, QueryModel, StyleModel } from '@caiu/library';
 import { orderBy } from '@progress/kendo-data-query';
 
 import { GridComponent } from './grid.component';
+import { CompositeFilterDescriptor, GroupableSettings, SortSettings, SortDescriptor } from './shared/kendo';
 
 export class Grid<T> {
     query: QueryModel<T> = new QueryModel<T>();
