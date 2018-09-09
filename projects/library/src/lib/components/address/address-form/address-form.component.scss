@@ -13,19 +13,23 @@ form {
   .control.address1,
   .control.address2 {
     width: 48%;
+    min-width: 240px;
   }
 
   .control.city {
     width: 38%;
+    min-width: 200px;
   }
 
   .control.state {
     width: 36%;
+    min-width: 200px;
     display: inline-grid;
   }
 
   .control.zip {
     width: 20%;
+    min-width: 160px;
   }
 
   .btn-save {

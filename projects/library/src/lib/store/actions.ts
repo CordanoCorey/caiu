@@ -24,6 +24,20 @@ export class ConfigActions {
     }
 }
 
+export class CurrentUserActions {
+    static LOGIN = '[CurrentUser] Login';
+    static LOGOUT = '[CurrentUser] Logout';
+    static RESET_PASSWORD = '[CurrentUser] Reset Password';
+    static ALL = [CurrentUserActions.LOGIN, CurrentUserActions.LOGOUT, CurrentUserActions.RESET_PASSWORD];
+
+    static logout(): Action {
+        return {
+            type: CurrentUserActions.LOGOUT
+        };
+    }
+
+}
+
 export class SidenavActions {
     static CLOSE = '[Sidenav] Close';
     static OPEN = '[Sidenav] Open';

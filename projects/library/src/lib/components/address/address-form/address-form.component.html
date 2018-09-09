@@ -26,7 +26,7 @@
     <input matInput placeholder="Zip Code" type="text" formControlName="zipCode">
   </mat-form-field>
 
-  <mat-form-field class="control active-date">
+  <mat-form-field class="control active-date" *ngIf="showEffectiveDate">
     <input matInput [matDatepicker]="picker2" placeholder="Effective Date">
     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>

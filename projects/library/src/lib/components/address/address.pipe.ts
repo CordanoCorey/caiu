@@ -8,7 +8,10 @@ import { Address } from '../../shared/models';
 export class AddressPipe implements PipeTransform {
 
   transform(value: Address, args?: any): string {
-    return `${value.firstName} ${value.lastName} ${value.streetAddress} ${value.city}, ${value.state} ${value.zipCode}`;
+    return `
+      ${value.firstName || ''} ${value.lastName || ''} ${value.streetAddress || ''} 
+      ${value.city || ''} ${value.state ? ',' : ''} ${value.state || ''} ${value.zipCode || ''}
+    `;
   }
 
 }

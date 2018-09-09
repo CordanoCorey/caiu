@@ -15,6 +15,7 @@ export class AddressFormComponent extends DumbComponent implements OnChanges {
 
   @Control(Address) form: FormGroup;
   @Input() address: Address = new Address();
+  @Input() showEffectiveDate = false;
   @Output() save = new EventEmitter<Address>();
 
   constructor() {

@@ -34,6 +34,6 @@
     </div>
   </div>
 
-  <iu-address-form *ngIf="editing" [address]="current" (save)="save($event)"></iu-address-form>
+  <iu-address-form *ngIf="editing" [address]="current" [showEffectiveDate]="showEffectiveDate" (save)="save($event)"></iu-address-form>
 
 </div>
