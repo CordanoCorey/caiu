@@ -9,8 +9,8 @@ export class AddressPipe implements PipeTransform {
 
   transform(value: Address, args?: any): string {
     return `
-      ${value.firstName || ''} ${value.lastName || ''} ${value.streetAddress || ''} 
-      ${value.city || ''} ${value.state ? ',' : ''} ${value.state || ''} ${value.zipCode || ''}
+      ${value.firstName || ''} ${value.lastName || ''} ${value.streetAddress || ''}
+      ${value.city || ''}${value.state ? ', ' : ''}${value.state || ''} ${value.zipCode || ''}
     `;
   }
 

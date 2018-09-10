@@ -1,22 +1,34 @@
-import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, AbstractControl } from '@angular/forms';
+import { Component, OnChanges, Input, Output, EventEmitter, forwardRef, OnInit } from '@angular/core';
+import { FormGroup, AbstractControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { Control } from '../../../forms/decorators';
 import { DumbComponent } from '../../../shared/component';
 import { Address } from '../../../shared/models';
 import { build } from '../../../shared/utils';
 
+export const ADDRESS_FORM_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => AddressFormComponent),
+  multi: true
+};
+
 @Component({
   selector: 'iu-address-form',
   templateUrl: './address-form.component.html',
-  styleUrls: ['./address-form.component.scss']
+  styleUrls: ['./address-form.component.scss'],
+  providers: [ADDRESS_FORM_ACCESSOR]
 })
-export class AddressFormComponent extends DumbComponent implements OnChanges {
+export class AddressFormComponent extends DumbComponent implements OnInit, OnChanges, ControlValueAccessor {
 
   @Control(Address) form: FormGroup;
   @Input() address: Address = new Address();
+  @Input() manager = false;
   @Input() showEffectiveDate = false;
+  @Output() changes = new EventEmitter<Address>();
   @Output() save = new EventEmitter<Address>();
+  private onModelChange: Function;
+  private onTouch: Function;
+  value: Address;
 
   constructor() {
     super();
@@ -41,7 +53,15 @@ export class AddressFormComponent extends DumbComponent implements OnChanges {
   }
 
   ngOnChanges() {
+    console.dir(this.address);
     this.setValue(this.address);
+  }
+
+  ngOnInit() {
+    this.form.valueChanges.subscribe(x => {
+      console.dir(this.valueOut);
+      this.onChange();
+    });
   }
 
   onActivate() {
@@ -49,8 +69,27 @@ export class AddressFormComponent extends DumbComponent implements OnChanges {
     this.onSubmit();
   }
 
+  onChange() {
+    this.changes.emit(this.valueOut);
+  }
+
   onSubmit() {
     this.save.emit(this.valueOut);
+  }
+
+  registerOnChange(fn: Function) {
+    this.onModelChange = fn;
+  }
+
+  registerOnTouched(fn: Function) {
+    this.onTouch = fn;
+  }
+
+  setDisabledState(isDisabled: boolean) {
+  }
+
+  writeValue(value: Address) {
+    this.value = value;
   }
 
 }

@@ -8,7 +8,7 @@ export class Address {
     state = '';
     stateId = 45;
     zipCode = 0;
-    isPrimaryAddress = true;
+    isPrimaryAddress = false;
     metadata: Metadata = {
         ignore: [
             'id',
