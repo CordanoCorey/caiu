@@ -7,11 +7,12 @@ import { Address } from '../../shared/models';
 })
 export class AddressPipe implements PipeTransform {
 
-  transform(value: Address, args?: any): string {
-    return `
-      ${value.firstName || ''} ${value.lastName || ''} ${value.streetAddress || ''}
+  transform(value: Address, showName = false): string {
+    const address = `
+      ${value.streetAddress || ''}
       ${value.city || ''}${value.state ? ', ' : ''}${value.state || ''} ${value.zipCode || ''}
     `;
+    return showName ? `${value.firstName || ''} ${value.lastName || ''} ${address}` : address;
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="row inline-address">
   <div class="col mailing-address" [class.primary]="isPrimary">
-    {{ address | address }}
+    {{ address | address : showName }}
   </div>
   <div class="col" *ngIf="canActivate">
     <button color="primary" mat-button class="edit-icon activate-text" (click)="onActivate()">Activate</button>

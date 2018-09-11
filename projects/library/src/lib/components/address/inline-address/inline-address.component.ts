@@ -13,6 +13,7 @@ export class InlineAddressComponent implements OnInit {
   @Input() canActivate = false;
   @Input() canDelete = false;
   @Input() canEdit = false;
+  @Input() showName = false;
   @Output() activate = new EventEmitter<Address>();
   @Output() delete = new EventEmitter<Address>();
   @Output() edit = new EventEmitter<Address>();

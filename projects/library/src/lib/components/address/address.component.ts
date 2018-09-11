@@ -21,7 +21,7 @@ export const ADDRESS_ACCESSOR: any = {
 })
 export class AddressComponent extends DumbComponent implements OnInit, ControlValueAccessor {
 
-  @Input() addresses: Address[] = [];
+  _addresses: Address[] = [];
   @Input() editing = false;
   @Input() showEffectiveDate = false;
   @Output() activate = new EventEmitter<Address>();
@@ -30,6 +30,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   @Output() update = new EventEmitter<Address>();
   private onModelChange: Function;
   private onTouch: Function;
+  current: Address;
   value: Address;
   toBeDeleted: Address;
 
@@ -37,19 +38,29 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     super();
   }
 
-  get current(): Address {
-    return this.addresses.find(x => x.isPrimaryAddress) || build(Address, this.addresses[0], { isPrimaryAddress: true });
+  @Input() set addresses(value: Address[]) {
+    this._addresses = value;
   }
 
-  set current(value: Address) {
-    this.addresses = [
-      build(Address, value, { isPrimaryAddress: true }),
-      ...this.removeAddress(value).map(x => build(Address, x, { isPrimaryAddress: false }))
-    ];
+  get addresses(): Address[] {
+    return this._addresses.findIndex(x => x.isPrimaryAddress) === -1 ?
+      this._addresses.map((x, index) => index === 0 ? build(Address, x, { isPrimaryAddress: true }) : x)
+      : this._addresses;
   }
 
   get choices(): Address[] {
     return this.addresses.filter((x, i) => i > 0);
+  }
+
+  get primaryAddress(): Address {
+    return this.addresses.find(x => x.isPrimaryAddress) || build(Address, this.addresses[0]);
+  }
+
+  set primaryAddress(value: Address) {
+    this.addresses = [
+      build(Address, value, { isPrimaryAddress: true }),
+      ...this.removeAddress(value).map(x => build(Address, x, { isPrimaryAddress: false }))
+    ];
   }
 
   get showChoices(): boolean {

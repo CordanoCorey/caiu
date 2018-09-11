@@ -1,10 +1,10 @@
 <form class="address-form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-  <mat-form-field class="control first-name">
+  <mat-form-field class="control first-name" *ngIf="showName">
     <input matInput placeholder="First Name" type="text" formControlName="firstName">
   </mat-form-field>
 
-  <mat-form-field class="control last-name">
+  <mat-form-field class="control last-name" *ngIf="showName">
     <input matInput placeholder="Last Name" type="text" formControlName="lastName">
   </mat-form-field>
 
@@ -33,6 +33,7 @@
   </mat-form-field>
 
   <button *ngIf="manager" mat-raised-button color="accent" class="btn-save" (click)="onSubmit()">Save</button>
-  <button *ngIf="manager && !isPrimaryAddress" mat-raised-button color="primary" class="btn-save btn-activate" (click)="onActivate()">Save and Make Primary</button>
+  <button *ngIf="manager && !isPrimaryAddress" mat-raised-button color="primary" class="btn-save btn-activate" (click)="onActivate()">Save
+    and Make Primary</button>
 
 </form>

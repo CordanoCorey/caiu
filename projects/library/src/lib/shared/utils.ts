@@ -414,6 +414,9 @@ export function removeProps(obj: any): any {
 }
 
 export function serialize(model: any) {
+    if (!model) {
+        return model;
+    }
     if (Array.isArray(model)) {
         return model.map(x => serialize(x));
     }

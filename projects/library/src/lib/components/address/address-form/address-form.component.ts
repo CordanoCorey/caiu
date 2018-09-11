@@ -1,10 +1,10 @@
-import { Component, OnChanges, Input, Output, EventEmitter, forwardRef, OnInit } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter, forwardRef, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, AbstractControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { Control } from '../../../forms/decorators';
 import { DumbComponent } from '../../../shared/component';
 import { Address } from '../../../shared/models';
-import { build } from '../../../shared/utils';
+import { build, equals } from '../../../shared/utils';
 
 export const ADDRESS_FORM_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -24,6 +24,7 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
   @Input() address: Address = new Address();
   @Input() manager = false;
   @Input() showEffectiveDate = false;
+  @Input() showName = false;
   @Output() changes = new EventEmitter<Address>();
   @Output() save = new EventEmitter<Address>();
   private onModelChange: Function;
@@ -52,14 +53,14 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
     });
   }
 
-  ngOnChanges() {
-    console.dir(this.address);
-    this.setValue(this.address);
+  ngOnChanges(changes: SimpleChanges) {
+    if (!equals(changes['address'], this.address)) {
+      this.setValue(this.address);
+    }
   }
 
   ngOnInit() {
     this.form.valueChanges.subscribe(x => {
-      console.dir(this.valueOut);
       this.onChange();
     });
   }
@@ -70,6 +71,7 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
   }
 
   onChange() {
+    this.value = this.form.value;
     this.changes.emit(this.valueOut);
   }
 
@@ -90,6 +92,7 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
 
   writeValue(value: Address) {
     this.value = value;
+    this.setValue(build(Address, value));
   }
 
 }

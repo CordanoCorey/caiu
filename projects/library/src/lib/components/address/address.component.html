@@ -17,8 +17,8 @@
       <div class="body-content">
         <div class="row">
           <div class="col">
-            <iu-inline-address [address]="current" [canActivate]="false" [canDelete]="true" [canEdit]="true" (delete)="remove($event)"
-              (edit)="edit($event)"></iu-inline-address>
+            <iu-inline-address [address]="primaryAddress" [canActivate]="false" [canDelete]="true" [canEdit]="true"
+              [showName]="true" (delete)="remove($event)" (edit)="edit($event)"></iu-inline-address>
           </div>
         </div>
       </div>
@@ -28,12 +28,13 @@
     </div>
     <div class="card-body">
       <div class="body-content choose-address">
-        <iu-inline-address *ngFor="let choice of choices" [canActivate]="true" [canDelete]="true" [canEdit]="true" [address]="choice"
-          (activate)="makePrimary($event)" (delete)="remove($event)" (edit)="edit($event)"></iu-inline-address>
+        <iu-inline-address *ngFor="let choice of choices" [canActivate]="true" [canDelete]="true" [canEdit]="true"
+          [showName]="true" [address]="choice" (activate)="makePrimary($event)" (delete)="remove($event)" (edit)="edit($event)"></iu-inline-address>
       </div>
     </div>
   </div>
 
-  <iu-address-form *ngIf="editing" [address]="current" [showEffectiveDate]="showEffectiveDate" [manager]="true" (save)="save($event)"></iu-address-form>
+  <iu-address-form *ngIf="editing" [address]="current" [showEffectiveDate]="showEffectiveDate" [showName]="true"
+    [manager]="true" (save)="save($event)"></iu-address-form>
 
 </div>
