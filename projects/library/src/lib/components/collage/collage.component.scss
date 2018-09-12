@@ -1,0 +1,6 @@
+@import '~@angular/material/_theming';
+.collage {
+    position: relative;
+    overflow: hidden;
+    z-index: -1;
+}

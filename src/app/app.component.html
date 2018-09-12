@@ -1,14 +1,28 @@
+<mat-toolbar color="primary">
+  <button (click)="activeDemo='wallpaper'" mat-button class="demo-link">Wallpaper</button>
+  <button (click)="activeDemo='collage'" mat-button class="demo-link">Collage</button>
+  <button (click)="activeDemo='address-manager'" mat-button class="demo-link">Address Manager</button>
+  <button (click)="activeDemo='file-upload'" mat-button class="demo-link">File Upload</button>
+  <button (click)="activeDemo='file-upload-multi'" mat-button class="demo-link">File Upload - Multi</button>
+  <button (click)="activeDemo='timeago'" mat-button class="demo-link">Time Ago</button>
+</mat-toolbar>
+
+<iu-wallpaper *ngIf="activeDemo === 'wallpaper'" [images]="images" [offsetTop]="64" [offsetLeft]="0"></iu-wallpaper>
+
+<div *ngIf="activeDemo === 'collage'" class="example">
+  Collage
+</div>
 <form>
-  <div class="example">
+  <div *ngIf="activeDemo === 'timeago'" class="example">
     {{timeAgoTest}}
   </div>
-  <div class="example">
+  <div *ngIf="activeDemo === 'address-manager'" class="example">
     <iu-address [addresses]="addresses"></iu-address>
   </div>
-  <div class="example">
+  <div *ngIf="activeDemo === 'file-upload'" class="example">
     <iu-file-upload (upload)="onUpload($event)"></iu-file-upload>
   </div>
-  <div class="example">
+  <div *ngIf="activeDemo === 'file-upload-multi'" class="example">
     <iu-file-upload [multiple]="true" (upload)="onUpload($event)"></iu-file-upload>
   </div>
 </form>

@@ -1,4 +1,7 @@
+@import '~@angular/material/_theming';
 .wallpaper {
     height: 100%;
     width: 100%;
+    overflow: hidden;
+    position: relative;
 }

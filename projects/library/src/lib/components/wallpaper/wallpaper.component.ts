@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ElementRef, HostListener } from '@angular/core';
 
 import { Image } from '../../shared/models';
 import { toPx } from '../../shared/utils';
@@ -11,43 +11,36 @@ import { toPx } from '../../shared/utils';
 })
 export class WallpaperComponent implements OnInit {
   @Input() images: Image[] = [];
-  @Input() windowHeight = 0;
-  @Input() windowWidth = 0;
+  @Input() bodyMargin = 0;
+  @Input() offsetTop = 0;
+  @Input() offsetLeft = 0;
+  windowHeight = 0;
+  windowWidth = 0;
 
   constructor(public elementRef: ElementRef) { }
 
   get canvasHeight(): number {
-    return this.windowWidth * 2;
+    return this.windowHeight - this.offsetTop - this.bodyMargin;
   }
 
   get canvasWidth(): number {
-    return this.windowWidth - 100;
-  }
-
-  get elementHeight(): number {
-    return this.elementRef && this.elementRef.nativeElement && this.elementRef.nativeElement.style ?
-      this.elementRef.nativeElement.style.height : 0;
-  }
-
-  get elementHeightPx(): string {
-    return toPx(this.elementHeight);
-  }
-
-  get elementWidth(): number {
-    return this.elementRef && this.elementRef.nativeElement && this.elementRef.nativeElement.style ?
-      this.elementRef.nativeElement.style.width : 0;
-  }
-
-  get elementWidthPx(): string {
-    return toPx(this.elementWidth);
+    return this.windowWidth - this.offsetLeft - this.bodyMargin;
   }
 
   get maxColumns(): number {
-    return 3;
+    return 4;
   }
 
   get maxRows(): number {
-    return 3;
+    return 6;
+  }
+
+  get positionLeft(): number {
+    return this.offsetLeft === 0 ? -this.bodyMargin : this.offsetLeft - this.bodyMargin;
+  }
+
+  get positionTop(): number {
+    return this.offsetTop === 0 ? -this.bodyMargin : this.offsetTop - this.bodyMargin;
   }
 
   get totalColumns(): number {
@@ -60,14 +53,26 @@ export class WallpaperComponent implements OnInit {
 
   ngOnChanges() {
     console.log(
-      '\nElement Height:\t', this.elementHeight,
-      '\nElement Width:\t', this.elementWidth,
       '\nCanvas Height:\t', this.canvasHeight,
       '\nCanvas Width:\t', this.canvasWidth,
     );
   }
 
   ngOnInit() {
+  }
+
+  @HostListener('window:load', ['$event'])
+  onLoad(e: any) {
+    this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    console.log('\n\nwindow:load', this.windowWidth, this.windowHeight);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(e: any) {
+    this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    console.log('\n\nwindow:resize', this.windowWidth, this.windowHeight);
   }
 
 }

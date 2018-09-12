@@ -35,4 +35,8 @@ export class CollageComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges() {
+    console.dir(this.collage);
+  }
+
 }

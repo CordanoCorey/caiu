@@ -70,6 +70,8 @@ export class Collage {
         const cellHeight = canvasHeight / totalRows;
         const cellWidth = canvasWidth / totalColumns;
         const tileDimensions = Collage.GetTileDimensions(cellHeight, cellWidth, maxRows, maxColumns);
+        console.log('\nTile Dimensions');
+        console.dir(tileDimensions);
         const collage = Object.assign(new Collage(), {
             canvasHeight,
             canvasWidth,
@@ -119,7 +121,10 @@ export class Collage {
      * @param tileIds 
      */
     static ChooseTileId(id: number, tileIds: number[]): number[] {
-        return [...tileIds.filter(x => x !== id), id];
+        const t = [...tileIds.filter(x => x !== id), id];
+        console.log('\nTile ID chosen = ', id);
+        console.dir(t);
+        return t;
     }
 
     /**
@@ -281,7 +286,9 @@ export class Collage {
         const start = Collage.FindCoordinates(startIndex, totalRows, totalColumns);
         return integerArray(dimensions.rows * dimensions.columns).reduce((acc, i) => {
             const coordinates = Collage.FindCoordinatesNested(i, dimensions.rows, dimensions.columns, start.row, start.column);
-            cells[coordinates.row][coordinates.column] = false;
+            if (cells && cells[coordinates.row] && cells[coordinates.row][coordinates.column]) {
+                cells[coordinates.row][coordinates.column] = false;
+            }
             return cells;
         }, cells);
     }
@@ -320,6 +327,8 @@ export class Collage {
     set images(value: Image[]) {
         this._images = value;
         this.tiles = Collage.BuildTiles(this);
+        console.log('\nTiles');
+        console.dir(this.tiles);
     }
 
     get tiles(): Tile[] {
