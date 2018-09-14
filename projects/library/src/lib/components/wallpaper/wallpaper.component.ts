@@ -14,6 +14,8 @@ export class WallpaperComponent implements OnInit {
   @Input() bodyMargin = 0;
   @Input() offsetTop = 0;
   @Input() offsetLeft = 0;
+  minTileHeight = 50;
+  minTileWidth = 100;
   windowHeight = 0;
   windowWidth = 0;
 
@@ -44,11 +46,11 @@ export class WallpaperComponent implements OnInit {
   }
 
   get totalColumns(): number {
-    return 12;
+    return Math.floor(this.canvasWidth / this.minTileWidth);
   }
 
   get totalRows(): number {
-    return 24;
+    return Math.floor(this.canvasHeight / this.minTileHeight);
   }
 
   ngOnChanges() {

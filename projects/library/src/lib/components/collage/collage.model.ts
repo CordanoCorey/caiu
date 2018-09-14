@@ -104,6 +104,8 @@ export class Collage {
     static BuildTiles(collage: Collage): Tile[] {
         return collage.images.map((image, index) => {
             const dimensions = Collage.FindDimensions(image.height, image.width, collage.tileDimensions, collage.cellHeight, collage.cellWidth);
+            console.log('\nDimensions for Image:\t', image.src);
+            console.dir(dimensions);
             return build(Tile, {
                 image,
                 dimensions,
@@ -111,8 +113,7 @@ export class Collage {
                 cellHeight: collage.cellHeight,
                 cellWidth: collage.cellWidth
             });
-        }
-        );
+        });
     }
 
     /**
@@ -275,7 +276,7 @@ export class Collage {
     }
 
     /**
-     * Assign true to cells that have been filled by positioning tile.
+     * Assign false to cells that have been filled by positioning tile.
      * @param cells 
      * @param startIndex 
      * @param dimensions 

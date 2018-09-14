@@ -13,6 +13,14 @@ export class Tile {
     _dimensions: Dimensions = new Dimensions();
     _image: Image = new Image();
 
+    get approxRatio(): number {
+        return this.rows * this.cellHeight / this.columns * this.cellWidth;
+    }
+
+    get columns(): number {
+        return this.dimensions.columns;
+    }
+
     get coordinates(): Coordinates {
         return this._coordinates || new Coordinates();
     }
@@ -29,6 +37,14 @@ export class Tile {
         this._dimensions = value;
     }
 
+    get height(): number {
+        return this.rows * this.cellHeight;
+    }
+
+    get heightScale(): number {
+        return (this.rows * this.cellHeight) / this.image.height;
+    }
+
     get image(): Image {
         return this._image || new Image();
     }
@@ -37,68 +53,52 @@ export class Tile {
         this._image = value;
     }
 
-    get height(): number {
-        return this.rows * this.cellHeight;
-    }
-
-    get width(): number {
-        return this.columns * this.cellWidth;
+    get imageHeight(): number {
+        return this.image.height * this.scale;
     }
 
     get imageSrc(): string {
         return this.image.src;
     }
 
-    get imageHeight(): number {
-        return this.image.height * this.scale;
-    }
-
     get imageWidth(): number {
         return this.image.width * this.scale;
-    }
-
-    get rows(): number {
-        return this.dimensions.rows;
-    }
-
-    get columns(): number {
-        return this.dimensions.columns;
-    }
-
-    get positionTop(): number {
-        return this.startRow * this.cellHeight;
     }
 
     get positionLeft(): number {
         return this.startColumn * this.cellWidth;
     }
 
-    get approxRatio(): number {
-        return this.rows * this.cellHeight / this.columns * this.cellWidth;
+    get positionTop(): number {
+        return this.startRow * this.cellHeight;
     }
 
     get ratio(): number {
         return this.dimensions.ratio;
     }
 
+    get rows(): number {
+        return this.dimensions.rows;
+    }
+
     get scale(): number {
         return this.heightScale >= this.widthScale ? this.heightScale : this.widthScale;
     }
 
-    get heightScale(): number {
-        return (this.rows * this.cellHeight) / this.image.height;
-    }
-
-    get widthScale(): number {
-        return (this.columns * this.cellWidth) / this.image.width;
+    get startColumn(): number {
+        return this.coordinates.column;
     }
 
     get startRow(): number {
         return this.coordinates.row;
     }
 
-    get startColumn(): number {
-        return this.coordinates.column;
+    get width(): number {
+        return this.columns * this.cellWidth;
+    }
+
+    get widthScale(): number {
+        return (this.columns * this.cellWidth) / this.image.width;
     }
 
 }

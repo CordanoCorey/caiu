@@ -15,6 +15,7 @@
     "npm_pack_lib": "cd dist/library && npm pack",
     "package_grid": "npm run build_grid && npm run npm_pack_grid",
     "package_lib": "npm run build_lib && npm run npm_pack_lib",
+    "package": "npm run package_grid && npm run package_lib",
     "publish_grid": "npm run package_grid && cd dist/grid && npm publish",
     "publish_lib": "npm run package_lib && cd dist/library && npm publish",
     "publish": "npm run publish_grid && npm run publish_lib"
