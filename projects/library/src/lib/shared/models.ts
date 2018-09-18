@@ -1,3 +1,5 @@
+import { build, compareNumbers } from './utils';
+
 export class Address {
     id = 0;
     firstName = '';
@@ -69,10 +71,10 @@ export interface Dictionary<T> {
 }
 
 export class Dimensions {
-    height = 0;
-    width = 0;
-    rows = 0;
     columns = 0;
+    height = 0;
+    rows = 0;
+    width = 0;
 
     get approxRatio(): number {
         return this.rows / this.columns;
@@ -80,6 +82,10 @@ export class Dimensions {
 
     get ratio(): number {
         return this.height / this.width;
+    }
+
+    get orientation(): 'h' | 'v' {
+        return this.height > this.width ? 'v' : 'h';
     }
 
 }
@@ -121,10 +127,40 @@ export interface HasMetadata {
 }
 
 export class Image {
-    src = '';
-    orientation: 'h' | 'v';
+    dimensions: Dimensions[] = [];
     height = 0;
+    src = '';
     width = 0;
+
+    static Build(data: Image): Image {
+        return build(Image, data);
+    }
+
+    static BuildForTile(data: Image, dim: Dimensions[]): Image {
+        const img = Image.Build(data);
+        img.dimensions = Image.FindDimensions(img, dim);
+        return img;
+    }
+
+    static FilterDimensions(image: Image, dim: Dimensions[]): Dimensions[] {
+        return Image.FilterDimensionsByOrientation(image, dim);
+    }
+
+    static FilterDimensionsByOrientation(image: Image, dim: Dimensions[]): Dimensions[] {
+        return dim.filter(x => x.orientation === image.orientation);
+    }
+
+    static FindDimensions(image: Image, dim: Dimensions[]): Dimensions[] {
+        return Image.OrderDimensions(image, Image.FilterDimensions(image, dim))
+    }
+
+    static OrderDimensions(image: Image, dim: Dimensions[]): Dimensions[] {
+        return dim.sort((a, b) => Math.abs(image.ratio - a.ratio) - Math.abs(image.ratio - b.ratio));
+    }
+
+    get orientation(): 'h' | 'v' {
+        return this.height > this.width ? 'v' : 'h';
+    }
 
     get horizontal(): boolean {
         return this.orientation === 'h';
@@ -141,6 +177,11 @@ export class Image {
     get rowspan() {
         return this.vertical ? 2 : 1;
     }
+
+    get ratio(): number {
+        return this.height / this.width;
+    }
+
 }
 
 export class Metadata {

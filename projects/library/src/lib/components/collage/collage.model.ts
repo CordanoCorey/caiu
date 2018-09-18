@@ -1,6 +1,6 @@
 import { Tile } from '../tile/tile.model';
 import { Image, Dimensions, Coordinates } from '../../shared/models';
-import { integerArray, positiveIntegerArray, build } from '../../shared/utils';
+import { integerArray, positiveIntegerArray, build, inArray } from '../../shared/utils';
 
 export class Collage {
     canvasHeight = 0;
@@ -12,6 +12,7 @@ export class Collage {
     tileDimensions: Dimensions[] = [];
     totalColumns = 0;
     totalRows = 0;
+    _cells: number[][];
     _images: Image[] = [];
     _tiles: Tile[] = [];
 
@@ -93,8 +94,8 @@ export class Collage {
      * @param rows total # of rows
      * @param cols Total # of columns
      */
-    static BuildEmptyCells(rows: number, cols: number): boolean[][] {
-        return integerArray(rows).map(x => integerArray(cols).map(y => true));
+    static BuildEmptyCells(rows: number, cols: number): number[][] {
+        return integerArray(rows).map(x => integerArray(cols).map(y => 0));
     }
 
     /**
@@ -317,7 +318,11 @@ export class Collage {
         }, []);
     }
 
-    get emptyCells(): boolean[][] {
+    get cells(): number[][] {
+        return this._cells || this.emptyCells;
+    }
+
+    get emptyCells(): number[][] {
         return Collage.BuildEmptyCells(this.totalRows, this.totalColumns);
     }
 
@@ -326,22 +331,76 @@ export class Collage {
     }
 
     set images(value: Image[]) {
-        this._images = value;
-        this.tiles = Collage.BuildTiles(this);
+        this._images = value.map(img => Image.BuildForTile(img, this.tileDimensions));
+        // this.tiles = Collage.BuildTiles(this);
         console.log('\nTiles');
         console.dir(this.tiles);
     }
 
     get tiles(): Tile[] {
-        return this._tiles;
-    }
-
-    set tiles(value: Tile[]) {
-        this._tiles = Collage.PositionTiles(value, this);
+        return integerArray(this.totalCells)
+            .reduce((acc, i) => this.isCellFilled(i) ? acc : [...acc, this.fillCell(i)], []);
     }
 
     get totalCells(): number {
         return this.totalRows * this.totalColumns;
+    }
+
+    private fillCell(index: number): Tile {
+        const coordinates = this.findCoordinates(index);
+        const dim = this.findAvailableDimensions(coordinates.row, coordinates.column);
+        return this.images.reduce((acc, image) => {
+            if (acc) {
+                return <Tile>acc;
+            }
+            const dimensions = this.findImageDimensions(image, dim);
+            return dimensions ? build(Tile, {
+                image,
+                dimensions,
+            }) : null;
+        }, null);
+    }
+
+    private findAvailableColumns(startRow: number, startColumn: number): number {
+        return Math.max(...positiveIntegerArray(this.maxColumns)
+            .map(k => k <= this.maxColumns && startColumn + k <= this.totalColumns && this.cells[startRow] && this.cells[startRow][startColumn + k] ? k : 1));
+    }
+
+    private findAvailableRows(startRow: number, startColumn: number): number {
+        return Math.max(...positiveIntegerArray(this.maxRows)
+            .map(k => k <= this.maxRows && startRow + k <= this.totalRows && this.cells[startRow + k] && this.cells[startRow + k][startColumn] ? k : 1));
+    }
+
+    private findAvailableDimensions(startRow: number, startColumn: number): Dimensions[] {
+        const availableRows = this.findAvailableRows(startRow, startColumn);
+        const availableColumns = this.findAvailableColumns(startRow, startColumn);
+        return this.tileDimensions.filter(x => x.rows <= availableRows && x.columns <= availableColumns);
+    }
+
+    private findCoordinates(index: number): Coordinates {
+        const remainder = (index + this.totalColumns) % this.totalColumns;
+        return {
+            row: (index - remainder) / this.totalColumns,
+            column: remainder
+        };
+    }
+
+    private findImageDimensions(image: Image, dim: Dimensions[]): Dimensions {
+        return image.dimensions.find(x => inArray(dim, x));
+    }
+
+    private isCellFilled(index: number): boolean {
+        const coordinates = this.findCoordinates(index);
+        return this.cells[coordinates.row][coordinates.column] !== 0;
+    }
+
+    private markCellsFilled(index: number, tileId: number) {
+        const coordinates = this.findCoordinates(index);
+        this.cells[coordinates.row][coordinates.column] = tileId;
+    }
+
+    private reorderImages() {
+
     }
 
 }
