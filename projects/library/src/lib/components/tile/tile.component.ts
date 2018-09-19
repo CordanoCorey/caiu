@@ -11,6 +11,7 @@ import { Tile } from './tile.model';
 export class TileComponent implements OnInit {
 
   @Input() tile: Tile = new Tile();
+  @Input() imageOpacity = 1;
 
   constructor() { }
 

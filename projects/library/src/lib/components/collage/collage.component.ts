@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 import { Collage } from './collage.model';
 import { Tile } from '../tile/tile.model';
@@ -10,9 +10,10 @@ import { Image } from '../../shared/models';
   styleUrls: ['./collage.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CollageComponent implements OnInit {
+export class CollageComponent {
 
   @Input() images: Image[] = [];
+  @Input() imageOpacity = 1;
   @Input() canvasHeight = 0;
   @Input() canvasWidth = 0;
   @Input() totalRows = 0;
@@ -30,13 +31,6 @@ export class CollageComponent implements OnInit {
 
   get tiles(): Tile[] {
     return this.collage.tiles;
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnChanges() {
-    console.dir(this.collage);
   }
 
 }

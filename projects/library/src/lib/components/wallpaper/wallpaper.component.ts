@@ -1,7 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, ElementRef, HostListener } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ElementRef, HostListener } from '@angular/core';
 
 import { Image } from '../../shared/models';
-import { toPx } from '../../shared/utils';
 
 @Component({
   selector: 'iu-wallpaper',
@@ -9,8 +8,9 @@ import { toPx } from '../../shared/utils';
   styleUrls: ['./wallpaper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WallpaperComponent implements OnInit {
+export class WallpaperComponent {
   @Input() images: Image[] = [];
+  @Input() imageOpacity = .4;
   @Input() bodyMargin = 0;
   @Input() offsetTop = 0;
   @Input() offsetLeft = 0;
@@ -51,16 +51,6 @@ export class WallpaperComponent implements OnInit {
 
   get totalRows(): number {
     return Math.floor(this.canvasHeight / this.minTileHeight);
-  }
-
-  ngOnChanges() {
-    console.log(
-      '\nCanvas Height:\t', this.canvasHeight,
-      '\nCanvas Width:\t', this.canvasWidth,
-    );
-  }
-
-  ngOnInit() {
   }
 
   @HostListener('window:load', ['$event'])

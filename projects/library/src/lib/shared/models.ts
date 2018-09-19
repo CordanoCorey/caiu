@@ -127,6 +127,7 @@ export interface HasMetadata {
 }
 
 export class Image {
+    id = 0;
     dimensions: Dimensions[] = [];
     height = 0;
     src = '';
@@ -136,8 +137,9 @@ export class Image {
         return build(Image, data);
     }
 
-    static BuildForTile(data: Image, dim: Dimensions[]): Image {
+    static BuildForTile(data: Image, dim: Dimensions[], index: number): Image {
         const img = Image.Build(data);
+        img.id = index;
         img.dimensions = Image.FindDimensions(img, dim);
         return img;
     }
@@ -151,11 +153,14 @@ export class Image {
     }
 
     static FindDimensions(image: Image, dim: Dimensions[]): Dimensions[] {
-        return Image.OrderDimensions(image, Image.FilterDimensions(image, dim))
+        return Image.OrderDimensions(image, Image.FilterDimensions(image, dim));
     }
 
     static OrderDimensions(image: Image, dim: Dimensions[]): Dimensions[] {
-        return dim.sort((a, b) => Math.abs(image.ratio - a.ratio) - Math.abs(image.ratio - b.ratio));
+        console.log(image.ratio);
+        const d = dim.sort((a, b) => Math.abs(image.ratio - a.ratio) - Math.abs(image.ratio - b.ratio));
+        console.dir(d);
+        return d;
     }
 
     get orientation(): 'h' | 'v' {

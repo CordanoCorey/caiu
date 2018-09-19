@@ -5,6 +5,7 @@ export class Tile {
     cellHeight = 0;
     cellWidth = 0;
     color = '#fff';
+    index = 0;
     name = '';
     src = '';
     text = '';
@@ -55,6 +56,10 @@ export class Tile {
 
     get imageHeight(): number {
         return this.image.height * this.scale;
+    }
+
+    get imageId(): number {
+        return this.image.id;
     }
 
     get imageSrc(): string {

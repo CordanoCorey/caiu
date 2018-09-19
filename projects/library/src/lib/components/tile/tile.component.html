@@ -1,5 +1,5 @@
 <div fxLayout fxLayoutAlign="center center" class="tile" [style.position]="position" [style.top.px]="positionTop"
   [style.left.px]="positionLeft" [style.background-color]="backgroundColor" [style.height.px]="height" [style.width.px]="width">
-  <img [src]="imageSrc" [style.height.px]="imageHeight" [style.width.px]="imageWidth">
-  <h4>{{tile.id}}</h4>
+  <img [src]="imageSrc" [style.height.px]="imageHeight" [style.width.px]="imageWidth" [style.opacity]="imageOpacity">
+  <h4>{{tile?.image?.id}}</h4>
 </div>
