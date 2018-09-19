@@ -24,6 +24,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   _addresses: Address[] = [];
   @Input() editing = false;
   @Input() showEffectiveDate = false;
+  @Input() showName = true;
   @Output() activate = new EventEmitter<Address>();
   @Output() add = new EventEmitter<Address>();
   @Output() delete = new EventEmitter<Address>();
