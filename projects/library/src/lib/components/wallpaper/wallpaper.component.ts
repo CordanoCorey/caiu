@@ -14,8 +14,10 @@ export class WallpaperComponent {
   @Input() bodyMargin = 0;
   @Input() offsetTop = 0;
   @Input() offsetLeft = 0;
-  minTileHeight = 50;
-  minTileWidth = 100;
+  @Input() minCellWidth = 40;
+  @Input() minCellHeight = 40;
+  @Input() maxTileWidth = 240;
+  @Input() maxTileHeight = 400;
   windowHeight = 0;
   windowWidth = 0;
 
@@ -30,11 +32,11 @@ export class WallpaperComponent {
   }
 
   get maxColumns(): number {
-    return 4;
+    return Math.floor(this.maxTileWidth / this.minCellWidth);
   }
 
   get maxRows(): number {
-    return 6;
+    return Math.floor(this.maxTileHeight / this.minCellHeight);
   }
 
   get positionLeft(): number {
@@ -46,25 +48,25 @@ export class WallpaperComponent {
   }
 
   get totalColumns(): number {
-    return Math.floor(this.canvasWidth / this.minTileWidth);
+    return Math.floor(this.canvasWidth / this.minCellWidth);
   }
 
   get totalRows(): number {
-    return Math.floor(this.canvasHeight / this.minTileHeight);
+    return Math.floor(this.canvasHeight / this.minCellHeight);
   }
 
   @HostListener('window:load', ['$event'])
   onLoad(e: any) {
     this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
     this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
-    console.log('\n\nwindow:load', this.windowWidth, this.windowHeight);
+    // console.log('\n\nwindow:load', this.windowWidth, this.windowHeight);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(e: any) {
     this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
     this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
-    console.log('\n\nwindow:resize', this.windowWidth, this.windowHeight);
+    // console.log('\n\nwindow:resize', this.windowWidth, this.windowHeight);
   }
 
 }

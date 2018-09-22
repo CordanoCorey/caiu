@@ -6,10 +6,12 @@ import { GridModule } from 'grid';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CalendarComponent } from './components/scheduler/calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,

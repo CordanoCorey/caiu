@@ -25,6 +25,7 @@ import { TileModule } from './components/tile/tile.module';
 import { WallpaperModule } from './components/wallpaper/wallpaper.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SharedModule } from './shared/shared.module';
+import { SchedulerModule } from './components/scheduler/scheduler.module';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { SharedModule } from './shared/shared.module';
     MatTabsModule,
     MatToolbarModule,
     PipesModule,
+    SchedulerModule,
   ],
   declarations: [
     LibraryComponent,
@@ -74,6 +76,7 @@ import { SharedModule } from './shared/shared.module';
     MatTabsModule,
     MatToolbarModule,
     PipesModule,
+    SchedulerModule,
   ]
 })
 export class LibraryModule { }

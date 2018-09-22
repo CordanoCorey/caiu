@@ -1,7 +1,6 @@
 import { Dimensions, Image, Coordinates } from '../../shared/models';
 
 export class Tile {
-    id = 0;
     cellHeight = 0;
     cellWidth = 0;
     color = '#fff';
@@ -13,6 +12,10 @@ export class Tile {
     _coordinates: Coordinates = new Coordinates();
     _dimensions: Dimensions = new Dimensions();
     _image: Image = new Image();
+
+    get id(): number {
+        return this.index + this.imageId * .0001;
+    }
 
     get approxRatio(): number {
         return this.rows * this.cellHeight / this.columns * this.cellWidth;

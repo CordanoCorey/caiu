@@ -5,6 +5,7 @@
   <button (click)="activeDemo='file-upload'" mat-button class="demo-link">File Upload</button>
   <button (click)="activeDemo='file-upload-multi'" mat-button class="demo-link">File Upload - Multi</button>
   <button (click)="activeDemo='timeago'" mat-button class="demo-link">Time Ago</button>
+  <button (click)="activeDemo='scheduler'" mat-button class="demo-link">Scheduler</button>
 </mat-toolbar>
 
 <iu-wallpaper *ngIf="activeDemo === 'wallpaper'" [images]="images" [offsetTop]="64" [offsetLeft]="0"></iu-wallpaper>
@@ -26,4 +27,9 @@
     <iu-file-upload [multiple]="true" (upload)="onUpload($event)"></iu-file-upload>
   </div>
 </form>
+
+<div *ngIf="activeDemo === 'scheduler'" class="example">
+  <iu-scheduler></iu-scheduler>
+</div>
+
 <router-outlet></router-outlet>

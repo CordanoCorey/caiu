@@ -18,46 +18,46 @@ export class AppComponent {
       id: 1,
       firstName: 'Corey',
       lastName: 'Gelbaugh',
-      streetAddress: '827 Wellington Dr.',
+      address1: '827 Wellington Dr.',
       city: 'Carlisle',
       state: 'PA',
-      zipCode: '17013'
+      zip: '17013'
     }),
     build(Address, {
       id: 2,
       firstName: 'Julie',
       lastName: 'Gelbaugh',
-      streetAddress: '827 Wellington Dr.',
+      address1: '827 Wellington Dr.',
       city: 'Carlisle',
       state: 'PA',
-      zipCode: '17013'
+      zip: '17013'
     }),
     build(Address, {
       id: 3,
       firstName: 'Jovie',
       lastName: 'Gelbaugh',
-      streetAddress: '827 Wellington Dr.',
+      address1: '827 Wellington Dr.',
       city: 'Carlisle',
       state: 'PA',
-      zipCode: '17013'
+      zip: '17013'
     }),
     build(Address, {
       id: 4,
       firstName: 'Gigi',
       lastName: 'Eschenmann',
-      streetAddress: '623 Sherwood Dr.',
+      address1: '623 Sherwood Dr.',
       city: 'Carlisle',
       state: 'PA',
-      zipCode: '17013'
+      zip: '17013'
     }),
     build(Address, {
       id: 5,
       firstName: 'Pap',
       lastName: 'Gelbaugh',
-      streetAddress: '827 Shannon Ln.',
+      address1: '827 Shannon Ln.',
       city: 'Carlisle',
       state: 'PA',
-      zipCode: '17013'
+      zip: '17013'
     }),
   ];
 

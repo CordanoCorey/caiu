@@ -4,12 +4,12 @@ export class Address {
     id = 0;
     firstName = '';
     lastName = '';
-    streetAddress = '';
+    address1 = '';
     address2 = '';
     city = '';
     state = '';
     stateId = 45;
-    zipCode = 0;
+    zip = 0;
     isPrimaryAddress = false;
     metadata: Metadata = {
         ignore: [
@@ -20,16 +20,16 @@ export class Address {
             'hasCityStateZip',
             'hasStreetAddress',
         ],
-        streetAddress: {},
+        address1: {},
         address2: {},
         city: {},
         stateId: {},
-        zipCode: {}
+        zip: {}
     };
 
     get cityStateZip(): string {
         return this.hasCityStateZip ?
-            `${this.city}, ${this.state} ${this.zipCode} ` : '';
+            `${this.city}, ${this.state} ${this.zip} ` : '';
     }
 
     set cityStateZip(value: string) {
@@ -47,11 +47,11 @@ export class Address {
     }
 
     get hasCityStateZip(): boolean {
-        return this.city !== '' && (this.state !== '' || this.stateId !== 0) && this.zipCode !== 0;
+        return this.city !== '' && (this.state !== '' || this.stateId !== 0) && this.zip !== 0;
     }
 
     get hasStreetAddress(): boolean {
-        return this.streetAddress !== '';
+        return this.address1 !== '';
     }
 
 }
@@ -157,9 +157,9 @@ export class Image {
     }
 
     static OrderDimensions(image: Image, dim: Dimensions[]): Dimensions[] {
-        console.log(image.ratio);
+        // console.log(image.ratio);
         const d = dim.sort((a, b) => Math.abs(image.ratio - a.ratio) - Math.abs(image.ratio - b.ratio));
-        console.dir(d);
+        // console.dir(d);
         return d;
     }
 
