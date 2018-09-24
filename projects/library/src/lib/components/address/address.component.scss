@@ -2,11 +2,12 @@
   position: relative;
   border-radius: 4px;
   background-color: #FFFFFF;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   width: 100%;
   word-wrap: break-word;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
+  padding-bottom: 25px;
 
   .card-header {
     padding: 15px 15px 0;
@@ -93,7 +94,7 @@
     margin: 5px 5px 0 20px;
   }
 
-  button.add-address {
+  button.action-icon {
     border-radius: 50%;
     width: 50px;
     height: 50px;

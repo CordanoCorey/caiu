@@ -12,7 +12,7 @@ import { ExampleForm } from './shared/models';
 })
 export class AppComponent {
 
-  activeDemo = 'wallpaper';
+  activeDemo = 'address-manager';
   addresses = [
     build(Address, {
       id: 1,
@@ -20,7 +20,7 @@ export class AppComponent {
       lastName: 'Gelbaugh',
       address1: '827 Wellington Dr.',
       city: 'Carlisle',
-      state: 'PA',
+      stateCode: 'PA',
       zip: '17013'
     }),
     build(Address, {
@@ -29,7 +29,7 @@ export class AppComponent {
       lastName: 'Gelbaugh',
       address1: '827 Wellington Dr.',
       city: 'Carlisle',
-      state: 'PA',
+      stateCode: 'PA',
       zip: '17013'
     }),
     build(Address, {
@@ -38,7 +38,7 @@ export class AppComponent {
       lastName: 'Gelbaugh',
       address1: '827 Wellington Dr.',
       city: 'Carlisle',
-      state: 'PA',
+      stateCode: 'PA',
       zip: '17013'
     }),
     build(Address, {
@@ -47,7 +47,7 @@ export class AppComponent {
       lastName: 'Eschenmann',
       address1: '623 Sherwood Dr.',
       city: 'Carlisle',
-      state: 'PA',
+      stateCode: 'PA',
       zip: '17013'
     }),
     build(Address, {
@@ -56,7 +56,7 @@ export class AppComponent {
       lastName: 'Gelbaugh',
       address1: '827 Shannon Ln.',
       city: 'Carlisle',
-      state: 'PA',
+      stateCode: 'PA',
       zip: '17013'
     }),
   ];

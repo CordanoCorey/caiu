@@ -32,7 +32,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   private onModelChange: Function;
   private onTouch: Function;
   current: Address;
-  value: Address;
+  value: Address[];
   toBeDeleted: Address;
 
   constructor(public dialog: MatDialog) {
@@ -41,6 +41,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
 
   @Input() set addresses(value: Address[]) {
     this._addresses = value;
+    this.changeValue(this._addresses);
   }
 
   get addresses(): Address[] {
@@ -86,12 +87,24 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   setDisabledState(isDisabled: boolean) {
   }
 
-  writeValue(value: Address) {
+  writeValue(value: Address[]) {
+    console.log('WRITE VALUE');
+    console.dir(value);
     this.value = value;
   }
 
+  changeValue(value: Address[]) {
+    console.log('CHANGE VALUE');
+    console.dir(value);
+    this.value = value;
+    if (this.onModelChange) {
+      this.onModelChange(value);
+    }
+  }
+
   makePrimary(e: Address) {
-    this.current = e;
+    // this.current = e;
+    this.primaryAddress = e;
     this.activate.emit(e);
   }
 
@@ -102,7 +115,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
 
   back() {
     if (this.current.id === 0) {
-      this.remove(this.current);
+      this.addresses = this.removeAddress(this.current);
     }
     this.editing = false;
   }

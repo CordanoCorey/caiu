@@ -3,7 +3,7 @@
     {{ address | address : showName }}
   </div>
   <div class="col" *ngIf="canActivate">
-    <button color="primary" mat-button class="edit-icon activate-text" (click)="onActivate()">Activate</button>
+    <button color="primary" mat-button class="edit-icon activate-text" (click)="onActivate()">Make Primary</button>
   </div>
   <div class="col" *ngIf="canEdit">
     <mat-icon color="primary" class="edit-icon" (click)="onEdit()">edit</mat-icon>

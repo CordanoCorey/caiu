@@ -4,9 +4,12 @@
     <h4 class="card-title">Address Information</h4>
   </div>
 
-  <button mat-mini-fab color="primary" class="add-address">
-    <mat-icon *ngIf="!editing" (click)="addNew()">add</mat-icon>
-    <mat-icon *ngIf="editing" (click)="back()">arrow_back</mat-icon>
+  <button mat-mini-fab color="primary" class="action-icon" *ngIf="!editing" (click)="addNew()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <button mat-mini-fab color="primary" class="action-icon" *ngIf="editing" (click)="back()">
+    <mat-icon>arrow_back</mat-icon>
   </button>
 
   <div *ngIf="!editing" class="card-body">

@@ -1,4 +1,4 @@
-import { build, compareNumbers } from './utils';
+import { build, truthy } from './utils';
 
 export class Address {
     id = 0;
@@ -7,9 +7,9 @@ export class Address {
     address1 = '';
     address2 = '';
     city = '';
-    state = '';
+    stateCode = '';
     stateId = 45;
-    zip = 0;
+    zip = '';
     isPrimaryAddress = false;
     metadata: Metadata = {
         ignore: [
@@ -19,6 +19,8 @@ export class Address {
             'hasAddress',
             'hasCityStateZip',
             'hasStreetAddress',
+            'middleName',
+            'state',
         ],
         address1: {},
         address2: {},
@@ -29,7 +31,7 @@ export class Address {
 
     get cityStateZip(): string {
         return this.hasCityStateZip ?
-            `${this.city}, ${this.state} ${this.zip} ` : '';
+            `${this.city}, ${this.stateCode} ${this.zip} ` : '';
     }
 
     set cityStateZip(value: string) {
@@ -47,7 +49,7 @@ export class Address {
     }
 
     get hasCityStateZip(): boolean {
-        return this.city !== '' && (this.state !== '' || this.stateId !== 0) && this.zip !== 0;
+        return this.city !== '' && (this.stateCode !== '' || this.stateId !== 0) && truthy(this.zip);
     }
 
     get hasStreetAddress(): boolean {
