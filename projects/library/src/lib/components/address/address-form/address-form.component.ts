@@ -4,7 +4,7 @@ import { FormGroup, AbstractControl, NG_VALUE_ACCESSOR, ControlValueAccessor } f
 import { Control } from '../../../forms/decorators';
 import { DumbComponent } from '../../../shared/component';
 import { Address } from '../../../shared/models';
-import { build, equals } from '../../../shared/utils';
+import { build, equals, getValue } from '../../../shared/utils';
 
 export const ADDRESS_FORM_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -55,6 +55,8 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
 
   ngOnChanges(changes: SimpleChanges) {
     if (!equals(changes['address'], this.address)) {
+      console.log('\nCHANGE Address VALUE');
+      console.dir(getValue(this.address));
       this.setValue(this.address);
     }
   }
@@ -91,6 +93,8 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
   }
 
   writeValue(value: Address) {
+    console.log('\nCHANGE Address VALUE');
+    console.dir(getValue(build(Address, value)));
     this.value = value;
     this.setValue(build(Address, value));
   }

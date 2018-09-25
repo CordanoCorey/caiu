@@ -51,7 +51,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   get choices(): Address[] {
-    return this.addresses.filter((x, i) => i > 0);
+    return this.addresses.filter((x, i) => !x.isPrimaryAddress);
   }
 
   get primaryAddress(): Address {
@@ -88,13 +88,13 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   writeValue(value: Address[]) {
-    console.log('WRITE VALUE');
+    console.log('\nWRITE Address Manager VALUE');
     console.dir(value);
     this.value = value;
   }
 
   changeValue(value: Address[]) {
-    console.log('CHANGE VALUE');
+    console.log('\nCHANGE Address Manager VALUE');
     console.dir(value);
     this.value = value;
     if (this.onModelChange) {

@@ -30,7 +30,8 @@ export class AppComponent {
       address1: '827 Wellington Dr.',
       city: 'Carlisle',
       stateCode: 'PA',
-      zip: '17013'
+      zip: '17013',
+      isPrimaryAddress: true
     }),
     build(Address, {
       id: 3,
