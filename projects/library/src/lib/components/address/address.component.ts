@@ -88,14 +88,14 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   writeValue(value: Address[]) {
-    console.log('\nWRITE Address Manager VALUE');
-    console.dir(value);
+    // console.log('\nWRITE Address Manager VALUE');
+    // console.dir(value);
     this.value = value;
   }
 
   changeValue(value: Address[]) {
-    console.log('\nCHANGE Address Manager VALUE');
-    console.dir(value);
+    // console.log('\nCHANGE Address Manager VALUE');
+    // console.dir(value);
     this.value = value;
     if (this.onModelChange) {
       this.onModelChange(value);

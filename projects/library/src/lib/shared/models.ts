@@ -7,8 +7,8 @@ export class Address {
     address1 = '';
     address2 = '';
     city = '';
-    stateCode = '';
-    stateId = 45;
+    stateCode = 'PA';
+    stateId = null;
     zip = '';
     isPrimaryAddress = false;
     metadata: Metadata = {
