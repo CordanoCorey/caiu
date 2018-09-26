@@ -1,26 +1,30 @@
 @import '../styles';
 $theme: mat-light-theme($primary-palette, $accent-palette);
-
 iu-file-upload {
-  // @include file-upload-color($primary-color, $dark-primary-color, $light-primary-color, #fff);
+    // @include file-upload-color($primary-color, $dark-primary-color, $light-primary-color, #fff);
 }
 
+// :host {
+//     height: 100%;
+//     min-height: 1000px;
+//     display: block;
+// }
+
 mat-toolbar {
-  z-index: 999;
-  position: absolute;
-  top: 0;
-  left: 0;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .example {
-  margin: 100px;
-
+    margin: 100px;
 }
 
 .demo-link {
-  color: #fff;
+    color: #fff;
 }
 
 .cdk-overlay-pane {
-  position: absolute !important;
+    position: absolute !important;
 }

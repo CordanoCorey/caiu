@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, HostListener } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Control, FileUpload, DateHelper, build, Address, Image } from 'library';
 
@@ -12,7 +12,7 @@ import { ExampleForm } from './shared/models';
 })
 export class AppComponent {
 
-  activeDemo = 'address-manager';
+  activeDemo = 'wallpaper';
   addresses = [
     build(Address, {
       id: 1,
@@ -89,8 +89,38 @@ export class AppComponent {
 
   @Control(ExampleForm) form: FormGroup;
 
+  get windowHeight(): number {
+    return parseInt(localStorage.getItem('WINDOW_HEIGHT'), 10) - 64;
+  }
+
+  set windowHeight(value: number) {
+    localStorage.setItem('WINDOW_HEIGHT', value.toString());
+  }
+
+  get windowWidth(): number {
+    return parseInt(localStorage.getItem('WINDOW_WIDTH'), 10) - 120;
+  }
+
+  set windowWidth(value: number) {
+    localStorage.setItem('WINDOW_WIDTH', value.toString());
+  }
+
   onUpload(e: FileUpload[]) {
     console.dir(e);
+  }
+
+  @HostListener('window:load', ['$event'])
+  onLoad(e: any) {
+    this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    // console.log('\n\nwindow:load', this.windowWidth, this.windowHeight);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(e: any) {
+    this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    // console.log('\n\nwindow:resize', this.windowWidth, this.windowHeight);
   }
 
 }

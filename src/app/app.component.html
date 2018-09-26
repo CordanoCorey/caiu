@@ -8,7 +8,8 @@
   <button (click)="activeDemo='scheduler'" mat-button class="demo-link">Scheduler</button>
 </mat-toolbar>
 
-<iu-wallpaper *ngIf="activeDemo === 'wallpaper'" [images]="images" [offsetTop]="64" [offsetLeft]="0"></iu-wallpaper>
+<iu-wallpaper *ngIf="activeDemo === 'wallpaper'" [images]="images" [offsetTop]="64" [offsetLeft]="0" [style.height.px]="windowHeight"
+  [style.width.px]="windowWidth"></iu-wallpaper>
 
 <div *ngIf="activeDemo === 'collage'" class="example">
   Collage
