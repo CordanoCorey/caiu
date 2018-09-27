@@ -8,6 +8,7 @@ import { Image } from '../../shared/models';
   styleUrls: ['./wallpaper.component.scss']
 })
 export class WallpaperComponent implements OnInit {
+  @Input() debug = false;
   @Input() images: Image[] = [];
   @Input() imageOpacity = .4;
   @Input() bodyMargin = 0;
@@ -17,8 +18,6 @@ export class WallpaperComponent implements OnInit {
   @Input() minCellHeight = 40;
   @Input() maxTileWidth = 240;
   @Input() maxTileHeight = 400;
-  canvasHeight = 0;
-  canvasWidth = 0;
   clientHeight = 0;
   clientWidth = 0;
 
@@ -48,19 +47,29 @@ export class WallpaperComponent implements OnInit {
     return Math.floor(this.canvasHeight / this.minCellHeight);
   }
 
+  get canvasHeight(): number {
+    return this.windowHeight ? this.windowHeight - this.offsetTop - this.bodyMargin : this.clientHeight;
+  }
+
+  get canvasWidth(): number {
+    return this.windowWidth ? this.windowWidth - this.offsetLeft - this.bodyMargin : this.clientWidth;
+  }
+
   get windowHeight(): number {
-    return parseInt(localStorage.getItem('WINDOW_HEIGHT'), 10) - 64;
+    return parseInt(localStorage.getItem('WINDOW_HEIGHT'), 10);
   }
 
   set windowHeight(value: number) {
+    // console.log('\n\nWindow Height:\t', value);
     localStorage.setItem('WINDOW_HEIGHT', value.toString());
   }
 
   get windowWidth(): number {
-    return parseInt(localStorage.getItem('WINDOW_WIDTH'), 10) - 120;
+    return parseInt(localStorage.getItem('WINDOW_WIDTH'), 10);
   }
 
   set windowWidth(value: number) {
+    // console.log('Window Width:\t', value);
     localStorage.setItem('WINDOW_WIDTH', value.toString());
   }
 
@@ -85,9 +94,9 @@ export class WallpaperComponent implements OnInit {
   resetDimensions() {
     this.clientHeight = this.elementRef.nativeElement.clientHeight;
     this.clientWidth = this.elementRef.nativeElement.clientWidth;
-    this.canvasHeight = this.windowHeight ? this.windowHeight - this.offsetTop - this.bodyMargin : this.clientHeight;
-    this.canvasWidth = this.windowWidth ? this.windowWidth - this.offsetLeft - this.bodyMargin : this.clientWidth;
-    this.logDimensions();
+    if (this.debug) {
+      this.logDimensions();
+    }
   }
 
   logDimensions() {
