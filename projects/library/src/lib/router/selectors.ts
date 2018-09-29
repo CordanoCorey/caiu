@@ -43,7 +43,9 @@ export function lazyRouteParamsSelector(store: Store<any>, key: string): Observa
 export function routeParamSelector(store: Store<any>, key: string, defaultValue = null): Observable<any> {
     return combineLatest(of(defaultValue), lazyRouteParamsSelector(store, key), (x, y) => {
         return y || x;
-    });
+    }).pipe(
+        distinctUntilChanged()
+    );
 }
 
 export function routeParamArraySelector(store: Store<any>, key: string): Observable<any[]> {
