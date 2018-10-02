@@ -24,16 +24,18 @@
 
   <mat-form-field class="control zip">
     <input matInput placeholder="Zip Code" type="text" formControlName="zip">
+    <mat-error *ngIf="form?.controls['zip']?.hasError('zip') && form.controls['zip'].touched">Please
+      enter a valid 5-digit zip code.</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="control active-date" *ngIf="showEffectiveDate">
-    <input matInput [matDatepicker]="picker2" placeholder="Effective Date">
+  <mat-form-field class="control active-date" *ngIf="requireEffectiveDate">
+    <input matInput [matDatepicker]="picker2" placeholder="Effective Date" formControlName="effectiveDate">
     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
 
-  <button *ngIf="manager" mat-raised-button color="accent" class="btn-save" (click)="onSubmit()">Save</button>
-  <button *ngIf="manager && !isPrimaryAddress" mat-raised-button color="primary" class="btn-save btn-activate" (click)="onActivate()">Save
+  <button *ngIf="showMakePrimaryButton" mat-raised-button color="primary" class="btn-save btn-activate" (click)="onActivate()">Save
     and Make Primary</button>
+  <button *ngIf="canSave" mat-raised-button color="accent" class="btn-save" (click)="onSubmit()">Save</button>
 
 </form>

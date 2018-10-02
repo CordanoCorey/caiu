@@ -65,6 +65,7 @@ export class GridComponent implements OnChanges, OnInit, AfterContentInit {
   @ContentChildren(GridColumnComponent) contentChildren: QueryList<GridColumnComponent>;
   columns: GridColumnComponent[] = [];
   private _color: string;
+  private _preloaded: boolean;
   private filtering = true;
 
   constructor(private _elementRef: ElementRef, private _renderer: Renderer2) {
@@ -78,6 +79,15 @@ export class GridComponent implements OnChanges, OnInit, AfterContentInit {
 
   set color(value: string) {
     this._updateColor(value);
+  }
+
+  @Input()
+  get preloaded(): boolean {
+    return this._preloaded || this.total === 0;
+  }
+
+  set preloaded(value: boolean) {
+    this._preloaded = value;
   }
 
   private _updateColor(newColor: string) {
@@ -99,7 +109,7 @@ export class GridComponent implements OnChanges, OnInit, AfterContentInit {
   }
 
   get activeRows(): any[] {
-    return this.pageRows(this.filterRows(this.sortRows(this.rows)));
+    return this.preloaded ? this.pageRows(this.filterRows(this.sortRows(this.rows))) : this.rows;
   }
 
   get computedRowHeight(): number {

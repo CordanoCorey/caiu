@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material';
 import { ConfirmDeleteComponent } from '../dialog/confirm-delete/confirm-delete.component';
 import { DumbComponent } from '../../shared/component';
 import { Address } from '../../shared/models';
-import { build } from '../../shared/utils';
+import { build, compareDates } from '../../shared/utils';
 
 export const ADDRESS_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -23,7 +23,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
 
   _addresses: Address[] = [];
   @Input() editing = false;
-  @Input() showEffectiveDate = false;
+  @Input() requireEffectiveDate = false;
   @Input() showName = true;
   @Output() activate = new EventEmitter<Address>();
   @Output() add = new EventEmitter<Address>();
@@ -103,7 +103,6 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   makePrimary(e: Address) {
-    // this.current = e;
     this.primaryAddress = e;
     this.activate.emit(e);
   }
@@ -138,7 +137,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   save(e: Address) {
-    this.addresses = this.addAddress(e);
+    this.addresses = this.setActiveDates(this.addAddress(e));
     if (e.id) {
       this.add.emit(e);
     } else {
@@ -149,7 +148,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
 
   private addAddress(address: Address): Address[] {
     return this.reorder([address, ...this.addresses
-      .filter(x => x.id !== address.id)
+      .filter(x => x.id === 0 || x.id !== address.id)
       .map(x => address.isPrimaryAddress && x.isPrimaryAddress && x.id !== address.id ?
         build(Address, x, { isPrimaryAddress: false }) : build(Address, x))
     ]);
@@ -161,6 +160,17 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
 
   private reorder(addresses: Address[]): Address[] {
     return addresses.reduce((acc, x) => x.isPrimaryAddress ? [x, ...acc] : [...acc, x], []);
+  }
+
+  private setActiveDates(addresses: Address[]): Address[] {
+    const ordered = addresses.sort((a, b) => compareDates(a.effectiveDate, b.effectiveDate)).reverse();
+    const now = new Date();
+    return ordered.map((x, i) => {
+      const startDate = x.effectiveDate;
+      const endDate = ordered[i + 1] && ordered[i + 1].effectiveDate && ordered[i + 1].effectiveDate > x.effectiveDate ? ordered[i + 1].effectiveDate : null;
+      const isPrimaryAddress = startDate < now && endDate > now ? true : false;
+      return build(Address, x, { startDate, endDate, isPrimaryAddress });
+    });
   }
 
 }

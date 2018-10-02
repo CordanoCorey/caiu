@@ -1,4 +1,5 @@
 import { build, truthy } from './utils';
+import { Validators } from '../forms/validators';
 
 export class Address {
     id = 0;
@@ -11,22 +12,29 @@ export class Address {
     stateId = null;
     zip = '';
     isPrimaryAddress = false;
+    effectiveDate: Date = new Date();
+    startDate: Date = new Date();
+    endDate: Date = new Date();
     metadata: Metadata = {
         ignore: [
             'id',
             'cityStateZip',
+            'endDate',
             'fullName',
             'hasAddress',
             'hasCityStateZip',
             'hasStreetAddress',
             'middleName',
+            'startDate',
             'state',
         ],
         address1: {},
         address2: {},
         city: {},
         stateId: {},
-        zip: {}
+        zip: {
+            validators: [Validators.zip]
+        }
     };
 
     get cityStateZip(): string {

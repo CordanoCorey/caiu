@@ -84,6 +84,7 @@ export * from './lib/forms/forms.module';
 export * from './lib/forms/actions';
 export * from './lib/forms/decorators';
 export * from './lib/forms/models';
+export * from './lib/forms/validators';
 export * from './lib/forms/utils';
 
 /**

@@ -2,6 +2,8 @@
   <button (click)="activeDemo='wallpaper'" mat-button class="demo-link">Wallpaper</button>
   <button (click)="activeDemo='collage'" mat-button class="demo-link">Collage</button>
   <button (click)="activeDemo='address-manager'" mat-button class="demo-link">Address Manager</button>
+  <button (click)="activeDemo='address-manager-effective-date'" mat-button class="demo-link">Address Manager with
+    Effective Dates</button>
   <button (click)="activeDemo='file-upload'" mat-button class="demo-link">File Upload</button>
   <button (click)="activeDemo='file-upload-multi'" mat-button class="demo-link">File Upload - Multi</button>
   <button (click)="activeDemo='timeago'" mat-button class="demo-link">Time Ago</button>
@@ -20,6 +22,9 @@
   </div>
   <div *ngIf="activeDemo === 'address-manager'" class="example">
     <iu-address [addresses]="addresses"></iu-address>
+  </div>
+  <div *ngIf="activeDemo === 'address-manager-effective-date'" class="example">
+    <iu-address [addresses]="addresses" [requireEffectiveDate]="true"></iu-address>
   </div>
   <div *ngIf="activeDemo === 'file-upload'" class="example">
     <iu-file-upload (upload)="onUpload($event)"></iu-file-upload>

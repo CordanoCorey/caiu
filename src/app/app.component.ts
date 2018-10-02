@@ -12,54 +12,54 @@ import { ExampleForm } from './shared/models';
 })
 export class AppComponent {
 
-  activeDemo = 'wallpaper';
+  activeDemo = 'address-manager-effective-date';
   addresses = [
-    build(Address, {
-      id: 1,
-      firstName: 'Corey',
-      lastName: 'Gelbaugh',
-      address1: '827 Wellington Dr.',
-      city: 'Carlisle',
-      stateCode: 'PA',
-      zip: '17013'
-    }),
-    build(Address, {
-      id: 2,
-      firstName: 'Julie',
-      lastName: 'Gelbaugh',
-      address1: '827 Wellington Dr.',
-      city: 'Carlisle',
-      stateCode: 'PA',
-      zip: '17013',
-      isPrimaryAddress: true
-    }),
-    build(Address, {
-      id: 3,
-      firstName: 'Jovie',
-      lastName: 'Gelbaugh',
-      address1: '827 Wellington Dr.',
-      city: 'Carlisle',
-      stateCode: 'PA',
-      zip: '17013'
-    }),
-    build(Address, {
-      id: 4,
-      firstName: 'Gigi',
-      lastName: 'Eschenmann',
-      address1: '623 Sherwood Dr.',
-      city: 'Carlisle',
-      stateCode: 'PA',
-      zip: '17013'
-    }),
-    build(Address, {
-      id: 5,
-      firstName: 'Pap',
-      lastName: 'Gelbaugh',
-      address1: '827 Shannon Ln.',
-      city: 'Carlisle',
-      stateCode: 'PA',
-      zip: '17013'
-    }),
+    // build(Address, {
+    //   id: 1,
+    //   firstName: 'Corey',
+    //   lastName: 'Gelbaugh',
+    //   address1: '827 Wellington Dr.',
+    //   city: 'Carlisle',
+    //   stateCode: 'PA',
+    //   zip: '17013'
+    // }),
+    // build(Address, {
+    //   id: 2,
+    //   firstName: 'Julie',
+    //   lastName: 'Gelbaugh',
+    //   address1: '827 Wellington Dr.',
+    //   city: 'Carlisle',
+    //   stateCode: 'PA',
+    //   zip: '17013',
+    //   isPrimaryAddress: true
+    // }),
+    // build(Address, {
+    //   id: 3,
+    //   firstName: 'Jovie',
+    //   lastName: 'Gelbaugh',
+    //   address1: '827 Wellington Dr.',
+    //   city: 'Carlisle',
+    //   stateCode: 'PA',
+    //   zip: '17013'
+    // }),
+    // build(Address, {
+    //   id: 4,
+    //   firstName: 'Gigi',
+    //   lastName: 'Eschenmann',
+    //   address1: '623 Sherwood Dr.',
+    //   city: 'Carlisle',
+    //   stateCode: 'PA',
+    //   zip: '17013'
+    // }),
+    // build(Address, {
+    //   id: 5,
+    //   firstName: 'Pap',
+    //   lastName: 'Gelbaugh',
+    //   address1: '827 Shannon Ln.',
+    //   city: 'Carlisle',
+    //   stateCode: 'PA',
+    //   zip: '17013'
+    // }),
   ];
 
   images = [

@@ -23,7 +23,7 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
   @Control(Address) form: FormGroup;
   @Input() address: Address = new Address();
   @Input() manager = false;
-  @Input() showEffectiveDate = false;
+  @Input() requireEffectiveDate = false;
   @Input() showName = false;
   @Output() changes = new EventEmitter<Address>();
   @Output() save = new EventEmitter<Address>();
@@ -33,6 +33,10 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
 
   constructor() {
     super();
+  }
+
+  get canSave(): boolean {
+    return this.manager && this.form.valid && this.form.dirty;
   }
 
   get isPrimaryAddress(): boolean {
@@ -45,6 +49,10 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
 
   get isPrimaryAddressControl(): AbstractControl {
     return this.form.controls['isPrimaryAddress'];
+  }
+
+  get showMakePrimaryButton(): boolean {
+    return this.canSave && !this.isPrimaryAddress && !this.requireEffectiveDate;
   }
 
   get valueOut(): Address {

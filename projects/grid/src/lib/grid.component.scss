@@ -1,4 +1,5 @@
 @import '~@angular/material/_theming';
+
 .mat-card.grid {
   padding: 0;
 }
@@ -7,9 +8,11 @@
   .k-grid-header {
     padding-right: 13px;
   }
+
   th.k-grid-header:first-child {
     padding-left: 6px;
   }
+
   .mat-raised-button {
     color: #fff;
   }
@@ -53,6 +56,11 @@
 
 .k-picker-wrap.k-state-default {
   border-bottom-width: 1px;
+}
+
+.k-pager-wrap .k-link,
+.k-pager-wrap .k-state-selected {
+  padding: 8px;
 }
 
 .page-template {

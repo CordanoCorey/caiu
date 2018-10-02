@@ -1,6 +1,6 @@
 {
   "name": "@caiu/grid",
-  "version": "6.2.1",
+  "version": "6.2.4",
   "license": "MIT",
   "private": false,
   "peerDependencies": {

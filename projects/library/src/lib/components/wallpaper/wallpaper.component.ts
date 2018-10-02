@@ -14,10 +14,13 @@ export class WallpaperComponent implements OnInit {
   @Input() bodyMargin = 0;
   @Input() offsetTop = 0;
   @Input() offsetLeft = 0;
+  // @Input() positionTop = 0;
+  // @Input() positionLeft = 0;
   @Input() minCellWidth = 40;
   @Input() minCellHeight = 40;
   @Input() maxTileWidth = 240;
   @Input() maxTileHeight = 400;
+  @Input() shuffle = false;
   clientHeight = 0;
   clientWidth = 0;
 
