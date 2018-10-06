@@ -31,8 +31,9 @@
     </div>
     <div class="card-body">
       <div class="body-content choose-address">
-        <iu-inline-address *ngFor="let choice of choices" [canActivate]="true" [canDelete]="true" [canEdit]="true"
-          [showName]="showName" [address]="choice" (activate)="makePrimary($event)" (delete)="remove($event)" (edit)="edit($event)"></iu-inline-address>
+        <iu-inline-address *ngFor="let choice of choices" [canActivate]="!requireEffectiveDate" [canDelete]="true"
+          [canEdit]="true" [showName]="showName" [address]="choice" (activate)="makePrimary($event)" (delete)="remove($event)"
+          (edit)="edit($event)"></iu-inline-address>
       </div>
     </div>
   </div>

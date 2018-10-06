@@ -26,6 +26,7 @@ import { WallpaperModule } from './components/wallpaper/wallpaper.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SharedModule } from './shared/shared.module';
 import { SchedulerModule } from './components/scheduler/scheduler.module';
+import { TimerModule } from './components/timer/timer.module';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { SchedulerModule } from './components/scheduler/scheduler.module';
     MatToolbarModule,
     PipesModule,
     SchedulerModule,
+    TimerModule,
   ],
   declarations: [
     LibraryComponent,
@@ -77,6 +79,7 @@ import { SchedulerModule } from './components/scheduler/scheduler.module';
     MatToolbarModule,
     PipesModule,
     SchedulerModule,
+    TimerModule,
   ]
 })
 export class LibraryModule { }

@@ -1,6 +1,6 @@
-import { Component, ViewEncapsulation, HostListener } from '@angular/core';
+import { Component, ViewEncapsulation, HostListener, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Control, FileUpload, DateHelper, build, Address, Image } from 'library';
+import { Control, FileUpload, DateHelper, build, Address, Image, Time, TimerComponent } from 'library';
 
 import { ExampleForm } from './shared/models';
 
@@ -12,56 +12,62 @@ import { ExampleForm } from './shared/models';
 })
 export class AppComponent {
 
+  @Control(ExampleForm) form: FormGroup;
+  @ViewChild(TimerComponent) timer: TimerComponent;
+  // activeDemo = 'address-manager-effective-date';
   activeDemo = 'address-manager-effective-date';
   addresses = [
-    // build(Address, {
-    //   id: 1,
-    //   firstName: 'Corey',
-    //   lastName: 'Gelbaugh',
-    //   address1: '827 Wellington Dr.',
-    //   city: 'Carlisle',
-    //   stateCode: 'PA',
-    //   zip: '17013'
-    // }),
-    // build(Address, {
-    //   id: 2,
-    //   firstName: 'Julie',
-    //   lastName: 'Gelbaugh',
-    //   address1: '827 Wellington Dr.',
-    //   city: 'Carlisle',
-    //   stateCode: 'PA',
-    //   zip: '17013',
-    //   isPrimaryAddress: true
-    // }),
-    // build(Address, {
-    //   id: 3,
-    //   firstName: 'Jovie',
-    //   lastName: 'Gelbaugh',
-    //   address1: '827 Wellington Dr.',
-    //   city: 'Carlisle',
-    //   stateCode: 'PA',
-    //   zip: '17013'
-    // }),
-    // build(Address, {
-    //   id: 4,
-    //   firstName: 'Gigi',
-    //   lastName: 'Eschenmann',
-    //   address1: '623 Sherwood Dr.',
-    //   city: 'Carlisle',
-    //   stateCode: 'PA',
-    //   zip: '17013'
-    // }),
-    // build(Address, {
-    //   id: 5,
-    //   firstName: 'Pap',
-    //   lastName: 'Gelbaugh',
-    //   address1: '827 Shannon Ln.',
-    //   city: 'Carlisle',
-    //   stateCode: 'PA',
-    //   zip: '17013'
-    // }),
+    build(Address, {
+      id: 1,
+      firstName: 'Corey',
+      lastName: 'Gelbaugh',
+      address1: '827 Wellington Dr.',
+      city: 'Carlisle',
+      stateCode: 'PA',
+      zip: '17013'
+    }),
+    build(Address, {
+      id: 2,
+      firstName: 'Julie',
+      lastName: 'Gelbaugh',
+      address1: '827 Wellington Dr.',
+      city: 'Carlisle',
+      stateCode: 'PA',
+      zip: '17013',
+      isPrimaryAddress: true
+    }),
+    build(Address, {
+      id: 3,
+      firstName: 'Jovie',
+      lastName: 'Gelbaugh',
+      address1: '827 Wellington Dr.',
+      city: 'Carlisle',
+      stateCode: 'PA',
+      zip: '17013'
+    }),
+    build(Address, {
+      id: 4,
+      firstName: 'Gigi',
+      lastName: 'Eschenmann',
+      address1: '623 Sherwood Dr.',
+      city: 'Carlisle',
+      stateCode: 'PA',
+      zip: '17013'
+    }),
+    build(Address, {
+      id: 5,
+      firstName: 'Pap',
+      lastName: 'Gelbaugh',
+      address1: '827 Shannon Ln.',
+      city: 'Carlisle',
+      stateCode: 'PA',
+      zip: '17013'
+    }),
   ];
-
+  countdownFrom = build(Time, {
+    minutes: 0,
+    seconds: 10,
+  });
   images = [
     build(Image, { src: 'assets/1.jpg', height: 2160, width: 3840 }),
     build(Image, { src: 'assets/2.jpg', height: 177, width: 284 }),
@@ -84,10 +90,7 @@ export class AppComponent {
     build(Image, { src: 'assets/19.jpg', height: 276, width: 183 }),
     build(Image, { src: 'assets/20.jpg', height: 800, width: 5469 }),
   ];
-
   timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
-
-  @Control(ExampleForm) form: FormGroup;
 
   get windowHeight(): number {
     return parseInt(localStorage.getItem('WINDOW_HEIGHT'), 10) - 64;
@@ -103,6 +106,10 @@ export class AppComponent {
 
   set windowWidth(value: number) {
     localStorage.setItem('WINDOW_WIDTH', value.toString());
+  }
+
+  onTimesUp() {
+    this.timer.startAt(this.countdownFrom);
   }
 
   onUpload(e: FileUpload[]) {

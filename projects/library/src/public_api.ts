@@ -46,6 +46,10 @@ export * from './lib/components/not-found/not-found.component';
 export * from './lib/components/tile/tile.module';
 export * from './lib/components/tile/tile.component';
 export * from './lib/components/tile/tile.model';
+export * from './lib/components/timer/timer.module';
+export * from './lib/components/timer/timer.component';
+export * from './lib/components/timer/timer.model';
+export * from './lib/components/timer/timer.pipe';
 export * from './lib/components/wallpaper/wallpaper.module';
 export * from './lib/components/wallpaper/wallpaper.component';
 

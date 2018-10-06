@@ -4,10 +4,10 @@
   <button (click)="activeDemo='address-manager'" mat-button class="demo-link">Address Manager</button>
   <button (click)="activeDemo='address-manager-effective-date'" mat-button class="demo-link">Address Manager with
     Effective Dates</button>
+  <button (click)="activeDemo='scheduler'" mat-button class="demo-link">Scheduler</button>
   <button (click)="activeDemo='file-upload'" mat-button class="demo-link">File Upload</button>
   <button (click)="activeDemo='file-upload-multi'" mat-button class="demo-link">File Upload - Multi</button>
-  <button (click)="activeDemo='timeago'" mat-button class="demo-link">Time Ago</button>
-  <button (click)="activeDemo='scheduler'" mat-button class="demo-link">Scheduler</button>
+  <button (click)="activeDemo='time'" mat-button class="demo-link">Time</button>
 </mat-toolbar>
 
 <iu-wallpaper *ngIf="activeDemo === 'wallpaper'" [images]="images" [offsetTop]="64" [offsetLeft]="0" [style.height.px]="windowHeight"
@@ -17,7 +17,9 @@
   Collage
 </div>
 <form>
-  <div *ngIf="activeDemo === 'timeago'" class="example">
+  <div *ngIf="activeDemo === 'time'" class="example">
+    <iu-timer [countUp]="false" [countDown]="true" [countdownFrom]="countdownFrom"  (timesUp)="onTimesUp()"></iu-timer>
+    <iu-timer [countUp]="true" [countDown]="true" [millisecondsAlways]="true" [countdownFrom]="countdownFrom"></iu-timer>
     {{timeAgoTest}}
   </div>
   <div *ngIf="activeDemo === 'address-manager'" class="example">

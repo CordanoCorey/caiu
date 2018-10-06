@@ -1,0 +1,10 @@
+<div class="timer">
+  <div *ngIf="countDown" class="time-remaining">
+    {{ timeRemaining | timer : showHours : showRemainingMilliseconds }}
+  </div>
+  <div *ngIf="countUp" class="time-elapsed">
+    {{ timeElapsed | timer : showHours : showElapsedMilliseconds }}
+  </div>
+  <button mat-raised-button (click)="start($event)">Start</button>
+  <button mat-raised-button (click)="stop($event)">Stop</button>
+</div>

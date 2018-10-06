@@ -32,8 +32,8 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   private onModelChange: Function;
   private onTouch: Function;
   current: Address;
-  value: Address[];
   toBeDeleted: Address;
+  _value: Address[];
 
   constructor(public dialog: MatDialog) {
     super();
@@ -48,6 +48,14 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     return this._addresses.findIndex(x => x.isPrimaryAddress) === -1 ?
       this._addresses.map((x, index) => index === 0 ? build(Address, x, { isPrimaryAddress: true }) : x)
       : this._addresses;
+  }
+
+  get value(): Address[] {
+    return this._value;
+  }
+
+  set value(value: Address[]) {
+    this._value = value;
   }
 
   get choices(): Address[] {

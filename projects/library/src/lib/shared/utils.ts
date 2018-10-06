@@ -251,6 +251,10 @@ export function getKeyValues(model: any): any {
         : keys.reduce((acc, key) => Object.assign({}, acc, { [key]: model[key] }), {});
 }
 
+export function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
 export function getSetters(obj: any): string[] {
     return Object.keys(obj.prototype).filter(name => {
         return typeof Object.getOwnPropertyDescriptor(obj.prototype, name)['set'] === 'function';
@@ -393,19 +397,6 @@ export function positiveIntegerArray(n: number): number[] {
 }
 
 /**
- * Reorder the elements of an array.
- * @param arr array to be randomized
- */
-export function shuffle(arr: any[]): any[] {
-    let shuffled = [...arr];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // eslint-disable-line no-param-reassign
-    }
-    return shuffled;
-}
-
-/**
  * Remove store props that contain cycles.
  */
 export function removeCycles(obj: any): any {
@@ -458,6 +449,19 @@ export function serialize(model: any) {
             [key]: val
         });
     }, {});
+}
+
+/**
+ * Reorder the elements of an array.
+ * @param arr array to be randomized
+ */
+export function shuffle(arr: any[]): any[] {
+    let shuffled = [...arr];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // eslint-disable-line no-param-reassign
+    }
+    return shuffled;
 }
 
 export function stringify(token: any): string {
