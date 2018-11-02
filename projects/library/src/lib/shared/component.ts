@@ -54,6 +54,18 @@ export class DumbComponent implements OnDestroy {
         });
     }
 
+    playAudioElement(tag: string) {
+        const el = document.getElementById(tag);
+        if (el && typeof el['play'] === 'function') {
+            el['play']();
+        }
+    }
+
+    playAudioFile(file: string) {
+        const audio = new Audio(file);
+        audio.play();
+    }
+
     removeSubscriptions() {
         this.subscriptions.forEach(s => {
             s.unsubscribe();
@@ -122,7 +134,7 @@ export class FormComponent extends DumbComponent {
     }
 
     get isValid(): boolean {
-      return this.form.valid;
+        return this.form.valid;
     }
 
     markAsSubmitted() {

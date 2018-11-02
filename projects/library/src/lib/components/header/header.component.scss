@@ -1,0 +1,137 @@
+@import '~@angular/material/_theming';
+
+#header {
+  //@include black-gradient();
+  min-height: 64px; // min-width: 680px;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  position: absolute;
+  left: 120px;
+
+  .banner {
+    margin-left: 120px;
+
+    img {
+      height: 48px;
+      margin: 8px 20px;
+    }
+
+  }
+
+  .banner.mobile {
+    margin-left: 0px;
+  }
+
+  .navbar-brand {
+    color: #7cfc00;
+    text-decoration: none;
+    font-family: Poiret One, Helvetica Neue, Helvetica, Arial, cursive;
+    float: left;
+    font-size: 24px;
+    margin-right: 20px;
+
+    img {
+      height: 48px;
+      margin: 8px 20px;
+    }
+  }
+
+  .slp-lbl {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    float: left;
+    font-size: 16px;
+    margin: 16px 0 20px;
+  }
+
+  .intro-lead-in {
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: italic;
+    line-height: 40px;
+    margin-left: 20px;
+    float: right;
+    font-size: 15px;
+    color: silver;
+    position: absolute;
+    right: 280px;
+  }
+
+  #logo {
+    height: 48px;
+    cursor: pointer;
+  }
+
+  #banner {
+    padding: 0 30px;
+    color: #7CFC00;
+    font-family: "Poiret One", "Helvetica Neue", Helvetica, Arial, cursive;
+    font-size: 22px;
+    text-decoration: none;
+  }
+
+  rowdy-social-icons {
+    height: 100%;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  #header-links {
+    .link {
+      @include mat-elevation(16);
+      //@include black-hgradient();
+      position: absolute;
+      top: 2px;
+      height: 36px;
+      text-decoration: none;
+      width: 44px;
+      padding: 12px 10px;
+
+      mat-icon {
+        @include mat-elevation(4);
+        color: #8e8e8e;
+        color: #000;
+        //color: $primary-color;
+        color: #fff;
+        font-size: 32px;
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        top: 16px;
+        left: 16px;
+      }
+    }
+
+    .link:hover {
+      mat-icon {
+        //color: $primary-color;
+      }
+    }
+
+    .link:nth-child(5) {
+      right: 0px;
+    }
+
+    .link:nth-child(4) {
+      right: 64px;
+    }
+
+    .link:nth-child(3) {
+      right: 128px;
+    }
+
+    .link:nth-child(2) {
+      right: 192px;
+    }
+
+    .link:nth-child(1) {
+      right: 256px;
+    }
+
+    a.link.active-link {
+      //@include primary-hgradient();
+    }
+  }
+}
