@@ -1,12 +1,14 @@
 {
   "name": "@caiu/library",
-  "version": "6.2.55",
+  "version": "7.0.0",
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
-    "@ngrx/effects": "^6.0.1",
-    "@ngrx/store": "^6.0.1"
+    "@angular/common": "^7.1.0",
+    "@angular/core": "7.1.0",
+    "@angular/cdk": "^7.1.0",
+    "@angular/flex-layout": "^7.0.0-beta.19",
+    "@ngrx/effects": "^6.1.2",
+    "@ngrx/store": "^6.1.2"
   }
 }
