@@ -8,7 +8,7 @@
     "@angular/core": "7.1.0",
     "@angular/cdk": "^7.1.0",
     "@angular/flex-layout": "^7.0.0-beta.19",
-    "@caiu/library": "^6.0.0",
+    "@caiu/library": "^7.0.0",
     "@progress/kendo-angular-buttons": "^4.3.2",
     "@progress/kendo-angular-dateinputs": "^3.5.1",
     "@progress/kendo-angular-dropdowns": "^3.4.0",
@@ -21,6 +21,6 @@
     "@progress/kendo-drawing": "^1.5.7"
   },
   "dependencies": {
-    "@caiu/library": "^6.0.0"
+    "@caiu/library": "^7.0.0"
   }
 }

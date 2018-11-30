@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <button (click)="activeDemo='wallpaper'" mat-button class="demo-link">Wallpaper</button>
   <button (click)="activeDemo='collage'" mat-button class="demo-link">Collage</button>
+  <button (click)="activeDemo='date'" mat-button class="demo-link">Date</button>
   <button (click)="activeDemo='address-manager'" mat-button class="demo-link">Address Manager</button>
   <button (click)="activeDemo='address-manager-effective-date'" mat-button class="demo-link">Address Manager with
     Effective Dates</button>
@@ -17,6 +18,9 @@
   Collage
 </div>
 <form>
+  <div *ngIf="activeDemo === 'date'" class="example">
+    <iu-daterange></iu-daterange>
+  </div>
   <div *ngIf="activeDemo === 'time'" class="example">
     <iu-timer [countUp]="false" [countDown]="true" [countdownFrom]="countdownFrom"  (timesUp)="onTimesUp()"></iu-timer>
     <iu-timer [countUp]="true" [countDown]="true" [millisecondsAlways]="true" [countdownFrom]="countdownFrom"></iu-timer>

@@ -15,7 +15,7 @@ export class AppComponent {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(TimerComponent) timer: TimerComponent;
   // activeDemo = 'address-manager-effective-date';
-  activeDemo = 'address-manager-effective-date';
+  activeDemo = 'date';
   addresses = [
     build(Address, {
       id: 1,
