@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatDatepicker } from '@angular/material';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 import { DateHelper } from '../../shared/date';
 
@@ -29,6 +30,7 @@ export const DATEPICKER_ACCESSOR: any = {
 })
 export class DatepickerComponent implements ControlValueAccessor, OnInit {
 
+  @Input() filter: (d: Date) => boolean;
   @Input() min: Date;
   @Input() max: Date;
   @Input() placeholder = 'Choose a date';
@@ -40,6 +42,7 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
   private onModelChange: Function;
   private onTouch: Function;
   _value: Date;
+  dateFilter: (d: Date) => boolean;
   focused: Date;
 
   constructor() { }
@@ -53,6 +56,7 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
     this._value = val;
   }
 
+
   registerOnChange(fn: Function) {
     this.onModelChange = fn;
   }
@@ -65,17 +69,16 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
     this.value = value;
   }
 
-  onChange(value: Date) {
-    this.value = value;
+  onChange(value: MatDatepickerInputEvent<Date>) {
+    this.value = value.value;
     if (this.onModelChange) {
-      this.onModelChange(value);
+      this.onModelChange(value.value);
     }
   }
 
   onBlur(input: any) {
-    const date = new Date(input.value);
-    if (DateHelper.IsValidDate(date)) {
-      this.changeSelected(date);
+    if (DateHelper.IsValidDate(input)) {
+      this.changeSelected(input.value);
     } else {
       input.value = DateHelper.FormatDate(this.value);
     }
@@ -91,11 +94,16 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit() {
     this.startAt = this.value;
+    if (this.filter != null) {
+      this.dateFilter = this.filter;
+    } else {
+      this.dateFilter = null;
+    }
   }
 
-  changeSelected(date: Date) {
+  changeSelected(date: MatDatepickerInputEvent<Date>) {
     this.onChange(date);
-    this.selectedChanged.emit(date);
+    this.selectedChanged.emit(date.value);
   }
 
   close() {
