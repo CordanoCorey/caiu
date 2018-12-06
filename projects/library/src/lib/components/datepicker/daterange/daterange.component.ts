@@ -74,7 +74,7 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   }
 
   get startDateValue(): Date {
-    return this.value.startDate;
+    return new Date(this.value.startDate);
   }
 
   set startDateValue(value: Date) {
@@ -82,7 +82,7 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   }
 
   get endDateValue(): Date {
-    return this.value.endDate;
+    return new Date(this.value.endDate);
   }
 
   set endDateValue(value: Date) {
