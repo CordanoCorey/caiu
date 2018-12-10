@@ -1,0 +1,8 @@
+<p [ngClass]="{'list-event-name': listView}">
+  {{ event.eventName }}
+  <span *ngIf="listView === true">
+      {{ event.startHour }}:<span *ngIf="event.startMinute < 10">0</span>{{event.startMinute}} {{event.startTimePeriod}}
+      -
+      {{ event.endHour }}:<span *ngIf="event.endMinute < 10">0</span>{{event.endMinute}} {{event.endTimePeriod}}   
+  </span>
+</p>

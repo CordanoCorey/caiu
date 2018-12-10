@@ -1,0 +1,39 @@
+<div [ngClass]="{'list-day-container': listView}">
+  <div [ngClass]="{'day-header': listView}">
+    <div class="date" *ngIf="currentDay !== calDate; else elseBlock" [ngClass]="{'mini-date': !listView}">
+      <p>{{ calDate }}</p>
+    </div>
+    <ng-template #elseBlock>
+      <div class="date active-day" [ngClass]="{'mini-date': !listView}">
+        <p>{{ calDate }}</p>
+      </div>
+    </ng-template>
+    <h4 *ngIf="listView === true">
+        {{ dayOfWeek }}
+    </h4>
+  </div>
+  
+
+  <div class="event-container" *ngIf="multipleEvents.length > 1 && listView === false">
+    <div class="event-child">
+      <p>Multiple Events</p>
+    </div>
+  </div>
+
+  <div class="event-container" *ngIf="multipleEvents.length > 1 && listView === true">
+    <div *ngFor="let event of calEvents">
+      <div *ngIf="event.monthOf === calMonth && event.dayOf === calDate && event.yearOf === calYear" [ngClass]="{'event-child': !listView}" [ngClass]="{'event-child-mini': listView}">
+        <iu-event [event]="event" [listView]="listView"></iu-event>
+      </div>
+    </div>
+  </div>
+
+  <div class="event-container" *ngIf="multipleEvents.length === 1">
+    <div *ngFor="let event of calEvents">
+      <div *ngIf="event.monthOf === calMonth && event.dayOf === calDate && event.yearOf === calYear" [ngClass]="{'event-child': !listView}" [ngClass]="{'event-child-mini': listView}">
+        <iu-event [event]="event" [listView]="listView"></iu-event>
+      </div>
+    </div>
+  </div>
+
+</div>

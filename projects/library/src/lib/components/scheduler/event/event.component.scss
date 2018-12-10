@@ -1,0 +1,20 @@
+p{
+    line-height: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.list-event-name{
+    white-space: normal;
+    transition: all .25s;
+    color: #455A64;
+    font-weight: bold;
+}
+.list-event-name:hover{
+    cursor: pointer;
+    background: #D1D1D1;
+}
+.list-event-name span{
+    color: #E47777;
+}

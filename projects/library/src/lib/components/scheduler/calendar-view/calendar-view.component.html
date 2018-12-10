@@ -1,0 +1,89 @@
+<div class="cal-view-container">
+  <div class="date-heading-container">
+    <div>
+        <button mat-mini-fab (click)="changeMonth(-1)"><i class="material-icons">keyboard_arrow_left</i></button>
+    </div>
+    <div>
+      <h1 class="date-heading">{{calendar.monthName}}, {{calendar.currentYear}}</h1>
+      <h1 class="date-heading mini">{{calendar.shortMonthName}}, {{calendar.currentYear}}</h1>
+    </div>
+    <div>
+        <button mat-mini-fab (click)="changeMonth(1)"><i class="material-icons">keyboard_arrow_right</i></button>
+    </div>  
+  </div>
+  <table class="calendar">
+    <mat-sidenav-container [hasBackdrop]="false">
+      <mat-sidenav #dayView mode="over" class="sidenav" [(opened)]="opened">
+        <div class="selected-day-event-container">
+          <button mat-fab (click)="dayView.close()" class="close-btn primary">
+              <i class="material-icons">
+                clear
+              </i>
+          </button>    
+          <button mat-mini-fab (click)="dayView.close()" class="close-btn mini primary">
+            <i class="material-icons">
+              clear
+            </i>
+          </button>   
+          <h1>{{ selectedDate }}. {{ selectedDay }}</h1>
+          <div *ngFor="let event of events">
+            <div *ngIf="event.monthOf === selectedMonth && event.dayOf === selectedDate && event.yearOf === selectedYear" class="selected-day-event">
+              <h1>{{ event.eventName }}</h1>
+              <p>Starts: {{ event.startHour }}:<span *ngIf="event.startMinute < 10">0</span>{{event.startMinute}} {{event.startTimePeriod}}</p>
+              <p>Ends: {{ event.endHour }}:<span *ngIf="event.endMinute < 10">0</span>{{event.endMinute}} {{event.endTimePeriod}}</p>
+            </div>
+          </div>
+        </div>
+        <button mat-fab class="add-btn" (click)="openEventCreator()">
+          <i class="material-icons">
+            add
+          </i>
+        </button>
+        <button mat-mini-fab class="add-btn mini" (click)="openEventCreator()">
+          <i class="material-icons">
+            add
+          </i>
+        </button>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="cal-head">
+          <div class="cal-day"><p>Sunday</p></div>
+          <div class="cal-day"><p>Monday</p></div>
+          <div class="cal-day"><p>Tuesday</p></div>
+          <div class="cal-day"><p>Wednesday</p></div>
+          <div class="cal-day"><p>Thursday</p></div>
+          <div class="cal-day"><p>Friday</p></div>
+          <div class="cal-day"><p>Saturday</p></div>
+        </div>
+        <div class="cal-head-mini">
+          <div class="cal-day"><p>Sun</p></div>
+          <div class="cal-day"><p>Mon</p></div>
+          <div class="cal-day"><p>Tue</p></div>
+          <div class="cal-day"><p>Wed</p></div>
+          <div class="cal-day"><p>Thu</p></div>
+          <div class="cal-day"><p>Fri</p></div>
+          <div class="cal-day"><p>Sat</p></div>
+
+          <div class="cal-day micro"><p>S</p></div>
+          <div class="cal-day micro"><p>M</p></div>
+          <div class="cal-day micro"><p>T</p></div>
+          <div class="cal-day micro"><p>W</p></div>
+          <div class="cal-day micro"><p>T</p></div>
+          <div class="cal-day micro"><p>F</p></div>
+          <div class="cal-day micro"><p>S</p></div>
+        </div>
+        <tbody class="cal-body">
+          <span *ngFor="let week of weekArray">
+            <div class="day" *ngIf="week.position < calendar.firstDay"></div>
+          </span>
+          <div class="day" *ngFor="let day of calendar.daysInCurrentMonth" (click)="dayClicked(day)">
+            <iu-day [date]="day" [currentDay]="calendar.currentDay" [listView]="listView" [week]="" [events]="events"></iu-day>
+          </div>
+          <span *ngFor="let week of weekArray">
+            <div class="day" *ngIf="week.position > calendar.lastDay"></div>
+          </span>
+        </tbody>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </table>
+</div>

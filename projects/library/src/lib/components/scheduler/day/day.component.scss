@@ -1,0 +1,127 @@
+@media only screen and (min-width: 723px) {
+    .active-day{
+        margin-top: -5px;
+    }
+}
+@media only screen and (max-width: 722px) and (min-width: 414px){
+    .active-day{
+        margin-top: -5px;
+    }
+    .event-child{
+        display: none;
+    }
+    .event-child-mini{
+        display: block;
+    }
+}
+@media only screen and (max-width: 413px) and (min-width: 375px){
+    .active-day{
+        margin-top: -5px;
+    }
+    .event-child{
+        display: none;
+    }
+    .event-child-mini{
+        display: block;
+    }
+    .mini-date{
+        margin: 0 auto;
+    }
+    .mini-date.active-day{
+        margin-top: -5px;
+    }
+    
+}
+@media only screen and (max-width: 374px){
+    .active-day.mini-date{
+        margin-top: -6.5px;
+    }
+    .event-child{
+        display: none;
+    }
+    .event-child-mini{
+        display: block;
+    }
+    .mini-date{
+        margin: 0 auto;
+    }
+    .mini-date p{
+        line-height: 15px;
+    }
+}
+.add-btn{
+    background: #e47777;
+}
+.date{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.day-header{
+    display: flex;
+    background: #D1D1D1;
+    color: #455A64;
+}
+.day-header h4{
+    padding-left: 10px;
+}
+.day-header .date p {
+    line-height: 32px;
+}
+.day-header .active-day{
+    margin-top: 15px;
+    margin-left: 5px;
+}
+.day-header .active-day p{
+    line-height: 0px;
+}
+.active-day{
+    background-color: #E47777;
+    border-radius: 20px;
+}
+.active-day p{
+    line-height: 29px;
+    color: white;
+}
+
+.event-child{
+    background: #e9e9e9;
+    height: 30px;
+    text-align: center;
+    border-radius: 2.5px;
+    border-left: 5px #E47777 solid;
+}
+
+.event-child p{
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.extend-btn{
+    display: none;
+    width: 61px;
+    height: 61px;
+    position: absolute;
+    right: 0;
+}
+.extend-btn i {
+    width: 61px;
+    height: 61px;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 65px;
+}
+.extend-btn.active{
+    display: block;
+}
+
+.list-day-container{
+    background: #e9e9e9;
+}
+
+.list-day-container .event-child{
+    border-radius: 0px;
+    border: none;
+}

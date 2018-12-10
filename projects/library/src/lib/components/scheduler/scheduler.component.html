@@ -1,4 +1,12 @@
-<div class="page-content">
+<mat-tab-group>
+  <mat-tab label="Calendar View">
+    <iu-calendar-view (newEventHandler)="addNewEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [calendarMonth]="calendarMonth" [weekArray]="week" [events]="events"></iu-calendar-view>
+  </mat-tab>
+  <mat-tab label="List View">
+    <iu-list-view (changeMonthEvent)="changeCurrentDate($event)" [calendarMonth]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
+  </mat-tab>
+</mat-tab-group>
+<!-- <div class="page-content">
   <div class="page-content__container container">
     <div class="sidebar-layout" style="padding-top:1em">
       <div class="sidebar-layout__main" style="font-size:14px">
@@ -45,3 +53,4 @@
     </div>
   </div>
 </div>
+ -->
