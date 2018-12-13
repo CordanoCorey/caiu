@@ -14,19 +14,17 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatTabsModule } from '@angular/material';
-import {MatButtonModule, MatNativeDateModule, MatSidenavModule} from '@angular/material';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatButtonModule, MatNativeDateModule, MatSidenavModule } from '@angular/material';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
     SharedModule,
     MatTabsModule,
     MatButtonModule,
@@ -41,7 +39,9 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
   ],
-  entryComponents: [EventCreatorDialogComponent],
+  entryComponents: [
+    EventCreatorDialogComponent,
+  ],
   declarations: [
     SchedulerComponent,
     CalendarViewComponent,
