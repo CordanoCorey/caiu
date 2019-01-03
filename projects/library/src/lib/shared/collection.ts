@@ -224,6 +224,11 @@ export class Collection<T> {
         return Object.assign(new Collection<T>(), this, { items });
     }
 
+    patch(id: number | string, props: any): Collection<T> {
+        const existing = this.get(id);
+        return this.update(this.buildItem(existing, props));
+    }
+
     query(path: string): T[] {
         return this.toArray().filter(item => Collection.Filter(item, path));
     }

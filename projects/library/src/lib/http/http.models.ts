@@ -19,7 +19,7 @@ export class HttpDeletePayload<T> implements HttpActionPayload<T> {
     options: HttpOptions = new HttpOptions();
     headers?: any = undefined;
     onSuccess?= '';
-    onSuccessPayload?: any;
+    data?: any;
     onError?: string | ErrorOutlet;
 }
 

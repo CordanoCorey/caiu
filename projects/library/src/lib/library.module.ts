@@ -24,9 +24,9 @@ import { FileUploadModule } from './components/file-upload/file-upload.module';
 import { NotFoundModule } from './components/not-found/not-found.module';
 import { TileModule } from './components/tile/tile.module';
 import { PipesModule } from './pipes/pipes.module';
-import { SharedModule } from './shared/shared.module';
 import { SchedulerModule } from './components/scheduler/scheduler.module';
 import { TimerModule } from './components/timer/timer.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [

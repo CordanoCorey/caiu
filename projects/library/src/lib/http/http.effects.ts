@@ -7,6 +7,7 @@ import { HttpActions } from './http.actions';
 import { HttpCommands } from './http.commands';
 import { HttpGetPayload, HttpPostPayload, HttpPutPayload, HttpDeletePayload } from './http.models';
 import { Action } from '../store/models';
+import { build } from '../shared/utils';
 
 @Injectable()
 export class HttpEffects<T> {
@@ -49,8 +50,8 @@ export class HttpEffects<T> {
     delete$(payload: HttpDeletePayload<T>): Observable<Action> {
         // console.log('DELETE:\t', payload.onSuccess);
         return this.commands.delete$(payload).pipe(
-            map((model: T) => HttpActions.deleteSuccess(payload.onSuccessPayload || model, payload.onSuccess)),
-            catchError((e: Error) => of(HttpActions.deleteError(e, payload.onError)))
+            map((model: T) => HttpActions.deleteSuccess(payload.data || model, payload.onSuccess)),
+            catchError((e: Error) => of(HttpActions.deleteError(build(Error, e, { data: payload.data }), payload.onError)))
         );
     }
 

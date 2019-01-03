@@ -1,5 +1,6 @@
 export class Error {
     message?: string = '';
+    data?: any;
     statusCode?: number = 0;
 }
 

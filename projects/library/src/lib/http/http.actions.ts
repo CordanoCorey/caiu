@@ -7,7 +7,7 @@ import {
     HttpDeletePayload
 } from './http.models';
 import { ErrorActions } from '../errors/errors.actions';
-import { ErrorOutlet, ErrorPayload } from '../errors/errors.models';
+import { ErrorOutlet, ErrorPayload, Error } from '../errors/errors.models';
 import { Action } from '../store/models';
 import { inArray } from '../shared/utils';
 
@@ -75,12 +75,12 @@ export class HttpActions {
         };
     }
 
-    static delete(path: string, onSuccessPayload: any, onSuccess?: string, onError?: string | ErrorOutlet): HttpAction {
+    static delete(path: string, data: any, onSuccess?: string, onError?: string | ErrorOutlet): HttpAction {
         const payload = Object.assign(new HttpDeletePayload<any>(),
             {
                 path: path,
                 onSuccess: onSuccess || HttpActions.DELETE_SUCCESS,
-                onSuccessPayload,
+                data,
                 onError: onError || HttpActions.DELETE_ERROR
             });
         return HttpActions.httpDelete(payload);
