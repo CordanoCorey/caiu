@@ -6,6 +6,7 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { HttpActions } from './http.actions';
 import { HttpCommands } from './http.commands';
 import { HttpGetPayload, HttpPostPayload, HttpPutPayload, HttpDeletePayload } from './http.models';
+import { Error } from '../errors/errors.models';
 import { Action } from '../store/models';
 import { build } from '../shared/utils';
 
