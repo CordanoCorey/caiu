@@ -1,5 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+
+export class CalendarModel {
+  constructor(
+    public calendarId: number,
+    public calendarName: string,
+    public isMaster: boolean,
+    public masterId: number
+  ) {}
+}
 
 export class Day {
   constructor(
@@ -34,14 +43,25 @@ export class MonthName {
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
+  @Input() defaultView; // list or calendar
 
   @ViewChild(CalendarViewComponent)
   CalViewComponent: CalendarViewComponent;
 
+  
+  calendars = [
+    new CalendarModel(0, "Master Calendar", true, null),
+    new CalendarModel(1, "Slave Calendar", false, 0),
+    new CalendarModel(2, "Slave Calendar 2", false, 0),
+    new CalendarModel(3, "Master Calendar 2", true, null),
+    new CalendarModel(4, "Slave Calendar 3", false, 3),
+  ];
+
   now = new Date();
   absoluteNow = new Date();
-
   events = [];
+  selectedView;
+  selectedCalendar = null;
 
   addNewEvent(eventInfo) {
     this.events.push(eventInfo[0]);
@@ -145,6 +165,19 @@ export class SchedulerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    switch(this.defaultView){
+      case "calendar":
+        this.selectedView = 0;
+        break;
+      case "list":
+        this.selectedView = 1;
+        break;
+      default:
+        this.selectedView = 0;
+        break;
+    }
+    console.dir(this.selectedView);
+    console.dir(this.defaultView);
   }
 
 }

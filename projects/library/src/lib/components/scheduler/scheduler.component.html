@@ -1,4 +1,9 @@
-<mat-tab-group>
+<mat-form-field>
+  <mat-select placeholder="Select Calendar" [(value)]="selectedCalendar">
+    <mat-option *ngFor="let calendar of calendars" value="calendar.calendarId">{{ calendar.calendarName }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-tab-group [selectedIndex]="selectedView" *ngIf="selectedCalendar != null">
   <mat-tab label="Calendar View">
     <iu-calendar-view (newEventHandler)="addNewEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [calendarMonth]="calendarMonth" [weekArray]="week" [events]="events"></iu-calendar-view>
   </mat-tab>
@@ -6,51 +11,3 @@
     <iu-list-view (changeMonthEvent)="changeCurrentDate($event)" [calendarMonth]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
   </mat-tab>
 </mat-tab-group>
-<!-- <div class="page-content">
-  <div class="page-content__container container">
-    <div class="sidebar-layout" style="padding-top:1em">
-      <div class="sidebar-layout__main" style="font-size:14px">
-        <iu-calendar></iu-calendar>
-        <div class="text-content">
-          <p>
-            <a href="/releases/fullcalendar/3.9.0/demos/agenda-views.html" target="_blank">Larger version of this demo</a>
-          </p>
-        </div>
-      </div>
-      <div class="sidebar-layout__sidebar">
-        <h3>Core Demos</h3>
-        <ul>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/basic-views.html" target="_blank">Basic views</a></li>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/list-views.html" target="_blank">List views</a></li>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/locales.html" target="_blank">Internationalization</a></li>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/timezones.html" target="_blank">Timezone support</a></li>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/gcal.html" target="_blank">Google Calendar</a></li>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/themes.html" target="_blank">Theming</a></li>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/selectable.html" target="_blank">Selecting time ranges</a></li>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/external-dragging.html" target="_blank">External events</a></li>
-          <li><a href="/releases/fullcalendar/3.9.0/demos/background-events.html" target="_blank">Background events</a></li>
-        </ul>
-        <h3>
-          Scheduler Demos
-          <img src="/assets/images/bolt-orange-14x24@2x.png" width="14" height="24" style="vertical-align:middle;margin:-50% 0 -50% 2px">
-        </h3>
-        <ul>
-          <li><a href="/releases/fullcalendar-scheduler/1.9.4/demos/simple.html" target="_blank">timeline resource view</a></li>
-          <li><a href="/releases/fullcalendar-scheduler/1.9.4/demos/vertical-resource-view.html" target="_blank">vertical
-              resource view</a></li>
-          <li><a href="/scheduler" style="color:#a0a0a0">more »</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="text-content">
-      <p>
-        <strong>Disclaimer</strong>:
-        &nbsp;
-        FullCalendar is great for displaying events, but it isn't a complete solution for event content-management.
-        Beyond dragging an event to a different time/day, you cannot change an event's name or other associated data.
-        It is up to you to add this functionality through FullCalendar's event hooks.
-      </p>
-    </div>
-  </div>
-</div>
- -->
