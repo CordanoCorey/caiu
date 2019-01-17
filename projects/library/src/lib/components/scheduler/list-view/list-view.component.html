@@ -12,8 +12,14 @@
 </div>
 <table class="list-view-calendar calendar">
   <tbody class="list-body">
-    <div class="day" *ngFor="let day of calendar.daysInCurrentMonth; let i = index">
+    <div class="day" *ngFor="let day of calendar.daysInCurrentMonth; index as i">
       <iu-day [date]="day" [currentDay]="calendar.currentDay" [listView]="listView" [week]="week" [events]="events"></iu-day>
+  
+      <button class="list-add-btn" (click)="openEventCreator(calendar.monthId, i, calendar.currentYear)">
+        <i class="material-icons">
+          add
+        </i>
+      </button>
     </div>
   </tbody>            
 </table>

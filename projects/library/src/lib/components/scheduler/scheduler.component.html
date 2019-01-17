@@ -1,13 +1,14 @@
 <mat-form-field>
-  <mat-select placeholder="Select Calendar" [(value)]="selectedCalendar">
-    <mat-option *ngFor="let calendar of calendars" value="calendar.calendarId">{{ calendar.calendarName }}</mat-option>
+  <mat-select placeholder="Select Calendar" [(value)]="selectedCalendarId" (selectionChange)="changeCalendar(selectedCalendarId)">
+    <mat-option *ngFor="let calendar of calendars" [value]="calendar.calendarId">{{ calendar.calendarName }}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-tab-group [selectedIndex]="selectedView" *ngIf="selectedCalendar != null">
+<h1 *ngIf="selectedCalendarId != null">{{selectedCalendar}}</h1>
+<mat-tab-group [selectedIndex]="selectedView" *ngIf="selectedCalendarId != null">
   <mat-tab label="Calendar View">
     <iu-calendar-view (newEventHandler)="addNewEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [calendarMonth]="calendarMonth" [weekArray]="week" [events]="events"></iu-calendar-view>
   </mat-tab>
   <mat-tab label="List View">
-    <iu-list-view (changeMonthEvent)="changeCurrentDate($event)" [calendarMonth]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
+    <iu-list-view (newEventHandler)="addNewEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [calendarMonth]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
   </mat-tab>
 </mat-tab-group>

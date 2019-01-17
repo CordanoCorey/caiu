@@ -1,40 +1,44 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { build } from '../../shared/utils';
 
 export class CalendarModel {
+
+  calendarId = 0;
+  calendarName = '';
+  isMaster = false;
+  masterId = 0;
+
   constructor(
-    public calendarId: number,
-    public calendarName: string,
-    public isMaster: boolean,
-    public masterId: number
-  ) {}
+  ) { }
 }
 
 export class Day {
   constructor(
-      public dayName: string,
-      public position: number
-  ) {}
+    public dayName: string,
+    public position: number
+  ) { }
 }
 
 export class Month {
   constructor(
-      public monthName: string,
-      public shortMonthName: string,
-      public firstDay: number,
-      public currentDay: number,
-      public currentYear: number,
-      public daysInCurrentMonth: any,
-      public lastDay: number
-  ) {}
+    public monthId: number,
+    public monthName: string,
+    public shortMonthName: string,
+    public firstDay: number,
+    public currentDay: number,
+    public currentYear: number,
+    public daysInCurrentMonth: any,
+    public lastDay: number
+  ) { }
 }
 
 export class MonthName {
   constructor(
-      public id: number,
-      public monthName: string,
-      public shortMonthName: string
-  ) {}
+    public id: number,
+    public monthName: string,
+    public shortMonthName: string
+  ) { }
 }
 
 @Component({
@@ -43,28 +47,31 @@ export class MonthName {
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
-  @Input() defaultView; // list or calendar
+  @Input() defaultView: string; // list or calendar
 
   @ViewChild(CalendarViewComponent)
   CalViewComponent: CalendarViewComponent;
 
-  
+
   calendars = [
-    new CalendarModel(0, "Master Calendar", true, null),
-    new CalendarModel(1, "Slave Calendar", false, 0),
-    new CalendarModel(2, "Slave Calendar 2", false, 0),
-    new CalendarModel(3, "Master Calendar 2", true, null),
-    new CalendarModel(4, "Slave Calendar 3", false, 3),
+    build(CalendarModel, { calendarId: 0, calendarName: "Master Calendar", isMaster: true, masterId: null}),
+    build(CalendarModel, { calendarId: 1, calendarName: "Slave Calendar", isMaster: false, masterId: 0}),
   ];
 
   now = new Date();
   absoluteNow = new Date();
   events = [];
-  selectedView;
-  selectedCalendar = null;
+  selectedView: number;
+  selectedCalendarId: number;
+
 
   addNewEvent(eventInfo) {
+    console.log("hello"); // console runs as of version
     this.events.push(eventInfo[0]);
+  }
+
+  changeCalendar(calendarId){
+    console.dir(calendarId);
   }
 
   get beginDate(): Date {
@@ -73,7 +80,7 @@ export class SchedulerComponent implements OnInit {
 
   get calendarMonth(): any {
     return [
-      new Month(this.month, this.shortMonthName, this.firstDay, this.currentDay, this.currentYear, this.daysInCurrentMonth, this.lastDay)
+      new Month(this.monthId, this.month, this.shortMonthName, this.firstDay, this.currentDay, this.currentYear, this.daysInCurrentMonth, this.lastDay)
     ];
   }
 
@@ -129,6 +136,10 @@ export class SchedulerComponent implements OnInit {
     return this.monthNames[this.now.getMonth()].monthName;
   }
 
+  get monthId(): number {
+    return this.monthNames[this.now.getMonth()].id;
+  }
+
   get monthNames(): MonthName[] {
     return [
       new MonthName(0, 'January', 'Jan'),
@@ -144,6 +155,10 @@ export class SchedulerComponent implements OnInit {
       new MonthName(10, 'November', 'Nov'),
       new MonthName(11, 'December', 'Dec')
     ];
+  }
+
+  get selectedCalendar(): string {
+    return build(CalendarModel, this.calendars.find(x => x.calendarId === this.selectedCalendarId)).calendarName;
   }
 
   get shortMonthName(): string {
@@ -165,7 +180,8 @@ export class SchedulerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    switch(this.defaultView){
+
+    switch (this.defaultView) {
       case "calendar":
         this.selectedView = 0;
         break;
@@ -176,8 +192,7 @@ export class SchedulerComponent implements OnInit {
         this.selectedView = 0;
         break;
     }
-    console.dir(this.selectedView);
-    console.dir(this.defaultView);
+    console.dir(this.calendars);
   }
 
 }

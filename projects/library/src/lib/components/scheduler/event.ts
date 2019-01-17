@@ -1,6 +1,7 @@
 import { Validators } from '@angular/forms';
 export class Event {
     eventName = '';
+    calendarId = 0;
     monthOf = 0;
     dayOf = 0;
     yearOf = 0;

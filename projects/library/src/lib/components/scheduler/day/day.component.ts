@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CalendarViewComponent } from '../calendar-view/calendar-view.component';
+
 
 @Component({
   selector: 'iu-day',
@@ -8,6 +9,8 @@ import { CalendarViewComponent } from '../calendar-view/calendar-view.component'
 })
 export class DayComponent implements OnInit {
 
+  constructor() {}
+
   private CalViewComponent: CalendarViewComponent;
 
   @Input() currentDay;
@@ -15,13 +18,21 @@ export class DayComponent implements OnInit {
   @Input() events;
   @Input() listView;
   @Input() view;
-  @Input() week;
+  @Input() week;  
+  @Output() newEventHandler = new EventEmitter<any>();
 
   dayOfWeek: string;
 
   daysWithMultipleEvents = [];
 
   multipleEvents = [];
+  
+  addNewEvent(event) {
+    if (event !== undefined) {
+      console.log('day');
+      this.newEventHandler.emit(event);
+    }
+  }
 
   get calDate(): number {
     return this.date.getDate();
