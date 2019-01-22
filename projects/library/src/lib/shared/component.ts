@@ -1,5 +1,5 @@
 import { OnDestroy } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, AbstractControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Store, Action } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -137,11 +137,45 @@ export class FormComponent extends DumbComponent {
         return this.form.valid;
     }
 
-    markAsSubmitted() {
+    getControl(key: string): AbstractControl {
+        return this.form.controls[key];
+    }
+
+    getControlValue(key: string, defaultValue: any): any {
+        return this.form.value[key] || defaultValue;
+    }
+
+    getControlValueChanges(key: string, fn: (value: any) => void): Subscription {
+        const control = this.getControl(key);
+        return control.valueChanges.subscribe(fn);
+    }
+
+    getValue(defaultValue = null): any {
+        return this.form.value || defaultValue;
+    }
+
+    getValueChanges(fn: (value: any) => void): Subscription {
+        return this.form.valueChanges.subscribe(fn);
+    }
+
+    markAsSubmitted(): void {
         this.form.markAsTouched();
         Object.keys(this.form.controls).forEach(key => {
             this.form.controls[key].markAsTouched();
         });
+    }
+
+    setControlValue(key: string, value: any): void {
+        const control = this.getControl(key);
+        control.setValue(value);
+    }
+
+    subscribeToChanges(key: string, fn: (value: any) => void) {
+        this.addSubscription(this.getValueChanges(fn));
+    }
+
+    subscribeToControlChanges(key: string, fn: (value: any) => void) {
+        this.addSubscription(this.getControlValueChanges(key, fn));
     }
 
 }
