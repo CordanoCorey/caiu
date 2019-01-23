@@ -19,17 +19,17 @@
     </div>
   </div>
 
-  <div class="event-container" *ngIf="multipleEvents.length > 1 && listView === true">
+  <div class="event-container" *ngIf="multipleEvents.length > 1 && listView === true && calendar != undefined && master != undefined">
     <div *ngFor="let event of calEvents">
-      <div *ngIf="event.monthOf === calMonth && event.dayOf === calDate && event.yearOf === calYear" [ngClass]="{'event-child': !listView}" [ngClass]="{'event-child-mini': listView}">
+      <div *ngIf="event.monthOf === calMonth && event.dayOf === calDate && event.yearOf === calYear && (event.calendarId === calId || event.calendarId === master.calendarId)" [ngClass]="{'event-child': !listView}" [ngClass]="{'event-child-mini': listView}">
         <iu-event [event]="event" [listView]="listView"></iu-event>
       </div>
     </div>
   </div>
 
-  <div class="event-container" *ngIf="multipleEvents.length === 1">
+  <div class="event-container" *ngIf="multipleEvents.length === 1 && calendar != undefined && master != undefined">
     <div *ngFor="let event of calEvents">
-      <div *ngIf="event.monthOf === calMonth && event.dayOf === calDate && event.yearOf === calYear" [ngClass]="{'event-child': !listView}" [ngClass]="{'event-child-mini': listView}">
+      <div *ngIf="event.monthOf === calMonth && event.dayOf === calDate && event.yearOf === calYear && (event.calendarId === calId || event.calendarId === master.calendarId)" [ngClass]="{'event-child': !listView}" [ngClass]="{'event-child-mini': listView}">
         <iu-event [event]="event" [listView]="listView"></iu-event>
       </div>
     </div>

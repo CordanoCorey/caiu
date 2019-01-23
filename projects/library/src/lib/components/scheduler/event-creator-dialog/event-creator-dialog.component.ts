@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, Inject, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Inject, OnDestroy, OnInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import { FormGroup } from '@angular/forms';
 import { Event } from '../event';
@@ -11,7 +11,7 @@ import { build } from '../../../shared/utils';
   templateUrl: './event-creator-dialog.component.html',
   styleUrls: ['./event-creator-dialog.component.scss']
 })
-export class EventCreatorDialogComponent implements OnDestroy {
+export class EventCreatorDialogComponent implements OnDestroy, OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   private dialogRef: MatDialogRef<EventCreatorDialogComponent>) {}
@@ -19,14 +19,6 @@ export class EventCreatorDialogComponent implements OnDestroy {
   @Control(Event) eventCreator: FormGroup;
   @Input() events: any[];
   @Output() newEventHandler: EventEmitter<any> = new EventEmitter();
-
-  eventName: string;
-  selectedStartHour: number;
-  selectedStartMinute: number;
-  selectedStartPeriod: string;
-  selectedEndHour: number;
-  selectedEndMinute: number;
-  selectedEndPeriod: string;
 
   get hours(): any {
     return [
@@ -41,6 +33,7 @@ export class EventCreatorDialogComponent implements OnDestroy {
 
   get valueOut(): Event {
     return build(Event, this.eventCreator.value, {
+      calendarId: this.data.calendarId,
       dayOf: this.data.dayInfo.date,
       monthOf: this.data.dayInfo.month,
       yearOf: this.data.dayInfo.year
@@ -60,9 +53,19 @@ export class EventCreatorDialogComponent implements OnDestroy {
       alert('Please fill out remaining fields!');
     } else {
       const newEvent = [ this.valueOut ];
+      console.log(newEvent);
       this.dialogRef.close(newEvent);
     }
-    console.dir(this.eventCreator.get('startTime').status);
+  }
+
+  ngOnInit() {
+    this.eventCreator.get('eventName').setValue("");
+    this.eventCreator.get('startTime').get('hour').setValue("");
+    this.eventCreator.get('startTime').get('minute').setValue("");
+    this.eventCreator.get('startTime').get('timePeriod').setValue("");
+    this.eventCreator.get('endTime').get('hour').setValue("");
+    this.eventCreator.get('endTime').get('minute').setValue("");
+    this.eventCreator.get('endTime').get('timePeriod').setValue("");
   }
 
 }

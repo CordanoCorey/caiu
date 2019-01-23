@@ -13,10 +13,12 @@ export class DayComponent implements OnInit {
 
   private CalViewComponent: CalendarViewComponent;
 
+  @Input() calendar;
   @Input() currentDay;
   @Input() date;
   @Input() events;
   @Input() listView;
+  @Input() master;
   @Input() view;
   @Input() week;  
   @Output() newEventHandler = new EventEmitter<any>();
@@ -26,6 +28,7 @@ export class DayComponent implements OnInit {
   daysWithMultipleEvents = [];
 
   multipleEvents = [];
+  
   
   addNewEvent(event) {
     if (event !== undefined) {
@@ -54,6 +57,10 @@ export class DayComponent implements OnInit {
     return this.date.getFullYear();
   }
 
+  get calId(): number {
+    return this.calendar.calendarId;
+  }
+
   get eventsLength(): number {
     return this.events.length;
   }
@@ -67,9 +74,10 @@ export class DayComponent implements OnInit {
     }
 
     for (const event of this.events) {
-      if ((event.monthOf === this.calMonth) && (event.dayOf === this.calDate) && (event.yearOf === this.calYear)) {
+      if ((event.monthOf === this.calMonth) && (event.dayOf === this.calDate) && (event.yearOf === this.calYear) && (event.calendarId === this.calId || event.calendarId === this.master.calendarId)) {
         this.multipleEvents.push(event.dayOf);
       }
+
     }
 
     if (this.multipleEvents.length > 1) {

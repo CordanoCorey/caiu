@@ -3,19 +3,19 @@
       <button mat-mini-fab (click)="changeMonth(-1)"><i class="material-icons">keyboard_arrow_left</i></button>
   </div>
   <div>
-    <h1 class="date-heading">{{calendar.monthName}}, {{calendar.currentYear}}</h1>
-    <h1 class="date-heading mini">{{calendar.shortMonthName}}, {{calendar.currentYear}}</h1>
+    <h1 class="date-heading">{{calendarInfo[0].monthName}}, {{calendarInfo[0].currentYear}}</h1>
+    <h1 class="date-heading mini">{{calendarInfo[0].shortMonthName}}, {{calendarInfo[0].currentYear}}</h1>
   </div>
   <div>
       <button mat-mini-fab (click)="changeMonth(1)"><i class="material-icons">keyboard_arrow_right</i></button>
   </div>  
 </div>
-<table class="list-view-calendar calendar">
+<table class="list-view-calendar calendar" id="calendar">
   <tbody class="list-body">
-    <div class="day" *ngFor="let day of calendar.daysInCurrentMonth; index as i">
-      <iu-day [date]="day" [currentDay]="calendar.currentDay" [listView]="listView" [week]="week" [events]="events"></iu-day>
+    <div class="day" *ngFor="let day of calendarInfo[0].daysInCurrentMonth; index as i">
+      <iu-day [calendar]="selectedCalendar[0]" [master]="masterCalendar[0]" [date]="day" [currentDay]="calendarInfo[0].currentDay" [listView]="listView" [week]="week" [events]="events"></iu-day>
   
-      <button class="list-add-btn" (click)="openEventCreator(calendar.monthId, i, calendar.currentYear)">
+      <button class="list-add-btn" (click)="openEventCreator(calendarInfo[0].monthId, i + 1, calendarInfo[0].currentYear)">
         <i class="material-icons">
           add
         </i>

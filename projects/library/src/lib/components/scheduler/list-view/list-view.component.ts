@@ -19,24 +19,18 @@ export class ListViewComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  @Input() calendarMonth;
-  @Input() week;
-  @Input() events;
+  @Input() masterCalendar: any[];
+  @Input() selectedCalendar: any[];
+  @Input() calendarInfo: any[];
+  @Input() events: any[];
+  @Input() week: any[];
   @Output() changeMonthEvent = new EventEmitter<any>();
   @Output() newEventHandler = new EventEmitter<any>();
 
-  //ToFix: 
   addNewEvent(event) {
-    console.log('list-view');
     if (event !== undefined) {
       this.newEventHandler.emit(event);
-    } else {
-      console.log("undefined");
     }
-  }
-
-  get calendar(): any {
-    return this.calendarMonth[0];
   }
 
   changeMonth(value) {
@@ -55,7 +49,7 @@ export class ListViewComponent implements OnInit {
     dialogConfig.disableClose = true;
 
     const dialogRef = this.dialog.open(EventCreatorDialogComponent, {
-      data: {dayInfo: dayInfo, events: this.events},
+      data: {calendarId: this.selectedCalendar[0].calendarId ,dayInfo: dayInfo, events: this.events},
       width: '95%',
       maxWidth: '420px',
       height: '500px'
@@ -66,6 +60,9 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(function(){
+      document.getElementById("calendar").focus();
+    }, 500);
   }
 
 }

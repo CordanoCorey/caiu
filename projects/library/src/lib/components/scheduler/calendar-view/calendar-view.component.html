@@ -27,7 +27,7 @@
           </button>   
           <h1>{{ selectedDate }}. {{ selectedDay }}</h1>
           <div *ngFor="let event of events">
-            <div *ngIf="event.monthOf === selectedMonth && event.dayOf === selectedDate && event.yearOf === selectedYear" class="selected-day-event">
+            <div *ngIf="event.monthOf === selectedMonth && event.dayOf === selectedDate && event.yearOf === selectedYear && (event.calendarId === selectedCalendar[0].calendarId || event.calendarId === masterCalendar[0].calendarId)" class="selected-day-event">
               <h1>{{ event.eventName }}</h1>
               <p>Starts: {{ event.startHour }}:<span *ngIf="event.startMinute < 10">0</span>{{event.startMinute}} {{event.startTimePeriod}}</p>
               <p>Ends: {{ event.endHour }}:<span *ngIf="event.endMinute < 10">0</span>{{event.endMinute}} {{event.endTimePeriod}}</p>
@@ -77,7 +77,7 @@
             <div class="day" *ngIf="week.position < calendar.firstDay"></div>
           </span>
           <div class="day" *ngFor="let day of calendar.daysInCurrentMonth" (click)="dayClicked(day)">
-            <iu-day [date]="day" [currentDay]="calendar.currentDay" [listView]="listView" [week]="" [events]="events"></iu-day>
+            <iu-day [master]="masterCalendar[0]" [calendar]="selectedCalendar[0]" [date]="day" [currentDay]="calendar.currentDay" [listView]="listView" [week]="" [events]="events"></iu-day>
           </div>
           <span *ngFor="let week of weekArray">
             <div class="day" *ngIf="week.position > calendar.lastDay"></div>

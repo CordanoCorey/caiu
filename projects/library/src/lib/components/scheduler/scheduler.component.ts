@@ -7,7 +7,7 @@ export class CalendarModel {
   calendarId = 0;
   calendarName = '';
   isMaster = false;
-  masterId = 0;
+  //masterId = 0;
 
   constructor(
   ) { }
@@ -54,8 +54,9 @@ export class SchedulerComponent implements OnInit {
 
 
   calendars = [
-    build(CalendarModel, { calendarId: 0, calendarName: "Master Calendar", isMaster: true, masterId: null}),
-    build(CalendarModel, { calendarId: 1, calendarName: "Slave Calendar", isMaster: false, masterId: 0}),
+    build(CalendarModel, { calendarId: 0, calendarName: "Master Calendar", isMaster: true}),
+    build(CalendarModel, { calendarId: 1, calendarName: "Sub Calendar", isMaster: false}),
+    build(CalendarModel, { calendarId: 2, calendarName: "Sub 2 Calendar", isMaster: false}),
   ];
 
   now = new Date();
@@ -66,16 +67,24 @@ export class SchedulerComponent implements OnInit {
 
 
   addNewEvent(eventInfo) {
-    console.log("hello"); // console runs as of version
     this.events.push(eventInfo[0]);
   }
 
   changeCalendar(calendarId){
-    console.dir(calendarId);
+    console.dir(calendarId);    
+    console.dir(this.calendar);
   }
 
   get beginDate(): Date {
     return new Date(this.month + '1,' + this.currentYear);
+  }
+
+  get calendar(): any {
+    return this.calendars.filter(x => x.calendarId === this.selectedCalendarId);
+  }
+
+  get masterCalendar(): any{
+    return this.calendars.filter(x => x.isMaster === true);
   }
 
   get calendarMonth(): any {
@@ -192,7 +201,6 @@ export class SchedulerComponent implements OnInit {
         this.selectedView = 0;
         break;
     }
-    console.dir(this.calendars);
   }
 
 }

@@ -19,7 +19,9 @@ export class CalendarViewComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  @Input() calendarMonth: any[];
+  @Input() masterCalendar: any[];
+  @Input() selectedCalendar: any[];
+  @Input() calendarInfo: any[];
   @Input() events: any[];
   @Input() weekArray: any[];
   @Output() changeMonthEvent = new EventEmitter<any>();
@@ -41,7 +43,7 @@ export class CalendarViewComponent implements OnInit {
   }
 
   get calendar(): any {
-    return this.calendarMonth[0];
+    return this.calendarInfo[0];
   }
 
   changeMonth(value) {
