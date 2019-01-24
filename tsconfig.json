@@ -18,13 +18,15 @@
     ],
     "paths": {
       "library": [
-        "dist/library"
+        /* "dist/library" */
+        "projects/library/src/public_api"
       ],
       "library/*": [
         "dist/library/*"
       ],
       "grid": [
-        "dist/grid"
+        /* "dist/grid" */
+        "projects/grid/src/public_api"
       ],
       "grid/*": [
         "dist/grid/*"

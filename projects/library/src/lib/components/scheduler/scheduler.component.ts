@@ -71,8 +71,9 @@ export class SchedulerComponent implements OnInit {
   }
 
   changeCalendar(calendarId){
-    console.dir(calendarId);    
-    console.dir(this.calendar);
+    setTimeout(function(){
+      document.getElementById("calendar-select").blur();
+    }, 750)
   }
 
   get beginDate(): Date {
@@ -172,6 +173,18 @@ export class SchedulerComponent implements OnInit {
 
   get shortMonthName(): string {
     return this.monthNames[this.now.getMonth()].shortMonthName;
+  }
+
+  tabChanged(event){
+    if(event.index > 0){
+      setTimeout(function(){
+        document.getElementById("mat-tab-label-0-1").blur();
+      }, 500);
+    } else {
+      setTimeout(function(){
+        document.getElementById("mat-tab-label-0-0").blur();
+      }, 500);
+    }
   }
 
   get week(): Day[] {

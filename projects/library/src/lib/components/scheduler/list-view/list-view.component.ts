@@ -60,9 +60,10 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(function(){
-      document.getElementById("calendar").focus();
-    }, 500);
+    /* setTimeout(function(){
+      document.getElementById("list-body").focus();
+      console.log('focused');
+    }, 1000) */;
   }
 
 }
