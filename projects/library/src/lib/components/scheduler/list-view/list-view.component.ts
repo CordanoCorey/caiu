@@ -41,7 +41,7 @@ export class ListViewComponent implements OnInit {
     return true;
   }
 
-  openEventCreator(month, date, year) {
+  openEventCreator(month, date, year, editing) {
     const dialogConfig = new MatDialogConfig();
 
     const dayInfo = new DayInfo(date, month, year);
@@ -49,7 +49,7 @@ export class ListViewComponent implements OnInit {
     dialogConfig.disableClose = true;
 
     const dialogRef = this.dialog.open(EventCreatorDialogComponent, {
-      data: {calendarId: this.selectedCalendar[0].calendarId ,dayInfo: dayInfo, events: this.events},
+      data: {calendarId: this.selectedCalendar[0].calendarId ,dayInfo: dayInfo, editing: editing, events: this.events},
       width: '95%',
       maxWidth: '420px',
       height: '500px'
@@ -60,10 +60,6 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    /* setTimeout(function(){
-      document.getElementById("list-body").focus();
-      console.log('focused');
-    }, 1000) */;
   }
 
 }

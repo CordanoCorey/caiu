@@ -67,7 +67,11 @@ export class SchedulerComponent implements OnInit {
 
 
   addNewEvent(eventInfo) {
-    this.events.push(eventInfo[0]);
+    if(eventInfo[1] === true){
+      this.events = this.events.map(x => x.eventId === eventInfo[0].eventId ? eventInfo[0] : x);
+    } else {
+      this.events.push(eventInfo[0]);
+    }
   }
 
   changeCalendar(calendarId){

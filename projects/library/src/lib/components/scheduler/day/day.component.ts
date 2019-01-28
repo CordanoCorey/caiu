@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CalendarViewComponent } from '../calendar-view/calendar-view.component';
 
 
 @Component({
@@ -10,8 +9,6 @@ import { CalendarViewComponent } from '../calendar-view/calendar-view.component'
 export class DayComponent implements OnInit {
 
   constructor() {}
-
-  private CalViewComponent: CalendarViewComponent;
 
   @Input() calendar;
   @Input() currentDay;
@@ -32,7 +29,6 @@ export class DayComponent implements OnInit {
   
   addNewEvent(event) {
     if (event !== undefined) {
-      console.log('day');
       this.newEventHandler.emit(event);
     }
   }

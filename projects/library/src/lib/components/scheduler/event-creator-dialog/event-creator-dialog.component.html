@@ -1,6 +1,12 @@
 <div class="form-container">
-  <h1>New Event</h1> 
-  <form [formGroup]="eventCreator" (ngSubmit)="onSubmit()">
+  <h1 *ngIf="data.editing != true">New Event</h1> 
+  <h1 *ngIf="data.editing != false">Edit Event</h1>
+  <mat-form-field *ngIf="data.editing != false">
+    <mat-select placeholder="Event to Edit" (selectionChange)="eventSelected($event)">
+      <mat-option *ngFor="let event of eventsToday" [value]="event">{{event.eventName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <form [formGroup]="eventCreator" (ngSubmit)="onSubmit()" *ngIf="data.editing != true || eventChosen[0] != null">
     <table>
       <tr>
         <td>

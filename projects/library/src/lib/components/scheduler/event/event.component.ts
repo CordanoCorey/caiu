@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
-
+  
   @Input() event;
-  @Input() listView;
+  @Input() listView: boolean;
 
   constructor() { }
 

@@ -6,7 +6,6 @@ p{
     text-overflow: ellipsis;
 }
 .list-event-name{
-    width: 100%;
     white-space: normal;
     transition: all .25s;
     color: #455A64;
@@ -18,10 +17,4 @@ p{
 }
 .list-event-name span{
     color: #E47777;
-}
-.btn-container{
-    position: absolute;
-    top: 0;
-    right: 0;
-    text-align: center;
 }

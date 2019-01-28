@@ -14,17 +14,20 @@
   <tbody class="list-body" id="list-body">
     <div class="day" *ngFor="let day of calendarInfo[0].daysInCurrentMonth; index as i">
       <iu-day [calendar]="selectedCalendar[0]" [master]="masterCalendar[0]" [date]="day" [currentDay]="calendarInfo[0].currentDay" [listView]="listView" [week]="week" [events]="events"></iu-day>
-  
-      <button class="list-add-btn" (click)="openEventCreator(calendarInfo[0].monthId, i + 1, calendarInfo[0].currentYear)">
+      <!--
+        - Create edit functions
+        - Add a button that shows/hides the add and edit buttons
+      -->
+      <button class="list-add-btn" (click)="openEventCreator(calendarInfo[0].monthId, i + 1, calendarInfo[0].currentYear, false)">
         <i class="material-icons">
           add
         </i>
       </button>
-      <!-- <button class="list-edit-btn">
+      <button class="list-edit-btn" (click)="openEventCreator(calendarInfo[0].monthId, i + 1, calendarInfo[0].currentYear, true)">
         <i class="material-icons">
           create
-          </i>
-      </button> -->
+        </i>
+      </button>
     </div>
   </tbody>            
 </table>
