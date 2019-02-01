@@ -73,10 +73,8 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     } else {
       this.eventId = this.eventChosen[0].eventId;
     }
-    const indexOfEventName = Object.values(this.valueOut).indexOf(undefined);
-    const indexOfStartTime = Object.values(this.valueOut.startTime).indexOf(undefined);
-    const indexOfEndTime = Object.values(this.valueOut.endTime).indexOf(undefined);
-    if (indexOfEventName !== -1 || indexOfStartTime !== -1 || indexOfEndTime !== -1) {
+
+    if(this.eventCreator.status != 'VALID'){
       alert('Please fill out remaining fields!');
     } else {
       if(this.data.editing != true){

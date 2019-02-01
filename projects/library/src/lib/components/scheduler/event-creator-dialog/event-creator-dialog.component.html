@@ -76,7 +76,7 @@
       </tr>
       <tr>
         <td>
-          <button mat-button type="submit">Submit</button>
+          <button mat-button type="submit"><span *ngIf="data.editing != true">Submit</span><span *ngIf="data.editing != false">Save</span></button>
         </td>
       </tr>
     </table>
