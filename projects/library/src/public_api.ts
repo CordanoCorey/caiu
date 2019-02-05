@@ -43,6 +43,8 @@ export * from './lib/components/file-upload/upload/upload.component';
 export * from './lib/components/file-upload/uploads/uploads.component';
 export * from './lib/components/not-found/not-found.module';
 export * from './lib/components/not-found/not-found.component';
+export * from './lib/components/scheduler/scheduler.module';
+export * from './lib/components/scheduler/scheduler.component';
 export * from './lib/components/tile/tile.module';
 export * from './lib/components/tile/tile.component';
 export * from './lib/components/tile/tile.model';

@@ -7,7 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu'
+import { MatMenuModule } from '@angular/material/menu'
 import { MatSelectModule } from '@angular/material/select';
 
 import { SchedulerComponent } from './scheduler.component';
@@ -49,6 +49,11 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   exports: [
     SchedulerComponent,
+    CalendarViewComponent,
+    EventCreatorDialogComponent,
+    EventComponent,
+    DayComponent,
+    ListViewComponent,
   ]
 })
 export class SchedulerModule { }
