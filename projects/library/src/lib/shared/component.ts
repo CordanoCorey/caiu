@@ -2,7 +2,7 @@ import { OnDestroy } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Store, Action } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 import { HasId } from './models';
 import { getValue, truthy } from './utils';
@@ -76,6 +76,25 @@ export class DumbComponent implements OnDestroy {
         subscriptions.forEach(s => {
             this.addSubscription(s);
         });
+    }
+
+    sync(keys: string[]) {
+        keys.forEach(key => {
+            const subscription = (<Observable<any>>this[`${key}$`]).subscribe(e => {
+                this[key] = e;
+            });
+            this.addSubscription(subscription);
+        });
+    }
+
+    syncKey(key: string, handler?: (e: any) => void) {
+        const subscription = (<Observable<any>>this[`${key}$`]).subscribe(e => {
+            this[key] = e;
+            if (handler && typeof (handler) === 'function') {
+                handler(e);
+            }
+        });
+        this.addSubscription(subscription);
     }
 
     flashErrorMessage(duration = 5000) {
