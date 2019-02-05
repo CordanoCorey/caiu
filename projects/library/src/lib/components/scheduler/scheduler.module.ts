@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule, MatButtonModule, MatNativeDateModule, MatSidenavModule } from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,10 +18,12 @@ import { EventComponent } from './event/event.component';
 import { DayComponent } from './day/day.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { SharedModule } from '../../shared/shared.module';
+import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 
 @NgModule({
   imports: [
     SharedModule,
+    MatCheckboxModule,
     MatTabsModule,
     MatButtonModule,
     MatNativeDateModule,
@@ -38,6 +41,7 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   entryComponents: [
     EventCreatorDialogComponent,
+    CalCreatorDialogComponent
   ],
   declarations: [
     SchedulerComponent,
@@ -46,6 +50,7 @@ import { SharedModule } from '../../shared/shared.module';
     EventComponent,
     DayComponent,
     ListViewComponent,
+    CalCreatorDialogComponent,
   ],
   exports: [
     SchedulerComponent,
