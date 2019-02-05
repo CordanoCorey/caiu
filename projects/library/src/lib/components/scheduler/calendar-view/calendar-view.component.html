@@ -29,8 +29,18 @@
           <div *ngFor="let event of events">
             <div *ngIf="event.monthOf === selectedMonth && event.dayOf === selectedDate && event.yearOf === selectedYear && (event.calendarId === selectedCalendar[0].calendarId || event.calendarId === masterCalendar[0].calendarId)" class="selected-day-event">
               <h1>{{ event.eventName }}</h1>
-              <p>Starts: {{ event.startHour }}:<span *ngIf="event.startMinute < 10">0</span>{{event.startMinute}} {{event.startTimePeriod}}</p>
-              <p>Ends: {{ event.endHour }}:<span *ngIf="event.endMinute < 10">0</span>{{event.endMinute}} {{event.endTimePeriod}}</p>
+              <span *ngIf="event.allDay != true">
+                <p>Starts: {{ event.startHour }}:<span *ngIf="event.startMinute < 10">0</span>{{event.startMinute}} {{event.startTimePeriod}}</p>
+                <p>Ends: {{ event.endHour }}:<span *ngIf="event.endMinute < 10">0</span>{{event.endMinute}} {{event.endTimePeriod}}</p>
+              </span>
+              <span *ngIf="event.allDay != false">
+                <h3>All Day Event</h3>
+              </span>
+              <button mat-mini-fab class="edit-btn" (click)="openEventCreator(true)">
+                <i class="material-icons">
+                  create
+                </i>
+              </button>
             </div>
           </div>
         </div>

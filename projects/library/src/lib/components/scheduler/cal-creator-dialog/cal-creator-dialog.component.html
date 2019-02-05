@@ -1,0 +1,27 @@
+<div class="form-container">
+  <h1>Create Calendar</h1>
+
+    <form [formGroup]="calendarCreator" (ngSubmit)="onSubmit()">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input type="text" formControlName="calendarName" matInput placeholder="Calendar Name"/>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <textarea matInput formControlName="description" placeholder="Calendar Description"></textarea>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+           <button mat-button type="submit">Submit</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+</div>

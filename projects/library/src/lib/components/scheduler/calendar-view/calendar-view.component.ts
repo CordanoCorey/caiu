@@ -82,19 +82,13 @@ export class CalendarViewComponent implements OnInit {
     return false;
   }
 
-  /* 
-    Event Creator doesn't get all data somehow.
-    It thinks a field is empty.
-    Some data must not be getting to the right places.
-  */
-
   openEventCreator(editing) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
 
     const dialogRef = this.dialog.open(EventCreatorDialogComponent, {
-      data: {calendarId: this.selectedCalendar[0].calendarId, dayInfo: this.dayInfo, events: this.events, editing: editing},
+      data: {calendarId: this.selectedCalendar[0].calendarId, calendar: this.selectedCalendar[0], dayInfo: this.dayInfo, events: this.events, editing: editing},
       width: '95%',
       maxWidth: '420px',
       height: '500px'

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, Inject, OnDestroy, OnInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Event } from '../event';
 import { Control } from '../../../forms/decorators';
 import { build } from '../../../shared/utils';
@@ -20,6 +20,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   @Input() events: any[];
   @Output() newEventHandler: EventEmitter<any> = new EventEmitter();
 
+  checked: boolean;
   eventChosen = [];
   eventId: string;
 
@@ -33,6 +34,23 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       10, 15, 20, 25, 30, 35, 40, 45, 50, 55
     ];
   }
+
+  get disableTime(): any{
+    return new FormControl(this.isAllDay);
+  }
+
+  get isAllDay(): boolean{
+    return this.eventCreator.get('allDay').value;
+  }
+
+  /* get checked(): boolean{
+    return this.data.calendar.isAllDayDefault;
+  } */
+
+  get isAllDayEnforced(): boolean{
+    return this.data.calendar.isAllDayEnforced;
+  }
+
   get newId(): string {
     return  Math.random().toString(36).substr(2, 9);
   }
@@ -68,6 +86,14 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   onSubmit() {
+    if(this.isAllDay === true) {
+      this.eventCreator.get('startTime').get('hour').setValue("12");
+      this.eventCreator.get('startTime').get('minute').setValue("0");
+      this.eventCreator.get('startTime').get('timePeriod').setValue("AM");
+      this.eventCreator.get('endTime').get('hour').setValue("11");
+      this.eventCreator.get('endTime').get('minute').setValue("55");
+      this.eventCreator.get('endTime').get('timePeriod').setValue("PM");
+    }
     if(this.data.editing != true){
       this.eventId = this.newId;
     } else {
@@ -88,6 +114,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
+    this.checked = this.data.calendar.isAllDayDefault;
     if(this.data.editing != true){
       this.eventCreator.get('eventName').setValue("");
       this.eventCreator.get('startTime').get('hour').setValue("");

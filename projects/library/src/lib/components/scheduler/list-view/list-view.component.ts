@@ -42,6 +42,8 @@ export class ListViewComponent implements OnInit {
   }
 
   openEventCreator(month, date, year, editing) {
+    // run logic that detects if an all day event is already created, and remove the add btn
+
     const dialogConfig = new MatDialogConfig();
 
     const dayInfo = new DayInfo(date, month, year);
@@ -49,7 +51,7 @@ export class ListViewComponent implements OnInit {
     dialogConfig.disableClose = true;
 
     const dialogRef = this.dialog.open(EventCreatorDialogComponent, {
-      data: {calendarId: this.selectedCalendar[0].calendarId ,dayInfo: dayInfo, editing: editing, events: this.events},
+      data: {calendarId: this.selectedCalendar[0].calendarId, calendar: this.selectedCalendar[0], dayInfo: dayInfo, editing: editing, events: this.events},
       width: '95%',
       maxWidth: '420px',
       height: '500px'

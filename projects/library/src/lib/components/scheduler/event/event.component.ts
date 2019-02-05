@@ -10,6 +10,10 @@ export class EventComponent implements OnInit {
   @Input() event;
   @Input() listView: boolean;
 
+  get isAllDay(): boolean{
+    return this.event.isAllDay;
+  }
+
   constructor() { }
 
   ngOnInit() {

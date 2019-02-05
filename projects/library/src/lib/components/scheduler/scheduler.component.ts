@@ -1,17 +1,9 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 import { build } from '../../shared/utils';
-
-export class CalendarModel {
-
-  calendarId = 0;
-  calendarName = '';
-  isMaster = false;
-  //masterId = 0;
-
-  constructor(
-  ) { }
-}
+import { CalendarModel } from './calendar';
 
 export class Day {
   constructor(
@@ -47,6 +39,9 @@ export class MonthName {
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
+
+  constructor(public dialog: MatDialog) {}
+
   @Input() defaultView: string; // list or calendar
 
   @ViewChild(CalendarViewComponent)
@@ -54,9 +49,9 @@ export class SchedulerComponent implements OnInit {
 
 
   calendars = [
-    build(CalendarModel, { calendarId: 0, calendarName: "Master Calendar", isMaster: true}),
-    build(CalendarModel, { calendarId: 1, calendarName: "Sub Calendar", isMaster: false}),
-    build(CalendarModel, { calendarId: 2, calendarName: "Sub 2 Calendar", isMaster: false}),
+    build(CalendarModel, { calendarId: 0, calendarName: "Master Calendar", isMaster: true, isAllDayDefault: false, isAllDayEnforced: false}),
+    build(CalendarModel, { calendarId: 1, calendarName: "All Day Enforced", isMaster: false, isAllDayDefault: true, isAllDayEnforced: true}),
+    build(CalendarModel, { calendarId: 2, calendarName: "All Day Default", isMaster: false, isAllDayDefault: true, isAllDayEnforced: false}),
   ];
 
   now = new Date();
@@ -65,6 +60,13 @@ export class SchedulerComponent implements OnInit {
   selectedView: number;
   selectedCalendarId: number;
 
+  addNewCalendar(newCalendar){
+    if(newCalendar !== undefined) {
+      this.calendars.push(newCalendar[0]);
+    } else {
+      console.warn(undefined);
+    }
+  }
 
   addNewEvent(eventInfo) {
     if(eventInfo[1] === true){
@@ -171,6 +173,22 @@ export class SchedulerComponent implements OnInit {
     ];
   }
 
+  openCalendarCreator(){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+
+    const dialogRef = this.dialog.open(CalCreatorDialogComponent, {
+      data: {calendars: this.calendars},
+      width: '95%,',
+      maxWidth: '420px',
+      height: '500px'
+    });
+    dialogRef.afterClosed().subscribe(
+      data => this.addNewCalendar(data)
+    )
+  }
+
   get selectedCalendar(): string {
     return build(CalendarModel, this.calendars.find(x => x.calendarId === this.selectedCalendarId)).calendarName;
   }
@@ -202,8 +220,6 @@ export class SchedulerComponent implements OnInit {
       new Day('Saturday', 6),
     ];
   }
-
-  constructor() { }
 
   ngOnInit() {
 
