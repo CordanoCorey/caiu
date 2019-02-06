@@ -1,13 +1,11 @@
-export class CalendarModel {
+export class Calendar {
 
-    calendarId = 0;
-    calendarName = '';
-    description = '';
-    isAllDayDefault = false;
-    isAllDayEnforced = false;
-    isMaster = false;
-    //masterId = 0;
-  
-    constructor(
-    ) { }
-  }
+  calendarId = 0;
+  calendarName = '';
+  description = '';
+  isAllDayDefault = false;
+  isAllDayEnforced = false;
+  isMaster = false;
+  // parentId = 0;
+
+}

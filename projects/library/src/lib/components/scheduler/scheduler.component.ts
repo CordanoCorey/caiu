@@ -3,7 +3,7 @@ import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 import { build } from '../../shared/utils';
-import { CalendarModel } from './calendar';
+import { Calendar } from './calendar';
 
 export class Day {
   constructor(
@@ -40,19 +40,18 @@ export class MonthName {
 })
 export class SchedulerComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
-  @Input() defaultView: string; // list or calendar
-
+  @Input() allDayDefault = false;
+  @Input() allDayEnforced = false;
+  @Input() calendars = [
+    build(Calendar, { calendarId: 0, calendarName: 'Master Calendar', isMaster: true, isAllDayDefault: false, isAllDayEnforced: false }),
+    build(Calendar, { calendarId: 1, calendarName: 'All Day Enforced', isMaster: false, isAllDayDefault: true, isAllDayEnforced: true }),
+    build(Calendar, { calendarId: 2, calendarName: 'All Day Default', isMaster: false, isAllDayDefault: true, isAllDayEnforced: false }),
+  ];
+  @Input() defaultView: 'CALENDAR' | 'LIST' = 'CALENDAR';
   @ViewChild(CalendarViewComponent)
   CalViewComponent: CalendarViewComponent;
-
-
-  calendars = [
-    build(CalendarModel, { calendarId: 0, calendarName: "Master Calendar", isMaster: true, isAllDayDefault: false, isAllDayEnforced: false}),
-    build(CalendarModel, { calendarId: 1, calendarName: "All Day Enforced", isMaster: false, isAllDayDefault: true, isAllDayEnforced: true}),
-    build(CalendarModel, { calendarId: 2, calendarName: "All Day Default", isMaster: false, isAllDayDefault: true, isAllDayEnforced: false}),
-  ];
 
   now = new Date();
   absoluteNow = new Date();
@@ -60,8 +59,8 @@ export class SchedulerComponent implements OnInit {
   selectedView: number;
   selectedCalendarId: number;
 
-  addNewCalendar(newCalendar){
-    if(newCalendar !== undefined) {
+  addNewCalendar(newCalendar) {
+    if (newCalendar !== undefined) {
       this.calendars.push(newCalendar[0]);
     } else {
       console.warn(undefined);
@@ -69,17 +68,17 @@ export class SchedulerComponent implements OnInit {
   }
 
   addNewEvent(eventInfo) {
-    if(eventInfo[1] === true){
+    if (eventInfo[1] === true) {
       this.events = this.events.map(x => x.eventId === eventInfo[0].eventId ? eventInfo[0] : x);
     } else {
       this.events.push(eventInfo[0]);
     }
   }
 
-  changeCalendar(calendarId){
-    setTimeout(function(){
-      document.getElementById("calendar-select").blur();
-    }, 750)
+  changeCalendar(calendarId) {
+    setTimeout(function () {
+      document.getElementById('calendar-select').blur();
+    }, 750);
   }
 
   get beginDate(): Date {
@@ -90,7 +89,7 @@ export class SchedulerComponent implements OnInit {
     return this.calendars.filter(x => x.calendarId === this.selectedCalendarId);
   }
 
-  get masterCalendar(): any{
+  get masterCalendar(): any {
     return this.calendars.filter(x => x.isMaster === true);
   }
 
@@ -173,13 +172,13 @@ export class SchedulerComponent implements OnInit {
     ];
   }
 
-  openCalendarCreator(){
+  openCalendarCreator() {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
 
     const dialogRef = this.dialog.open(CalCreatorDialogComponent, {
-      data: {calendars: this.calendars},
+      data: { calendars: this.calendars },
       width: '95%,',
       maxWidth: '420px',
       height: '500px'
@@ -190,21 +189,21 @@ export class SchedulerComponent implements OnInit {
   }
 
   get selectedCalendar(): string {
-    return build(CalendarModel, this.calendars.find(x => x.calendarId === this.selectedCalendarId)).calendarName;
+    return build(Calendar, this.calendars.find(x => x.calendarId === this.selectedCalendarId)).calendarName;
   }
 
   get shortMonthName(): string {
     return this.monthNames[this.now.getMonth()].shortMonthName;
   }
 
-  tabChanged(event){
-    if(event.index > 0){
-      setTimeout(function(){
-        document.getElementById("mat-tab-label-0-1").blur();
+  tabChanged(event) {
+    if (event.index > 0) {
+      setTimeout(function () {
+        document.getElementById('mat-tab-label-0-1').blur();
       }, 500);
     } else {
-      setTimeout(function(){
-        document.getElementById("mat-tab-label-0-0").blur();
+      setTimeout(function () {
+        document.getElementById('mat-tab-label-0-0').blur();
       }, 500);
     }
   }
@@ -224,10 +223,10 @@ export class SchedulerComponent implements OnInit {
   ngOnInit() {
 
     switch (this.defaultView) {
-      case "calendar":
+      case 'CALENDAR':
         this.selectedView = 0;
         break;
-      case "list":
+      case 'LIST':
         this.selectedView = 1;
         break;
       default:

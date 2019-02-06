@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import { CalendarModel } from '../calendar';
+import { Calendar } from '../calendar';
 import { build } from '../../../shared/utils';
 import { Control } from '../../../forms/decorators';
 import { FormGroup } from '@angular/forms';
@@ -15,7 +15,7 @@ export class CalCreatorDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   private dialogRef: MatDialogRef<CalCreatorDialogComponent>) {}
 
-  @Control(CalendarModel) calendarCreator: FormGroup;
+  @Control(Calendar) calendarCreator: FormGroup;
 
   newId: string;
 
@@ -34,8 +34,8 @@ export class CalCreatorDialogComponent implements OnInit {
     return Math.random().toString(36).substr(2, 9);
   } */
 
-  get valueOut(): CalendarModel {
-    return build(CalendarModel, this.calendarCreator.value, {
+  get valueOut(): Calendar {
+    return build(Calendar, this.calendarCreator.value, {
       calendarId: this.newId,
     })
   }
