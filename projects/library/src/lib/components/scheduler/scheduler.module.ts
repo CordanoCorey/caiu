@@ -41,7 +41,7 @@ import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dial
   ],
   entryComponents: [
     EventCreatorDialogComponent,
-    CalCreatorDialogComponent
+    CalCreatorDialogComponent,
   ],
   declarations: [
     SchedulerComponent,

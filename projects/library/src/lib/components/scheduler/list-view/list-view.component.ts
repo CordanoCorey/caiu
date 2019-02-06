@@ -26,10 +26,15 @@ export class ListViewComponent implements OnInit {
   @Input() week: any[];
   @Output() changeMonthEvent = new EventEmitter<any>();
   @Output() newEventHandler = new EventEmitter<any>();
+  @Output() deleteEventHandler = new EventEmitter<any>();
 
-  addNewEvent(event) {
-    if (event !== undefined) {
-      this.newEventHandler.emit(event);
+  manageEvent(event){
+    if(event != undefined){
+      if(event[1] === true || event[1] === undefined){
+        this.newEventHandler.emit(event);
+      } else if (event[1] === false) {
+        this.deleteEventHandler.emit(event);
+      }
     }
   }
 
@@ -57,7 +62,7 @@ export class ListViewComponent implements OnInit {
       height: '500px'
     });
     dialogRef.afterClosed().subscribe(
-      data => this.addNewEvent(data)
+      data => this.manageEvent(data)
     );
   }
 

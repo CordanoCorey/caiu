@@ -12,9 +12,9 @@
 <h1 *ngIf="selectedCalendarId != null">{{selectedCalendar}}</h1>
 <mat-tab-group (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedView" *ngIf="selectedCalendarId != null">
   <mat-tab label="Calendar View" id="calendar-view">
-    <iu-calendar-view (newEventHandler)="addNewEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar" [calendarInfo]="calendarMonth" [weekArray]="week" [events]="events"></iu-calendar-view>
+    <iu-calendar-view (newEventHandler)="addNewEvent($event)" (deleteEventHandler)="deleteEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar" [calendarInfo]="calendarMonth" [weekArray]="week" [events]="events"></iu-calendar-view>
   </mat-tab>
   <mat-tab label="List View" id="list-view">
-    <iu-list-view (newEventHandler)="addNewEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar" [calendarInfo]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
+    <iu-list-view (newEventHandler)="addNewEvent($event)" (deleteEventHandler)="deleteEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar" [calendarInfo]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
   </mat-tab>
 </mat-tab-group>

@@ -6,6 +6,11 @@
       <mat-option *ngFor="let event of eventsToday" [value]="event">{{event.eventName}}</mat-option>
     </mat-select>
   </mat-form-field>
+  <button mat-fab color="warn" style="float: right;" (click)="deleteEvent(eventChosen)" *ngIf="eventChosen.length > 0 && data.editing != false">
+    <i class="material-icons">
+      delete
+    </i>
+  </button>
   <form [formGroup]="eventCreator" (ngSubmit)="onSubmit()" *ngIf="data.editing != true || eventChosen[0] != null">
     <table>
       <tr>

@@ -19,6 +19,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   @Control(Event) eventCreator: FormGroup;
   @Input() events: any[];
   @Output() newEventHandler: EventEmitter<any> = new EventEmitter();
+  @Output() deleteEventHandler: EventEmitter<any> = new EventEmitter();
 
   checked: boolean;
   eventChosen = [];
@@ -35,6 +36,13 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     ];
   }
 
+  deleteEvent(event){
+    if(window.confirm("Are you okay with deleting this event?")){
+      const deleteArr = [event[0], false];
+      this.dialogRef.close(deleteArr);
+    }
+  }
+
   get disableTime(): any{
     return new FormControl(this.isAllDay);
   }
@@ -42,10 +50,6 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   get isAllDay(): boolean{
     return this.eventCreator.get('allDay').value;
   }
-
-  /* get checked(): boolean{
-    return this.data.calendar.isAllDayDefault;
-  } */
 
   get isAllDayEnforced(): boolean{
     return this.data.calendar.isAllDayEnforced;
