@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { DumbComponent } from '@caiu/library';
+
 import { EventCreatorDialogComponent } from '../event-creator-dialog/event-creator-dialog.component';
 
 export class DayInfo {
@@ -7,7 +9,7 @@ export class DayInfo {
     public date: number,
     public month: number,
     public year: number
-  ) {}
+  ) { }
 }
 
 @Component({
@@ -15,9 +17,11 @@ export class DayInfo {
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.scss']
 })
-export class ListViewComponent implements OnInit {
+export class ListViewComponent extends DumbComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {
+    super();
+  }
 
   @Input() masterCalendar: any[];
   @Input() selectedCalendar: any[];
@@ -29,14 +33,14 @@ export class ListViewComponent implements OnInit {
   @Output() deleteEventHandler = new EventEmitter<any>();
 
   allDayEvents = [];
-  isAllDay: boolean = false;
+  isAllDay = false;
 
   changeMonth(value) {
     this.changeMonthEvent.emit(value);
   }
 
-  checkAllDay(isAllDay){
-    if(isAllDay === true){
+  checkAllDay(isAllDay) {
+    if (isAllDay === true) {
       this.isAllDay = true;
     }
   }
@@ -45,69 +49,74 @@ export class ListViewComponent implements OnInit {
     return true;
   }
 
-  openEventCreator(month, date, year, editing) {
-    
-    let dayInfo = new DayInfo(date, month, year);
-    let dialog = this.dialog;
-    let selectedCalendar = this.selectedCalendar;
-    let events = this.events;
-    let newEventHandler = this.newEventHandler;
-    let deleteEventHandler = this.deleteEventHandler;
+  closeDialog(e: any) {
+    super.closeDialog(e);
+    this.manageEvent(e);
+  }
 
-    if(this.events.length > 0 && editing != true){ //checks for events
-      this.events.every(function(element, index){
-        if(element.dayOf === dayInfo.date && element.monthOf === dayInfo.month && element.yearOf === dayInfo.year){ //if an event's date matches the selected date
-          if(element.allDay){ //if an all day event exists
-            window.alert("Can't fit anymore events in today.");
+  openEventCreator(month, date, year, editing) {
+
+    const dayInfo = new DayInfo(date, month, year);
+
+    if (this.events.length > 0 && editing !== true) { // checks for events
+      this.events.every(function (element, index) {
+        if (element.dayOf === dayInfo.date && element.monthOf === dayInfo.month && element.yearOf === dayInfo.year) { // if an event's date matches the selected date
+          if (element.allDay) { // if an all day event exists
+            window.alert('Can\'t fit anymore events in today.');
             return false;
-          } else { //if an event exists that's not all day, open dialog with all day disabled
-            runDialog(false, false);
+          } else { // if an event exists that's not all day, open dialog with all day disabled
+            this.runDialog(false, false);
             return false;
           }
-        } else if(index + 1 < events.length){ //no events matched the selected date, if there's still more events move on
+        } else if (index + 1 < this.events.length) { // no events matched the selected date, if there's still more events move on
           return true;
-        } else { //no events' date matches the selected date
-          runDialog(true, false);
+        } else { // no events' date matches the selected date
+          this.runDialog(true, false);
           return false;
         }
       });
     } else { // runs when no events exist on array
-      console.log("that last runDialog()");
-      if(editing != false){
-        runDialog(true, true);
+      console.log('that last runDialog()');
+      if (!editing) {
+        this.runDialog(dayInfo, true, false);
         return false;
       } else {
-        runDialog(true, false);
+        this.runDialog(dayInfo, true, true);
         return false;
       }
     }
 
-    function runDialog(allowAllDay, editing){
-      const dialogConfig = new MatDialogConfig();
+  }
 
-      dialogConfig.disableClose = true;
-  
-      const dialogRef = dialog.open(EventCreatorDialogComponent, {
-        data: {allowAllDay: allowAllDay, calendarId: selectedCalendar[0].calendarId, calendar: selectedCalendar[0], dayInfo: dayInfo, editing: editing, events: events},
-        width: '95%',
-        maxWidth: '420px',
-        height: '500px'
-      });
-      dialogRef.afterClosed().subscribe(
-        data => manageEvent(data, newEventHandler, deleteEventHandler)
-      );
-    }
-
-    function manageEvent(event, newEventHandler, deleteEventHandler){
-      if(event != undefined){
-        if(event[1] === true || event[1] === undefined){
-          newEventHandler.emit(event);
-        } else if (event[1] === false) {
-          deleteEventHandler.emit(event);
-        }
+  manageEvent(event) {
+    console.dir(this);
+    if (event !== undefined) {
+      if (event[1] === true || event[1] === undefined) {
+        this.newEventHandler.emit(event);
+      } else if (event[1] === false) {
+        this.deleteEventHandler.emit(event);
       }
     }
+  }
 
+  runDialog(dayInfo: DayInfo, allowAllDay: boolean, editing: boolean) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+
+    this.openDialog(EventCreatorDialogComponent, {
+      data: {
+        allowAllDay,
+        calendarId: this.selectedCalendar[0].calendarId,
+        calendar: this.selectedCalendar[0],
+        dayInfo,
+        editing,
+        events: this.events
+      },
+      width: '95%',
+      maxWidth: '420px',
+      height: '500px'
+    });
   }
 
   ngOnInit() {

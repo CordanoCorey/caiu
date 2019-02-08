@@ -81,8 +81,8 @@ export class SchedulerComponent implements OnInit {
     }, 750);
   }
 
-  deleteEvent(event){
-    const eventToDelete = this.events.map(function(e) {return e.eventId; }).indexOf(event[0].eventId);
+  deleteEvent(event) {
+    const eventToDelete = this.events.map(function (e) { return e.eventId; }).indexOf(event[0].eventId);
     console.log(eventToDelete);
     this.events.splice(eventToDelete, 1);
     console.dir(this.events);
