@@ -19,6 +19,7 @@ export class DayComponent implements OnInit {
   @Input() view;
   @Input() week;  
   @Output() newEventHandler = new EventEmitter<any>();
+  @Output() hasAllDay = new EventEmitter<any>();
 
   dayOfWeek: string;
 
@@ -27,11 +28,11 @@ export class DayComponent implements OnInit {
   multipleEvents = [];
   
   
-  addNewEvent(event) {
+  /* addNewEvent(event) {
     if (event !== undefined) {
       this.newEventHandler.emit(event);
     }
-  }
+  } */
 
   get calDate(): number {
     return this.date.getDate();
@@ -55,6 +56,12 @@ export class DayComponent implements OnInit {
 
   get calId(): number {
     return this.calendar.calendarId;
+  }
+
+  checkAllDay(isAllDay){
+    if(isAllDay === true){
+      this.hasAllDay.emit(true);
+    }
   }
 
   get eventsLength(): number {

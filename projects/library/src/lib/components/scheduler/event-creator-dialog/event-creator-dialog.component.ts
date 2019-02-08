@@ -61,6 +61,8 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
 
   eventSelected(event){
     this.eventChosen.push(event.value);
+    this.checked = event.value.allDay;;
+    console.log('checked: ' + this.checked);
     this.eventCreator.get('eventName').setValue(event.value.eventName);
     this.eventCreator.get('startTime').get('hour').setValue(event.value.startTime.hour);
     this.eventCreator.get('startTime').get('minute').setValue(event.value.startTime.minute);

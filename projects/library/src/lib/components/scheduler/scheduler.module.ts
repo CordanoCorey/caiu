@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu'
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SchedulerComponent } from './scheduler.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
@@ -36,6 +37,7 @@ import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dial
     MatIconModule,
     MatMenuModule,
     MatSelectModule,
+    MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
   ],
