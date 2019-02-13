@@ -1,5 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+export class EventDialogInfo {
+  constructor(
+    public month: number,
+    public date: number,
+    public year: number,
+    public editing: boolean
+  ) {}
+}
 
 @Component({
   selector: 'iu-day',
@@ -11,23 +19,20 @@ export class DayComponent implements OnInit {
   constructor() {}
 
   @Input() calendar;
-  @Input() currentDay;
+  @Input() calendarInfo;
   @Input() date;
   @Input() events;
   @Input() listView;
   @Input() master;
   @Input() view;
-  @Input() week;  
-  @Output() newEventHandler = new EventEmitter<any>();
-  @Output() hasAllDay = new EventEmitter<any>();
+  @Input() week;
+  @Output() openEventDialog = new EventEmitter<any>();
 
+  allDay;
   dayOfWeek: string;
-
   daysWithMultipleEvents = [];
-
   multipleEvents = [];
-  
-  
+
   /* addNewEvent(event) {
     if (event !== undefined) {
       this.newEventHandler.emit(event);
@@ -59,13 +64,17 @@ export class DayComponent implements OnInit {
   }
 
   checkAllDay(isAllDay){
-    if(isAllDay === true){
-      this.hasAllDay.emit(true);
-    }
+    this.allDay = isAllDay;
   }
 
   get eventsLength(): number {
     return this.events.length;
+  }
+
+  openDialog(month, date, year, editing){
+    const eventDialogInfo = new EventDialogInfo(month, date, year, editing);
+
+    this.openEventDialog.emit(eventDialogInfo);
   }
 
   ngOnInit() {

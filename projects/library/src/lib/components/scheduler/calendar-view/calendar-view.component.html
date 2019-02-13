@@ -36,7 +36,7 @@
               <span *ngIf="event.allDay != false">
                 <h3>All Day Event</h3>
               </span>
-              <button mat-mini-fab class="edit-btn" (click)="openEventCreator(true)">
+              <button mat-mini-fab class="edit-btn" (click)="openEventCreator(calendar.monthId, selectedDate, calendar.currentYear, true)">
                 <i class="material-icons">
                   create
                 </i>
@@ -44,12 +44,12 @@
             </div>
           </div>
         </div>
-        <button mat-fab class="add-btn" (click)="openEventCreator(false)">
+        <button mat-fab class="add-btn" (click)="openEventCreator(calendar.monthId, selectedDate, calendar.currentYear, false)">
           <i class="material-icons">
             add
           </i>
         </button>
-        <button mat-mini-fab class="add-btn mini" (click)="openEventCreator(false)">
+        <button mat-mini-fab class="add-btn mini" (click)="openEventCreator(calendar.monthId, selectedDate, calendar.currentYear, false)">
           <i class="material-icons">
             add
           </i>
@@ -87,7 +87,7 @@
             <div class="day" *ngIf="week.position < calendar.firstDay"></div>
           </span>
           <div class="day" *ngFor="let day of calendar.daysInCurrentMonth" (click)="dayClicked(day)">
-            <iu-day [master]="masterCalendar[0]" [calendar]="selectedCalendar[0]" [date]="day" [currentDay]="calendar.currentDay" [listView]="listView" [week]="" [events]="events"></iu-day>
+            <iu-day [master]="masterCalendar[0]" [calendar]="selectedCalendar[0]" [calendarInfo]="calendarInfo[0]" [date]="day" [listView]="listView" [week]="" [events]="events"></iu-day>
           </div>
           <span *ngFor="let week of weekArray">
             <div class="day" *ngIf="week.position > calendar.lastDay"></div>

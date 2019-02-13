@@ -13,17 +13,7 @@
 <table class="list-view-calendar calendar" id="calendar">
   <tbody class="list-body" id="list-body">
     <div class="day" *ngFor="let day of calendarInfo[0].daysInCurrentMonth; index as i">
-      <iu-day (hasAllDay)="checkAllDay($event)" [calendar]="selectedCalendar[0]" [master]="masterCalendar[0]" [date]="day" [currentDay]="calendarInfo[0].currentDay" [listView]="listView" [week]="week" [events]="events"></iu-day>
-      <button [id]="'btn-' + i" class="list-add-btn" (click)="openEventCreator(calendarInfo[0].monthId, i + 1, calendarInfo[0].currentYear, false)">
-        <i class="material-icons">
-          add
-        </i>
-      </button>
-      <button class="list-edit-btn" (click)="openEventCreator(calendarInfo[0].monthId, i + 1, calendarInfo[0].currentYear, true)">
-        <i class="material-icons">
-          create
-        </i>
-      </button>
+      <iu-day (openEventDialog)="openEventCreator($event)" [calendar]="selectedCalendar[0]" [master]="masterCalendar[0]" [date]="day" [calendarInfo]="calendarInfo[0]" [listView]="listView" [week]="week" [events]="events"></iu-day>
     </div>
   </tbody>            
 </table>

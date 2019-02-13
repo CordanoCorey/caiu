@@ -1,13 +1,8 @@
 <mat-form-field>
-  <mat-select id="calendar-select" placeholder="Select Calendar" [(value)]="selectedCalendarId" (selectionChange)="changeCalendar(selectedCalendarId)">
+  <mat-select id="calendar-select" placeholder="{{calPlaceholder}}" [(value)]="selectedCalendarId" (selectionChange)="changeCalendar(selectedCalendarId)">
     <mat-option *ngFor="let calendar of calendars" [value]="calendar.calendarId">{{ calendar.calendarName }}</mat-option>
   </mat-select>
 </mat-form-field>
-<!-- <button mat-mini-fab (click)="openCalendarCreator()">
-  <i class="material-icons">
-    add
-  </i>
-</button> -->
 <button mat-button (click)="openCalendarCreator()">Add Calendar</button>
 <h1 *ngIf="selectedCalendarId != null">{{selectedCalendar}}</h1>
 <mat-tab-group (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedView" *ngIf="selectedCalendarId != null">
