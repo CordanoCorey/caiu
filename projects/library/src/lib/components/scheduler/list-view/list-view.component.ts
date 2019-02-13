@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
-import { DumbComponent } from '@caiu/library';
 
 import { EventCreatorDialogComponent } from '../event-creator-dialog/event-creator-dialog.component';
+import { DumbComponent } from '../../../shared/component';
 
 export class DayInfo {
   constructor(
