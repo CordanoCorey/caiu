@@ -49,7 +49,9 @@ export class SchedulerComponent implements OnInit {
     build(Calendar, { calendarId: 1, calendarName: 'All Day Enforced', isMaster: false, isAllDayDefault: true, isAllDayEnforced: true }),
     build(Calendar, { calendarId: 2, calendarName: 'All Day Default', isMaster: false, isAllDayDefault: true, isAllDayEnforced: false }),
   ];
+  @Input() calPlaceholder = 'Select Calendar';
   @Input() defaultView: 'CALENDAR' | 'LIST' = 'CALENDAR';
+  @Input() selectedCalendarId: number;
   @ViewChild(CalendarViewComponent)
   CalViewComponent: CalendarViewComponent;
 
@@ -57,7 +59,6 @@ export class SchedulerComponent implements OnInit {
   absoluteNow = new Date();
   events = [];
   selectedView: number;
-  selectedCalendarId: number;
 
   addNewCalendar(newCalendar) {
     if (newCalendar !== undefined) {
@@ -83,9 +84,7 @@ export class SchedulerComponent implements OnInit {
 
   deleteEvent(event) {
     const eventToDelete = this.events.map(function (e) { return e.eventId; }).indexOf(event[0].eventId);
-    console.log(eventToDelete);
     this.events.splice(eventToDelete, 1);
-    console.dir(this.events);
   }
 
   get beginDate(): Date {

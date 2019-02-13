@@ -1,6 +1,6 @@
 <div [ngClass]="{'list-day-container': listView}">
   <div [ngClass]="{'day-header': listView}">
-    <div class="date" *ngIf="currentDay !== calDate; else elseBlock" [ngClass]="{'mini-date': !listView}">
+    <div class="date" *ngIf="calendarInfo.currentDay !== calDate; else elseBlock" [ngClass]="{'mini-date': !listView}">
       <p>{{ calDate }}</p>
     </div>
     <ng-template #elseBlock>
@@ -34,5 +34,15 @@
       </div>
     </div>
   </div>
-
 </div>
+
+<button *ngIf="listView === true" [disabled]="allDay" class="list-add-btn" (click)="openDialog(calendarInfo.monthId, calDate, calendarInfo.currentYear, false)">
+  <i class="material-icons">
+    add
+  </i>
+</button>
+<button *ngIf="listView === true" class="list-edit-btn" (click)="openDialog(calendarInfo.monthId, calDate, calendarInfo.currentYear, true)">
+  <i class="material-icons">
+    create
+  </i>
+</button>
