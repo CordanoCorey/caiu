@@ -9,7 +9,8 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTableModule
 } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -48,6 +49,7 @@ import { SharedModule } from './shared/shared.module';
     MatRadioModule,
     MatSelectModule,
     MatTabsModule,
+    MatTableModule,
     MatToolbarModule,
     PipesModule,
     SchedulerModule,

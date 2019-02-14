@@ -130,4 +130,8 @@ export class AppComponent {
     // console.log('\n\nwindow:resize', this.windowWidth, this.windowHeight);
   }
 
+
+  schedulerTest(value: any){
+    console.dir(value);
+  }
 }

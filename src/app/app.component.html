@@ -41,7 +41,7 @@
 </form>
 
 <div *ngIf="activeDemo === 'scheduler'" class="example">
-  <iu-scheduler defaultView="CALENDAR"></iu-scheduler>
+  <iu-scheduler defaultView="LIST" (newCalendarHandler)="schedulerTest($event)" (newEventHandler)="schedulerTest($event)" (editedEventHandler)="schedulerTest($event)" (deletedEventHandler)="schedulerTest($event)"></iu-scheduler>
 </div>
 
 <router-outlet></router-outlet>

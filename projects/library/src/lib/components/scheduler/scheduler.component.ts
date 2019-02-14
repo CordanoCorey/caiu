@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
@@ -52,6 +52,10 @@ export class SchedulerComponent implements OnInit {
   @Input() calPlaceholder = 'Select Calendar';
   @Input() defaultView: 'CALENDAR' | 'LIST' = 'CALENDAR';
   @Input() selectedCalendarId: number;
+  @Output() newCalendarHandler = new EventEmitter<any>();
+  @Output() newEventHandler = new EventEmitter<any>();
+  @Output() editedEventHandler = new EventEmitter<any>();
+  @Output() deletedEventHandler = new EventEmitter<any>();
   @ViewChild(CalendarViewComponent)
   CalViewComponent: CalendarViewComponent;
 
@@ -63,6 +67,7 @@ export class SchedulerComponent implements OnInit {
   addNewCalendar(newCalendar) {
     if (newCalendar !== undefined) {
       this.calendars.push(newCalendar[0]);
+      this.newCalendarHandler.emit(newCalendar[0]);
     } else {
       console.warn(undefined);
     }
@@ -71,8 +76,10 @@ export class SchedulerComponent implements OnInit {
   addNewEvent(eventInfo) {
     if (eventInfo[1] === true) {
       this.events = this.events.map(x => x.eventId === eventInfo[0].eventId ? eventInfo[0] : x);
+      this.editedEventHandler.emit(eventInfo[0]);
     } else {
       this.events.push(eventInfo[0]);
+      this.newEventHandler.emit(eventInfo[0]);
     }
   }
 
@@ -85,6 +92,7 @@ export class SchedulerComponent implements OnInit {
   deleteEvent(event) {
     const eventToDelete = this.events.map(function (e) { return e.eventId; }).indexOf(event[0].eventId);
     this.events.splice(eventToDelete, 1);
+    this.deletedEventHandler.emit(event[0]);
   }
 
   get beginDate(): Date {
