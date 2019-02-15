@@ -1,18 +1,15 @@
 <mat-toolbar color="primary">
   <button (click)="activeDemo='wallpaper'" mat-button class="demo-link">Wallpaper</button>
-  <button (click)="activeDemo='collage'" mat-button class="demo-link">Collage</button>
+  <!-- <button (click)="activeDemo='collage'" mat-button class="demo-link">Collage</button> -->
   <button (click)="activeDemo='date'" mat-button class="demo-link">Date</button>
   <button (click)="activeDemo='address-manager'" mat-button class="demo-link">Address Manager</button>
-  <button (click)="activeDemo='address-manager-effective-date'" mat-button class="demo-link">Address Manager with
-    Effective Dates</button>
   <button (click)="activeDemo='scheduler'" mat-button class="demo-link">Scheduler</button>
   <button (click)="activeDemo='file-upload'" mat-button class="demo-link">File Upload</button>
-  <button (click)="activeDemo='file-upload-multi'" mat-button class="demo-link">File Upload - Multi</button>
   <button (click)="activeDemo='time'" mat-button class="demo-link">Time</button>
 </mat-toolbar>
 
-<iu-wallpaper *ngIf="activeDemo === 'wallpaper'" [images]="images" [offsetTop]="64" [offsetLeft]="0" [style.height.px]="windowHeight"
-  [style.width.px]="windowWidth"></iu-wallpaper>
+<iu-wallpaper *ngIf="activeDemo === 'wallpaper'" [images]="images" [offsetTop]="64" [offsetLeft]="0"
+  [style.height.px]="windowHeight" [style.width.px]="windowWidth"></iu-wallpaper>
 
 <div *ngIf="activeDemo === 'collage'" class="example">
   Collage
@@ -22,26 +19,35 @@
     <iu-daterange></iu-daterange>
   </div>
   <div *ngIf="activeDemo === 'time'" class="example">
-    <iu-timer [countUp]="false" [countDown]="true" [countdownFrom]="countdownFrom"  (timesUp)="onTimesUp()"></iu-timer>
-    <iu-timer [countUp]="true" [countDown]="true" [millisecondsAlways]="true" [countdownFrom]="countdownFrom"></iu-timer>
+    <iu-timer [countUp]="false" [countDown]="true" [countdownFrom]="countdownFrom" (timesUp)="onTimesUp()"></iu-timer>
+    <iu-timer [countUp]="true" [countDown]="true" [millisecondsAlways]="true" [countdownFrom]="countdownFrom">
+    </iu-timer>
     {{timeAgoTest}}
   </div>
   <div *ngIf="activeDemo === 'address-manager'" class="example">
     <iu-address [addresses]="addresses"></iu-address>
-  </div>
-  <div *ngIf="activeDemo === 'address-manager-effective-date'" class="example">
     <iu-address [addresses]="addresses" [requireEffectiveDate]="true"></iu-address>
   </div>
   <div *ngIf="activeDemo === 'file-upload'" class="example">
     <iu-file-upload (upload)="onUpload($event)"></iu-file-upload>
-  </div>
-  <div *ngIf="activeDemo === 'file-upload-multi'" class="example">
     <iu-file-upload [multiple]="true" (upload)="onUpload($event)"></iu-file-upload>
   </div>
 </form>
 
 <div *ngIf="activeDemo === 'scheduler'" class="example">
-  <iu-scheduler defaultView="LIST" (newCalendarHandler)="schedulerTest($event)" (newEventHandler)="schedulerTest($event)" (editedEventHandler)="schedulerTest($event)" (deletedEventHandler)="schedulerTest($event)"></iu-scheduler>
+  <iu-scheduler defaultView="LIST" (addCalendar)="schedulerTest($event)" (addEvent)="schedulerTest($event)"
+    (updateEvent)="schedulerTest($event)" (deleteEvent)="schedulerTest($event)"
+    (changeCalendarId)="onChangeCalendarId($event)">
+    <ng-template let-onAddCalendar="onAddCalendar" #actionsTemplate>
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="onAddCalendar()">Add Calendar</button>
+      </div>
+    </ng-template>
+    <!-- <ng-template #calendarsListTemplate let-calendars="calendars" let-changeCalendar="changeCalendar">
+      <button mat-button color="primary" *ngFor="let calendar of calendars"
+        (click)="changeCalendar(calendar.calendarId)">{{ calendar.calendarName }}</button>
+    </ng-template> -->
+  </iu-scheduler>
 </div>
 
 <router-outlet></router-outlet>

@@ -18,7 +18,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
 
   @Control(Event) eventCreator: FormGroup;
   @Input() events: any[];
-  @Output() newEventHandler: EventEmitter<any> = new EventEmitter();
+  @Output() addEvent: EventEmitter<any> = new EventEmitter();
   @Output() deleteEventHandler: EventEmitter<any> = new EventEmitter();
 
   checked: boolean;

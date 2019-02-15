@@ -9,7 +9,6 @@ iu-file-upload {
 //     min-height: 1000px;
 //     display: block;
 // }
-
 mat-toolbar {
     z-index: 999;
     position: absolute;
@@ -27,4 +26,12 @@ mat-toolbar {
 
 .cdk-overlay-pane {
     position: absolute !important;
+}
+
+iu-scheduler {
+    .actions {
+        button {
+            margin: 0 5px;
+        }
+    }
 }

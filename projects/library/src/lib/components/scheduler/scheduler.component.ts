@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ViewEncapsulation, ContentChild, TemplateRef } from '@angular/core';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
@@ -44,56 +44,27 @@ export class SchedulerComponent implements OnInit {
 
   @Input() allDayDefault = false;
   @Input() allDayEnforced = false;
+  @Input() calendarPlaceholder = 'Select Calendar';
   @Input() calendars = [
     build(Calendar, { calendarId: 0, calendarName: 'Master Calendar', isMaster: true, isAllDayDefault: false, isAllDayEnforced: false }),
     build(Calendar, { calendarId: 1, calendarName: 'All Day Enforced', isMaster: false, isAllDayDefault: true, isAllDayEnforced: true }),
     build(Calendar, { calendarId: 2, calendarName: 'All Day Default', isMaster: false, isAllDayDefault: true, isAllDayEnforced: false }),
   ];
-  @Input() calPlaceholder = 'Select Calendar';
   @Input() defaultView: 'CALENDAR' | 'LIST' = 'CALENDAR';
   @Input() selectedCalendarId: number;
-  @Output() newCalendarHandler = new EventEmitter<any>();
-  @Output() newEventHandler = new EventEmitter<any>();
-  @Output() editedEventHandler = new EventEmitter<any>();
-  @Output() deletedEventHandler = new EventEmitter<any>();
-  @ViewChild(CalendarViewComponent)
-  CalViewComponent: CalendarViewComponent;
+  @Output() addCalendar = new EventEmitter<any>();
+  @Output() addEvent = new EventEmitter<any>();
+  @Output() changeCalendarId = new EventEmitter<number>();
+  @Output() deleteEvent = new EventEmitter<any>();
+  @Output() updateEvent = new EventEmitter<any>();
+  @ViewChild(CalendarViewComponent) calendarViewComponent: CalendarViewComponent;
+  @ContentChild('actionsTemplate') actionsTemplate: TemplateRef<any>;
+  @ContentChild('calendarsListTemplate') calendarsListTemplate: TemplateRef<any>;
 
   now = new Date();
   absoluteNow = new Date();
   events = [];
   selectedView: number;
-
-  addNewCalendar(newCalendar) {
-    if (newCalendar !== undefined) {
-      this.calendars.push(newCalendar[0]);
-      this.newCalendarHandler.emit(newCalendar[0]);
-    } else {
-      console.warn(undefined);
-    }
-  }
-
-  addNewEvent(eventInfo) {
-    if (eventInfo[1] === true) {
-      this.events = this.events.map(x => x.eventId === eventInfo[0].eventId ? eventInfo[0] : x);
-      this.editedEventHandler.emit(eventInfo[0]);
-    } else {
-      this.events.push(eventInfo[0]);
-      this.newEventHandler.emit(eventInfo[0]);
-    }
-  }
-
-  changeCalendar(calendarId) {
-    setTimeout(function () {
-      document.getElementById('calendar-select').blur();
-    }, 750);
-  }
-
-  deleteEvent(event) {
-    const eventToDelete = this.events.map(function (e) { return e.eventId; }).indexOf(event[0].eventId);
-    this.events.splice(eventToDelete, 1);
-    this.deletedEventHandler.emit(event[0]);
-  }
 
   get beginDate(): Date {
     return new Date(this.month + '1,' + this.currentYear);
@@ -103,36 +74,10 @@ export class SchedulerComponent implements OnInit {
     return this.calendars.filter(x => x.calendarId === this.selectedCalendarId);
   }
 
-  get masterCalendar(): any {
-    return this.calendars.filter(x => x.isMaster === true);
-  }
-
   get calendarMonth(): any {
     return [
       new Month(this.monthId, this.month, this.shortMonthName, this.firstDay, this.currentDay, this.currentYear, this.daysInCurrentMonth, this.lastDay)
     ];
-  }
-
-  changeCurrentDate(value) {
-    let newMonth = this.now.getMonth() + value;
-    let year = this.now.getFullYear();
-    if (newMonth === 12) {
-      newMonth = 0;
-      year++;
-    }
-    if (newMonth === -1) {
-      newMonth = 11;
-      year--;
-    }
-    if (newMonth === this.absoluteNow.getMonth() && year === this.absoluteNow.getFullYear()) {
-      this.now = this.absoluteNow;
-    } else {
-      this.now = new Date(year, newMonth, 1);
-    }
-  }
-
-  closeDayView() {
-    this.CalViewComponent.closeDayView();
   }
 
   get currentDay(): number {
@@ -161,6 +106,10 @@ export class SchedulerComponent implements OnInit {
     return new Date(this.now.getFullYear(), this.now.getMonth() + 1, 0).getDay();
   }
 
+  get masterCalendar(): any {
+    return this.calendars.filter(x => x.isMaster === true);
+  }
+
   get month(): string {
     return this.monthNames[this.now.getMonth()].monthName;
   }
@@ -186,40 +135,12 @@ export class SchedulerComponent implements OnInit {
     ];
   }
 
-  openCalendarCreator() {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-
-    const dialogRef = this.dialog.open(CalCreatorDialogComponent, {
-      data: { calendars: this.calendars },
-      width: '95%,',
-      maxWidth: '420px',
-      height: '500px'
-    });
-    dialogRef.afterClosed().subscribe(
-      data => this.addNewCalendar(data)
-    )
-  }
-
   get selectedCalendar(): string {
     return build(Calendar, this.calendars.find(x => x.calendarId === this.selectedCalendarId)).calendarName;
   }
 
   get shortMonthName(): string {
     return this.monthNames[this.now.getMonth()].shortMonthName;
-  }
-
-  tabChanged(event) {
-    if (event.index > 0) {
-      setTimeout(function () {
-        document.getElementById('mat-tab-label-0-1').blur();
-      }, 500);
-    } else {
-      setTimeout(function () {
-        document.getElementById('mat-tab-label-0-0').blur();
-      }, 500);
-    }
   }
 
   get week(): Day[] {
@@ -247,6 +168,91 @@ export class SchedulerComponent implements OnInit {
         this.selectedView = 0;
         break;
     }
+  }
+
+  onDeleteEvent(event) {
+    const eventToDelete = this.events.map(function (e) { return e.eventId; }).indexOf(event[0].eventId);
+    this.events.splice(eventToDelete, 1);
+    this.deleteEvent.emit(event[0]);
+  }
+
+  addNewCalendar(newCalendar) {
+    if (newCalendar !== undefined) {
+      this.calendars.push(newCalendar[0]);
+      this.addCalendar.emit(newCalendar[0]);
+    } else {
+      console.warn(undefined);
+    }
+  }
+
+  addNewEvent(eventInfo) {
+    if (eventInfo[1] === true) {
+      this.events = this.events.map(x => x.eventId === eventInfo[0].eventId ? eventInfo[0] : x);
+      this.updateEvent.emit(eventInfo[0]);
+    } else {
+      this.events.push(eventInfo[0]);
+      this.addEvent.emit(eventInfo[0]);
+    }
+  }
+
+  changeCalendar(id: number) {
+    this.changeCalendarId.emit(id);
+    this.selectedCalendarId = id;
+    // setTimeout(function () {
+    //   document.getElementById('calendar-select').blur();
+    // }, 750);
+  }
+
+  changeCurrentDate(value) {
+    let newMonth = this.now.getMonth() + value;
+    let year = this.now.getFullYear();
+    if (newMonth === 12) {
+      newMonth = 0;
+      year++;
+    }
+    if (newMonth === -1) {
+      newMonth = 11;
+      year--;
+    }
+    if (newMonth === this.absoluteNow.getMonth() && year === this.absoluteNow.getFullYear()) {
+      this.now = this.absoluteNow;
+    } else {
+      this.now = new Date(year, newMonth, 1);
+    }
+  }
+
+  closeDayView() {
+    this.calendarViewComponent.closeDayView();
+  }
+
+  openCalendarCreator() {
+
+    console.dir(this);
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+
+    const dialogRef = this.dialog.open(CalCreatorDialogComponent, {
+      data: { calendars: this.calendars },
+      width: '95%,',
+      maxWidth: '420px',
+      height: '500px'
+    });
+    dialogRef.afterClosed().subscribe(
+      data => this.addNewCalendar(data)
+    );
+  }
+
+  tabChanged(event) {
+    // if (event.index > 0) {
+    //   setTimeout(function () {
+    //     document.getElementById('mat-tab-label-0-1').blur();
+    //   }, 500);
+    // } else {
+    //   setTimeout(function () {
+    //     document.getElementById('mat-tab-label-0-0').blur();
+    //   }, 500);
+    // }
   }
 
 }

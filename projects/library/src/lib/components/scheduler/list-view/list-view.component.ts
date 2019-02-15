@@ -29,7 +29,7 @@ export class ListViewComponent extends DumbComponent implements OnInit {
   @Input() events: any[];
   @Input() week: any[];
   @Output() changeMonthEvent = new EventEmitter<any>();
-  @Output() newEventHandler = new EventEmitter<any>();
+  @Output() addEvent = new EventEmitter<any>();
   @Output() deleteEventHandler = new EventEmitter<any>();
 
   allDayEvents = [];
@@ -45,7 +45,7 @@ export class ListViewComponent extends DumbComponent implements OnInit {
   manageEvent(event) {
     if (event !== undefined) {
       if (event[1] === true || event[1] === undefined) {
-        this.newEventHandler.emit(event);
+        this.addEvent.emit(event);
       } else if (event[1] === false) {
         this.deleteEventHandler.emit(event);
       }

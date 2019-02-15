@@ -1,15 +1,46 @@
-<mat-form-field>
-  <mat-select id="calendar-select" placeholder="{{calPlaceholder}}" [(value)]="selectedCalendarId" (selectionChange)="changeCalendar(selectedCalendarId)">
-    <mat-option *ngFor="let calendar of calendars" [value]="calendar.calendarId">{{ calendar.calendarName }}</mat-option>
+<!-- CALENDARS LIST -->
+<ng-container *ngTemplateOutlet="calendarsListTemplate; context: { 
+  calendars: calendars,
+  changeCalendar: changeCalendar,
+  calendarPlaceholder: calendarPlaceholder,
+  changeCalendarId: changeCalendarId,
+  selectedCalendarId: selectedCalendarId
+}">
+</ng-container>
+<mat-form-field *ngIf="!calendarsListTemplate">
+  <mat-select id="calendar-select" [placeholder]="calendarPlaceholder" [(value)]="selectedCalendarId"
+    (selectionChange)="changeCalendar(selectedCalendarId)">
+    <mat-option *ngFor="let calendar of calendars" [value]="calendar.calendarId">{{ calendar.calendarName }}
+    </mat-option>
   </mat-select>
 </mat-form-field>
-<button mat-button (click)="openCalendarCreator()">Add Calendar</button>
+<!-- END CALENDARS LIST -->
+
+<!-- ACTIONS -->
+<ng-container *ngTemplateOutlet="actionsTemplate; context: { 
+    onAddCalendar: openCalendarCreator, 
+    dialog: dialog, 
+    addNewCalendar: addNewCalendar,
+    calendars: calendars,
+    addCalendar: addCalendar
+  }">
+</ng-container>
+<div *ngIf="!actionsTemplate" class="actions">
+  <button mat-raised-button color="primary" (click)="openCalendarCreator()">Add New Calendar</button>
+</div>
+<!-- END ACTIONS -->
+
 <h1 *ngIf="selectedCalendarId != null">{{selectedCalendar}}</h1>
-<mat-tab-group (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedView" *ngIf="selectedCalendarId != null">
+<mat-tab-group (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedView"
+  *ngIf="selectedCalendarId != null">
   <mat-tab label="Calendar View" id="calendar-view">
-    <iu-calendar-view (newEventHandler)="addNewEvent($event)" (deleteEventHandler)="deleteEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar" [calendarInfo]="calendarMonth" [weekArray]="week" [events]="events"></iu-calendar-view>
+    <iu-calendar-view (addEvent)="addNewEvent($event)" (deleteEventHandler)="onDeleteEvent($event)"
+      (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar"
+      [calendarInfo]="calendarMonth" [weekArray]="week" [events]="events"></iu-calendar-view>
   </mat-tab>
   <mat-tab label="List View" id="list-view">
-    <iu-list-view (newEventHandler)="addNewEvent($event)" (deleteEventHandler)="deleteEvent($event)" (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar" [calendarInfo]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
+    <iu-list-view (addEvent)="addNewEvent($event)" (deleteEventHandler)="onDeleteEvent($event)"
+      (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar"
+      [calendarInfo]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
   </mat-tab>
 </mat-tab-group>

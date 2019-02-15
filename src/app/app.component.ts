@@ -108,6 +108,15 @@ export class AppComponent {
     localStorage.setItem('WINDOW_WIDTH', value.toString());
   }
 
+  onChangeCalendarId(id: number) {
+    console.log(id);
+  }
+
+  onClick(e: any) {
+    console.log('click');
+    console.dir(e);
+  }
+
   onTimesUp() {
     this.timer.startAt(this.countdownFrom);
   }
@@ -131,7 +140,7 @@ export class AppComponent {
   }
 
 
-  schedulerTest(value: any){
+  schedulerTest(value: any) {
     console.dir(value);
   }
 }

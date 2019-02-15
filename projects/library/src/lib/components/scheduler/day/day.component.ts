@@ -35,7 +35,7 @@ export class DayComponent implements OnInit {
 
   /* addNewEvent(event) {
     if (event !== undefined) {
-      this.newEventHandler.emit(event);
+      this.addEvent.emit(event);
     }
   } */
 
