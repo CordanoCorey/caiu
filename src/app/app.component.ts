@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, HostListener, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Control, FileUpload, DateHelper, build, Address, Image, Time, TimerComponent } from 'library';
+import { Control, FileUpload, DateHelper, build, Address, Image, Time, TimerComponent, LookupValue, Calendar } from 'library';
 
 import { ExampleForm } from './shared/models';
 
@@ -64,10 +64,20 @@ export class AppComponent {
       zip: '17013'
     }),
   ];
+  calendars = [
+    build(Calendar, { calendarId: 0, calendarName: 'Master Calendar', isMaster: true, isAllDayDefault: false, isAllDayEnforced: false }),
+    build(Calendar, { calendarId: 1, calendarName: 'All Day Enforced', isMaster: false, isAllDayDefault: true, isAllDayEnforced: true }),
+    build(Calendar, { calendarId: 2, calendarName: 'All Day Default', isMaster: false, isAllDayDefault: true, isAllDayEnforced: false }),
+  ]
   countdownFrom = build(Time, {
     minutes: 0,
     seconds: 10,
   });
+  eventTypes: LookupValue[] = [
+    build(LookupValue, { id: 1, name: 'Event Type 1' }),
+    build(LookupValue, { id: 2, name: 'Event Type 2' }),
+    build(LookupValue, { id: 3, name: 'Event Type 3' }),
+  ];
   images = [
     build(Image, { src: 'assets/1.jpg', height: 2160, width: 3840 }),
     build(Image, { src: 'assets/2.jpg', height: 177, width: 284 }),

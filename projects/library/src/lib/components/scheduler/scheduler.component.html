@@ -7,8 +7,8 @@
   selectedCalendarId: selectedCalendarId
 }">
 </ng-container>
-<mat-form-field *ngIf="!calendarsListTemplate">
-  <mat-select id="calendar-select" [placeholder]="calendarPlaceholder" [(value)]="selectedCalendarId"
+<mat-form-field id="calendar-select" *ngIf="!calendarsListTemplate">
+  <mat-select [placeholder]="calendarPlaceholder" [(value)]="selectedCalendarId"
     (selectionChange)="changeCalendar(selectedCalendarId)">
     <mat-option *ngFor="let calendar of calendars" [value]="calendar.calendarId">{{ calendar.calendarName }}
     </mat-option>
@@ -36,11 +36,11 @@
   <mat-tab label="Calendar View" id="calendar-view">
     <iu-calendar-view (addEvent)="addNewEvent($event)" (deleteEventHandler)="onDeleteEvent($event)"
       (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar"
-      [calendarInfo]="calendarMonth" [weekArray]="week" [events]="events"></iu-calendar-view>
+      [calendarInfo]="calendarMonth" [weekArray]="week" [events]="events" [eventTypes]="eventTypes"></iu-calendar-view>
   </mat-tab>
   <mat-tab label="List View" id="list-view">
     <iu-list-view (addEvent)="addNewEvent($event)" (deleteEventHandler)="onDeleteEvent($event)"
       (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar"
-      [calendarInfo]="calendarMonth" [week]="week" [events]="events"></iu-list-view>
+      [calendarInfo]="calendarMonth" [week]="week" [events]="events" [eventTypes]="eventTypes"></iu-list-view>
   </mat-tab>
 </mat-tab-group>

@@ -6,7 +6,7 @@ export class EventDialogInfo {
     public date: number,
     public year: number,
     public editing: boolean
-  ) {}
+  ) { }
 }
 
 @Component({
@@ -16,7 +16,7 @@ export class EventDialogInfo {
 })
 export class DayComponent implements OnInit {
 
-  constructor() {}
+  constructor() { }
 
   @Input() calendar;
   @Input() calendarInfo;
@@ -63,7 +63,7 @@ export class DayComponent implements OnInit {
     return this.calendar.calendarId;
   }
 
-  checkAllDay(isAllDay){
+  checkAllDay(isAllDay) {
     this.allDay = isAllDay;
   }
 
@@ -71,7 +71,7 @@ export class DayComponent implements OnInit {
     return this.events.length;
   }
 
-  openDialog(month, date, year, editing){
+  openDialog(month, date, year, editing) {
     const eventDialogInfo = new EventDialogInfo(month, date, year, editing);
 
     this.openEventDialog.emit(eventDialogInfo);

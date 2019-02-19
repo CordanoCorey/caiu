@@ -54,7 +54,7 @@ export class CustomRoute implements Route {
                 ...this.children,
                 ...this.lazyChildren
             ]
-        }
+        };
     }
 }
 

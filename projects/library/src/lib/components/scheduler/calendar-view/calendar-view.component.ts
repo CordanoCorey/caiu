@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+
 import { EventCreatorDialogComponent } from '../event-creator-dialog/event-creator-dialog.component';
+import { LookupValue } from '../../../lookup/lookup.models';
 import { DumbComponent } from '../../../shared/component';
 
 export class DayInfo {
@@ -8,7 +10,7 @@ export class DayInfo {
     public date: number,
     public month: number,
     public year: number
-  ) {}
+  ) { }
 }
 
 @Component({
@@ -26,6 +28,7 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
   @Input() selectedCalendar: any[];
   @Input() calendarInfo: any[];
   @Input() events: any[];
+  @Input() eventTypes: LookupValue[];
   @Input() weekArray: any[];
   @Output() changeMonthEvent = new EventEmitter<any>();
   @Output() addEvent = new EventEmitter<any>();
@@ -101,7 +104,8 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
         calendar: this.selectedCalendar[0],
         dayInfo,
         editing,
-        events: this.events
+        events: this.events,
+        eventTypes: this.eventTypes,
       },
       width: '95%',
       maxWidth: '420px',

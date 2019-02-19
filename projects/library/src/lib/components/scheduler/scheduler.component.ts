@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ViewEncapsulation, ContentChild, TemplateRef } from '@angular/core';
-import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
+import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { Calendar } from './scheduler.model';
+import { LookupValue } from '../../lookup/lookup.models';
 import { build } from '../../shared/utils';
-import { Calendar } from './calendar';
 
 export class Day {
   constructor(
@@ -42,15 +44,12 @@ export class SchedulerComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
-  @Input() allDayDefault = false;
   @Input() allDayEnforced = false;
   @Input() calendarPlaceholder = 'Select Calendar';
-  @Input() calendars = [
-    build(Calendar, { calendarId: 0, calendarName: 'Master Calendar', isMaster: true, isAllDayDefault: false, isAllDayEnforced: false }),
-    build(Calendar, { calendarId: 1, calendarName: 'All Day Enforced', isMaster: false, isAllDayDefault: true, isAllDayEnforced: true }),
-    build(Calendar, { calendarId: 2, calendarName: 'All Day Default', isMaster: false, isAllDayDefault: true, isAllDayEnforced: false }),
-  ];
+  @Input() calendars = [];
   @Input() defaultView: 'CALENDAR' | 'LIST' = 'CALENDAR';
+  @Input() events = [];
+  @Input() eventTypes: LookupValue[];
   @Input() selectedCalendarId: number;
   @Output() addCalendar = new EventEmitter<any>();
   @Output() addEvent = new EventEmitter<any>();
@@ -60,11 +59,19 @@ export class SchedulerComponent implements OnInit {
   @ViewChild(CalendarViewComponent) calendarViewComponent: CalendarViewComponent;
   @ContentChild('actionsTemplate') actionsTemplate: TemplateRef<any>;
   @ContentChild('calendarsListTemplate') calendarsListTemplate: TemplateRef<any>;
-
   now = new Date();
   absoluteNow = new Date();
-  events = [];
   selectedView: number;
+  _allDayDefault = false;
+
+  @Input()
+  set allDayDefault(value: boolean) {
+    this._allDayDefault = value;
+  }
+
+  get allDayDefault(): boolean {
+    return this._allDayDefault || this.allDayEnforced;
+  }
 
   get beginDate(): Date {
     return new Date(this.month + '1,' + this.currentYear);

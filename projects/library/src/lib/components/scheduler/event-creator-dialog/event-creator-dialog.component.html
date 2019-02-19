@@ -1,36 +1,46 @@
 <div class="form-container">
-  <h1 *ngIf="data.editing != true">New Event</h1> 
+  <h1 *ngIf="data.editing != true">New Event</h1>
   <h1 *ngIf="data.editing != false">Edit Event</h1>
   <mat-form-field *ngIf="data.editing != false">
     <mat-select placeholder="Event to Edit" (selectionChange)="eventSelected($event)">
       <mat-option *ngFor="let event of eventsToday" [value]="event">{{event.eventName}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-fab color="warn" style="float: right;" (click)="deleteEvent(eventChosen)" *ngIf="eventChosen.length > 0 && data.editing != false">
+  <button mat-fab color="warn" style="float: right;" (click)="deleteEvent(eventChosen)"
+    *ngIf="eventChosen.length > 0 && data.editing != false">
     <i class="material-icons">
       delete
     </i>
   </button>
-  <form [formGroup]="eventCreator" (ngSubmit)="onSubmit()" *ngIf="data.editing != true || eventChosen[0] != null">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="data.editing != true || eventChosen[0] != null">
     <table>
       <tr>
         <td>
           <mat-form-field>
-            <input type="text" formControlName="eventName" matInput placeholder="Event Name"/>
+            <input type="text" formControlName="eventName" matInput placeholder="Event Name" />
+          </mat-form-field>
+          <mat-form-field *ngIf="eventTypes">
+            <mat-select placeholder="Event Type" formControlName="eventTypeId">
+              <mat-option *ngFor="let lkp of eventTypes" [value]="lkp.id">
+                {{ lkp.name }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <mat-checkbox formControlName="allDay" [disabled]="!data.allowAllDay" [(ngModel)]="checked" *ngIf="isAllDayEnforced != true">All Day Event</mat-checkbox>
-          <mat-checkbox formControlName="allDay" [disabled]="true" [(ngModel)]="checked" *ngIf="isAllDayEnforced != false">All Day Event</mat-checkbox>
+          <mat-checkbox formControlName="allDay" [disabled]="!data.allowAllDay" [(ngModel)]="checked"
+            *ngIf="isAllDayEnforced != true">All Day Event</mat-checkbox>
+          <mat-checkbox formControlName="allDay" [disabled]="true" [(ngModel)]="checked"
+            *ngIf="isAllDayEnforced != false">All Day Event</mat-checkbox>
         </td>
       </tr>
       <tr>
         <td formGroupName="startTime">
-          <span class="time-text">Start Time:</span> 
+          <span class="time-text">Start Time:</span>
           <mat-form-field class="time-fields">
-            <mat-select formControlName="hour" placeholder="Hour" [disabled]="disableTime.value">        
+            <mat-select formControlName="hour" placeholder="Hour" [disabled]="disableTime.value">
               <mat-option *ngFor="let hour of hours" [value]="hour">
                 {{ hour }}
               </mat-option>
@@ -51,7 +61,7 @@
               <mat-option value="PM">PM</mat-option>
             </mat-select>
           </mat-form-field>
-        </td>       
+        </td>
       </tr>
       <tr>
         <td formGroupName="endTime">
@@ -59,7 +69,9 @@
           <mat-form-field class="time-fields">
             <mat-select formControlName="hour" placeholder="Hour" [disabled]="disableTime.value">
               <ng-container *ngFor="let hour of hours">
-                <mat-option *ngIf="hour >= eventCreator.get('startTime.hour').value || eventCreator.get('startTime.timePeriod').value === 'AM'" [value]="hour">
+                <mat-option
+                  *ngIf="hour >= form.get('startTime.hour').value || form.get('startTime.timePeriod').value === 'AM'"
+                  [value]="hour">
                   {{ hour }}
                 </mat-option>
               </ng-container>
@@ -67,19 +79,25 @@
           </mat-form-field>
           <mat-form-field class="time-fields">
             <mat-select formControlName="minute" placeholder="Minute" [disabled]="disableTime.value">
-              <mat-option [value]="0" *ngIf="eventCreator.get('startTime.hour').value < eventCreator.get('endTime.hour').value || eventCreator.get('startTime.timePeriod').value === 'AM'">00</mat-option>
-              <mat-option [value]="5" *ngIf="eventCreator.get('startTime.minute').value < 5 || eventCreator.get('startTime.hour').value < eventCreator.get('endTime.hour').value">05</mat-option>
+              <mat-option [value]="0"
+                *ngIf="form.get('startTime.hour').value < form.get('endTime.hour').value || form.get('startTime.timePeriod').value === 'AM'">
+                00</mat-option>
+              <mat-option [value]="5"
+                *ngIf="form.get('startTime.minute').value < 5 || form.get('startTime.hour').value < form.get('endTime.hour').value">
+                05</mat-option>
               <ng-container *ngFor="let minute of minutes">
-                <mat-option *ngIf="minute >= eventCreator.get('startTime.minute').value" [value]="minute">
+                <mat-option *ngIf="minute >= form.get('startTime.minute').value" [value]="minute">
                   {{ minute }}
                 </mat-option>
               </ng-container>
-              
+
             </mat-select>
           </mat-form-field>
           <mat-form-field class="time-fields">
             <mat-select formControlName="timePeriod" placeholder="AM/PM" [disabled]="disableTime.value">
-              <mat-option value="AM" *ngIf="eventCreator.get('startTime.hour').value < 12 && eventCreator.get('startTime.minute').value < 55 && eventCreator.get('startTime.timePeriod').value !== 'PM' && eventCreator.get('startTime.hour').value <= eventCreator.get('endTime.hour').value">AM</mat-option>
+              <mat-option value="AM"
+                *ngIf="form.get('startTime.hour').value < 12 && form.get('startTime.minute').value < 55 && form.get('startTime.timePeriod').value !== 'PM' && form.get('startTime.hour').value <= form.get('endTime.hour').value">
+                AM</mat-option>
               <mat-option value="PM">PM</mat-option>
             </mat-select>
           </mat-form-field>
@@ -87,10 +105,10 @@
       </tr>
       <tr>
         <td>
-          <button mat-button type="submit"><span *ngIf="data.editing != true">Submit</span><span *ngIf="data.editing != false">Save</span></button>
+          <button mat-button type="submit"><span *ngIf="data.editing != true">Submit</span><span
+              *ngIf="data.editing != false">Save</span></button>
         </td>
       </tr>
     </table>
   </form>
 </div>
-  

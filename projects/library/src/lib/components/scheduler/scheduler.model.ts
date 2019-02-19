@@ -1,14 +1,27 @@
 import { Validators } from '@angular/forms';
-export class Event {
+
+export class Calendar {
+    calendarId = 0;
+    calendarName = '';
+    description = '';
+    isAllDayDefault = false;
+    isAllDayEnforced = false;
+    isMaster = false;
+    // parentId = 0;
+}
+
+export class CalendarEvent {
     allDay = false;
+    description = '';
     eventId = '';
     eventName = '';
+    eventTypeId = 0;
     calendarId = 0;
     monthOf = 0;
     dayOf = 0;
     yearOf = 0;
-    startTime: Time = new Time();
-    endTime: Time = new Time();
+    startTime: CalendarTime = new CalendarTime();
+    endTime: CalendarTime = new CalendarTime();
 
     get startHour(): number {
         return this.startTime.hour;
@@ -41,6 +54,7 @@ export class Event {
             },
             ignore: [
                 'dayOf',
+                'description',
                 'startHour',
                 'startMinute',
                 'startTimePeriod',
@@ -54,7 +68,7 @@ export class Event {
     }
 }
 
-export class Time {
+export class CalendarTime {
     hour = 0;
     minute = 0;
     timePeriod: 'AM' | 'PM' = 'AM';
