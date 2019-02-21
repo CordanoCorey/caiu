@@ -8,6 +8,7 @@ import { LookupValue } from '../../../lookup/lookup.models';
 import { build } from '../../../shared/utils';
 
 
+
 @Component({
   selector: 'iu-event-creator-dialog',
   templateUrl: './event-creator-dialog.component.html',
@@ -23,6 +24,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   eventChosen = [];
   eventId: string;
   hideSelect = false;
+  noEvents: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -83,22 +85,31 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
+    const dia = this;
+    console.log(this.noEvents);
     this.checked = this.data.calendar.isAllDayDefault;
     if (this.data.editing && this.eventsToday.length === 1) {
       console.log('only one event today');
       this.eventSelected(this.eventsToday[0]);
+      this.noEvents = false;
     }
     if ((this.data.editing && this.eventsToday.length >= 2) || !this.data.editing) {
       this.form.get('eventName').setValue('');
+      this.form.get('eventTypeId').setValue('');
       this.form.get('startTime').get('hour').setValue('');
       this.form.get('startTime').get('minute').setValue('');
       this.form.get('startTime').get('timePeriod').setValue('');
       this.form.get('endTime').get('hour').setValue('');
       this.form.get('endTime').get('minute').setValue('');
       this.form.get('endTime').get('timePeriod').setValue('');
+      this.noEvents = false;
     }
     if (this.data.editing && this.eventsToday.length < 1) {
-      console.log('no events to edit');
+      this.noEvents = true;
+      this.hideSelect = true;
+      setTimeout(function(){
+        dia.dialogRef.close();
+      }, 2000);
     }
   }
 
@@ -138,16 +149,12 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   eventSelected(event) {
-    if(event.value === undefined){
-      console.dir(event.value);
-      console.log('only one event exists');
-      console.log('event:');
-      console.dir(event);
+    if (event.value === undefined) {
       this.eventChosen.push(event);
       this.checked = event.allDay;
       this.hideSelect = true;
-      console.log('checked: ' + this.checked);
       this.form.get('eventName').setValue(event.eventName);
+      this.form.get('eventTypeId').setValue(event.eventTypeId);
       this.form.get('startTime').get('hour').setValue(event.startTime.hour);
       this.form.get('startTime').get('minute').setValue(event.startTime.minute);
       this.form.get('startTime').get('timePeriod').setValue(event.startTime.timePeriod);
@@ -155,11 +162,10 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       this.form.get('endTime').get('minute').setValue(event.endTime.minute);
       this.form.get('endTime').get('timePeriod').setValue(event.endTime.timePeriod);
     } else {
-      console.dir(event.value);
       this.eventChosen.push(event.value);
       this.checked = event.value.allDay;
-      console.log('checked: ' + this.checked);
       this.form.get('eventName').setValue(event.value.eventName);
+      this.form.get('eventTypeId').setValue(event.value.eventTypeId);
       this.form.get('startTime').get('hour').setValue(event.value.startTime.hour);
       this.form.get('startTime').get('minute').setValue(event.value.startTime.minute);
       this.form.get('startTime').get('timePeriod').setValue(event.value.startTime.timePeriod);
