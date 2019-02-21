@@ -70,8 +70,10 @@
 
 <div *ngIf="activeDemo === 'scheduler'" class="example">
   <iu-scheduler
-    defaultView="CALENDAR"
+    defaultView="LIST"
+    [selectedCalendarId]="2"
     [calendars]="calendars"
+    [events]="calendarEvents"
     [eventTypes]="eventTypes"
     (addCalendar)="schedulerTest($event)"
     (addEvent)="schedulerTest($event)"
@@ -90,8 +92,14 @@
       <button mat-button color="primary" *ngFor="let calendar of calendars"
         (click)="changeCalendar(calendar.calendarId)">{{ calendar.calendarName }}</button>
     </ng-template> -->
-    <ng-template let-day="day" #listItemTemplate>
-      <div class="inline-day"></div>
+    <ng-template let-day="day" let-events="events" #listItemTemplate>
+      <div class="calendar-day">
+        <div>{{ day | json }}</div>
+        <div class="calendar-event" *ngFor="let e of events">
+          <h4>{{ e.eventName }}</h4>
+          <p>{{ e.description }}</p>
+        </div>
+      </div>
     </ng-template>
   </iu-scheduler>
 </div>

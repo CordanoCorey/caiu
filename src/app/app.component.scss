@@ -1,7 +1,7 @@
 @import '../styles';
 $theme: mat-light-theme($primary-palette, $accent-palette);
 iu-file-upload {
-    // @include file-upload-color($primary-color, $dark-primary-color, $light-primary-color, #fff);
+  // @include file-upload-color($primary-color, $dark-primary-color, $light-primary-color, #fff);
 }
 
 // :host {
@@ -10,28 +10,42 @@ iu-file-upload {
 //     display: block;
 // }
 mat-toolbar {
-    z-index: 999;
-    position: absolute;
-    top: 0;
-    left: 0;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .example {
-    margin: 100px;
+  margin: 100px;
 }
 
 .demo-link {
-    color: #fff;
+  color: #fff;
 }
 
 .cdk-overlay-pane {
-    position: absolute !important;
+  position: absolute !important;
 }
 
 iu-scheduler {
-    .actions {
-        button {
-            margin: 0 5px;
-        }
+  .actions {
+    button {
+      margin: 0 5px;
     }
+  }
+  .calendar-day {
+    padding: 10px;
+    .calendar-event {
+      padding: 0 10px;
+      h4 {
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
 }

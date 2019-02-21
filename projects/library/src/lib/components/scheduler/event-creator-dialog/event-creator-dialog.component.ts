@@ -86,7 +86,6 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     const dia = this;
-    console.log(this.noEvents);
     this.checked = this.data.calendar.isAllDayDefault;
     if (this.data.editing && this.eventsToday.length === 1) {
       console.log('only one event today');

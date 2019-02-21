@@ -1,4 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  TemplateRef
+} from '@angular/core';
+
+import { CalendarDay, Calendar } from '../scheduler.model';
+import { build } from '../../../shared/utils';
 
 export class EventDialogInfo {
   constructor(
@@ -6,7 +16,7 @@ export class EventDialogInfo {
     public date: number,
     public year: number,
     public editing: boolean
-  ) { }
+  ) {}
 }
 
 @Component({
@@ -15,29 +25,33 @@ export class EventDialogInfo {
   styleUrls: ['./day.component.scss']
 })
 export class DayComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  @Input() calendar;
   @Input() calendarInfo;
   @Input() date;
+  @Input() day: CalendarDay;
   @Input() events;
+  @Input() listItemTemplate: TemplateRef<any>;
   @Input() listView;
   @Input() master;
   @Input() view;
   @Input() week;
   @Output() openEventDialog = new EventEmitter<any>();
+  _calendar: Calendar = new Calendar();
 
   allDay;
   dayOfWeek: string;
   daysWithMultipleEvents = [];
   multipleEvents = [];
 
-  /* addNewEvent(event) {
-    if (event !== undefined) {
-      this.addEvent.emit(event);
-    }
-  } */
+  @Input()
+  set calendar(value: Calendar) {
+    this._calendar = value;
+  }
+
+  get calendar(): Calendar {
+    return build(Calendar, this._calendar);
+  }
 
   get calDate(): number {
     return this.date.getDate();
@@ -67,6 +81,16 @@ export class DayComponent implements OnInit {
     this.allDay = isAllDay;
   }
 
+  get eventsForDay() {
+    const d = new Date(this.date);
+    return this.events.filter(
+      x =>
+        x.monthOf === d.getMonth() &&
+        x.dayOf === d.getDate() &&
+        x.yearOf === d.getFullYear()
+    );
+  }
+
   get eventsLength(): number {
     return this.events.length;
   }
@@ -78,7 +102,6 @@ export class DayComponent implements OnInit {
   }
 
   ngOnInit() {
-
     if (this.listView === true) {
       this.dayOfWeek = this.week[this.calDayOfWeek].dayName;
     } else {
@@ -86,15 +109,19 @@ export class DayComponent implements OnInit {
     }
 
     for (const event of this.events) {
-      if ((event.monthOf === this.calMonth) && (event.dayOf === this.calDate) && (event.yearOf === this.calYear) && (event.calendarId === this.calId || event.calendarId === this.master.calendarId)) {
+      if (
+        event.monthOf === this.calMonth &&
+        event.dayOf === this.calDate &&
+        event.yearOf === this.calYear &&
+        (event.calendarId === this.calId ||
+          event.calendarId === this.master.calendarId)
+      ) {
         this.multipleEvents.push(event.dayOf);
       }
-
     }
 
     if (this.multipleEvents.length > 1) {
       this.daysWithMultipleEvents.push(this.calDate);
     }
   }
-
 }

@@ -12,9 +12,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
-import { Calendar } from './scheduler.model';
+import { Calendar, CalendarEvent, CalendarDay } from './scheduler.model';
 import { LookupValue } from '../../lookup/lookup.models';
-import { build } from '../../shared/utils';
+import { build, toArray } from '../../shared/utils';
 
 export class Day {
   constructor(public dayName: string, public position: number) {}
@@ -86,8 +86,19 @@ export class SchedulerComponent implements OnInit {
     return new Date(this.month + '1,' + this.currentYear);
   }
 
-  get calendar(): any {
-    return this.calendars.filter(x => x.calendarId === this.selectedCalendarId);
+  get calendar(): Calendar {
+    return build(
+      Calendar,
+      this.calendars.find(x => x.calendarId === this.selectedCalendarId)
+    );
+  }
+
+  get calendarDays(): CalendarDay[] {
+    return toArray(this.calendar.days);
+  }
+
+  get calendarEvents(): CalendarEvent[] {
+    return this.events.filter(x => x.calendarId === this.selectedCalendarId);
   }
 
   get calendarMonth(): any {
@@ -266,7 +277,6 @@ export class SchedulerComponent implements OnInit {
   }
 
   openCalendarCreator() {
-    console.dir(this);
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;

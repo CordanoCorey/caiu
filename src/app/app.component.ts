@@ -1,6 +1,24 @@
-import { Component, ViewEncapsulation, HostListener, ViewChild } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation,
+  HostListener,
+  ViewChild
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Control, FileUpload, DateHelper, build, Address, Image, Time, TimerComponent, LookupValue, Calendar } from 'library';
+import {
+  Control,
+  FileUpload,
+  DateHelper,
+  build,
+  Address,
+  Image,
+  Time,
+  TimerComponent,
+  LookupValue,
+  Calendar,
+  CalendarEvent,
+  CalendarDay
+} from 'library';
 
 import { ExampleForm } from './shared/models';
 
@@ -11,10 +29,8 @@ import { ExampleForm } from './shared/models';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  // activeDemo = 'address-manager-effective-date';
   activeDemo = 'scheduler';
   addresses = [
     build(Address, {
@@ -62,21 +78,69 @@ export class AppComponent {
       city: 'Carlisle',
       stateCode: 'PA',
       zip: '17013'
-    }),
+    })
   ];
   calendars = [
-    build(Calendar, { calendarId: 0, calendarName: 'Master Calendar', isMaster: true, isAllDayDefault: false, isAllDayEnforced: false }),
-    build(Calendar, { calendarId: 1, calendarName: 'All Day Enforced', isMaster: false, isAllDayDefault: true, isAllDayEnforced: true }),
-    build(Calendar, { calendarId: 2, calendarName: 'All Day Default', isMaster: false, isAllDayDefault: true, isAllDayEnforced: false }),
-  ]
+    build(Calendar, {
+      calendarId: 0,
+      calendarName: 'Master Calendar',
+      isMaster: true,
+      isAllDayDefault: false,
+      isAllDayEnforced: false
+    }),
+    build(Calendar, {
+      calendarId: 1,
+      calendarName: 'All Day Enforced',
+      isMaster: false,
+      isAllDayDefault: true,
+      isAllDayEnforced: true
+    }),
+    build(Calendar, {
+      calendarId: 2,
+      calendarName: 'All Day Default',
+      isMaster: false,
+      isAllDayDefault: true,
+      isAllDayEnforced: false,
+      days: [
+        build(CalendarDay, {
+          date: new Date(),
+          instructionalDayNumber: 1
+        })
+      ]
+    })
+  ];
+  calendarEvents = [
+    build(CalendarEvent, {
+      allDay: false,
+      description: 'In Session Description',
+      eventId: 1,
+      eventName: 'In Session',
+      eventTypeId: 2,
+      calendarId: 2,
+      monthOf: new Date(new Date()).getMonth(),
+      dayOf: new Date(new Date()).getDate(),
+      yearOf: new Date(new Date()).getFullYear()
+    }),
+    build(CalendarEvent, {
+      allDay: false,
+      description: 'Graduation Ceremony Description',
+      eventId: 2,
+      eventName: 'Graduation Ceremony',
+      eventTypeId: 1,
+      calendarId: 2,
+      monthOf: new Date(new Date()).getMonth(),
+      dayOf: new Date(new Date()).getDate(),
+      yearOf: new Date(new Date()).getFullYear()
+    })
+  ];
   countdownFrom = build(Time, {
     minutes: 0,
-    seconds: 10,
+    seconds: 10
   });
   eventTypes: LookupValue[] = [
     build(LookupValue, { id: 1, name: 'Event Type 1' }),
     build(LookupValue, { id: 2, name: 'Event Type 2' }),
-    build(LookupValue, { id: 3, name: 'Event Type 3' }),
+    build(LookupValue, { id: 3, name: 'Event Type 3' })
   ];
   images = [
     build(Image, { src: 'assets/1.jpg', height: 2160, width: 3840 }),
@@ -98,7 +162,7 @@ export class AppComponent {
     build(Image, { src: 'assets/17.jpg', height: 1200, width: 1920 }),
     build(Image, { src: 'assets/18.jpg', height: 900, width: 1440 }),
     build(Image, { src: 'assets/19.jpg', height: 276, width: 183 }),
-    build(Image, { src: 'assets/20.jpg', height: 800, width: 5469 }),
+    build(Image, { src: 'assets/20.jpg', height: 800, width: 5469 })
   ];
   timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
 
@@ -117,6 +181,8 @@ export class AppComponent {
   set windowWidth(value: number) {
     localStorage.setItem('WINDOW_WIDTH', value.toString());
   }
+
+  onAddCalendar() {}
 
   onChangeCalendarId(id: number) {
     console.log(id);
@@ -137,18 +203,29 @@ export class AppComponent {
 
   @HostListener('window:load', ['$event'])
   onLoad(e: any) {
-    this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
-    this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    this.windowHeight =
+      e && e.currentTarget && e.currentTarget.innerHeight
+        ? e.currentTarget.innerHeight
+        : 0;
+    this.windowWidth =
+      e && e.currentTarget && e.currentTarget.innerWidth
+        ? e.currentTarget.innerWidth
+        : 0;
     // console.log('\n\nwindow:load', this.windowWidth, this.windowHeight);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(e: any) {
-    this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
-    this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    this.windowHeight =
+      e && e.currentTarget && e.currentTarget.innerHeight
+        ? e.currentTarget.innerHeight
+        : 0;
+    this.windowWidth =
+      e && e.currentTarget && e.currentTarget.innerWidth
+        ? e.currentTarget.innerWidth
+        : 0;
     // console.log('\n\nwindow:resize', this.windowWidth, this.windowHeight);
   }
-
 
   schedulerTest(value: any) {
     console.dir(value);

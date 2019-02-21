@@ -25,7 +25,6 @@ export class CalCreatorDialogComponent implements OnInit {
     if (this.calendarCreator.status !== 'VALID') {
       alert('Please fill out remaining fields!');
     } else {
-      console.dir(this.valueOut);
       const newCalendar = [this.valueOut];
       this.dialogRef.close(newCalendar);
     }
@@ -42,7 +41,6 @@ export class CalCreatorDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data.calendars);
   }
 
 }

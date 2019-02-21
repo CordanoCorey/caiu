@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
+import { CalendarDay, Calendar } from '../scheduler.model';
 import { EventCreatorDialogComponent } from '../event-creator-dialog/event-creator-dialog.component';
 import { LookupValue } from '../../../lookup/lookup.models';
 import { DumbComponent } from '../../../shared/component';
@@ -27,8 +28,9 @@ export class ListViewComponent extends DumbComponent implements OnInit {
   }
 
   @Input() masterCalendar: any[];
-  @Input() selectedCalendar: any[];
+  @Input() selectedCalendar: Calendar;
   @Input() calendarInfo: any[];
+  @Input() days: CalendarDay[] = [];
   @Input() events: any[];
   @Input() eventTypes: LookupValue[];
   @Input() listItemTemplate: TemplateRef<any>;
@@ -39,12 +41,29 @@ export class ListViewComponent extends DumbComponent implements OnInit {
 
   allDayEvents = [];
 
+  get listView(): any {
+    return true;
+  }
+
+  ngOnInit() {}
+
   changeMonth(value) {
     this.changeMonthEvent.emit(value);
   }
 
-  get listView(): any {
-    return true;
+  closeDialog(e: any) {
+    super.closeDialog(e);
+    this.manageEvent(e);
+  }
+
+  getDay(date: Date): CalendarDay {
+    const d = new Date(date);
+    return this.days.find(
+      x =>
+        x.date.getMonth() === d.getMonth() &&
+        x.date.getDate() === d.getDate() &&
+        x.date.getFullYear() === d.getFullYear()
+    );
   }
 
   manageEvent(event) {
@@ -55,32 +74,6 @@ export class ListViewComponent extends DumbComponent implements OnInit {
         this.deleteEventHandler.emit(event);
       }
     }
-  }
-
-  runDialog(dayInfo: DayInfo, allowAllDay: boolean, editing: boolean) {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-
-    this.openDialog(EventCreatorDialogComponent, {
-      data: {
-        allowAllDay,
-        calendarId: this.selectedCalendar[0].calendarId,
-        calendar: this.selectedCalendar[0],
-        dayInfo,
-        editing,
-        events: this.events,
-        eventTypes: this.eventTypes
-      },
-      width: '95%',
-      maxWidth: '420px',
-      height: '500px'
-    });
-  }
-
-  closeDialog(e: any) {
-    super.closeDialog(e);
-    this.manageEvent(e);
   }
 
   openEventCreator(value: any) {
@@ -126,5 +119,24 @@ export class ListViewComponent extends DumbComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  runDialog(dayInfo: DayInfo, allowAllDay: boolean, editing: boolean) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+
+    this.openDialog(EventCreatorDialogComponent, {
+      data: {
+        allowAllDay,
+        calendarId: this.selectedCalendar[0].calendarId,
+        calendar: this.selectedCalendar[0],
+        dayInfo,
+        editing,
+        events: this.events,
+        eventTypes: this.eventTypes
+      },
+      width: '95%',
+      maxWidth: '420px',
+      height: '500px'
+    });
+  }
 }

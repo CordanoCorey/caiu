@@ -1,47 +1,137 @@
-<div [ngClass]="{'list-day-container': listView}">
-  <div [ngClass]="{'day-header': listView}">
-    <div class="date" *ngIf="calendarInfo.currentDay !== calDate; else elseBlock" [ngClass]="{'mini-date': !listView}">
+<div *ngIf="!listItemTemplate" [ngClass]="{ 'list-day-container': listView }">
+  <div [ngClass]="{ 'day-header': listView }">
+    <div
+      class="date"
+      *ngIf="calendarInfo.currentDay !== calDate; else elseBlock"
+      [ngClass]="{ 'mini-date': !listView }"
+    >
       <p>{{ calDate }}</p>
     </div>
     <ng-template #elseBlock>
-      <div class="date active-day" [ngClass]="{'mini-date': !listView}">
+      <div class="date active-day" [ngClass]="{ 'mini-date': !listView }">
         <p>{{ calDate }}</p>
       </div>
     </ng-template>
     <h4 *ngIf="listView === true">
-        {{ dayOfWeek }}
+      {{ dayOfWeek }}
     </h4>
   </div>
 
-  <div class="event-container" *ngIf="multipleEvents.length > 1 && listView === false">
+  <div
+    class="event-container"
+    *ngIf="multipleEvents.length > 1 && listView === false"
+  >
     <div class="event-child">
       <p>Multiple Events</p>
     </div>
   </div>
 
-  <div class="event-container" *ngIf="multipleEvents.length > 1 && listView === true && calendar != undefined && master != undefined">
+  <div
+    class="event-container"
+    *ngIf="
+      multipleEvents.length > 1 &&
+      listView === true &&
+      calendar != undefined &&
+      master != undefined
+    "
+  >
     <div *ngFor="let event of calEvents">
-      <div *ngIf="event.monthOf === calMonth && event.dayOf === calDate && event.yearOf === calYear && (event.calendarId === calId || event.calendarId === master.calendarId)" [ngClass]="{'event-child': !listView}" [ngClass]="{'event-child-mini': listView}">
-        <iu-event [event]="event" [listView]="listView" (hasAllDay)="checkAllDay($event)"></iu-event>
+      <div
+        *ngIf="
+          event.monthOf === calMonth &&
+          event.dayOf === calDate &&
+          event.yearOf === calYear &&
+          (event.calendarId === calId || event.calendarId === master.calendarId)
+        "
+        [ngClass]="{ 'event-child': !listView }"
+        [ngClass]="{ 'event-child-mini': listView }"
+      >
+        <iu-event
+          [event]="event"
+          [listView]="listView"
+          (hasAllDay)="checkAllDay($event)"
+        ></iu-event>
       </div>
     </div>
   </div>
 
-  <div class="event-container" *ngIf="multipleEvents.length === 1 && calendar != undefined && master != undefined">
+  <div
+    class="event-container"
+    *ngIf="
+      multipleEvents.length === 1 &&
+      calendar != undefined &&
+      master != undefined
+    "
+  >
     <div *ngFor="let event of calEvents">
-      <div *ngIf="event.monthOf === calMonth && event.dayOf === calDate && event.yearOf === calYear && (event.calendarId === calId || event.calendarId === master.calendarId)" [ngClass]="{'event-child': !listView}" [ngClass]="{'event-child-mini': listView}">
-        <iu-event [event]="event" [listView]="listView" (hasAllDay)="checkAllDay($event)"></iu-event>
+      <div
+        *ngIf="
+          event.monthOf === calMonth &&
+          event.dayOf === calDate &&
+          event.yearOf === calYear &&
+          (event.calendarId === calId || event.calendarId === master.calendarId)
+        "
+        [ngClass]="{ 'event-child': !listView }"
+        [ngClass]="{ 'event-child-mini': listView }"
+      >
+        <iu-event
+          [event]="event"
+          [listView]="listView"
+          (hasAllDay)="checkAllDay($event)"
+        ></iu-event>
       </div>
     </div>
   </div>
 </div>
 
-<button *ngIf="listView === true" [disabled]="allDay" class="list-add-btn" (click)="openDialog(calendarInfo.monthId, calDate, calendarInfo.currentYear, false)">
+<div *ngIf="listItemTemplate" [ngClass]="{ 'list-day-container': listView }">
+  <div [ngClass]="{ 'day-header': listView }">
+    <div
+      class="date"
+      *ngIf="calendarInfo.currentDay !== calDate; else elseBlock"
+      [ngClass]="{ 'mini-date': !listView }"
+    >
+      <p>{{ calDate }}</p>
+    </div>
+    <ng-template #elseBlock>
+      <div class="date active-day" [ngClass]="{ 'mini-date': !listView }">
+        <p>{{ calDate }}</p>
+      </div>
+    </ng-template>
+    <h4 *ngIf="listView === true">
+      {{ dayOfWeek }}
+    </h4>
+  </div>
+  <ng-container
+    *ngTemplateOutlet="
+      listItemTemplate;
+      context: {
+        day: day,
+        events: eventsForDay
+      }
+    "
+  ></ng-container>
+</div>
+
+<button
+  *ngIf="listView === true"
+  [disabled]="allDay"
+  class="list-add-btn"
+  (click)="
+    openDialog(calendarInfo.monthId, calDate, calendarInfo.currentYear, false)
+  "
+>
   <i class="material-icons">
     add
   </i>
 </button>
-<button *ngIf="listView === true" class="list-edit-btn" (click)="openDialog(calendarInfo.monthId, calDate, calendarInfo.currentYear, true)">
+<button
+  *ngIf="listView === true"
+  class="list-edit-btn"
+  (click)="
+    openDialog(calendarInfo.monthId, calDate, calendarInfo.currentYear, true)
+  "
+>
   <i class="material-icons">
     create
   </i>

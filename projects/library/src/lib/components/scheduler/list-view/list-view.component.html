@@ -1,19 +1,41 @@
 <div class="date-heading-container">
   <div>
-      <button mat-mini-fab (click)="changeMonth(-1)"><i class="material-icons">keyboard_arrow_left</i></button>
+    <button mat-mini-fab (click)="changeMonth(-1)">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </button>
   </div>
   <div>
-    <h1 class="date-heading">{{calendarInfo[0].monthName}}, {{calendarInfo[0].currentYear}}</h1>
-    <h1 class="date-heading mini">{{calendarInfo[0].shortMonthName}}, {{calendarInfo[0].currentYear}}</h1>
+    <h1 class="date-heading">
+      {{ calendarInfo[0].monthName }}, {{ calendarInfo[0].currentYear }}
+    </h1>
+    <h1 class="date-heading mini">
+      {{ calendarInfo[0].shortMonthName }}, {{ calendarInfo[0].currentYear }}
+    </h1>
   </div>
   <div>
-      <button mat-mini-fab (click)="changeMonth(1)"><i class="material-icons">keyboard_arrow_right</i></button>
-  </div>  
+    <button mat-mini-fab (click)="changeMonth(1)">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </button>
+  </div>
 </div>
 <table class="list-view-calendar calendar" id="calendar">
   <tbody class="list-body" id="list-body">
-    <div class="day" *ngFor="let day of calendarInfo[0].daysInCurrentMonth; index as i">
-      <iu-day (openEventDialog)="openEventCreator($event)" [calendar]="selectedCalendar[0]" [master]="masterCalendar[0]" [date]="day" [calendarInfo]="calendarInfo[0]" [listView]="listView" [week]="week" [events]="events"></iu-day>
+    <div
+      class="day"
+      *ngFor="let day of calendarInfo[0].daysInCurrentMonth; index as i"
+    >
+      <iu-day
+        (openEventDialog)="openEventCreator($event)"
+        [calendar]="selectedCalendar"
+        [master]="masterCalendar[0]"
+        [date]="day"
+        [calendarInfo]="calendarInfo[0]"
+        [listItemTemplate]="listItemTemplate"
+        [listView]="listView"
+        [week]="week"
+        [events]="events"
+        [day]="getDay(day)"
+      ></iu-day>
     </div>
-  </tbody>            
+  </tbody>
 </table>
