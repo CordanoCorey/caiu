@@ -22,6 +22,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   checked: boolean;
   eventChosen = [];
   eventId: string;
+  hideSelect = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -32,7 +33,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     return new FormControl(this.isAllDay);
   }
 
-  get eventsToday(): any {
+  get eventsToday(): any[] {
     return this.data.events.filter(x => x.monthOf === this.data.dayInfo.month && x.dayOf === this.data.dayInfo.date && x.yearOf === this.data.dayInfo.year);
   }
 
@@ -83,7 +84,11 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.checked = this.data.calendar.isAllDayDefault;
-    if (!this.data.editing) {
+    if (this.data.editing && this.eventsToday.length === 1) {
+      console.log('only one event today');
+      this.eventSelected(this.eventsToday[0]);
+    }
+    if ((this.data.editing && this.eventsToday.length >= 2) || !this.data.editing) {
       this.form.get('eventName').setValue('');
       this.form.get('startTime').get('hour').setValue('');
       this.form.get('startTime').get('minute').setValue('');
@@ -91,6 +96,9 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       this.form.get('endTime').get('hour').setValue('');
       this.form.get('endTime').get('minute').setValue('');
       this.form.get('endTime').get('timePeriod').setValue('');
+    }
+    if (this.data.editing && this.eventsToday.length < 1) {
+      console.log('no events to edit');
     }
   }
 
@@ -130,16 +138,38 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   eventSelected(event) {
-    this.eventChosen.push(event.value);
-    this.checked = event.value.allDay;
-    console.log('checked: ' + this.checked);
-    this.form.get('eventName').setValue(event.value.eventName);
-    this.form.get('startTime').get('hour').setValue(event.value.startTime.hour);
-    this.form.get('startTime').get('minute').setValue(event.value.startTime.minute);
-    this.form.get('startTime').get('timePeriod').setValue(event.value.startTime.timePeriod);
-    this.form.get('endTime').get('hour').setValue(event.value.endTime.hour);
-    this.form.get('endTime').get('minute').setValue(event.value.endTime.minute);
-    this.form.get('endTime').get('timePeriod').setValue(event.value.endTime.timePeriod);
+    if(event.value === undefined){
+      console.dir(event.value);
+      console.log('only one event exists');
+      console.log('event:');
+      console.dir(event);
+      this.eventChosen.push(event);
+      this.checked = event.allDay;
+      this.hideSelect = true;
+      console.log('checked: ' + this.checked);
+      this.form.get('eventName').setValue(event.eventName);
+      this.form.get('startTime').get('hour').setValue(event.startTime.hour);
+      this.form.get('startTime').get('minute').setValue(event.startTime.minute);
+      this.form.get('startTime').get('timePeriod').setValue(event.startTime.timePeriod);
+      this.form.get('endTime').get('hour').setValue(event.endTime.hour);
+      this.form.get('endTime').get('minute').setValue(event.endTime.minute);
+      this.form.get('endTime').get('timePeriod').setValue(event.endTime.timePeriod);
+    } else {
+      console.dir(event.value);
+      this.eventChosen.push(event.value);
+      this.checked = event.value.allDay;
+      console.log('checked: ' + this.checked);
+      this.form.get('eventName').setValue(event.value.eventName);
+      this.form.get('startTime').get('hour').setValue(event.value.startTime.hour);
+      this.form.get('startTime').get('minute').setValue(event.value.startTime.minute);
+      this.form.get('startTime').get('timePeriod').setValue(event.value.startTime.timePeriod);
+      this.form.get('endTime').get('hour').setValue(event.value.endTime.hour);
+      this.form.get('endTime').get('minute').setValue(event.value.endTime.minute);
+      this.form.get('endTime').get('timePeriod').setValue(event.value.endTime.timePeriod);
+    }
+    /*
+      Optimize for difference between MatSelectedChange and just passing in the event
+    */
   }
 
 }

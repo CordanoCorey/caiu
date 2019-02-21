@@ -1,7 +1,7 @@
 <div class="form-container">
   <h1 *ngIf="data.editing != true">New Event</h1>
   <h1 *ngIf="data.editing != false">Edit Event</h1>
-  <mat-form-field *ngIf="data.editing != false">
+  <mat-form-field *ngIf="data.editing != false  && hideSelect === false">
     <mat-select placeholder="Event to Edit" (selectionChange)="eventSelected($event)">
       <mat-option *ngFor="let event of eventsToday" [value]="event">{{event.eventName}}</mat-option>
     </mat-select>

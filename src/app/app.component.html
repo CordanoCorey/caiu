@@ -35,7 +35,7 @@
 </form>
 
 <div *ngIf="activeDemo === 'scheduler'" class="example">
-  <iu-scheduler defaultView="CALENDAR" [calendars]="calendars" [eventTypes]="eventTypes"
+  <iu-scheduler defaultView="LIST" [calendars]="calendars" [eventTypes]="eventTypes"
     (addCalendar)="schedulerTest($event)" (addEvent)="schedulerTest($event)" (updateEvent)="schedulerTest($event)"
     (deleteEvent)="schedulerTest($event)" (changeCalendarId)="onChangeCalendarId($event)">
     <ng-template let-onAddCalendar="onAddCalendar" #actionsTemplate>
