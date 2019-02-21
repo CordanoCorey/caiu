@@ -1,46 +1,81 @@
 <!-- CALENDARS LIST -->
-<ng-container *ngTemplateOutlet="calendarsListTemplate; context: { 
-  calendars: calendars,
-  changeCalendar: changeCalendar,
-  calendarPlaceholder: calendarPlaceholder,
-  changeCalendarId: changeCalendarId,
-  selectedCalendarId: selectedCalendarId
-}">
+<ng-container
+  *ngTemplateOutlet="
+    calendarsListTemplate;
+    context: {
+      calendars: calendars,
+      changeCalendar: changeCalendar,
+      calendarPlaceholder: calendarPlaceholder,
+      changeCalendarId: changeCalendarId,
+      selectedCalendarId: selectedCalendarId
+    }
+  "
+>
 </ng-container>
 <mat-form-field id="calendar-select" *ngIf="!calendarsListTemplate">
-  <mat-select [placeholder]="calendarPlaceholder" [(value)]="selectedCalendarId"
-    (selectionChange)="changeCalendar(selectedCalendarId)">
-    <mat-option *ngFor="let calendar of calendars" [value]="calendar.calendarId">{{ calendar.calendarName }}
+  <mat-select
+    [placeholder]="calendarPlaceholder"
+    [(value)]="selectedCalendarId"
+    (selectionChange)="changeCalendar(selectedCalendarId)"
+  >
+    <mat-option *ngFor="let calendar of calendars" [value]="calendar.calendarId"
+      >{{ calendar.calendarName }}
     </mat-option>
   </mat-select>
 </mat-form-field>
 <!-- END CALENDARS LIST -->
 
 <!-- ACTIONS -->
-<ng-container *ngTemplateOutlet="actionsTemplate; context: { 
-    onAddCalendar: openCalendarCreator, 
-    dialog: dialog, 
-    addNewCalendar: addNewCalendar,
-    calendars: calendars,
-    addCalendar: addCalendar
-  }">
+<ng-container
+  *ngTemplateOutlet="
+    actionsTemplate;
+    context: {
+      onAddCalendar: openCalendarCreator,
+      dialog: dialog,
+      addNewCalendar: addNewCalendar,
+      calendars: calendars,
+      addCalendar: addCalendar
+    }
+  "
+>
 </ng-container>
 <div *ngIf="!actionsTemplate" class="actions">
-  <button mat-raised-button color="primary" (click)="openCalendarCreator()">Add New Calendar</button>
+  <button mat-raised-button color="primary" (click)="openCalendarCreator()">
+    Add New Calendar
+  </button>
 </div>
 <!-- END ACTIONS -->
 
-<h1 *ngIf="selectedCalendarId != null">{{selectedCalendar}}</h1>
-<mat-tab-group (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedView"
-  *ngIf="selectedCalendarId != null">
+<h1 *ngIf="selectedCalendarId != null">{{ selectedCalendar }}</h1>
+<mat-tab-group
+  (selectedTabChange)="tabChanged($event)"
+  [selectedIndex]="selectedView"
+  *ngIf="selectedCalendarId != null"
+>
   <mat-tab label="Calendar View" id="calendar-view">
-    <iu-calendar-view (addEvent)="addNewEvent($event)" (deleteEventHandler)="onDeleteEvent($event)"
-      (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar"
-      [calendarInfo]="calendarMonth" [weekArray]="week" [events]="events" [eventTypes]="eventTypes"></iu-calendar-view>
+    <iu-calendar-view
+      (addEvent)="addNewEvent($event)"
+      (deleteEventHandler)="onDeleteEvent($event)"
+      (changeMonthEvent)="changeCurrentDate($event)"
+      [masterCalendar]="masterCalendar"
+      [selectedCalendar]="calendar"
+      [calendarInfo]="calendarMonth"
+      [weekArray]="week"
+      [events]="events"
+      [eventTypes]="eventTypes"
+    ></iu-calendar-view>
   </mat-tab>
   <mat-tab label="List View" id="list-view">
-    <iu-list-view (addEvent)="addNewEvent($event)" (deleteEventHandler)="onDeleteEvent($event)"
-      (changeMonthEvent)="changeCurrentDate($event)" [masterCalendar]="masterCalendar" [selectedCalendar]="calendar"
-      [calendarInfo]="calendarMonth" [week]="week" [events]="events" [eventTypes]="eventTypes"></iu-list-view>
+    <iu-list-view
+      (addEvent)="addNewEvent($event)"
+      (deleteEventHandler)="onDeleteEvent($event)"
+      (changeMonthEvent)="changeCurrentDate($event)"
+      [masterCalendar]="masterCalendar"
+      [selectedCalendar]="calendar"
+      [calendarInfo]="calendarMonth"
+      [week]="week"
+      [events]="events"
+      [eventTypes]="eventTypes"
+    ></iu-list-view>
   </mat-tab>
 </mat-tab-group>

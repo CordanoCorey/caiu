@@ -1,4 +1,13 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Input,
+  Output,
+  EventEmitter,
+  ContentChild,
+  TemplateRef
+} from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
@@ -8,10 +17,7 @@ import { LookupValue } from '../../lookup/lookup.models';
 import { build } from '../../shared/utils';
 
 export class Day {
-  constructor(
-    public dayName: string,
-    public position: number
-  ) { }
+  constructor(public dayName: string, public position: number) {}
 }
 
 export class Month {
@@ -24,7 +30,7 @@ export class Month {
     public currentYear: number,
     public daysInCurrentMonth: any,
     public lastDay: number
-  ) { }
+  ) {}
 }
 
 export class MonthName {
@@ -32,7 +38,7 @@ export class MonthName {
     public id: number,
     public monthName: string,
     public shortMonthName: string
-  ) { }
+  ) {}
 }
 
 @Component({
@@ -41,8 +47,7 @@ export class MonthName {
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {}
 
   @Input() allDayEnforced = false;
   @Input() calendarPlaceholder = 'Select Calendar';
@@ -56,9 +61,13 @@ export class SchedulerComponent implements OnInit {
   @Output() changeCalendarId = new EventEmitter<number>();
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() updateEvent = new EventEmitter<any>();
-  @ViewChild(CalendarViewComponent) calendarViewComponent: CalendarViewComponent;
+  @ViewChild(CalendarViewComponent)
+  calendarViewComponent: CalendarViewComponent;
   @ContentChild('actionsTemplate') actionsTemplate: TemplateRef<any>;
-  @ContentChild('calendarsListTemplate') calendarsListTemplate: TemplateRef<any>;
+  @ContentChild('calendarsListTemplate') calendarsListTemplate: TemplateRef<
+    any
+  >;
+  @ContentChild('listItemTemplate') listItemTemplate: TemplateRef<any>;
   now = new Date();
   absoluteNow = new Date();
   selectedView: number;
@@ -83,7 +92,16 @@ export class SchedulerComponent implements OnInit {
 
   get calendarMonth(): any {
     return [
-      new Month(this.monthId, this.month, this.shortMonthName, this.firstDay, this.currentDay, this.currentYear, this.daysInCurrentMonth, this.lastDay)
+      new Month(
+        this.monthId,
+        this.month,
+        this.shortMonthName,
+        this.firstDay,
+        this.currentDay,
+        this.currentYear,
+        this.daysInCurrentMonth,
+        this.lastDay
+      )
     ];
   }
 
@@ -110,7 +128,11 @@ export class SchedulerComponent implements OnInit {
   }
 
   get lastDay(): number {
-    return new Date(this.now.getFullYear(), this.now.getMonth() + 1, 0).getDay();
+    return new Date(
+      this.now.getFullYear(),
+      this.now.getMonth() + 1,
+      0
+    ).getDay();
   }
 
   get masterCalendar(): any {
@@ -143,7 +165,10 @@ export class SchedulerComponent implements OnInit {
   }
 
   get selectedCalendar(): string {
-    return build(Calendar, this.calendars.find(x => x.calendarId === this.selectedCalendarId)).calendarName;
+    return build(
+      Calendar,
+      this.calendars.find(x => x.calendarId === this.selectedCalendarId)
+    ).calendarName;
   }
 
   get shortMonthName(): string {
@@ -158,12 +183,11 @@ export class SchedulerComponent implements OnInit {
       new Day('Wednesday', 3),
       new Day('Thursday', 4),
       new Day('Friday', 5),
-      new Day('Saturday', 6),
+      new Day('Saturday', 6)
     ];
   }
 
   ngOnInit() {
-
     switch (this.defaultView) {
       case 'CALENDAR':
         this.selectedView = 0;
@@ -178,7 +202,11 @@ export class SchedulerComponent implements OnInit {
   }
 
   onDeleteEvent(event) {
-    const eventToDelete = this.events.map(function (e) { return e.eventId; }).indexOf(event[0].eventId);
+    const eventToDelete = this.events
+      .map(function(e) {
+        return e.eventId;
+      })
+      .indexOf(event[0].eventId);
     this.events.splice(eventToDelete, 1);
     this.deleteEvent.emit(event[0]);
   }
@@ -194,7 +222,9 @@ export class SchedulerComponent implements OnInit {
 
   addNewEvent(eventInfo) {
     if (eventInfo[1] === true) {
-      this.events = this.events.map(x => x.eventId === eventInfo[0].eventId ? eventInfo[0] : x);
+      this.events = this.events.map(x =>
+        x.eventId === eventInfo[0].eventId ? eventInfo[0] : x
+      );
       this.updateEvent.emit(eventInfo[0]);
     } else {
       this.events.push(eventInfo[0]);
@@ -221,7 +251,10 @@ export class SchedulerComponent implements OnInit {
       newMonth = 11;
       year--;
     }
-    if (newMonth === this.absoluteNow.getMonth() && year === this.absoluteNow.getFullYear()) {
+    if (
+      newMonth === this.absoluteNow.getMonth() &&
+      year === this.absoluteNow.getFullYear()
+    ) {
       this.now = this.absoluteNow;
     } else {
       this.now = new Date(year, newMonth, 1);
@@ -233,7 +266,6 @@ export class SchedulerComponent implements OnInit {
   }
 
   openCalendarCreator() {
-
     console.dir(this);
     const dialogConfig = new MatDialogConfig();
 
@@ -245,9 +277,7 @@ export class SchedulerComponent implements OnInit {
       maxWidth: '420px',
       height: '500px'
     });
-    dialogRef.afterClosed().subscribe(
-      data => this.addNewCalendar(data)
-    );
+    dialogRef.afterClosed().subscribe(data => this.addNewCalendar(data));
   }
 
   tabChanged(event) {
@@ -261,5 +291,4 @@ export class SchedulerComponent implements OnInit {
     //   }, 500);
     // }
   }
-
 }
