@@ -92,10 +92,10 @@
       <button mat-button color="primary" *ngFor="let calendar of calendars"
         (click)="changeCalendar(calendar.calendarId)">{{ calendar.calendarName }}</button>
     </ng-template> -->
-    <ng-template let-day="day" let-events="events" #listItemTemplate>
+    <ng-template let-day="day" let-events="events" let-openDialog="openDialog" #listItemTemplate>
       <div class="calendar-day">
         <div>{{ day | json }}</div>
-        <div class="calendar-event" *ngFor="let e of events">
+        <div class="calendar-event" *ngFor="let e of events" (click)="openDialog(e.monthOf, e.dayOf, e.yearOf, true)">
           <h4>{{ e.eventName }}</h4>
           <p>{{ e.description }}</p>
         </div>
