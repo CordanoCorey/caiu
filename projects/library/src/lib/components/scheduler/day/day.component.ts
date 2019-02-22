@@ -7,7 +7,7 @@ import {
   TemplateRef
 } from '@angular/core';
 
-import { CalendarDay, Calendar } from '../scheduler.model';
+import { CalendarDay, Calendar, CalendarEvent, Day } from '../scheduler.model';
 import { build } from '../../../shared/utils';
 
 export class EventDialogInfo {
@@ -28,16 +28,15 @@ export class DayComponent implements OnInit {
   constructor() {}
 
   @Input() calendarInfo;
-  @Input() date;
+  @Input() date: Date = new Date();
   @Input() day: CalendarDay;
-  @Input() events;
+  @Input() events: CalendarEvent[] = [];
   @Input() listItemTemplate: TemplateRef<any>;
-  @Input() listView;
-  @Input() master;
-  @Input() view;
-  @Input() week;
+  @Input() listView = false;
+  @Input() week: Day[] = [];
   @Output() openEventDialog = new EventEmitter<any>();
   _calendar: Calendar = new Calendar();
+  _master: Calendar = new Calendar();
 
   allDay;
   dayOfWeek: string;
@@ -51,6 +50,15 @@ export class DayComponent implements OnInit {
 
   get calendar(): Calendar {
     return build(Calendar, this._calendar);
+  }
+
+  @Input()
+  set master(value: Calendar) {
+    this._master = value;
+  }
+
+  get master(): Calendar {
+    return build(Calendar, this._master);
   }
 
   get calDate(): number {
@@ -77,10 +85,6 @@ export class DayComponent implements OnInit {
     return this.calendar.calendarId;
   }
 
-  checkAllDay(isAllDay) {
-    this.allDay = isAllDay;
-  }
-
   get eventsForDay() {
     const d = new Date(this.date);
     return this.events.filter(
@@ -93,12 +97,6 @@ export class DayComponent implements OnInit {
 
   get eventsLength(): number {
     return this.events.length;
-  }
-
-  openDialog(month, date, year, editing) {
-    const eventDialogInfo = new EventDialogInfo(month, date, year, editing);
-
-    this.openEventDialog.emit(eventDialogInfo);
   }
 
   ngOnInit() {
@@ -123,5 +121,15 @@ export class DayComponent implements OnInit {
     if (this.multipleEvents.length > 1) {
       this.daysWithMultipleEvents.push(this.calDate);
     }
+  }
+
+  checkAllDay(isAllDay) {
+    this.allDay = isAllDay;
+  }
+
+  openDialog(month, date, year, editing) {
+    const eventDialogInfo = new EventDialogInfo(month, date, year, editing);
+
+    this.openEventDialog.emit(eventDialogInfo);
   }
 }

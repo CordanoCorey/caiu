@@ -91,3 +91,28 @@ export class CalendarTime {
     };
   }
 }
+
+export class Day {
+  constructor(public dayName: string, public position: number) {}
+}
+
+export class Month {
+  constructor(
+    public monthId: number,
+    public monthName: string,
+    public shortMonthName: string,
+    public firstDay: number,
+    public currentDay: number,
+    public currentYear: number,
+    public daysInCurrentMonth: any,
+    public lastDay: number
+  ) {}
+}
+
+export class MonthName {
+  constructor(
+    public id: number,
+    public monthName: string,
+    public shortMonthName: string
+  ) {}
+}

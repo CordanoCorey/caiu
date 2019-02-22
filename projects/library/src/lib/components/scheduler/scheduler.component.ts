@@ -12,34 +12,16 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
-import { Calendar, CalendarEvent, CalendarDay } from './scheduler.model';
+import {
+  Calendar,
+  CalendarEvent,
+  CalendarDay,
+  Day,
+  Month,
+  MonthName
+} from './scheduler.model';
 import { LookupValue } from '../../lookup/lookup.models';
 import { build, toArray } from '../../shared/utils';
-
-export class Day {
-  constructor(public dayName: string, public position: number) {}
-}
-
-export class Month {
-  constructor(
-    public monthId: number,
-    public monthName: string,
-    public shortMonthName: string,
-    public firstDay: number,
-    public currentDay: number,
-    public currentYear: number,
-    public daysInCurrentMonth: any,
-    public lastDay: number
-  ) {}
-}
-
-export class MonthName {
-  constructor(
-    public id: number,
-    public monthName: string,
-    public shortMonthName: string
-  ) {}
-}
 
 @Component({
   selector: 'iu-scheduler',
