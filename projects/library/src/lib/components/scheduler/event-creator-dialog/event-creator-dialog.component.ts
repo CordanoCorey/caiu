@@ -82,7 +82,12 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    console.dir(this.isAllDay);
+    console.log('data: ');
+    console.dir(this.data);
+    console.log('events today: ');
+    console.dir(this.eventsToday);
+    console.log('events: ');
+    console.dir(this.events);
     const dia = this;
     this.checked = this.data.calendar.isAllDayDefault;
     if (this.data.editing && this.eventsToday.length === 1) {
