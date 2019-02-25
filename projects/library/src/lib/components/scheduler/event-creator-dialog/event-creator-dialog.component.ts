@@ -43,6 +43,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     return this.data.eventTypes;
   }
 
+
   get hours(): any {
     return [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
@@ -85,6 +86,8 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
+    console.dir(this.data);
+    console.dir(this.eventsToday);
     const dia = this;
     this.checked = this.data.calendar.isAllDayDefault;
     if (this.data.editing && this.eventsToday.length === 1) {

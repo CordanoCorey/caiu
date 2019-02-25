@@ -92,6 +92,10 @@
     border-left: 5px #E47777 solid;
 }
 
+.calendar-event, .event-child, .event-child-mini{
+    cursor: pointer;
+}
+
 .event-child p{
     line-height: 30px;
     white-space: nowrap;

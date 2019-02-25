@@ -102,15 +102,17 @@
       {{ dayOfWeek }}
     </h4>
   </div>
-  <ng-container
-    *ngTemplateOutlet="
-      listItemTemplate;
-      context: {
-        day: day,
-        events: eventsForDay
-      }
-    "
-  ></ng-container>
+    <ng-container
+      *ngTemplateOutlet="
+        listItemTemplate;
+        context: {
+          day: day,
+          events: eventsForDay,
+          openDialog: openDialog,
+          openEventDialog: openEventDialog
+        }
+      "
+    ></ng-container>
 </div>
 
 <button
