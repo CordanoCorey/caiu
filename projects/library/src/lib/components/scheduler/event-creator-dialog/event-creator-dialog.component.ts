@@ -31,10 +31,6 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     private dialogRef: MatDialogRef<EventCreatorDialogComponent>) {
   }
 
-  get disableTime(): any {
-    return new FormControl(this.isAllDay);
-  }
-
   get eventsToday(): any[] {
     return this.data.events.filter(x => x.monthOf === this.data.dayInfo.month && x.dayOf === this.data.dayInfo.date && x.yearOf === this.data.dayInfo.year);
   }
@@ -86,12 +82,10 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    console.dir(this.data);
-    console.dir(this.eventsToday);
+    console.dir(this.isAllDay);
     const dia = this;
     this.checked = this.data.calendar.isAllDayDefault;
     if (this.data.editing && this.eventsToday.length === 1) {
-      console.log('only one event today');
       this.eventSelected(this.eventsToday[0]);
       this.noEvents = false;
     }
@@ -155,7 +149,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       this.eventChosen.push(event);
       this.checked = event.allDay;
       this.hideSelect = true;
-      this.form.get('eventName').setValue(event.eventName);
+      this.form.get('eventName').setValue(event.description);
       this.form.get('eventTypeId').setValue(event.eventTypeId);
       this.form.get('startTime').get('hour').setValue(event.startTime.hour);
       this.form.get('startTime').get('minute').setValue(event.startTime.minute);
@@ -166,7 +160,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     } else {
       this.eventChosen.push(event.value);
       this.checked = event.value.allDay;
-      this.form.get('eventName').setValue(event.value.eventName);
+      this.form.get('eventName').setValue(event.value.description);
       this.form.get('eventTypeId').setValue(event.value.eventTypeId);
       this.form.get('startTime').get('hour').setValue(event.value.startTime.hour);
       this.form.get('startTime').get('minute').setValue(event.value.startTime.minute);
@@ -175,9 +169,6 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       this.form.get('endTime').get('minute').setValue(event.value.endTime.minute);
       this.form.get('endTime').get('timePeriod').setValue(event.value.endTime.timePeriod);
     }
-    /*
-      Optimize for difference between MatSelectedChange and just passing in the event
-    */
   }
 
 }

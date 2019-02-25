@@ -139,9 +139,9 @@
 
 .list-day-container{
     background: #e9e9e9;
-}
-
-.list-day-container .event-child{
-    border-radius: 0px;
-    border: none;
+    .event-child{
+        border-radius: 0px;
+        border: none;
+    }
+    
 }
