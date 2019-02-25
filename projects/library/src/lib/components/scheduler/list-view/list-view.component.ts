@@ -127,8 +127,8 @@ export class ListViewComponent extends DumbComponent implements OnInit {
     this.openDialog(EventCreatorDialogComponent, {
       data: {
         allowAllDay,
-        calendarId: this.selectedCalendar[0].calendarId,
-        calendar: this.selectedCalendar[0],
+        calendarId: this.selectedCalendar.calendarId,
+        calendar: this.selectedCalendar,
         dayInfo,
         editing,
         events: this.events,

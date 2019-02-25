@@ -43,7 +43,7 @@ export class DateHelper {
 
   static CalendarDaySpan(startDate: Date, endDate: Date): Date[] {
     const daysBetween = Math.ceil(DateHelper.DaysBetween(startDate, endDate));
-    return daysBetween
+    return daysBetween && daysBetween > 0
       ? integerArray(daysBetween).map(i => {
           const d = new Date();
           d.setDate(new Date(startDate).getDate() + i);
