@@ -106,6 +106,10 @@
       *ngTemplateOutlet="
         listItemTemplate;
         context: {
+          calDate: calDate,
+          calMonth: calMonth,
+          calYear: calYear,
+          date: date,
           day: day,
           events: eventsForDay,
           openDialog: openDialog,
@@ -120,7 +124,7 @@
   [disabled]="allDay"
   class="list-add-btn"
   (click)="
-    openDialog(calendarInfo.monthId, calDate, calendarInfo.currentYear, false)
+    openDialog(undefined, false)
   "
 >
   <i class="material-icons">
@@ -131,7 +135,7 @@
   *ngIf="listView === true"
   class="list-edit-btn"
   (click)="
-    openDialog(calendarInfo.monthId, calDate, calendarInfo.currentYear, true)
+    openDialog(undefined, true)
   "
 >
   <i class="material-icons">

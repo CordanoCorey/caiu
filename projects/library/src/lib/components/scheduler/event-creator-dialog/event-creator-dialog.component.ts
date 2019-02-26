@@ -17,7 +17,6 @@ import { build } from '../../../shared/utils';
 export class EventCreatorDialogComponent implements OnDestroy, OnInit {
 
   @Control(CalendarEvent) form: FormGroup;
-  @Input() events: any[];
   @Output() addEvent: EventEmitter<any> = new EventEmitter();
   @Output() deleteEventHandler: EventEmitter<any> = new EventEmitter();
   checked: boolean;
@@ -86,8 +85,6 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     console.dir(this.data);
     console.log('events today: ');
     console.dir(this.eventsToday);
-    console.log('events: ');
-    console.dir(this.events);
     const dia = this;
     this.checked = this.data.calendar.isAllDayDefault;
     if (this.data.editing && this.eventsToday.length === 1) {

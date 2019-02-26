@@ -127,9 +127,17 @@ export class DayComponent implements OnInit {
     this.allDay = isAllDay;
   }
 
-  openDialog(month, date, year, editing) {
-    const eventDialogInfo = new EventDialogInfo(month, date, year, editing);
-
-    this.openEventDialog.emit(eventDialogInfo);
+  openDialog(dateInfo, editing) {
+    if (dateInfo === undefined) {
+      console.dir(this.date);
+      console.dir('Month: ' + this.calMonth + ', Date: ' + this.calDate + ', Year: ' + this.calYear);
+      const eventDialogInfo = new EventDialogInfo(this.calMonth, this.calDate, this.calYear, editing);
+      this.openEventDialog.emit(eventDialogInfo);
+    } else {
+      const date = new Date(dateInfo);
+      console.dir(date);
+      const eventDialogInfo = new EventDialogInfo(date.getMonth(), date.getDate(), date.getFullYear(), editing);
+      this.openEventDialog.emit(eventDialogInfo);
+    }
   }
 }
