@@ -81,6 +81,7 @@ export class ListViewComponent extends DumbComponent implements OnInit {
   openEventCreator(value: any) {
     const editing = value.editing;
     const dayInfo = new DayInfo(value.date, value.month, value.year);
+    const id = value.eventId;
 
     if (this.events.length > 0 && !editing) {
       // checks for events
@@ -90,30 +91,30 @@ export class ListViewComponent extends DumbComponent implements OnInit {
           element.monthOf === dayInfo.month &&
           element.yearOf === dayInfo.year
         ) { // if an event's date matches the selected date
-            this.runDialog(dayInfo, false);
+            this.runDialog(dayInfo, false, id);
             return false;
         } else if (index + 1 < array.length) {
           // no events matched the selected date, if there's still more events move on
           return true;
         } else {
           // no events' date matches the selected date
-          this.runDialog(dayInfo, false);
+          this.runDialog(dayInfo, false, id);
           return false;
         }
       }, this);
     } else {
       // runs when no events exist on array
       if (!editing) {
-        this.runDialog(dayInfo, false);
+        this.runDialog(dayInfo, false, id);
         return false;
       } else {
-        this.runDialog(dayInfo, true);
+        this.runDialog(dayInfo, true, id);
         return false;
       }
     }
   }
 
-  runDialog(dayInfo: DayInfo, editing: boolean) {
+  runDialog(dayInfo: DayInfo, editing: boolean, id: string) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -125,7 +126,8 @@ export class ListViewComponent extends DumbComponent implements OnInit {
         dayInfo,
         editing,
         events: this.events,
-        eventTypes: this.eventTypes
+        eventTypes: this.eventTypes,
+        id: id,
       },
       width: '95%',
       maxWidth: '420px',

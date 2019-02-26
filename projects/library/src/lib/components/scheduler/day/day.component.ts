@@ -15,7 +15,8 @@ export class EventDialogInfo {
     public month: number,
     public date: number,
     public year: number,
-    public editing: boolean
+    public editing: boolean,
+    public eventId: string,
   ) {}
 }
 
@@ -127,16 +128,16 @@ export class DayComponent implements OnInit {
     this.allDay = isAllDay;
   }
 
-  openDialog(dateInfo, editing) {
+  openDialog(dateInfo, editing, eventId) {
     if (dateInfo === undefined) {
       console.dir(this.date);
       console.dir('Month: ' + this.calMonth + ', Date: ' + this.calDate + ', Year: ' + this.calYear);
-      const eventDialogInfo = new EventDialogInfo(this.calMonth, this.calDate, this.calYear, editing);
+      const eventDialogInfo = new EventDialogInfo(this.calMonth, this.calDate, this.calYear, editing, eventId);
       this.openEventDialog.emit(eventDialogInfo);
     } else {
       const date = new Date(dateInfo);
       console.dir(date);
-      const eventDialogInfo = new EventDialogInfo(date.getMonth(), date.getDate(), date.getFullYear(), editing);
+      const eventDialogInfo = new EventDialogInfo(date.getMonth(), date.getDate(), date.getFullYear(), editing, eventId);
       this.openEventDialog.emit(eventDialogInfo);
     }
   }

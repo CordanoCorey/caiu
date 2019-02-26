@@ -66,7 +66,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   get valueOut(): CalendarEvent {
     return build(CalendarEvent, this.form.value, {
       description: this.form.value.eventName,
-      eventId: this.eventId,
+      id: this.eventId,
       eventName: this.form.value.eventTypeId ? build(LookupValue, this.eventTypes.find(x => x.id === this.form.value.eventTypeId)).name : this.form.value.eventName,
       calendarId: this.data.calendarId,
       dayOf: this.data.dayInfo.date,
@@ -92,20 +92,28 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       this.noEvents = false;
     }
     if ((this.data.editing && this.eventsToday.length >= 2) || !this.data.editing) {
-      this.form.get('eventName').setValue('');
-      this.form.get('eventTypeId').setValue('');
-      this.form.get('startTime').get('hour').setValue('');
-      this.form.get('startTime').get('minute').setValue('');
-      this.form.get('startTime').get('timePeriod').setValue('');
-      this.form.get('endTime').get('hour').setValue('');
-      this.form.get('endTime').get('minute').setValue('');
-      this.form.get('endTime').get('timePeriod').setValue('');
-      this.noEvents = false;
+      if (this.data.id !== undefined) {
+        console.dir('data id: ' + this.data.id);
+        const selectedEvent = this.eventsToday.filter(x => x.id === this.data.id);
+        console.dir(selectedEvent[0]);
+        this.eventSelected(selectedEvent[0]);
+        this.noEvents = false;
+      } else {
+        this.form.get('eventName').setValue('');
+        this.form.get('eventTypeId').setValue('');
+        this.form.get('startTime').get('hour').setValue('');
+        this.form.get('startTime').get('minute').setValue('');
+        this.form.get('startTime').get('timePeriod').setValue('');
+        this.form.get('endTime').get('hour').setValue('');
+        this.form.get('endTime').get('minute').setValue('');
+        this.form.get('endTime').get('timePeriod').setValue('');
+        this.noEvents = false;
+      }
     }
     if (this.data.editing && this.eventsToday.length < 1) {
       this.noEvents = true;
       this.hideSelect = true;
-      setTimeout(function(){
+      setTimeout(function() {
         dia.dialogRef.close();
       }, 2000);
     }

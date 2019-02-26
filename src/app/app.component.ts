@@ -113,7 +113,7 @@ export class AppComponent {
     build(CalendarEvent, {
       allDay: false,
       description: 'In Session Description',
-      eventId: 1,
+      id: 1,
       eventName: 'In Session',
       eventTypeId: 2,
       calendarId: 2,
@@ -124,7 +124,7 @@ export class AppComponent {
     build(CalendarEvent, {
       allDay: false,
       description: 'Graduation Ceremony Description',
-      eventId: 2,
+      id: 2,
       eventName: 'Graduation Ceremony',
       eventTypeId: 1,
       calendarId: 2,

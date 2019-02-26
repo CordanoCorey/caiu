@@ -124,7 +124,7 @@
   [disabled]="allDay"
   class="list-add-btn"
   (click)="
-    openDialog(undefined, false)
+    openDialog(undefined, false, undefined)
   "
 >
   <i class="material-icons">
@@ -135,7 +135,7 @@
   *ngIf="listView === true"
   class="list-edit-btn"
   (click)="
-    openDialog(undefined, true)
+    openDialog(undefined, true, undefined)
   "
 >
   <i class="material-icons">
