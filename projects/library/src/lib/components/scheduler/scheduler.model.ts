@@ -13,7 +13,7 @@ export class Calendar {
 export class CalendarEvent {
   allDay = false;
   description = '';
-  id = '';
+  eventId = '';
   eventName = '';
   eventTypeId = 0;
   calendarId = 0;

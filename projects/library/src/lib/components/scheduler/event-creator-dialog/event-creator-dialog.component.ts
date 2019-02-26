@@ -21,7 +21,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   @Output() deleteEventHandler: EventEmitter<any> = new EventEmitter();
   checked: boolean;
   eventChosen = [];
-  eventId: string;
+  eventId: number;
   hideSelect = false;
   noEvents: boolean;
 
@@ -66,7 +66,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   get valueOut(): CalendarEvent {
     return build(CalendarEvent, this.form.value, {
       description: this.form.value.eventName,
-      id: this.eventId,
+      eventId: this.eventId,
       eventName: this.form.value.eventTypeId ? build(LookupValue, this.eventTypes.find(x => x.id === this.form.value.eventTypeId)).name : this.form.value.eventName,
       calendarId: this.data.calendarId,
       dayOf: this.data.dayInfo.date,
@@ -94,7 +94,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     if ((this.data.editing && this.eventsToday.length >= 2) || !this.data.editing) {
       if (this.data.id !== undefined) {
         console.dir('data id: ' + this.data.id);
-        const selectedEvent = this.eventsToday.filter(x => x.id === this.data.id);
+        const selectedEvent = this.eventsToday.filter(x => x.eventId === this.data.id);
         console.dir(selectedEvent[0]);
         this.eventSelected(selectedEvent[0]);
         this.noEvents = false;
@@ -129,7 +129,8 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       this.form.get('endTime').get('timePeriod').setValue('PM');
     }
     if (!this.data.editing) {
-      this.eventId = this.newId;
+      this.eventId = this.data.events.length + 1;
+      console.dir(this.eventId);
     } else {
       this.eventId = this.eventChosen[0].eventId;
     }

@@ -127,7 +127,7 @@ export class ListViewComponent extends DumbComponent implements OnInit {
         editing,
         events: this.events,
         eventTypes: this.eventTypes,
-        id: id,
+        id: id
       },
       width: '95%',
       maxWidth: '420px',
