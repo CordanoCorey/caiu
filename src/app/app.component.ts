@@ -17,7 +17,8 @@ import {
   LookupValue,
   Calendar,
   CalendarEvent,
-  CalendarDay
+  CalendarDay,
+  CalendarTime
 } from 'library';
 
 import { ExampleForm } from './shared/models';
@@ -119,7 +120,18 @@ export class AppComponent {
       calendarId: 2,
       monthOf: new Date(new Date()).getMonth(),
       dayOf: new Date(new Date()).getDate(),
-      yearOf: new Date(new Date()).getFullYear()
+      yearOf: new Date(new Date()).getFullYear(),
+      startTime: build(CalendarTime, {
+        hour: '1',
+        minute: '0',
+        timePeriod: 'PM'
+      }),
+      endTime: build(CalendarTime, {
+        hour: '1',
+        minute: '30',
+        timePeriod: 'PM'
+      }),
+
     }),
     build(CalendarEvent, {
       allDay: false,
@@ -130,7 +142,17 @@ export class AppComponent {
       calendarId: 2,
       monthOf: new Date(new Date()).getMonth(),
       dayOf: new Date(new Date()).getDate(),
-      yearOf: new Date(new Date()).getFullYear()
+      yearOf: new Date(new Date()).getFullYear(),
+      startTime: build(CalendarTime, {
+        hour: '2',
+        minute: '0',
+        timePeriod: 'PM'
+      }),
+      endTime: build(CalendarTime, {
+        hour: '2',
+        minute: '30',
+        timePeriod: 'PM'
+      }),
     })
   ];
   countdownFrom = build(Time, {

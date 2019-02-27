@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
+import { Calendar } from '../scheduler.model';
 import { EventCreatorDialogComponent } from '../event-creator-dialog/event-creator-dialog.component';
 import { LookupValue } from '../../../lookup/lookup.models';
 import { DumbComponent } from '../../../shared/component';
@@ -25,8 +26,9 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
   }
 
   @Input() masterCalendar: any[];
-  @Input() selectedCalendar: any[];
+  @Input() selectedCalendar: Calendar;
   @Input() calendarInfo: any[];
+  @Input() enableDebug: boolean;
   @Input() events: any[];
   @Input() eventTypes: LookupValue[];
   @Input() weekArray: any[];
@@ -92,20 +94,21 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
     return false;
   }
 
-  runDialog(dayInfo: DayInfo, allowAllDay: boolean, editing: boolean) {
+  runDialog(dayInfo: DayInfo, editing: boolean, id: number) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
 
     this.openDialog(EventCreatorDialogComponent, {
       data: {
-        allowAllDay,
-        calendarId: this.selectedCalendar[0].calendarId,
-        calendar: this.selectedCalendar[0],
+        calendarId: this.selectedCalendar.calendarId,
+        calendar: this.selectedCalendar,
         dayInfo,
         editing,
+        enableDebug: this.enableDebug,
         events: this.events,
         eventTypes: this.eventTypes,
+        id: id,
       },
       width: '95%',
       maxWidth: '420px',
@@ -118,32 +121,32 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
     this.manageEvent(e);
   }
 
-  openEventCreator(month, date, year, editing) {
+  openEventCreator(month, date, year, editing, eventId) {
     const dayInfo = new DayInfo(date, month, year);
 
-    if (this.events.length > 0 && editing !== true) { // checks for events
+    if (this.events.length > 0 && !editing) {
+      // checks for events
       this.events.every((element, index, array) => {
-        if (element.dayOf === dayInfo.date && element.monthOf === dayInfo.month && element.yearOf === dayInfo.year) { // if an event's date matches the selected date
-          if (element.allDay) { // if an all day event exists
-            window.alert('Can\'t fit anymore events in today.');
+        if (
+          element.dayOf === dayInfo.date &&
+          element.monthOf === dayInfo.month &&
+          element.yearOf === dayInfo.year
+        ) { // if an event's date matches the selected date
+          this.runDialog(dayInfo, false, eventId);
             return false;
-          } else { // if an event exists that's not all day, open dialog with all day disabled
-            this.runDialog(dayInfo, false, false);
-            return false;
-          }
         } else if (index + 1 < array.length) { // no events matched the selected date, if there's still more events move on
           return true;
         } else { // no events' date matches the selected date
-          this.runDialog(dayInfo, true, false);
+          this.runDialog(dayInfo, false, eventId);
           return false;
         }
       }, this);
     } else { // runs when no events exist on array
       if (!editing) {
-        this.runDialog(dayInfo, true, false);
+        this.runDialog(dayInfo, false, eventId);
         return false;
       } else {
-        this.runDialog(dayInfo, true, true);
+        this.runDialog(dayInfo, true, eventId);
         return false;
       }
     }

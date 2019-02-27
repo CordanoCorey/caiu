@@ -115,7 +115,7 @@ export class ListViewComponent extends DumbComponent implements OnInit {
     }
   }
 
-  runDialog(dayInfo: DayInfo, editing: boolean, id: string) {
+  runDialog(dayInfo: DayInfo, editing: boolean, id: number) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
