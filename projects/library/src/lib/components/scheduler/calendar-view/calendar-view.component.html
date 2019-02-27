@@ -36,7 +36,7 @@
               <span *ngIf="event.allDay != false">
                 <h3>All Day Event</h3>
               </span>
-              <button mat-mini-fab class="edit-btn" (click)="openEventCreator(calendar.monthId, selectedDate, calendar.currentYear, true, event.eventId)">
+              <button class="edit-btn" (click)="openEventCreator(calendar.monthId, selectedDate, calendar.currentYear, true, event.eventId)">
                 <i class="material-icons">
                   create
                 </i>
