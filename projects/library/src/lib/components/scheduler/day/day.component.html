@@ -15,6 +15,30 @@
     <h4 *ngIf="listView === true">
       {{ dayOfWeek }}
     </h4>
+    
+    <button
+      *ngIf="listView === true"
+      [disabled]="allDay"
+      class="list-add-btn"
+      (click)="
+        openDialog(undefined, false, undefined)
+      "
+    >
+      <i class="material-icons">
+        add
+      </i>
+    </button>
+    <button
+      *ngIf="listView === true"
+      class="list-edit-btn"
+      (click)="
+        openDialog(undefined, true, undefined)
+      "
+    >
+      <i class="material-icons">
+        create
+      </i>
+    </button>
   </div>
 
   <div
@@ -101,6 +125,33 @@
     <h4 *ngIf="listView === true">
       {{ dayOfWeek }}
     </h4>
+
+    <div class="btn-container">
+      <button
+        *ngIf="listView === true"
+        [disabled]="allDay"
+        class="list-add-btn"
+        (click)="
+          openDialog(undefined, false, undefined)
+        "
+      >
+        <i class="material-icons">
+          add
+        </i>
+      </button>
+      <button
+        *ngIf="listView === true"
+        class="list-edit-btn"
+        (click)="
+          openDialog(undefined, true, undefined)
+        "
+      >
+        <i class="material-icons">
+          create
+        </i>
+      </button>
+    </div>
+    
   </div>
     <ng-container
       *ngTemplateOutlet="
@@ -119,26 +170,4 @@
     ></ng-container>
 </div>
 
-<button
-  *ngIf="listView === true"
-  [disabled]="allDay"
-  class="list-add-btn"
-  (click)="
-    openDialog(undefined, false, undefined)
-  "
->
-  <i class="material-icons">
-    add
-  </i>
-</button>
-<button
-  *ngIf="listView === true"
-  class="list-edit-btn"
-  (click)="
-    openDialog(undefined, true, undefined)
-  "
->
-  <i class="material-icons">
-    create
-  </i>
-</button>
+

@@ -81,10 +81,12 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    console.log('data: ');
-    console.dir(this.data);
-    console.log('events today: ');
-    console.dir(this.eventsToday);
+    if (this.data.enableDebug) {
+      console.log('data: ');
+      console.dir(this.data);
+      console.log('events today: ');
+      console.dir(this.eventsToday);
+    }
     const dia = this;
     this.checked = this.data.calendar.isAllDayDefault;
     if (this.data.editing && this.eventsToday.length === 1) {
@@ -93,11 +95,13 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     }
     if ((this.data.editing && this.eventsToday.length >= 2) || !this.data.editing) {
       if (this.data.id !== undefined) {
-        console.dir('data id: ' + this.data.id);
         const selectedEvent = this.eventsToday.filter(x => x.eventId === this.data.id);
-        console.dir(selectedEvent[0]);
         this.eventSelected(selectedEvent[0]);
         this.noEvents = false;
+        if (this.data.enableDebug) {
+          console.dir('data id: ' + this.data.id);
+          console.dir(selectedEvent[0]);
+        }
       } else {
         this.form.get('eventName').setValue('');
         this.form.get('eventTypeId').setValue('');
@@ -130,7 +134,6 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
     }
     if (!this.data.editing) {
       this.eventId = this.data.events.length + 1;
-      console.dir(this.eventId);
     } else {
       this.eventId = this.eventChosen[0].eventId;
     }

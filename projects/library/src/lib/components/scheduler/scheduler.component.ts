@@ -35,6 +35,7 @@ export class SchedulerComponent implements OnInit {
   @Input() calendarPlaceholder = 'Select Calendar';
   @Input() calendars = [];
   @Input() defaultView: 'CALENDAR' | 'LIST' = 'CALENDAR';
+  @Input() enableDebug = false;
   @Input() events = [];
   @Input() eventTypes: LookupValue[];
   @Input() selectedCalendarId: number;

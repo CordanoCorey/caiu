@@ -31,6 +31,7 @@ export class DayComponent implements OnInit {
   @Input() calendarInfo;
   @Input() date: Date = new Date();
   @Input() day: CalendarDay;
+  @Input() enableDebug: boolean;
   @Input() events: CalendarEvent[] = [];
   @Input() listItemTemplate: TemplateRef<any>;
   @Input() listView = false;
@@ -130,13 +131,17 @@ export class DayComponent implements OnInit {
 
   openDialog(dateInfo, editing, eventId) {
     if (dateInfo === undefined) {
-      console.dir(this.date);
-      console.dir('Month: ' + this.calMonth + ', Date: ' + this.calDate + ', Year: ' + this.calYear);
+      if (this.enableDebug) {
+        console.dir(this.date);
+        console.dir('Month: ' + this.calMonth + ', Date: ' + this.calDate + ', Year: ' + this.calYear);
+      }
       const eventDialogInfo = new EventDialogInfo(this.calMonth, this.calDate, this.calYear, editing, eventId);
       this.openEventDialog.emit(eventDialogInfo);
     } else {
       const date = new Date(dateInfo);
-      console.dir(date);
+      if (this.enableDebug) {
+        console.dir(date);
+      }
       const eventDialogInfo = new EventDialogInfo(date.getMonth(), date.getDate(), date.getFullYear(), editing, eventId);
       this.openEventDialog.emit(eventDialogInfo);
     }

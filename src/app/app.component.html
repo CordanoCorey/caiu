@@ -71,6 +71,7 @@
 <div *ngIf="activeDemo === 'scheduler'" class="example">
   <iu-scheduler
     defaultView="LIST"
+    [enableDebug]="false"
     [selectedCalendarId]="2"
     [calendars]="calendars"
     [events]="calendarEvents"

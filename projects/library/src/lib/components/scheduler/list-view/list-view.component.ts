@@ -31,6 +31,7 @@ export class ListViewComponent extends DumbComponent implements OnInit {
   @Input() selectedCalendar: Calendar;
   @Input() calendarInfo: any[];
   @Input() days: CalendarDay[] = [];
+  @Input() enableDebug: boolean;
   @Input() events: any[];
   @Input() eventTypes: LookupValue[];
   @Input() listItemTemplate: TemplateRef<any>;
@@ -125,6 +126,7 @@ export class ListViewComponent extends DumbComponent implements OnInit {
         calendar: this.selectedCalendar,
         dayInfo,
         editing,
+        enableDebug: this.enableDebug,
         events: this.events,
         eventTypes: this.eventTypes,
         id: id

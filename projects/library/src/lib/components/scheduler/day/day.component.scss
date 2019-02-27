@@ -61,6 +61,7 @@
     display: flex;
     background: #D1D1D1;
     color: #455A64;
+    position: relative
 }
 .day-header h4{
     padding-left: 10px;
@@ -143,5 +144,12 @@
         border-radius: 0px;
         border: none;
     }
-    
+    .btn-container{
+        position: absolute;
+        right: 0;
+        padding: 10px 0px;
+        .list-edit-btn{
+            margin: 0px 5px;
+        }
+    }
 }
