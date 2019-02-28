@@ -14,6 +14,7 @@
 </ng-container>
 <mat-form-field id="calendar-select" *ngIf="!calendarsListTemplate">
   <mat-select
+    #calendarSelect
     [placeholder]="calendarPlaceholder"
     [(value)]="selectedCalendarId"
     (selectionChange)="changeCalendar(selectedCalendarId)"

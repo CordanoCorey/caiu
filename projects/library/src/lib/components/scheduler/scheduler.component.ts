@@ -6,9 +6,10 @@ import {
   Output,
   EventEmitter,
   ContentChild,
-  TemplateRef
+  TemplateRef,
+  ElementRef
 } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatSelect } from '@angular/material';
 
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
@@ -44,6 +45,7 @@ export class SchedulerComponent implements OnInit {
   @Output() changeCalendarId = new EventEmitter<number>();
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() updateEvent = new EventEmitter<any>();
+  @ViewChild('calendarSelect') calendarSelect: MatSelect;
   @ViewChild(CalendarViewComponent)
   calendarViewComponent: CalendarViewComponent;
   @ContentChild('actionsTemplate') actionsTemplate: TemplateRef<any>;
@@ -229,9 +231,10 @@ export class SchedulerComponent implements OnInit {
   changeCalendar(id: number) {
     this.changeCalendarId.emit(id);
     this.selectedCalendarId = id;
-    // setTimeout(function () {
-    //   document.getElementById('calendar-select').blur();
-    // }, 750);
+    const select = this.calendarSelect;
+    setTimeout(function () {
+      console.log(select);
+    }, 750);
   }
 
   changeCurrentDate(value) {
