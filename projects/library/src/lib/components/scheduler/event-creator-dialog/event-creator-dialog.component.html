@@ -35,10 +35,7 @@
       </tr>
       <tr>
         <td>
-            <mat-checkbox formControlName="allDay" [(ngModel)]="checked"
-            *ngIf="isAllDayEnforced === false">All Day Event</mat-checkbox>
-          <mat-checkbox formControlName="allDay" [disabled]="true" [(ngModel)]="checked"
-            *ngIf="isAllDayEnforced === true">All Day Event</mat-checkbox>
+            <mat-checkbox formControlName="allDay">All Day Event</mat-checkbox>
         </td>
       </tr>
       <tr>

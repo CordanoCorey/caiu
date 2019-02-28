@@ -19,7 +19,6 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   @Control(CalendarEvent) form: FormGroup;
   @Output() addEvent: EventEmitter<any> = new EventEmitter();
   @Output() deleteEventHandler: EventEmitter<any> = new EventEmitter();
-  checked: boolean;
   eventChosen = [];
   eventId: number;
   hideSelect = false;
@@ -88,7 +87,10 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       console.dir(this.eventsToday);
     }
     const dia = this;
-    this.checked = this.data.calendar.isAllDayDefault;
+    this.form.get('allDay').setValue(this.data.calendar.isAllDayDefault);
+    if (this.data.calendar.isAllDayEnforced) {
+      this.form.get('allDay').disable();
+    }
     if (this.data.editing && this.eventsToday.length === 1) {
       this.eventSelected(this.eventsToday[0]);
       this.noEvents = false;
@@ -161,8 +163,8 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
   eventSelected(event) {
     if (event.value === undefined) {
       this.eventChosen.push(event);
-      this.checked = event.allDay;
       this.hideSelect = true;
+      this.form.get('allDay').setValue(event.allDay);
       this.form.get('eventName').setValue(event.description);
       this.form.get('eventTypeId').setValue(event.eventTypeId);
       this.form.get('startTime').get('hour').setValue(event.startTime.hour);
@@ -173,7 +175,7 @@ export class EventCreatorDialogComponent implements OnDestroy, OnInit {
       this.form.get('endTime').get('timePeriod').setValue(event.endTime.timePeriod);
     } else {
       this.eventChosen.push(event.value);
-      this.checked = event.value.allDay;
+      this.form.get('allDay').setValue(event.value.allDay);
       this.form.get('eventName').setValue(event.value.description);
       this.form.get('eventTypeId').setValue(event.value.eventTypeId);
       this.form.get('startTime').get('hour').setValue(event.value.startTime.hour);

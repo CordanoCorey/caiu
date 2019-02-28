@@ -40,7 +40,7 @@ export class DayComponent implements OnInit {
   _calendar: Calendar = new Calendar();
   _master: Calendar = new Calendar();
 
-  allDay;
+  // allDay: boolean;
   dayOfWeek: string;
   daysWithMultipleEvents = [];
   multipleEvents = [];
@@ -97,6 +97,10 @@ export class DayComponent implements OnInit {
     );
   }
 
+  get allDay() {
+    return this.eventsForDay.filter(x => x.allDay === true);
+  }
+
   get eventsLength(): number {
     return this.events.length;
   }
@@ -123,10 +127,6 @@ export class DayComponent implements OnInit {
     if (this.multipleEvents.length > 1) {
       this.daysWithMultipleEvents.push(this.calDate);
     }
-  }
-
-  checkAllDay(isAllDay) {
-    this.allDay = isAllDay;
   }
 
   openDialog(dateInfo, editing, eventId) {

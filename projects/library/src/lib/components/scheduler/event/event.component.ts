@@ -9,7 +9,6 @@ export class EventComponent implements OnInit {
 
   @Input() event;
   @Input() listView: boolean;
-  @Output() hasAllDay = new EventEmitter<any>();
 
   get isAllDay(): boolean {
     return this.event.allDay;
@@ -18,9 +17,6 @@ export class EventComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.isAllDay === true) {
-      this.hasAllDay.emit(true);
-    }
   }
 
 }

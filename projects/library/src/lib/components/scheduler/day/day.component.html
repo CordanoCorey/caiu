@@ -15,10 +15,8 @@
     <h4 *ngIf="listView === true">
       {{ dayOfWeek }}
     </h4>
-    
     <button
-      *ngIf="listView === true"
-      [disabled]="allDay"
+      *ngIf="listView === true && allDay.length < 1"
       class="list-add-btn"
       (click)="
         openDialog(undefined, false, undefined)
@@ -73,7 +71,6 @@
         <iu-event
           [event]="event"
           [listView]="listView"
-          (hasAllDay)="checkAllDay($event)"
         ></iu-event>
       </div>
     </div>
@@ -101,7 +98,6 @@
         <iu-event
           [event]="event"
           [listView]="listView"
-          (hasAllDay)="checkAllDay($event)"
         ></iu-event>
       </div>
     </div>
@@ -125,11 +121,9 @@
     <h4 *ngIf="listView === true">
       {{ dayOfWeek }}
     </h4>
-
     <div class="btn-container">
       <button
-        *ngIf="listView === true"
-        [disabled]="allDay"
+        *ngIf="listView === true && allDay.length < 1"
         class="list-add-btn"
         (click)="
           openDialog(undefined, false, undefined)
