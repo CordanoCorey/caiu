@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  ElementRef
+} from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { Calendar } from '../scheduler.model';
@@ -7,11 +14,7 @@ import { LookupValue } from '../../../lookup/lookup.models';
 import { DumbComponent } from '../../../shared/component';
 
 export class DayInfo {
-  constructor(
-    public date: number,
-    public month: number,
-    public year: number
-  ) { }
+  constructor(public date: number, public month: number, public year: number) {}
 }
 
 @Component({
@@ -20,8 +23,7 @@ export class DayInfo {
   styleUrls: ['./calendar-view.component.scss']
 })
 export class CalendarViewComponent extends DumbComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private elementRef: ElementRef) {
     super();
   }
 
@@ -58,6 +60,10 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
     return this.calendarInfo[0];
   }
 
+  get html(): string {
+    return this.elementRef.nativeElement.innerHtml;
+  }
+
   changeMonth(value) {
     this.changeMonthEvent.emit(value);
     this.closeDayView();
@@ -87,7 +93,11 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
     } else {
       this.opened = true;
     }
-    this.dayInfo = new DayInfo(this.selectedDate, this.selectedMonth, this.selectedYear);
+    this.dayInfo = new DayInfo(
+      this.selectedDate,
+      this.selectedMonth,
+      this.selectedYear
+    );
   }
 
   get listView(): boolean {
@@ -108,7 +118,7 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
         enableDebug: this.enableDebug,
         events: this.events,
         eventTypes: this.eventTypes,
-        id: id,
+        id: id
       },
       width: '95%',
       maxWidth: '420px',
@@ -131,17 +141,21 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
           element.dayOf === dayInfo.date &&
           element.monthOf === dayInfo.month &&
           element.yearOf === dayInfo.year
-        ) { // if an event's date matches the selected date
+        ) {
+          // if an event's date matches the selected date
           this.runDialog(dayInfo, false, eventId);
-            return false;
-        } else if (index + 1 < array.length) { // no events matched the selected date, if there's still more events move on
+          return false;
+        } else if (index + 1 < array.length) {
+          // no events matched the selected date, if there's still more events move on
           return true;
-        } else { // no events' date matches the selected date
+        } else {
+          // no events' date matches the selected date
           this.runDialog(dayInfo, false, eventId);
           return false;
         }
       }, this);
-    } else { // runs when no events exist on array
+    } else {
+      // runs when no events exist on array
       if (!editing) {
         this.runDialog(dayInfo, false, eventId);
         return false;
@@ -150,10 +164,7 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
         return false;
       }
     }
-
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

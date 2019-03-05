@@ -23,6 +23,7 @@ import {
 } from './scheduler.model';
 import { LookupValue } from '../../lookup/lookup.models';
 import { build, toArray } from '../../shared/utils';
+import { ListViewComponent } from './list-view/list-view.component';
 
 @Component({
   selector: 'iu-scheduler',
@@ -49,6 +50,7 @@ export class SchedulerComponent implements OnInit {
   @ViewChild(CalendarViewComponent)
   calendarViewComponent: CalendarViewComponent;
   @ContentChild('actionsTemplate') actionsTemplate: TemplateRef<any>;
+  @ViewChild(ListViewComponent) calendarListComponent: ListViewComponent;
   @ContentChild('calendarsListTemplate') calendarsListTemplate: TemplateRef<
     any
   >;
@@ -121,6 +123,17 @@ export class SchedulerComponent implements OnInit {
 
   get firstDay(): number {
     return this.beginDate.getDay();
+  }
+
+  get html(): string {
+    switch (this.selectedView) {
+      case 0:
+        return this.calendarViewComponent.html;
+      case 1:
+        return this.calendarListComponent.html;
+      default:
+        return '';
+    }
   }
 
   get lastDay(): number {
@@ -232,7 +245,7 @@ export class SchedulerComponent implements OnInit {
     this.changeCalendarId.emit(id);
     this.selectedCalendarId = id;
     const select = this.calendarSelect;
-    setTimeout(function () {
+    setTimeout(function() {
       console.log(select);
     }, 750);
   }

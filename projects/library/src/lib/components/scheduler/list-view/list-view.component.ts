@@ -4,7 +4,8 @@ import {
   Input,
   Output,
   EventEmitter,
-  TemplateRef
+  TemplateRef,
+  ElementRef
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
@@ -23,7 +24,7 @@ export class DayInfo {
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent extends DumbComponent implements OnInit {
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private elementRef: ElementRef) {
     super();
   }
 
@@ -41,6 +42,10 @@ export class ListViewComponent extends DumbComponent implements OnInit {
   @Output() deleteEventHandler = new EventEmitter<any>();
 
   allDayEvents = [];
+
+  get html(): string {
+    return this.elementRef.nativeElement.innerHtml;
+  }
 
   get listView(): any {
     return true;
@@ -91,9 +96,10 @@ export class ListViewComponent extends DumbComponent implements OnInit {
           element.dayOf === dayInfo.date &&
           element.monthOf === dayInfo.month &&
           element.yearOf === dayInfo.year
-        ) { // if an event's date matches the selected date
-            this.runDialog(dayInfo, false, id);
-            return false;
+        ) {
+          // if an event's date matches the selected date
+          this.runDialog(dayInfo, false, id);
+          return false;
         } else if (index + 1 < array.length) {
           // no events matched the selected date, if there's still more events move on
           return true;
