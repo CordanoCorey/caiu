@@ -18,7 +18,9 @@ import {
   Calendar,
   CalendarEvent,
   CalendarDay,
-  CalendarTime
+  CalendarTime,
+  SchedulerComponent,
+  DumbComponent
 } from 'library';
 
 import { ExampleForm } from './shared/models';
@@ -29,8 +31,9 @@ import { ExampleForm } from './shared/models';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent extends DumbComponent {
   @Control(ExampleForm) form: FormGroup;
+  @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
   activeDemo = 'scheduler';
   addresses = [
@@ -130,8 +133,7 @@ export class AppComponent {
         hour: '1',
         minute: '30',
         timePeriod: 'PM'
-      }),
-
+      })
     }),
     build(CalendarEvent, {
       allDay: false,
@@ -152,7 +154,7 @@ export class AppComponent {
         hour: '2',
         minute: '30',
         timePeriod: 'PM'
-      }),
+      })
     })
   ];
   countdownFrom = build(Time, {
@@ -188,6 +190,10 @@ export class AppComponent {
   ];
   timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
 
+  constructor() {
+    super();
+  }
+
   get windowHeight(): number {
     return parseInt(localStorage.getItem('WINDOW_HEIGHT'), 10) - 64;
   }
@@ -204,7 +210,9 @@ export class AppComponent {
     localStorage.setItem('WINDOW_WIDTH', value.toString());
   }
 
-  onAddCalendar() {}
+  exportCalendarToPDF() {
+    this.schedulerCmpt.exportToPDF();
+  }
 
   onChangeCalendarId(id: number) {
     console.log(id);
@@ -251,5 +259,10 @@ export class AppComponent {
 
   schedulerTest(value: any) {
     console.dir(value);
+  }
+
+  printCalendar() {
+    console.log(this.schedulerCmpt.html);
+    this.print(this.schedulerCmpt.html);
   }
 }

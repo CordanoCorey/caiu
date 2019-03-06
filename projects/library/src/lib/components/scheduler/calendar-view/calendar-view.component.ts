@@ -4,7 +4,8 @@ import {
   Output,
   EventEmitter,
   OnInit,
-  ElementRef
+  ElementRef,
+  ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
@@ -12,6 +13,7 @@ import { Calendar } from '../scheduler.model';
 import { EventCreatorDialogComponent } from '../event-creator-dialog/event-creator-dialog.component';
 import { LookupValue } from '../../../lookup/lookup.models';
 import { DumbComponent } from '../../../shared/component';
+import { htmlToString } from '../../../shared/utils';
 
 export class DayInfo {
   constructor(public date: number, public month: number, public year: number) {}
@@ -23,7 +25,8 @@ export class DayInfo {
   styleUrls: ['./calendar-view.component.scss']
 })
 export class CalendarViewComponent extends DumbComponent implements OnInit {
-  constructor(public dialog: MatDialog, private elementRef: ElementRef) {
+  @ViewChild('wrapper') wrapper: ElementRef;
+  constructor(public dialog: MatDialog) {
     super();
   }
 
@@ -61,7 +64,7 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
   }
 
   get html(): string {
-    return this.elementRef.nativeElement.innerHtml;
+    return htmlToString(this.wrapper.nativeElement);
   }
 
   changeMonth(value) {

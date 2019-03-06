@@ -99,6 +99,18 @@ export function distinct(arr: any[], key = ''): any[] {
     : arr.reduce((acc, x) => (acc.indexOf(x) === -1 ? [...acc, x] : acc), []);
 }
 
+export function convertCamel2Dash(str: string): string {
+  return str.replace(/([a-z][A-Z])/g, function(g) {
+    return g[0] + '-' + g[1].toLowerCase();
+  });
+}
+
+export function convertDash2Camel(str: string): string {
+  return str.replace(/-([a-z])/g, function(g) {
+    return g[1].toUpperCase();
+  });
+}
+
 export function equals(x1: any, x2: any): boolean {
   // check whether x1 and x2 have the same type
   if (typeof x1 !== typeof x2) {
@@ -401,6 +413,61 @@ export function hasChanged(
 
 export function hashToArray(hashMap: object): any[] {
   return Object.keys(hashMap).map(key => hashMap[key]);
+}
+
+export function htmlToString(element): string {
+  return `${htmlElementTag(element)}${htmlElementContents(
+    element
+  )}${htmlElementCloseTag(element)}`;
+}
+
+export function htmlElementTag(element): string {
+  const html = element.outerHTML;
+  const style = htmlStyleElementToString(element);
+  const insertAtIndex = html.indexOf('>');
+  return `${html.substring(0, insertAtIndex)} style="${style}">`;
+}
+
+export function htmlElementContents(element): string {
+  const children = Array.from(element.children);
+  return `${children.length === 0 ? element.innerText : ''}${children.reduce(
+    (acc, el) => acc + htmlToString(el),
+    ''
+  )}`;
+}
+
+export function htmlElementCloseTag(element): string {
+  const html = element.outerHTML;
+  return html.substring(html.lastIndexOf('</'));
+}
+
+export function htmlStyleElementToString(element): string {
+  const computedStyle = window.getComputedStyle(element);
+  return [
+    'background',
+    'border',
+    'bottom',
+    'color',
+    'display',
+    'fontSize',
+    'height',
+    'left',
+    'margin',
+    'overflow',
+    'padding',
+    'position',
+    'right',
+    'top',
+    'width'
+  ].reduce((acc, attr) => {
+    return `${acc}${attr}:${computedStyle[convertDash2Camel(attr)]};`;
+  }, '');
+}
+
+export function htmlWrap(html: string, style: string): string {
+  return `<head>${
+    style ? '<style>' + style + '</style>' : ''
+  }</head><body>${html}</body>`;
 }
 
 export function idChanged(changes: SimpleChanges, key: string) {

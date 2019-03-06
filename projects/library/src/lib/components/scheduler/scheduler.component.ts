@@ -9,7 +9,10 @@ import {
   TemplateRef,
   ElementRef
 } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ResponseContentType } from '@angular/http';
 import { MatDialog, MatDialogConfig, MatSelect } from '@angular/material';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
@@ -21,9 +24,10 @@ import {
   Month,
   MonthName
 } from './scheduler.model';
+import { ListViewComponent } from './list-view/list-view.component';
 import { LookupValue } from '../../lookup/lookup.models';
 import { build, toArray } from '../../shared/utils';
-import { ListViewComponent } from './list-view/list-view.component';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'iu-scheduler',
@@ -31,7 +35,11 @@ import { ListViewComponent } from './list-view/list-view.component';
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private _http: HttpClient,
+    private sanitizer: DomSanitizer
+  ) {}
 
   @Input() allDayEnforced = false;
   @Input() calendarPlaceholder = 'Select Calendar';
@@ -55,8 +63,11 @@ export class SchedulerComponent implements OnInit {
     any
   >;
   @ContentChild('listItemTemplate') listItemTemplate: TemplateRef<any>;
+  @ViewChild('pdfLink') pdfLink: ElementRef;
   now = new Date();
   absoluteNow = new Date();
+  exporting = false;
+  fileUrl: SafeUrl = '';
   selectedView: number;
   _allDayDefault = false;
 
@@ -273,6 +284,35 @@ export class SchedulerComponent implements OnInit {
 
   closeDayView() {
     this.calendarViewComponent.closeDayView();
+  }
+
+  exportToPDF() {
+    this.exporting = true;
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    this._http
+      .post(
+        'https://appservice.caiu.org/SaveAsPDF',
+        JSON.stringify(this.html),
+        {
+          headers: headers,
+          responseType: 'blob'
+        }
+      )
+      .pipe(
+        map(res => {
+          return new Blob([res], { type: 'application/pdf' });
+        })
+      )
+      .subscribe(res => {
+        this.fileUrl = this.sanitizer.bypassSecurityTrustUrl(
+          URL.createObjectURL(res)
+        );
+        setTimeout(x => {
+          this.pdfLink.nativeElement.click();
+          this.exporting = false;
+        }, 0);
+      });
   }
 
   openCalendarCreator() {

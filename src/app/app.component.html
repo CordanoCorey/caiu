@@ -70,7 +70,7 @@
 
 <div *ngIf="activeDemo === 'scheduler'" class="example">
   <iu-scheduler
-    defaultView="LIST"
+    defaultView="CALENDAR"
     [enableDebug]="true"
     [selectedCalendarId]="2"
     [calendars]="calendars"
@@ -87,16 +87,36 @@
         <button mat-raised-button color="primary" (click)="onAddCalendar()">
           Add Calendar
         </button>
+        <button mat-raised-button color="primary" (click)="printCalendar()">
+          Print Calendar
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="exportCalendarToPDF()"
+        >
+          Export To PDF
+        </button>
       </div>
     </ng-template>
     <!-- <ng-template #calendarsListTemplate let-calendars="calendars" let-changeCalendar="changeCalendar">
       <button mat-button color="primary" *ngFor="let calendar of calendars"
         (click)="changeCalendar(calendar.calendarId)">{{ calendar.calendarName }}</button>
     </ng-template> -->
-    <ng-template let-day="day" let-events="events" let-openDialog="openDialog" #listItemTemplate>
+    <ng-template
+      let-day="day"
+      let-events="events"
+      let-openDialog="openDialog"
+      #listItemTemplate
+    >
       <div class="calendar-day">
         <div>{{ day | json }}</div>
-        <div class="calendar-event" style="cursor: pointer;" *ngFor="let e of events" (click)="openDialog(undefined, true, e.eventId)">
+        <div
+          class="calendar-event"
+          style="cursor: pointer;"
+          *ngFor="let e of events"
+          (click)="openDialog(undefined, true, e.eventId)"
+        >
           <h4>{{ e.eventName }}</h4>
           <p>{{ e.description }}</p>
         </div>

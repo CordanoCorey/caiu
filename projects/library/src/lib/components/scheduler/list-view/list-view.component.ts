@@ -5,7 +5,8 @@ import {
   Output,
   EventEmitter,
   TemplateRef,
-  ElementRef
+  ElementRef,
+  ViewChild
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
@@ -24,7 +25,8 @@ export class DayInfo {
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent extends DumbComponent implements OnInit {
-  constructor(public dialog: MatDialog, private elementRef: ElementRef) {
+  @ViewChild('wrapper') wrapper: ElementRef;
+  constructor(public dialog: MatDialog) {
     super();
   }
 
@@ -44,7 +46,7 @@ export class ListViewComponent extends DumbComponent implements OnInit {
   allDayEvents = [];
 
   get html(): string {
-    return this.elementRef.nativeElement.innerHtml;
+    return this.wrapper.nativeElement.innerHTML;
   }
 
   get listView(): any {
