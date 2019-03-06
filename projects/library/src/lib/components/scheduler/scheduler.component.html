@@ -12,9 +12,9 @@
   "
 >
 </ng-container>
-<mat-form-field id="calendar-select" *ngIf="!calendarsListTemplate">
+<mat-form-field *ngIf="!calendarsListTemplate">
   <mat-select
-    #calendarSelect
+    id="calendar-select"
     [placeholder]="calendarPlaceholder"
     [(value)]="selectedCalendarId"
     (selectionChange)="changeCalendar(selectedCalendarId)"

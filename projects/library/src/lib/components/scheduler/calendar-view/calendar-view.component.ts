@@ -124,8 +124,8 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
         id: id
       },
       width: '95%',
-      maxWidth: '420px',
-      height: '500px'
+      maxWidth: '500px',
+      height: '650px'
     });
   }
 

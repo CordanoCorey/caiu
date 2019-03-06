@@ -1,6 +1,10 @@
 {
   "name": "@caiu/library",
+<<<<<<< HEAD
   "version": "7.1.14",
+=======
+  "version": "7.1.17",
+>>>>>>> 5d9480e716d41247c9b77c31225a8f41c0ff8681
   "license": "MIT",
   "private": false,
   "peerDependencies": {

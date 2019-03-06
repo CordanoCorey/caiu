@@ -7,12 +7,12 @@ import {
   EventEmitter,
   ContentChild,
   TemplateRef,
-  ElementRef
+  ElementRef,
+  Renderer2
 } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ResponseContentType } from '@angular/http';
-import { MatDialog, MatDialogConfig, MatSelect } from '@angular/material';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
@@ -38,8 +38,9 @@ export class SchedulerComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private _http: HttpClient,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    private renderer: Renderer2
+    ) {}
 
   @Input() allDayEnforced = false;
   @Input() calendarPlaceholder = 'Select Calendar';
@@ -54,7 +55,6 @@ export class SchedulerComponent implements OnInit {
   @Output() changeCalendarId = new EventEmitter<number>();
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() updateEvent = new EventEmitter<any>();
-  @ViewChild('calendarSelect') calendarSelect: MatSelect;
   @ViewChild(CalendarViewComponent)
   calendarViewComponent: CalendarViewComponent;
   @ContentChild('actionsTemplate') actionsTemplate: TemplateRef<any>;
@@ -235,8 +235,6 @@ export class SchedulerComponent implements OnInit {
     if (newCalendar !== undefined) {
       this.calendars.push(newCalendar[0]);
       this.addCalendar.emit(newCalendar[0]);
-    } else {
-      console.warn(undefined);
     }
   }
 
@@ -255,10 +253,10 @@ export class SchedulerComponent implements OnInit {
   changeCalendar(id: number) {
     this.changeCalendarId.emit(id);
     this.selectedCalendarId = id;
-    const select = this.calendarSelect;
+    const comp = this;
     setTimeout(function() {
-      console.log(select);
-    }, 750);
+      comp.renderer.selectRootElement('#calendar-select', true).blur();
+    }, 500);
   }
 
   changeCurrentDate(value) {
@@ -329,15 +327,16 @@ export class SchedulerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => this.addNewCalendar(data));
   }
 
-  tabChanged(event) {
-    // if (event.index > 0) {
-    //   setTimeout(function () {
-    //     document.getElementById('mat-tab-label-0-1').blur();
-    //   }, 500);
-    // } else {
-    //   setTimeout(function () {
-    //     document.getElementById('mat-tab-label-0-0').blur();
-    //   }, 500);
-    // }
+  tabChanged(tab) {
+    const comp = this;
+     if (tab.index > 0) {
+       setTimeout(function () {
+         comp.renderer.selectRootElement('#mat-tab-label-0-1', true).blur();
+       }, 500);
+     } else {
+       setTimeout(function () {
+         comp.renderer.selectRootElement('#mat-tab-label-0-0', true).blur();
+       }, 500);
+     }
   }
 }
