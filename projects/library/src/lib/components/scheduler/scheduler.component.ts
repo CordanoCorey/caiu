@@ -7,7 +7,8 @@ import {
   EventEmitter,
   ContentChild,
   TemplateRef,
-  ElementRef
+  ElementRef,
+  Renderer2
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
@@ -30,7 +31,10 @@ import { build, toArray } from '../../shared/utils';
   styleUrls: ['./scheduler.component.scss']
 })
 export class SchedulerComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private renderer: Renderer2
+    ) {}
 
   @Input() allDayEnforced = false;
   @Input() calendarPlaceholder = 'Select Calendar';
@@ -228,8 +232,9 @@ export class SchedulerComponent implements OnInit {
   changeCalendar(id: number) {
     this.changeCalendarId.emit(id);
     this.selectedCalendarId = id;
+    const comp = this;
     setTimeout(function() {
-      document.getElementById('calendar-select').blur();
+      comp.renderer.selectRootElement('#calendar-select', true).blur();
     }, 500);
   }
 
@@ -273,13 +278,14 @@ export class SchedulerComponent implements OnInit {
   }
 
   tabChanged(tab) {
+    const comp = this;
      if (tab.index > 0) {
        setTimeout(function () {
-         document.getElementById('mat-tab-label-0-1').blur();
+         comp.renderer.selectRootElement('#mat-tab-label-0-1', true).blur();
        }, 500);
      } else {
        setTimeout(function () {
-         document.getElementById('mat-tab-label-0-0').blur();
+         comp.renderer.selectRootElement('#mat-tab-label-0-0', true).blur();
        }, 500);
      }
   }
