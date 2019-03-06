@@ -210,8 +210,6 @@ export class SchedulerComponent implements OnInit {
     if (newCalendar !== undefined) {
       this.calendars.push(newCalendar[0]);
       this.addCalendar.emit(newCalendar[0]);
-    } else {
-      console.warn(undefined);
     }
   }
 

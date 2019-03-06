@@ -47,7 +47,9 @@ export class ListViewComponent extends DumbComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.dir(this.selectedCalendar);
+    if (this.enableDebug) {
+      console.dir(this.selectedCalendar);
+    }
   }
 
   changeMonth(value) {
@@ -132,8 +134,8 @@ export class ListViewComponent extends DumbComponent implements OnInit {
         id: id
       },
       width: '95%',
-      maxWidth: '420px',
-      height: '500px'
+      maxWidth: '500px',
+      height: '650px'
     });
   }
 }

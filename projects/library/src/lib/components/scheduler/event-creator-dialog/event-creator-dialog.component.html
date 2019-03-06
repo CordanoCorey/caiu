@@ -88,7 +88,7 @@
                 *ngIf="form.get('startTime.minute').value < 5 || form.get('startTime.hour').value < form.get('endTime.hour').value">
                 05</mat-option>
               <ng-container *ngFor="let minute of minutes">
-                <mat-option *ngIf="minute >= form.get('startTime.minute').value" [value]="minute">
+                <mat-option *ngIf="minute > form.get('startTime.minute').value" [value]="minute">
                   {{ minute }}
                 </mat-option>
               </ng-container>
@@ -98,7 +98,11 @@
           <mat-form-field class="time-fields">
             <mat-select formControlName="timePeriod" placeholder="AM/PM">
               <mat-option value="AM"
-                *ngIf="form.get('startTime.hour').value < 12 && form.get('startTime.minute').value < 55 && form.get('startTime.timePeriod').value !== 'PM' && form.get('startTime.hour').value <= form.get('endTime.hour').value">
+                *ngIf="form.get('startTime.timePeriod').value !== 'PM' && 
+                form.get('startTime.hour').value <= form.get('endTime.hour').value  &&
+                (form.get('startTime.minute').value !== form.get('endTime.minute').value && 
+                form.get('startTime.hour').value !== form.get('endTime.hour').value) ||
+                (form.get('startTime.hour').value === 12 && form.get('startTime.timePeriod').value === 'AM')">
                 AM</mat-option>
               <mat-option value="PM">PM</mat-option>
             </mat-select>
