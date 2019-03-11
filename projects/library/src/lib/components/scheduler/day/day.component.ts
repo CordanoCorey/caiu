@@ -16,7 +16,7 @@ export class EventDialogInfo {
     public date: number,
     public year: number,
     public editing: boolean,
-    public eventId: string,
+    public eventId: string
   ) {}
 }
 
@@ -116,9 +116,7 @@ export class DayComponent implements OnInit {
       if (
         event.monthOf === this.calMonth &&
         event.dayOf === this.calDate &&
-        event.yearOf === this.calYear &&
-        (event.calendarId === this.calId ||
-          event.calendarId === this.master.calendarId)
+        event.yearOf === this.calYear
       ) {
         this.multipleEvents.push(event.dayOf);
       }
@@ -133,16 +131,35 @@ export class DayComponent implements OnInit {
     if (dateInfo === undefined) {
       if (this.enableDebug) {
         console.dir(this.date);
-        console.dir('Month: ' + this.calMonth + ', Date: ' + this.calDate + ', Year: ' + this.calYear);
+        console.dir(
+          'Month: ' +
+            this.calMonth +
+            ', Date: ' +
+            this.calDate +
+            ', Year: ' +
+            this.calYear
+        );
       }
-      const eventDialogInfo = new EventDialogInfo(this.calMonth, this.calDate, this.calYear, editing, eventId);
+      const eventDialogInfo = new EventDialogInfo(
+        this.calMonth,
+        this.calDate,
+        this.calYear,
+        editing,
+        eventId
+      );
       this.openEventDialog.emit(eventDialogInfo);
     } else {
       const date = new Date(dateInfo);
       if (this.enableDebug) {
         console.dir(date);
       }
-      const eventDialogInfo = new EventDialogInfo(date.getMonth(), date.getDate(), date.getFullYear(), editing, eventId);
+      const eventDialogInfo = new EventDialogInfo(
+        date.getMonth(),
+        date.getDate(),
+        date.getFullYear(),
+        editing,
+        eventId
+      );
       this.openEventDialog.emit(eventDialogInfo);
     }
   }

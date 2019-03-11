@@ -40,7 +40,7 @@ export class SchedulerComponent implements OnInit {
     private _http: HttpClient,
     private sanitizer: DomSanitizer,
     private renderer: Renderer2
-    ) {}
+  ) {}
 
   @Input() allDayEnforced = false;
   @Input() calendarPlaceholder = 'Select Calendar';
@@ -96,7 +96,7 @@ export class SchedulerComponent implements OnInit {
   }
 
   get calendarEvents(): CalendarEvent[] {
-    return this.events.filter(x => x.calendarId === this.selectedCalendarId);
+    return this.events;
   }
 
   get calendarMonth(): any {
@@ -329,14 +329,14 @@ export class SchedulerComponent implements OnInit {
 
   tabChanged(tab) {
     const comp = this;
-     if (tab.index > 0) {
-       setTimeout(function () {
-         comp.renderer.selectRootElement('#mat-tab-label-0-1', true).blur();
-       }, 500);
-     } else {
-       setTimeout(function () {
-         comp.renderer.selectRootElement('#mat-tab-label-0-0', true).blur();
-       }, 500);
-     }
+    if (tab.index > 0) {
+      setTimeout(function() {
+        comp.renderer.selectRootElement('#mat-tab-label-0-1', true).blur();
+      }, 500);
+    } else {
+      setTimeout(function() {
+        comp.renderer.selectRootElement('#mat-tab-label-0-0', true).blur();
+      }, 500);
+    }
   }
 }
