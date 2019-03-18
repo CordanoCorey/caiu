@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule, MatButtonModule, MatNativeDateModule, MatSidenavModule } from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -8,9 +8,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu'
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ElementPrinterModule } from 'element-printer';
 
 import { SchedulerComponent } from './scheduler.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
@@ -40,6 +41,7 @@ import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dial
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
+    ElementPrinterModule,
   ],
   entryComponents: [
     EventCreatorDialogComponent,
@@ -61,6 +63,9 @@ import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dial
     EventComponent,
     DayComponent,
     ListViewComponent,
-  ]
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+  ],
 })
 export class SchedulerModule { }

@@ -1,4 +1,66 @@
-.cal-view-container {
+.cal-view-container{
+    border: 1px solid black;
+    width: 1000px;
+    height: 1000px;
+    margin: 0 auto;
+    .date-heading-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        button{
+            margin: 21px 0px;
+            background-color: #e47777;
+            color: white;
+        }
+    }
+    .calendar{
+        .cal-head{
+            color: #456564;
+            background: #d1d1d1;     
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: space-evenly;   
+            .cal-day{
+                width: 142px;
+                text-align: center;
+            }
+        }
+        .cal-body{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: flex-start;
+            .day{
+                width: 142px;
+                height: 142px;
+                box-shadow: inset #0000003b 0px 0px 2px 0px;
+                transition: all 0.1s;
+                flex-shrink: 1;
+                order: 2;
+            }
+            .day:hover {
+                box-shadow: inset #0000003b 0px 0px 10px 0px;
+                cursor: pointer;
+            }
+            .beginningSpacer .day, .endSpacer .day{
+                width: 142px;
+                height: 142px;
+                flex-grow: 1;
+                flex-shrink: 1;
+            }
+            .beginningSpacer{
+                order: 1;
+            }
+            .endSpacer{
+                order: 3;
+            }
+        }
+    }
+}
+
+/* .cal-view-container {
     border: 1px solid #000;
 }
 
@@ -336,3 +398,4 @@
 .selected-day-event p {
     padding-left: 15px;
 }
+ */

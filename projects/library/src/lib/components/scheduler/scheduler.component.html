@@ -45,6 +45,8 @@
     Add New Calendar
   </button>
 </div>
+
+<el-printer containerToPrint="calendarView" [enableDebug]="true"></el-printer>
 <!-- END ACTIONS -->
 
 <h1 *ngIf="selectedCalendarId != null">{{ selectedCalendar }}</h1>
