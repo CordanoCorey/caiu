@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LibraryComponent } from './library.component';
 import { AccordionModule } from './components/accordion/accordion.module';
 import { AddressModule } from './components/address/address.module';
+import { AuditModule } from './components/audit/audit.module';
 import { CollageModule } from './components/collage/collage.module';
 import { ContainerModule } from './components/container/container.module';
 import { DatepickerModule } from './components/datepicker/datepicker.module';
@@ -34,6 +35,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     AccordionModule,
     AddressModule,
+    AuditModule,
     ContainerModule,
     DatepickerModule,
     DialogModule,
@@ -53,16 +55,15 @@ import { SharedModule } from './shared/shared.module';
     MatToolbarModule,
     PipesModule,
     SchedulerModule,
-    TimerModule,
+    TimerModule
   ],
-  declarations: [
-    LibraryComponent,
-  ],
+  declarations: [LibraryComponent],
   exports: [
     LibraryComponent,
     SharedModule,
     AccordionModule,
     AddressModule,
+    AuditModule,
     CollageModule,
     ContainerModule,
     DatepickerModule,
@@ -82,7 +83,7 @@ import { SharedModule } from './shared/shared.module';
     MatToolbarModule,
     PipesModule,
     SchedulerModule,
-    TimerModule,
+    TimerModule
   ]
 })
-export class LibraryModule { }
+export class LibraryModule {}

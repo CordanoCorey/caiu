@@ -35,7 +35,7 @@ export class AppComponent extends DumbComponent {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'scheduler';
+  activeDemo = 'audit';
   addresses = [
     build(Address, {
       id: 1,

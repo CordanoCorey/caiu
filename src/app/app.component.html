@@ -18,6 +18,9 @@
   <button (click)="activeDemo = 'time'" mat-button class="demo-link">
     Time
   </button>
+  <button (click)="activeDemo = 'audit'" mat-button class="demo-link">
+    Audit Info
+  </button>
 </mat-toolbar>
 
 <iu-wallpaper
@@ -123,6 +126,11 @@
       </div>
     </ng-template>
   </iu-scheduler>
+</div>
+
+<div *ngIf="activeDemo === 'audit'" class="example">
+  <iu-audit-fields></iu-audit-fields>
+  <iu-audit-history-link></iu-audit-history-link>
 </div>
 
 <router-outlet></router-outlet>
