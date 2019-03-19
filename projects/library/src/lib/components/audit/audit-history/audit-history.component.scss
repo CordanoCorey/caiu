@@ -1,9 +1,18 @@
 #audit-history {
-  height: 400px;
-  overflow: auto;
-  table {
-    width: 100%;
-    width: 300px;
-    min-width: 300px;
-  }
+    max-height: 400px;
+    overflow: auto;
+    table {
+        width: 100%;
+        min-width: 500px;
+        th,
+        td {
+            padding: 0 5px;
+        }
+    }
+    .bold {
+        font-weight: bold;
+    }
+    .active {
+        color: green;
+    }
 }

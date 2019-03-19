@@ -23,6 +23,11 @@ export * from './lib/components/address/address-form/address-form.component';
 export * from './lib/components/address/inline-address/inline-address.component';
 export * from './lib/components/address/state-picker/state-picker.component';
 export * from './lib/components/address/address.component';
+export * from './lib/components/audit/audit.module';
+export * from './lib/components/audit/audit.model';
+export * from './lib/components/audit/audit-fields/audit-fields.component';
+export * from './lib/components/audit/audit-history/audit-history.component';
+export * from './lib/components/audit/audit-history-link/audit-history-link.component';
 export * from './lib/components/collage/collage.module';
 export * from './lib/components/collage/collage.component';
 export * from './lib/components/collage/collage.model';
@@ -117,7 +122,9 @@ export * from './lib/lookup/lookup.service';
 /**
  * Pipes
  */
+export * from './lib/pipes/pipes.module';
 export * from './lib/pipes/list.pipe';
+export * from './lib/pipes/pad-left.pipe';
 export * from './lib/pipes/phone-number.pipe';
 export * from './lib/pipes/time-ago.pipe';
 export * from './lib/pipes/yes-no.pipe';

@@ -1,32 +1,48 @@
 <div id="audit-history" class="mat-elevation-z8 scrollable">
-  <table mat-table [dataSource]="data">
-    <!-- End Date Column -->
-    <ng-container matColumnDef="startDate" sticky>
+  <table mat-table [dataSource]="dataSource">
+    <!-- Start Date Column -->
+    <ng-container matColumnDef="startDate">
       <th mat-header-cell *matHeaderCellDef>Start Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.startDate }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.startDate | date: 'shortDate' }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        {{ activeRow?.startDate | date: 'shortDate' }}
+      </td>
     </ng-container>
 
     <!-- End Date Column -->
-    <ng-container matColumnDef="endDate">
+    <ng-container matColumnDef="endDate" sticky>
       <th mat-header-cell *matHeaderCellDef>End Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.endDate }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.endDate | date: 'shortDate' }}
+      </td>
+      <td class="active" mat-footer-cell *matFooterCellDef>ACTIVE</td>
     </ng-container>
 
     <!-- Custom Columns -->
     <ng-container *ngFor="let column of columns" [matColumnDef]="column.name">
       <th mat-header-cell *matHeaderCellDef>{{ column.label }}</th>
       <td mat-cell *matCellDef="let element">{{ element[column.name] }}</td>
+      <td mat-footer-cell *matFooterCellDef>
+        {{ activeRow[column.name] }}
+      </td>
     </ng-container>
 
     <!-- Star Column -->
-    <ng-container matColumnDef="star" stickyEnd>
+    <!-- <ng-container matColumnDef="star" stickyEnd>
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
         <mat-icon>more_vert</mat-icon>
       </td>
-    </ng-container>
+    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      class="bold"
+      mat-footer-row
+      *matFooterRowDef="displayedColumns; sticky: true"
+    ></tr>
   </table>
 </div>

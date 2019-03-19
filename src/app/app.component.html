@@ -1,24 +1,59 @@
 <mat-toolbar color="primary">
-  <button (click)="activeDemo = 'wallpaper'" mat-button class="demo-link">
+  <button
+    (click)="activeDemo = 'wallpaper'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'wallpaper'"
+  >
     Wallpaper
   </button>
   <!-- <button (click)="activeDemo='collage'" mat-button class="demo-link">Collage</button> -->
-  <button (click)="activeDemo = 'date'" mat-button class="demo-link">
+  <button
+    (click)="activeDemo = 'date'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'date'"
+  >
     Date
   </button>
-  <button (click)="activeDemo = 'address-manager'" mat-button class="demo-link">
+  <button
+    (click)="activeDemo = 'address-manager'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'address-manager'"
+  >
     Address Manager
   </button>
-  <button (click)="activeDemo = 'scheduler'" mat-button class="demo-link">
+  <button
+    (click)="activeDemo = 'scheduler'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'scheduler'"
+  >
     Scheduler
   </button>
-  <button (click)="activeDemo = 'file-upload'" mat-button class="demo-link">
+  <button
+    (click)="activeDemo = 'file-upload'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'file-upload'"
+  >
     File Upload
   </button>
-  <button (click)="activeDemo = 'time'" mat-button class="demo-link">
+  <button
+    (click)="activeDemo = 'time'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'time'"
+  >
     Time
   </button>
-  <button (click)="activeDemo = 'audit'" mat-button class="demo-link">
+  <button
+    (click)="activeDemo = 'audit'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'audit'"
+  >
     Audit Info
   </button>
 </mat-toolbar>
@@ -72,7 +107,6 @@
 </form>
 
 <div *ngIf="activeDemo === 'scheduler'" class="example">
-
   <iu-scheduler
     defaultView="CALENDAR"
     [enableDebug]="true"
@@ -131,7 +165,12 @@
 
 <div *ngIf="activeDemo === 'audit'" class="example">
   <iu-audit-fields></iu-audit-fields>
-  <iu-audit-history-link></iu-audit-history-link>
+  <iu-audit-history-link [data]="auditHistoryData"></iu-audit-history-link>
+
+  <iu-audit-history-link
+    placeholderText="View Dynamic Audit History"
+    requestUrl="History?typeName=Staff&id=1"
+  ></iu-audit-history-link>
 </div>
 
 <router-outlet></router-outlet>
