@@ -39,7 +39,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'audit';
+  activeDemo = 'scheduler';
   addresses = [
     build(Address, {
       id: 1,
