@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ElementPrinterModule } from 'element-printer';
 
 import { SchedulerComponent } from './scheduler.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
@@ -21,6 +20,7 @@ import { DayComponent } from './day/day.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { SharedModule } from '../../shared/shared.module';
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
+import { PrintComponent } from './print/print.component';
 
 @NgModule({
   imports: [
@@ -41,7 +41,6 @@ import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dial
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    ElementPrinterModule,
   ],
   entryComponents: [
     EventCreatorDialogComponent,
@@ -55,6 +54,7 @@ import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dial
     DayComponent,
     ListViewComponent,
     CalCreatorDialogComponent,
+    PrintComponent,
   ],
   exports: [
     SchedulerComponent,
