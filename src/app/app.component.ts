@@ -2,7 +2,8 @@ import {
   Component,
   ViewEncapsulation,
   HostListener,
-  ViewChild
+  ViewChild,
+  OnInit
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {
@@ -20,10 +21,13 @@ import {
   CalendarDay,
   CalendarTime,
   SchedulerComponent,
-  DumbComponent
+  SmartComponent,
+  TableColumn,
+  ConfigActions
 } from 'library';
 
-import { ExampleForm } from './shared/models';
+import { ExampleForm, environment } from './shared/models';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'docs-root',
@@ -31,11 +35,11 @@ import { ExampleForm } from './shared/models';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent extends DumbComponent {
+export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'scheduler';
+  activeDemo = 'audit';
   addresses = [
     build(Address, {
       id: 1,
@@ -83,6 +87,94 @@ export class AppComponent extends DumbComponent {
       stateCode: 'PA',
       zip: '17013'
     })
+  ];
+  auditHistoryColumns = [
+    build(TableColumn, { name: 'name', label: 'Name' }),
+    build(TableColumn, { name: 'position', label: 'Position' }),
+    build(TableColumn, { name: 'weight', label: 'Weight' }),
+    build(TableColumn, { name: 'symbol', label: 'Symbol' })
+  ];
+  auditHistoryData = [
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 1,
+      name: 'Hydrogen',
+      weight: 1.0079,
+      symbol: 'H'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 2,
+      name: 'Helium',
+      weight: 4.0026,
+      symbol: 'He'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 3,
+      name: 'Lithium',
+      weight: 6.941,
+      symbol: 'Li'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 4,
+      name: 'Beryllium',
+      weight: 9.0122,
+      symbol: 'Be'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 5,
+      name: 'Boron',
+      weight: 10.811,
+      symbol: 'B'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 6,
+      name: 'Carbon',
+      weight: 12.0107,
+      symbol: 'C'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 7,
+      name: 'Nitrogen',
+      weight: 14.0067,
+      symbol: 'N'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 8,
+      name: 'Oxygen',
+      weight: 15.9994,
+      symbol: 'O'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 9,
+      name: 'Fluorine',
+      weight: 18.9984,
+      symbol: 'F'
+    },
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      position: 10,
+      name: 'Neon',
+      weight: 20.1797,
+      symbol: 'Ne'
+    }
   ];
   calendars = [
     build(Calendar, {
@@ -190,8 +282,8 @@ export class AppComponent extends DumbComponent {
   ];
   timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
 
-  constructor() {
-    super();
+  constructor(public store: Store<any>) {
+    super(store);
   }
 
   get windowHeight(): number {
@@ -208,6 +300,10 @@ export class AppComponent extends DumbComponent {
 
   set windowWidth(value: number) {
     localStorage.setItem('WINDOW_WIDTH', value.toString());
+  }
+
+  ngOnInit() {
+    this.store.dispatch(ConfigActions.initialize(environment));
   }
 
   exportCalendarToPDF() {

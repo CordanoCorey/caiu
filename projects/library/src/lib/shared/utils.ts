@@ -1,6 +1,12 @@
 import { SimpleChanges } from '@angular/core';
 
-import { Metadata, Dictionary, TypeConstructor, HasMetadata } from './models';
+import {
+  Metadata,
+  Dictionary,
+  TableColumn,
+  TypeConstructor,
+  HasMetadata
+} from './models';
 import { Action } from '../store/models';
 
 /**
@@ -70,6 +76,26 @@ export function build<T>(ctor: TypeConstructor<T>, ...args): T {
   }, instance);
 }
 
+export function buildColumnsFromMetadata(
+  model: any,
+  key: string
+): TableColumn[] {
+  const metadata = findMetadataFromInstance(model);
+  const columnNames = Array.isArray(metadata[key])
+    ? metadata[key]
+    : Array.isArray(model)
+    ? model.length > 0
+      ? Object.keys(model[0])
+      : []
+    : Object.keys(model);
+  return columnNames.map(name =>
+    build(TableColumn, {
+      name,
+      label: convertCamel2Space(name)
+    })
+  );
+}
+
 export function compareDates(a: Date, b: Date) {
   return new Date(b).getTime() - new Date(a).getTime();
 }
@@ -103,6 +129,11 @@ export function convertCamel2Dash(str: string): string {
   return str.replace(/([a-z][A-Z])/g, function(g) {
     return g[0] + '-' + g[1].toLowerCase();
   });
+}
+
+export function convertCamel2Space(str: string): string {
+  const result = str.replace(/([A-Z])/g, ' $1');
+  return result.charAt(0).toUpperCase() + result.slice(1);
 }
 
 export function convertDash2Camel(str: string): string {
@@ -191,6 +222,17 @@ export function filterState(obj: any): any {
 
 export function findMetadata(ctor: TypeConstructor<HasMetadata | any>) {
   const instance = new ctor();
+  return instance && instance.metadata ? instance.metadata : new Metadata();
+}
+
+export function findMetadataFromInstance(model: any): Metadata {
+  if (!model) {
+    return null;
+  }
+  const instance: HasMetadata =
+    Array.isArray(model) && model.length > 0
+      ? <HasMetadata>model[0]
+      : <HasMetadata>model;
   return instance && instance.metadata ? instance.metadata : new Metadata();
 }
 
