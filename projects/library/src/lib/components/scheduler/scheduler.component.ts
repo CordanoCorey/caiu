@@ -284,14 +284,14 @@ export class SchedulerComponent implements OnInit {
     this.calendarViewComponent.closeDayView();
   }
 
-  exportToPDF() {
+  exportToPDF(html: string) {
     this.exporting = true;
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     this._http
       .post(
         'https://appservice.caiu.org/SaveAsPDF',
-        JSON.stringify(this.html),
+        JSON.stringify(html),
         {
           headers: headers,
           responseType: 'blob'
