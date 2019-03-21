@@ -9,9 +9,9 @@
       <h1 class="date-heading">
         {{ calendar.monthName }}, {{ calendar.currentYear }}
       </h1>
-      <!-- <h1 class="date-heading mini">
+      <h1 class="date-heading mini">
         {{ calendar.shortMonthName }}, {{ calendar.currentYear }}
-      </h1> -->
+      </h1>
     </div>
     <div>
       <button mat-mini-fab (click)="changeMonth(1)">
@@ -67,6 +67,7 @@
                 <h3>All Day Event</h3>
               </span>
               <button
+                mat-mini-fab
                 class="edit-btn"
                 (click)="
                   openEventCreator(
@@ -130,7 +131,7 @@
           <div class="cal-day"><p>Friday</p></div>
           <div class="cal-day"><p>Saturday</p></div>
         </div>
-        <!-- <div class="cal-head-mini">
+        <div class="cal-head-mini">
           <div class="cal-day"><p>Sun</p></div>
           <div class="cal-day"><p>Mon</p></div>
           <div class="cal-day"><p>Tue</p></div>
@@ -146,7 +147,7 @@
           <div class="cal-day micro"><p>T</p></div>
           <div class="cal-day micro"><p>F</p></div>
           <div class="cal-day micro"><p>S</p></div>
-        </div> -->
+        </div>
         <div class="cal-body">
           <span *ngFor="let week of weekArray" class="beginningSpacer">
             <div class="day" *ngIf="week.position < calendar.firstDay"></div>

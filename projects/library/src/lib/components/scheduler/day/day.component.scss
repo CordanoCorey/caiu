@@ -1,9 +1,9 @@
-@media only screen and (min-width: 723px) {
+@media only screen and (min-width: 1250px) {
     .active-day{
         margin-top: -5px;
     }
 }
-@media only screen and (max-width: 722px) and (min-width: 414px){
+@media only screen and (max-width: 1249px) and (min-width: 940px){
     .active-day{
         margin-top: -5px;
     }
@@ -14,7 +14,7 @@
         display: block;
     }
 }
-@media only screen and (max-width: 413px) and (min-width: 375px){
+@media only screen and (max-width: 939px) and (min-width: 375px){
     .active-day{
         margin-top: -5px;
     }

@@ -19,6 +19,7 @@
             width: 100%;
             background: #d1d1d1;
             overflow: hidden;
+            box-shadow: inset 0px -20px 40px -10px #00000024;
             h1 {
                 padding-left: 10px;
                 color: #456.5A64;
@@ -81,8 +82,7 @@
         }
         .cal-head, .cal-head-mini{
             color: #456564;
-            background: #d1d1d1;     
-            display: flex;
+            background: #d1d1d1;
             flex-wrap: nowrap;
             flex-direction: row;
             justify-content: space-evenly;   
@@ -97,8 +97,8 @@
             flex-direction: row;
             justify-content: flex-start;
             .day{
-                width: 142px;
-                height: 142px;
+                /* width: 142px;
+                height: 142px; */
                 box-shadow: inset #0000003b 0px 0px 2px 0px;
                 transition: all 0.1s;
                 flex-shrink: 1;
@@ -109,8 +109,8 @@
                 cursor: pointer;
             }
             .beginningSpacer .day, .endSpacer .day{
-                width: 142px;
-                height: 142px;
+                /* width: 142px;
+                height: 142px; */
                 flex-grow: 1;
                 flex-shrink: 1;
             }
@@ -124,9 +124,10 @@
     }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1250px) {
     .cal-view-container {
         width: 1000px;
+        height: 1000px;
         padding: 5px 10px;
         .cal-day p {
             width: 142px;
@@ -166,9 +167,10 @@
     }
 }
 
-@media only screen and (max-width: 1023px) and (min-width: 723px) {
+@media only screen and (max-width: 1249px) and (min-width: 940px) {
     .cal-view-container {
         width: 700px;
+        height: 800px;
         padding: 5px 10px;
         .cal-day p {
             width: 100px;
@@ -208,9 +210,10 @@
     }
 }
 
-@media only screen and (max-width: 722px) and (min-width: 414px) {
+@media only screen and (max-width: 939px) and (min-width: 600px) {
     .cal-view-container {
         width: 395px;
+        height: 495px;
         padding: 0;
         .cal-body .day {
             width: 56px;
@@ -230,11 +233,11 @@
         }
         .close-btn,
         .add-btn {
-            display: block;
+            display: none;
         }
         .close-btn.mini,
         .add-btn.mini {
-            display: none;
+            display: block;
         }
         .date-heading {
             display: block;
@@ -245,9 +248,10 @@
     }
 }
 
-@media only screen and (max-width: 413px) and (min-width: 375px) {
+@media only screen and (max-width: 599px) and (min-width: 375px) {
     .cal-view-container {
         width: 360px;
+        height: 460px;
         padding: 0;
         .cal-head {
             display: none;
@@ -267,11 +271,11 @@
         }
         .close-btn,
         .add-btn {
-            display: block;
+            display: none;
         }
         .close-btn.mini,
         .add-btn.mini {
-            display: none;
+            display: block;
         }
         .date-heading {
             display: none;
