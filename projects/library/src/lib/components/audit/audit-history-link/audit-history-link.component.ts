@@ -24,6 +24,7 @@ import {
 export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
   @Input() data: Audited[] = [];
   @Input() columns: TableColumn[];
+  @Input() mapper: (data: any) => Audited;
   requestData: Audited[];
   requestUrl$: Observable<string>;
   requestUrlSubject = new BehaviorSubject<string>(null);
@@ -70,7 +71,13 @@ export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
   get requestData$(): Observable<Audited[]> {
     return this.requestUrl$.pipe(
       switchMap(url => this.http.get(url)),
-      map(x => toArray(x).map(y => build(Audited, y)))
+      map(x =>
+        toArray(x).map(y =>
+          this.mapper && typeof this.mapper === 'function'
+            ? this.mapper(y)
+            : build(Audited, y)
+        )
+      )
     );
   }
 

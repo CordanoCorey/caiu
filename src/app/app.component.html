@@ -150,7 +150,6 @@
           class="calendar-event"
           style="cursor: pointer;"
           *ngFor="let e of events"
-          (click)="openDialog(undefined, true, e.eventId)"
         >
           <h4>{{ e.eventName }}</h4>
           <p>{{ e.description }}</p>
@@ -166,7 +165,13 @@
 
   <iu-audit-history-link
     placeholderText="View Dynamic Audit History"
-    requestUrl="History?typeName=Staff&id=1"
+    requestUrl="posts"
+  ></iu-audit-history-link>
+
+  <iu-audit-history-link
+    placeholderText="View Mapped Audit History"
+    requestUrl="posts"
+    [mapper]="auditHistoryMapper"
   ></iu-audit-history-link>
 </div>
 
