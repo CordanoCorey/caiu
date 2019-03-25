@@ -27,7 +27,7 @@ import {
   ConfigActions
 } from 'library';
 
-import { ExampleForm, environment } from './shared/models';
+import { ExampleForm, environment, AuditHistoryRow } from './shared/models';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -40,7 +40,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'scheduler';
+  activeDemo = 'audit';
   addresses = [
     build(Address, {
       id: 1,
@@ -286,6 +286,10 @@ export class AppComponent extends SmartComponent implements OnInit {
   constructor(public store: Store<any>,
     private renderer: Renderer2) {
     super(store);
+  }
+
+  get auditHistoryMapper(): (data: any) => AuditHistoryRow {
+    return data => build(AuditHistoryRow, data, {});
   }
 
   get windowHeight(): number {
