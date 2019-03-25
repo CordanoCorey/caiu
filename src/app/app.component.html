@@ -120,7 +120,7 @@
     (deleteEvent)="schedulerTest($event)"
     (changeCalendarId)="onChangeCalendarId($event)"
   >
-    <ng-template let-onAddCalendar="onAddCalendar" #actionsTemplate>
+    <ng-template let-onAddCalendar="onAddCalendar" let-defaultView="defaultView" #actionsTemplate>
       <div class="actions">
         <button mat-raised-button color="primary" (click)="onAddCalendar()">
           Add Calendar
@@ -128,7 +128,7 @@
         <button
           mat-raised-button
           color="primary"
-          (click)="exportCalendarToPDF()"
+          (click)="exportCalendarToPDF(defaultView)"
         >
           Export To PDF
         </button>
