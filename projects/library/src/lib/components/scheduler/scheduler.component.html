@@ -12,7 +12,7 @@
   "
 >
 </ng-container>
-<mat-form-field *ngIf="!calendarsListTemplate">
+<mat-form-field id="calendar-select-wrapper" *ngIf="!calendarsListTemplate">
   <mat-select
     id="calendar-select"
     [placeholder]="calendarPlaceholder"
@@ -48,8 +48,8 @@
 
 <iu-print
   containerToPrint="calendarView"
-  customStyleString=".sidenav, button { display: none; } 
-  .active-day { 
+  customStyleString=".sidenav, button { display: none; }
+  .active-day {
     background-color: #E47777;
     border-radius: 20px;
     width: 30px;
@@ -57,7 +57,8 @@
     text-align: center;
     color: black;
   }"
-  [enableDebug]="true"></iu-print>
+  [enableDebug]="true"
+></iu-print>
 <!-- END ACTIONS -->
 
 <h1 *ngIf="selectedCalendarId != null">{{ selectedCalendar }}</h1>
