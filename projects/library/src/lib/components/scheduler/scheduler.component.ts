@@ -288,6 +288,7 @@ export class SchedulerComponent implements OnInit {
     this.exporting = true;
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
+    headers.append('charset', 'utf-8');
     this._http
       .post(
         'https://appservice.caiu.org/SaveAsPDF',

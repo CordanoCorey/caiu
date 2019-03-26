@@ -3,7 +3,8 @@ import {
   ViewEncapsulation,
   HostListener,
   ViewChild,
-  OnInit
+  OnInit,
+  Renderer2
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {
@@ -282,7 +283,8 @@ export class AppComponent extends SmartComponent implements OnInit {
   ];
   timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
 
-  constructor(public store: Store<any>) {
+  constructor(public store: Store<any>,
+    private renderer: Renderer2) {
     super(store);
   }
 
@@ -310,8 +312,80 @@ export class AppComponent extends SmartComponent implements OnInit {
     this.store.dispatch(ConfigActions.initialize(environment));
   }
 
-  exportCalendarToPDF() {
-    // this.schedulerCmpt.exportToPDF();
+  exportCalendarToPDF(view: string) {
+    const container = this.renderer.selectRootElement('#' + view, true);
+    console.dir(container);
+    const slice = Function.call.bind(Array.prototype.slice);
+    let styleText = '#' + view + ' { margin: 0 auto; }';
+    let mediaText = '';
+
+    getContainerElements(container);
+    getMediaQueries();
+
+    const html = '<html><head><style> ' + styleText +
+    '</style> ' + mediaText + '</head><body style="margin: 0 auto;"> ' +
+    container.outerHTML.replace(/\s+/g,' ').trim() + ' </body></html>';
+
+    this.schedulerCmpt.exportToPDF(html);
+
+    function getContainerElements(container) {
+      // tslint:disable-next-line: deprecation
+      slice(document.all).forEach(x => {
+        if (container.contains(x)) { // gets each element within the container; use this to get the class names and styles
+          let selector = ''; // Selector is either the class on the element, or just the normal selector (Ex: 'p' for <p></p>)
+          if (x.classList.length > 1) {
+            // get all of the classes to be used as selectors
+            x.classList.forEach(function(cl, i) {
+              i = i + 1;
+              if (i === x.classList.length) {
+                selector = selector + ' .' + cl;
+              } else {
+                selector = selector + ' .' + cl + ', ';
+              }
+            });
+          } else if (x.classList.length === 1) {
+            selector = '.' + x.classList[0];
+          } else {
+            selector = x.localName;
+          }
+          getStyleSheets(selector);
+        }
+      });
+    }
+
+    function getStyleSheets(selector) {
+      slice(document.styleSheets).forEach(y => {
+        if (y.href === null && y.cssRules !== undefined) { // Makes sure stylesheets aren't external
+          slice(y.cssRules).forEach(rule => {
+            if (rule.selectorText !== undefined) {
+              if (rule.selectorText.includes(selector)) {
+                if (!styleText.includes(rule.cssText)) {
+                  styleText = styleText + ' ' + rule.cssText;
+                }
+              }
+            }
+          });
+        }
+      });
+    }
+
+    function getMediaQueries() {
+      slice(document.styleSheets).forEach(x => {
+        if (x.href === null && x.cssRules !== undefined) {
+            slice(x.cssRules).forEach(y => {
+              if (y.media !== undefined) {
+                if (y.media.length > 0) {
+                  let mediaStyles = '';
+                  slice(y.cssRules).forEach(z => {
+                    mediaStyles = mediaStyles + ' ' + z.cssText;
+                  });
+                  mediaText = mediaText + ' <style media="' + y.conditionText + '"> ' + mediaStyles + ' </style> ';
+                }
+              }
+            });
+        }
+      });
+    }
   }
 
   onChangeCalendarId(id: number) {
