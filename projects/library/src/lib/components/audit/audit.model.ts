@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 import { TableColumn } from '../../shared/models';
 
 export class Audited {
@@ -6,6 +8,6 @@ export class Audited {
 }
 
 export class AuditHistory {
-  dataSource: Audited[] = [];
-  columns: TableColumn[] = [];
+  dataSource: Observable<Audited[]>;
+  columns: Observable<TableColumn[]>;
 }

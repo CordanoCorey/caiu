@@ -56,6 +56,14 @@
   >
     Audit Info
   </button>
+  <button
+    (click)="activeDemo = 'accordion'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'accordion'"
+  >
+    Accordion
+  </button>
 </mat-toolbar>
 
 <iu-wallpaper
@@ -120,7 +128,11 @@
     (deleteEvent)="schedulerTest($event)"
     (changeCalendarId)="onChangeCalendarId($event)"
   >
-    <ng-template let-onAddCalendar="onAddCalendar" let-defaultView="defaultView" #actionsTemplate>
+    <ng-template
+      let-onAddCalendar="onAddCalendar"
+      let-defaultView="defaultView"
+      #actionsTemplate
+    >
       <div class="actions">
         <button mat-raised-button color="primary" (click)="onAddCalendar()">
           Add Calendar
@@ -173,6 +185,17 @@
     requestUrl="posts"
     [mapper]="auditHistoryMapper"
   ></iu-audit-history-link>
+</div>
+
+<div *ngIf="activeDemo === 'accordion'" class="example">
+  <button mat-raised-button color="primary" (click)="toggleAccordion()">
+    Toggle Accordion 1
+  </button>
+  <docs-accordion-demo [opened]="opened"> </docs-accordion-demo>
+  <button mat-raised-button color="primary" (click)="toggleAccordion()">
+    Toggle Accordion 2
+  </button>
+  <docs-accordion-demo [opened]="opened"> </docs-accordion-demo>
 </div>
 
 <router-outlet></router-outlet>

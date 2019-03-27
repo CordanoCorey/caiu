@@ -1,0 +1,37 @@
+<iu-accordion [opened]="opened" [active]="opened">
+  <div class="accordion-trigger" (click)="toggle()">
+    Accordion Trigger
+    <mat-icon
+      [@toggle]="opened ? 'hide' : 'show'"
+      (@toggle.start)="onStart($event)"
+      (@toggle.done)="onDone($event)"
+      >expand_more</mat-icon
+    >
+  </div>
+  <mat-card class="accordion-content">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <!-- This is the tree node template for leaf nodes -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <!-- use a disabled button to provide padding for tree leaf -->
+        <button mat-icon-button disabled></button>
+        {{ node.name }}
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+          </mat-icon>
+        </button>
+        {{ node.name }}
+      </mat-tree-node>
+    </mat-tree>
+  </mat-card>
+</iu-accordion>

@@ -12,7 +12,7 @@
   "
 >
 </ng-container>
-<mat-form-field *ngIf="!calendarsListTemplate">
+<mat-form-field id="calendar-select-wrapper" *ngIf="!calendarsListTemplate">
   <mat-select
     id="calendar-select"
     [placeholder]="calendarPlaceholder"
@@ -58,7 +58,8 @@
     text-align: center;
     color: black;
   }"
-  [enableDebug]="true"></iu-print>
+  [enableDebug]="true"
+></iu-print>
 <!-- END ACTIONS -->
 
 <h1 *ngIf="selectedCalendarId != null">{{ selectedCalendar }}</h1>
