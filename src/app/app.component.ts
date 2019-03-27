@@ -281,10 +281,10 @@ export class AppComponent extends SmartComponent implements OnInit {
     build(Image, { src: 'assets/19.jpg', height: 276, width: 183 }),
     build(Image, { src: 'assets/20.jpg', height: 800, width: 5469 })
   ];
+  opened = true;
   timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
 
-  constructor(public store: Store<any>,
-    private renderer: Renderer2) {
+  constructor(public store: Store<any>, private renderer: Renderer2) {
     super(store);
   }
 
@@ -310,6 +310,9 @@ export class AppComponent extends SmartComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(ConfigActions.initialize(environment));
+    setTimeout(() => {
+      this.toggleAccordion();
+    }, 2000);
   }
 
   exportCalendarToPDF(view: string) {
@@ -322,16 +325,22 @@ export class AppComponent extends SmartComponent implements OnInit {
     getContainerElements(container);
     getMediaQueries();
 
-    const html = '<html><head><style> ' + styleText +
-    '</style> ' + mediaText + '</head><body style="margin: 0 auto;"> ' +
-    container.outerHTML.replace(/\s+/g,' ').trim() + ' </body></html>';
+    const html =
+      '<html><head><style> ' +
+      styleText +
+      '</style> ' +
+      mediaText +
+      '</head><body style="margin: 0 auto;"> ' +
+      container.outerHTML.replace(/\s+/g, ' ').trim() +
+      ' </body></html>';
 
     this.schedulerCmpt.exportToPDF(html);
 
     function getContainerElements(container) {
       // tslint:disable-next-line: deprecation
       slice(document.all).forEach(x => {
-        if (container.contains(x)) { // gets each element within the container; use this to get the class names and styles
+        if (container.contains(x)) {
+          // gets each element within the container; use this to get the class names and styles
           let selector = ''; // Selector is either the class on the element, or just the normal selector (Ex: 'p' for <p></p>)
           if (x.classList.length > 1) {
             // get all of the classes to be used as selectors
@@ -355,7 +364,8 @@ export class AppComponent extends SmartComponent implements OnInit {
 
     function getStyleSheets(selector) {
       slice(document.styleSheets).forEach(y => {
-        if (y.href === null && y.cssRules !== undefined) { // Makes sure stylesheets aren't external
+        if (y.href === null && y.cssRules !== undefined) {
+          // Makes sure stylesheets aren't external
           slice(y.cssRules).forEach(rule => {
             if (rule.selectorText !== undefined) {
               if (rule.selectorText.includes(selector)) {
@@ -372,17 +382,23 @@ export class AppComponent extends SmartComponent implements OnInit {
     function getMediaQueries() {
       slice(document.styleSheets).forEach(x => {
         if (x.href === null && x.cssRules !== undefined) {
-            slice(x.cssRules).forEach(y => {
-              if (y.media !== undefined) {
-                if (y.media.length > 0) {
-                  let mediaStyles = '';
-                  slice(y.cssRules).forEach(z => {
-                    mediaStyles = mediaStyles + ' ' + z.cssText;
-                  });
-                  mediaText = mediaText + ' <style media="' + y.conditionText + '"> ' + mediaStyles + ' </style> ';
-                }
+          slice(x.cssRules).forEach(y => {
+            if (y.media !== undefined) {
+              if (y.media.length > 0) {
+                let mediaStyles = '';
+                slice(y.cssRules).forEach(z => {
+                  mediaStyles = mediaStyles + ' ' + z.cssText;
+                });
+                mediaText =
+                  mediaText +
+                  ' <style media="' +
+                  y.conditionText +
+                  '"> ' +
+                  mediaStyles +
+                  ' </style> ';
               }
-            });
+            }
+          });
         }
       });
     }
@@ -433,6 +449,10 @@ export class AppComponent extends SmartComponent implements OnInit {
 
   schedulerTest(value: any) {
     console.dir(value);
+  }
+
+  toggleAccordion() {
+    this.opened = !this.opened;
   }
 
   printCalendar() {

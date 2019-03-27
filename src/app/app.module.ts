@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { MatTreeModule } from '@angular/material/tree';
 import { ActionReducerMap } from '@ngrx/store';
 import {
   LibraryModule,
@@ -17,13 +17,14 @@ import { GridModule } from 'grid';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AccordionDemoComponent } from './accordion-demo/accordion-demo.component';
 
 export const reducers: ActionReducerMap<any> = {
   config: configReducer
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AccordionDemoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +32,7 @@ export const reducers: ActionReducerMap<any> = {
     HttpModule.forRoot(apiBaseUrlSelector, authTokenSelector),
     LibraryModule,
     GridModule,
+    MatTreeModule,
     RouterModule.forRoot(),
     StorageModule.forRoot('CAIU_STORE'),
     StoreModule.forRoot(reducers)

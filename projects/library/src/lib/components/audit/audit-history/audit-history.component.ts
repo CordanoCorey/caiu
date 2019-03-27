@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { SmartComponent } from '@caiu/library';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { AuditHistory, Audited } from '../audit.model';
 import { TableColumn } from '../../../shared/models';
@@ -9,13 +12,20 @@ import { TableColumn } from '../../../shared/models';
   templateUrl: './audit-history.component.html',
   styleUrls: ['./audit-history.component.scss']
 })
-export class AuditHistoryComponent implements OnInit {
+export class AuditHistoryComponent extends SmartComponent implements OnInit {
+  columns: TableColumn[] = [];
+  dataSource: Audited[] = [];
   constructor(
+    public store: Store<any>,
     public myDialogRef?: MatDialogRef<AuditHistoryComponent>,
     @Inject(MAT_DIALOG_DATA) public data?: AuditHistory
-  ) {}
+  ) {
+    super(store);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sync(['dataSource', 'columns']);
+  }
 
   get activeRow(): Audited {
     return this.dataSource.length > 0
@@ -23,11 +33,11 @@ export class AuditHistoryComponent implements OnInit {
       : null;
   }
 
-  get columns(): TableColumn[] {
+  get columns$(): Observable<TableColumn[]> {
     return this.data.columns;
   }
 
-  get dataSource(): Audited[] {
+  get dataSource$(): Observable<Audited[]> {
     return this.data.dataSource;
   }
 

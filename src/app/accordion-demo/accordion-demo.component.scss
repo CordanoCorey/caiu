@@ -1,0 +1,19 @@
+@import '~@angular/material/_theming';
+@import '../../common';
+
+.accordion-trigger {
+    display: block;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    @include mat-elevation(2);
+    background-color: $accent-color;
+    cursor: pointer;
+
+    mat-icon {
+        position: absolute;
+        right: 50px;
+    }
+}
