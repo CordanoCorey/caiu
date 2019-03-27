@@ -40,7 +40,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'audit';
+  activeDemo = 'scheduler';
   addresses = [
     build(Address, {
       id: 1,
@@ -320,13 +320,19 @@ export class AppComponent extends SmartComponent implements OnInit {
     let mediaText = '';
 
     getContainerElements(container);
-    getMediaQueries();
+    // getMediaQueries();
 
-    const html = '<html><head><style> ' + styleText +
-    '</style> ' + mediaText + '</head><body style="margin: 0 auto;"> ' +
+    const html = '<html><head></head><body style="margin: 0 auto;"> ' +
     container.outerHTML.replace(/\s+/g,' ').trim() + ' </body></html>';
+    const css = styleText /* + ' ' + mediaText */;
+    /* const pdfStrings = {
+      html: '<html><head></head><body style="margin: 0 auto;"> ' +
+      container.outerHTML.replace(/\s+/g,' ').trim() + ' </body></html>',
+      css: styleText + ' ' + mediaText,
+    }; */
+    const pdfStrings = [html, css];
 
-    this.schedulerCmpt.exportToPDF(html);
+    this.schedulerCmpt.exportToPDF(pdfStrings);
 
     function getContainerElements(container) {
       // tslint:disable-next-line: deprecation

@@ -284,15 +284,16 @@ export class SchedulerComponent implements OnInit {
     this.calendarViewComponent.closeDayView();
   }
 
-  exportToPDF(html: string) {
+  exportToPDF(pdfStrings: string[]) {
     this.exporting = true;
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    headers.append('charset', 'utf-8');
+    const link = this.renderer.selectRootElement('#open-pdf', true);
+    // const headers = new HttpHeaders({'content-type': 'application/x-www-form-urlencoded'});
+    const headers = new HttpHeaders({'content-type': 'application/json'});
     this._http
       .post(
-        'https://appservice.caiu.org/SaveAsPDF',
-        JSON.stringify(html),
+        // 'https://appservice.caiu.org/SaveAsPDF',
+        'http://localhost:5314/SaveAsPDF',
+        pdfStrings,
         {
           headers: headers,
           responseType: 'blob'
@@ -308,7 +309,8 @@ export class SchedulerComponent implements OnInit {
           URL.createObjectURL(res)
         );
         setTimeout(x => {
-          this.pdfLink.nativeElement.click();
+          link.click();
+          console.dir(this.fileUrl);
           this.exporting = false;
         }, 0);
       });

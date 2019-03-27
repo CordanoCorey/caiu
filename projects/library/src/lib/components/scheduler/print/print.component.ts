@@ -16,7 +16,7 @@ export class PrintComponent implements OnInit {
   @Input() enableDebug = false;
 
   slice = Function.call.bind(Array.prototype.slice);
-  styleText = '#' + this.containerToPrint + ' { margin: 0 auto; }';
+  styleText: string;
   mediaText = '';
 
   getContainerElements(container) { 
@@ -79,6 +79,7 @@ export class PrintComponent implements OnInit {
   }
 
   print() {
+    this.styleText = '#' + this.containerToPrint + ' { margin: 0 auto; }';
     const container = this.renderer.selectRootElement('#' + this.containerToPrint, true);
     const classes = [];
     this.getContainerElements(container);
@@ -123,6 +124,7 @@ export class PrintComponent implements OnInit {
     win.document.write('</body></html>');
     win.document.close();
     win.print();
+    win.close();
 
   }
 
