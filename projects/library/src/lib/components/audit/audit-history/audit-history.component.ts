@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { SmartComponent } from '@caiu/library';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AuditHistory, Audited } from '../audit.model';
+import { SmartComponent } from '../../../shared/component';
 import { TableColumn } from '../../../shared/models';
 
 @Component({
