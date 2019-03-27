@@ -106,9 +106,6 @@ export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
 
   ngOnInit() {
     this.sync(['requestData']);
-    this.dataSource$.subscribe(x => {
-      console.dir(x);
-    });
   }
 
   viewHistory() {
