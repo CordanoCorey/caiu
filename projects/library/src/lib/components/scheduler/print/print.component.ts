@@ -94,7 +94,6 @@ export class PrintComponent implements OnInit {
     if (this.customStyleString !== '') {
       this.styleText = this.styleText + ' ' + this.customStyleString;
       this.styleText = this.styleText.replace(/\s+/g,' ').trim();
-      console.log(this.styleText);
     }
 
     const html = container.outerHTML.replace(/\s+/g,' ').trim();
