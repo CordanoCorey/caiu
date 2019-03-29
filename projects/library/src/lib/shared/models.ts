@@ -1,4 +1,4 @@
-import { build, truthy } from './utils';
+import { build, truthy, convertCamel2Space } from './utils';
 import { Validators } from '../forms/validators';
 
 export class Address {
@@ -446,9 +446,18 @@ export class StyleModel {
   }
 }
 
-export class TableColumn {
+export class ColumnMetadata {
   name = '';
-  label = '';
+  type: 'LIST' | 'DATE';
+  _label = '';
+
+  get label(): string {
+    return this._label || convertCamel2Space(this.name);
+  }
+
+  set label(value: string) {
+    this._label = value;
+  }
 }
 
 export interface Type<T> extends Function {

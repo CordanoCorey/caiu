@@ -23,10 +23,30 @@
     <!-- Custom Columns -->
     <ng-container *ngFor="let column of columns" [matColumnDef]="column.name">
       <th mat-header-cell *matHeaderCellDef>{{ column.label }}</th>
-      <td mat-cell *matCellDef="let element">{{ element[column.name] }}</td>
-      <td mat-footer-cell *matFooterCellDef>
-        {{ activeRow[column.name] }}
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="!column.type">{{ element[column.name] }}</span>
+        <span *ngIf="column.type === 'DATE'">{{
+          getDate(element[column.name]) | date: 'shortDate'
+        }}</span>
+        <span *ngIf="column.type === 'LIST'">
+          <div *ngFor="let item of getList(element[column.name])">
+            {{ item }}
+          </div>
+        </span>
       </td>
+      <!--Active Row-->
+      <td mat-footer-cell *matFooterCellDef>
+        <span *ngIf="!column.type">{{ activeRow[column.name] }}</span>
+        <span *ngIf="column.type === 'DATE'">{{
+          getDate(activeRow[column.name]) | date: 'shortDate'
+        }}</span>
+        <span *ngIf="column.type === 'LIST'">
+          <div *ngFor="let item of getList(activeRow[column.name])">
+            {{ item }}
+          </div>
+        </span>
+      </td>
+      <!--End Active Row-->
     </ng-container>
 
     <!-- Star Column -->

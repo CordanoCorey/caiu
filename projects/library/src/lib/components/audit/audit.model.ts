@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { TableColumn } from '../../shared/models';
+import { ColumnMetadata } from '../../shared/models';
 
 export class Audited {
   startDate: Date = new Date();
@@ -9,5 +9,5 @@ export class Audited {
 
 export class AuditHistory {
   dataSource: Observable<Audited[]>;
-  columns: Observable<TableColumn[]>;
+  columns: Observable<ColumnMetadata[]>;
 }

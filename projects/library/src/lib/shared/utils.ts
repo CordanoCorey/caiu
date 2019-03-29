@@ -3,7 +3,7 @@ import { SimpleChanges } from '@angular/core';
 import {
   Metadata,
   Dictionary,
-  TableColumn,
+  ColumnMetadata,
   TypeConstructor,
   HasMetadata
 } from './models';
@@ -79,20 +79,21 @@ export function build<T>(ctor: TypeConstructor<T>, ...args): T {
 export function buildColumnsFromMetadata(
   model: any,
   key: string
-): TableColumn[] {
+): ColumnMetadata[] {
   const metadata = findMetadataFromInstance(model);
-  const columnNames = Array.isArray(metadata[key])
+  const columns = Array.isArray(metadata[key])
     ? metadata[key]
     : Array.isArray(model)
     ? model.length > 0
       ? Object.keys(model[0])
       : []
     : Object.keys(model);
-  return columnNames.map(name =>
-    build(TableColumn, {
-      name,
-      label: convertCamel2Space(name)
-    })
+  return columns.map((x: string | ColumnMetadata) =>
+    typeof x === 'string'
+      ? build(ColumnMetadata, {
+          name: x
+        })
+      : build(ColumnMetadata, x)
   );
 }
 

@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 
 import { AuditHistory, Audited } from '../audit.model';
 import { SmartComponent } from '../../../shared/component';
-import { TableColumn } from '../../../shared/models';
+import { ColumnMetadata } from '../../../shared/models';
+import { toArray } from '../../../shared/utils';
 
 @Component({
   selector: 'iu-audit-history',
@@ -13,7 +14,7 @@ import { TableColumn } from '../../../shared/models';
   styleUrls: ['./audit-history.component.scss']
 })
 export class AuditHistoryComponent extends SmartComponent implements OnInit {
-  columns: TableColumn[] = [];
+  columns: ColumnMetadata[] = [];
   dataSource: Audited[] = [];
   constructor(
     public store: Store<any>,
@@ -33,7 +34,7 @@ export class AuditHistoryComponent extends SmartComponent implements OnInit {
       : null;
   }
 
-  get columns$(): Observable<TableColumn[]> {
+  get columns$(): Observable<ColumnMetadata[]> {
     return this.data.columns;
   }
 
@@ -43,5 +44,13 @@ export class AuditHistoryComponent extends SmartComponent implements OnInit {
 
   get displayedColumns(): string[] {
     return ['startDate', 'endDate', ...this.columns.map(x => x.name)];
+  }
+
+  getDate(date: Date): Date {
+    return new Date(date);
+  }
+
+  getList(list: any[]): string[] {
+    return toArray(list).map(x => x.toString());
   }
 }

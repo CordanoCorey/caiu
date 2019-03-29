@@ -7,7 +7,7 @@ import { AuditHistoryComponent } from '../audit-history/audit-history.component'
 import { Audited, AuditHistory } from '../audit.model';
 import { HttpService } from '../../../http/http.service';
 import { DumbComponent } from '../../../shared/component';
-import { TableColumn } from '../../../shared/models';
+import { ColumnMetadata } from '../../../shared/models';
 import {
   build,
   toArray,
@@ -23,13 +23,13 @@ import {
 export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
   @Input() mapper: (data: any) => Audited;
   @Input() requestUrl = '';
-  columnMetadata$: Observable<TableColumn[]>;
-  columnsSubject = new BehaviorSubject<TableColumn[]>([]);
+  columnMetadata$: Observable<ColumnMetadata[]>;
+  columnsSubject = new BehaviorSubject<ColumnMetadata[]>([]);
   dataSourceSubject = new BehaviorSubject<Audited[]>([]);
   dataSource$: Observable<Audited[]>;
   requestUrl$: Observable<string>;
   requestUrlClicksSubject = new BehaviorSubject<string>(null);
-  _columns: TableColumn[] = [];
+  _columns: ColumnMetadata[] = [];
   _data: Audited[] = [];
   _placeholderText = '';
   _requestData: Audited[];
@@ -55,12 +55,12 @@ export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
     );
   }
 
-  @Input() set columns(value: TableColumn[]) {
+  @Input() set columns(value: ColumnMetadata[]) {
     this._columns = value;
     this.columnsSubject.next(value);
   }
 
-  get columns(): TableColumn[] {
+  get columns(): ColumnMetadata[] {
     return this._columns;
   }
 

@@ -23,7 +23,7 @@ import {
   CalendarTime,
   SchedulerComponent,
   SmartComponent,
-  TableColumn,
+  ColumnMetadata,
   ConfigActions
 } from 'library';
 
@@ -90,10 +90,10 @@ export class AppComponent extends SmartComponent implements OnInit {
     })
   ];
   auditHistoryColumns = [
-    build(TableColumn, { name: 'name', label: 'Name' }),
-    build(TableColumn, { name: 'position', label: 'Position' }),
-    build(TableColumn, { name: 'weight', label: 'Weight' }),
-    build(TableColumn, { name: 'symbol', label: 'Symbol' })
+    build(ColumnMetadata, { name: 'name', label: 'Name' }),
+    build(ColumnMetadata, { name: 'position', label: 'Position' }),
+    build(ColumnMetadata, { name: 'weight', label: 'Weight' }),
+    build(ColumnMetadata, { name: 'symbol', label: 'Symbol' })
   ];
   auditHistoryData = [
     {
