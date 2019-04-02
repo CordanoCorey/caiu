@@ -70,7 +70,8 @@ export class PrintComponent implements OnInit {
                 this.slice(y.cssRules).forEach(z => {
                   mediaStyles = mediaStyles + ' ' + z.cssText;
                 });
-                this.mediaText = this.mediaText + ' <style media="' + y.conditionText + '"> ' + mediaStyles + ' </style> ';
+                /* this.mediaText = this.mediaText + ' <style media="' + y.conditionText + '"> ' + mediaStyles + ' </style> '; */
+                this.mediaText = this.mediaText + ' @media ' + y.conditionText + ' { ' + mediaStyles + ' }';
               }
             }
           });
@@ -99,11 +100,8 @@ export class PrintComponent implements OnInit {
     const html = container.outerHTML.replace(/\s+/g,' ').trim();
 
     if (this.enableDebug) {
+      console.dir(this.containerToPrint);
       console.dir(container);
-      console.log('computed styles: ');
-      console.dir(window.getComputedStyle(container));
-      console.log('classes: ');
-      console.dir(classes);
       console.log('document.styleSheets: ');
       console.dir(document.styleSheets);
     }
@@ -115,15 +113,15 @@ export class PrintComponent implements OnInit {
     win.document.write('<style>');
     // Style goes here
     win.document.write(this.styleText);
-    win.document.write('</style>');
     // Media styles go here
     win.document.write(this.mediaText);
+    win.document.write('</style>');
     win.document.write('</head><body style="margin: 0 auto;">');
     win.document.write(html);
     win.document.write('</body></html>');
     win.document.close();
     win.print();
-    win.close();
+    /* win.close(); */
 
   }
 
