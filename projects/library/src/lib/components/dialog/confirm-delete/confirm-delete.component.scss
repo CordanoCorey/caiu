@@ -1,15 +1,12 @@
 iu-dialog#confirm-delete {
     width: 600px;
     height: 600px;
+
     .mat-toolbar {
-        // margin: -24px -24px 24px -24px;
-        // width: calc(100% + 48px);
-        min-height: 32px;
         padding: 10px 20px;
-    }
-    .mat-toolbar-row {
-        margin-left: -24px;
-        margin-right: -24px;
+        margin: -24px -24px 0 -24px;
+        width: calc(100% + 48px);
+        min-height: 32px;
         height: 48px;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -21,11 +18,13 @@ iu-dialog#confirm-delete {
         text-transform: uppercase;
         font-weight: 400;
     }
+
     mat-dialog-content {
         width: 80%;
         margin: 48px 10%;
         color: #999999;
     }
+
     .mat-dialog-actions {
         margin-left: -24px;
         margin-right: -24px;
@@ -33,6 +32,7 @@ iu-dialog#confirm-delete {
         font-size: 14px;
         font-weight: 500;
         color: #fff;
+
         button {
             padding: 12px 0;
             color: #999999;
@@ -41,14 +41,17 @@ iu-dialog#confirm-delete {
             cursor: pointer;
             border: 0;
         }
+
         button:hover {
             color: #999999;
             cursor: pointer;
         }
     }
+
     .mat-raised-button {
         margin-left: 0 !important;
     }
+
     .dialog-title {
         button {
             display: none;
