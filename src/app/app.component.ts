@@ -40,7 +40,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'scheduler';
+  activeDemo = 'file-upload';
   addresses = [
     build(Address, {
       id: 1,
@@ -325,8 +325,10 @@ export class AppComponent extends SmartComponent implements OnInit {
     getContainerElements(container);
     // getMediaQueries();
 
-    const html = '<html><head></head><body style="margin: 0 auto;"> ' +
-    container.outerHTML.replace(/\s+/g,' ').trim() + ' </body></html>';
+    const html =
+      '<html><head></head><body style="margin: 0 auto;"> ' +
+      container.outerHTML.replace(/\s+/g, ' ').trim() +
+      ' </body></html>';
     const css = styleText /* + ' ' + mediaText */;
     /* const pdfStrings = {
       html: '<html><head></head><body style="margin: 0 auto;"> ' +

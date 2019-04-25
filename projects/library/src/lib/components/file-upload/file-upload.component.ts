@@ -28,7 +28,6 @@ export const FILE_UPLOAD_ACCESSOR: any = {
   encapsulation: ViewEncapsulation.None
 })
 export class FileUploadComponent implements OnInit, ControlValueAccessor {
-
   @Input() id = `files-${guid()}`;
   @Input() multiple = false;
   @Input() ordered = true;
@@ -36,12 +35,19 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
   @Output() upload = new EventEmitter<FileUpload | FileUpload[]>();
   private onModelChange: Function;
   private onTouch: Function;
-  changes$: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>(new FileUpload());
+  changes$: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>(
+    new FileUpload()
+  );
   value: FileUpload[];
   focused: FileUpload[];
-  ordering: Ordering<FileUpload> = new Ordering<FileUpload>([], FileUpload, 'order', 'name');
+  ordering: Ordering<FileUpload> = new Ordering<FileUpload>(
+    [],
+    FileUpload,
+    'order',
+    'name'
+  );
 
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor(private ref: ChangeDetectorRef) {}
 
   get activeFile(): FileUpload {
     return this.hasUploads ? this.uploads[0] : new FileUpload();
@@ -52,7 +58,7 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
   }
 
   get showMultiple(): boolean {
-    return this.preview && this.multiple
+    return this.preview && this.multiple;
   }
 
   get uploads(): FileUpload[] {
@@ -109,7 +115,9 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
     if (index === -1) {
       this.add(f);
     } else {
-      this.uploads = this.uploads.map((x, i) => i === index ? build(FileUpload, f, { order: x.order }) : x);
+      this.uploads = this.uploads.map((x, i) =>
+        i === index ? build(FileUpload, f, { order: x.order }) : x
+      );
       this.ref.detectChanges();
     }
   }
@@ -164,6 +172,7 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
   }
 
   setupReader(file: File) {
+    console.dir(file);
     const reader = new FileReader();
     const changes$ = this.changes$;
     const upload = build(FileUpload, {
@@ -174,13 +183,17 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
       type: file['type'],
       webkitRelativePath: file['webkitRelativePath']
     });
-    reader.onload = function (e: any) {
+    reader.onload = function(e: any) {
       const src = reader.result;
       const readyState = FileUpload.GetReadyState(reader);
       changes$.next(Object.assign(upload, { src, readyState }));
     };
     reader.readAsDataURL(file);
-    this.onUpload(build(FileUpload, upload, { readyState: FileUpload.GetReadyState(reader) }));
+    this.onUpload(
+      build(FileUpload, upload, {
+        readyState: FileUpload.GetReadyState(reader)
+      })
+    );
   }
 
   uploadAll(uploads: FileUpload[]) {
@@ -188,5 +201,4 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
       this.onUpload(upload);
     });
   }
-
 }

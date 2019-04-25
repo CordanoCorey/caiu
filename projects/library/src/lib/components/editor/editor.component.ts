@@ -31,8 +31,8 @@ export const EDITOR_ACCESSOR: any = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [EDITOR_ACCESSOR]
 })
-export class EditorComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
-
+export class EditorComponent
+  implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
   @Input() type: 'basic' | 'full' = 'full';
   @Input() elementId: string;
   @Input() expanded = false;
@@ -56,7 +56,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit, Contro
   dialogRef: Subscription;
   editorRef: any;
 
-  constructor(public dialog: MatDialog, private ref: ChangeDetectorRef) { }
+  constructor(public dialog: MatDialog, private ref: ChangeDetectorRef) {}
 
   @Input() set value(val: string) {
     this._value = val;
@@ -106,20 +106,20 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit, Contro
       ],
       setup: editor => {
         this.editorRef = editor;
-        editor.on('keyup', (e) => {
+        editor.on('keyup', e => {
           e.preventDefault();
           const content = editor.getContent();
           this.onKeyup(content);
         });
-        editor.on('change', (e) => {
+        editor.on('change', e => {
           e.preventDefault();
           const content = editor.getContent();
           this.onChange(content);
         });
-        editor.on('viewcontentloaded', (e) => {
+        editor.on('viewcontentloaded', e => {
           editor.setContent('');
         });
-      },
+      }
     };
   }
 
@@ -135,17 +135,17 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit, Contro
       toolbar2: 'print preview | forecolor backcolor | link',
       setup: editor => {
         this.editorRef = editor;
-        editor.on('keyup', (e) => {
+        editor.on('keyup', e => {
           e.preventDefault();
           const content = editor.getContent();
           this.onKeyup(content);
         });
-        editor.on('change', (e) => {
+        editor.on('change', e => {
           e.preventDefault();
           const content = editor.getContent();
           this.onChange(content);
         });
-        editor.on('viewcontentloaded', (e) => {
+        editor.on('viewcontentloaded', e => {
           editor.setContent('');
         });
       },
@@ -165,8 +165,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit, Contro
     return this.full && !this.expanded;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     tinymce.init(this.config);
@@ -181,6 +180,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit, Contro
   }
 
   expand(e: any) {
+    console.dir(e);
     if (e && e.preventDefault) {
       e.preventDefault();
     }
@@ -253,5 +253,4 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit, Contro
       }
     }
   }
-
 }
