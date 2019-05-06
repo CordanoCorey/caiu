@@ -37,6 +37,7 @@ export * from './lib/components/datepicker/daterange/daterange.component';
 export * from './lib/components/dialog/dialog.module';
 export * from './lib/components/dialog/dialog.component';
 export * from './lib/components/dialog/dialog.model';
+export * from './lib/components/dialog/confirm-delete/confirm-delete.component';
 export * from './lib/components/editor/editor.module';
 export * from './lib/components/editor/editor.component';
 export * from './lib/components/editor/editor-window/editor-window.component';

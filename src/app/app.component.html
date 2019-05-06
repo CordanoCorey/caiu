@@ -64,6 +64,14 @@
   >
     Accordion
   </button>
+  <button
+    (click)="activeDemo = 'dialog'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'dialog'"
+  >
+    Dialog
+  </button>
 </mat-toolbar>
 
 <iu-wallpaper
@@ -196,6 +204,12 @@
     Toggle Accordion 2
   </button>
   <docs-accordion-demo [opened]="opened"> </docs-accordion-demo>
+</div>
+
+<div *ngIf="activeDemo === 'dialog'" class="example">
+  <button mat-button color="accent" (click)="openConfirmDelete()">
+    Open Confirm Delete
+  </button>
 </div>
 
 <router-outlet></router-outlet>

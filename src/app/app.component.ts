@@ -7,6 +7,8 @@ import {
   Renderer2
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { Store } from '@ngrx/store';
 import {
   Control,
   FileUpload,
@@ -24,11 +26,11 @@ import {
   SchedulerComponent,
   SmartComponent,
   ColumnMetadata,
-  ConfigActions
+  ConfigActions,
+  ConfirmDeleteComponent
 } from 'library';
 
 import { ExampleForm, environment, AuditHistoryRow } from './shared/models';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'docs-root',
@@ -40,7 +42,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'file-upload';
+  activeDemo = 'dialog';
   addresses = [
     build(Address, {
       id: 1,
@@ -284,7 +286,11 @@ export class AppComponent extends SmartComponent implements OnInit {
   opened = true;
   timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
 
-  constructor(public store: Store<any>, private renderer: Renderer2) {
+  constructor(
+    public store: Store<any>,
+    private renderer: Renderer2,
+    public dialog: MatDialog
+  ) {
     super(store);
   }
 
@@ -448,6 +454,15 @@ export class AppComponent extends SmartComponent implements OnInit {
         ? e.currentTarget.innerWidth
         : 0;
     // console.log('\n\nwindow:resize', this.windowWidth, this.windowHeight);
+  }
+
+  closeDialog(e: any) {
+    console.dir(e);
+    super.closeDialog(e);
+  }
+
+  openConfirmDelete() {
+    this.openDialog(ConfirmDeleteComponent, { width: '600px' });
   }
 
   schedulerTest(value: any) {

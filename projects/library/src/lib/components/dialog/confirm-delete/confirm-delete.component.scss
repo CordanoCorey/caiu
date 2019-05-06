@@ -1,17 +1,17 @@
+@import '~@angular/material/_theming';
+
 iu-dialog#confirm-delete {
     width: 600px;
     height: 600px;
 
     .mat-toolbar {
         padding: 10px 20px;
-        margin: -24px -24px 0 -24px;
-        width: calc(100% + 48px);
         min-height: 32px;
         height: 48px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-top: 12px;
+        padding-bottom: 0px;
         padding-left: 20px;
-        color: #656565;
+        color: #fff;
         font-size: 20px;
         letter-spacing: 1px;
         line-height: 24px;
@@ -23,6 +23,8 @@ iu-dialog#confirm-delete {
         width: 80%;
         margin: 48px 10%;
         color: #999999;
+        font-size: 20px;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
     }
 
     .mat-dialog-actions {
@@ -34,17 +36,25 @@ iu-dialog#confirm-delete {
         color: #fff;
 
         button {
-            padding: 12px 0;
-            color: #999999;
-            margin-top: -2px;
+            padding: 20px 0;
+            color: #fff;
             -webkit-appearance: none;
             cursor: pointer;
-            border: 0;
+            font-size: 20px;
+            opacity: .9;
         }
 
         button:hover {
-            color: #999999;
-            cursor: pointer;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        button:first-child {
+            // background: red !important;
+        }
+
+        button:last-child {
+            // background: limegreen !important;
         }
     }
 
