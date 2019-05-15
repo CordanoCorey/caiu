@@ -1,6 +1,6 @@
-import { EventActions, MessagesActions } from "./events.actions";
-import { Events, Messages } from "./events.models";
-import { Action } from "../store/models";
+import { EventActions, MessagesActions } from './events.actions';
+import { Events, Messages } from './events.models';
+import { Action } from '../store/models';
 
 export function eventsReducer(
   state: Events = new Events(),

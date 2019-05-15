@@ -3,15 +3,15 @@ import {
   UpdateValuePayload,
   Message,
   MessageSubscription
-} from "./events.models";
-import { Action, ActionWithKey } from "../store/models";
-import { build, guid } from "../shared/utils";
+} from './events.models';
+import { Action, ActionWithKey } from '../store/models';
+import { build, guid } from '../shared/utils';
 
 export class EventActions {
-  static ADD_EVENT = "[Events] Add Event";
-  static REMOVE_EVENT = "[Events] Remove Event";
-  static TRIGGER_EVENT = "[Events] Trigger Event";
-  static UPDATE_VALUE = "[Events] Update Value";
+  static ADD_EVENT = '[Events] Add Event';
+  static REMOVE_EVENT = '[Events] Remove Event';
+  static TRIGGER_EVENT = '[Events] Trigger Event';
+  static UPDATE_VALUE = '[Events] Update Value';
 
   static addEvent(
     onAction: string | string[],
@@ -58,10 +58,10 @@ export class EventActions {
 }
 
 export class MessagesActions {
-  static ADD = "[Messages] Add Messages";
-  static REMOVE = "[Messages] Remove Messages";
-  static ADD_SUBSCRIPTION = "[Messages] Add Subscription";
-  static REMOVE_SUBSCRIPTION = "[Messages] Remove Subscription";
+  static ADD = '[Messages] Add Messages';
+  static REMOVE = '[Messages] Remove Messages';
+  static ADD_SUBSCRIPTION = '[Messages] Add Subscription';
+  static REMOVE_SUBSCRIPTION = '[Messages] Remove Subscription';
 
   static add(e: MessageSubscription, action: Action): Action {
     return {
@@ -71,9 +71,9 @@ export class MessagesActions {
           channel,
           action: e.action,
           message:
-            e.mapper && typeof e.mapper === "function"
+            e.mapper && typeof e.mapper === 'function'
               ? e.mapper(action.payload)
-              : ""
+              : ''
         })
       )
     };
@@ -83,7 +83,7 @@ export class MessagesActions {
     return {
       type: MessagesActions.ADD_SUBSCRIPTION,
       payload: build(MessageSubscription, {
-        channel: "TOASTS",
+        channels: ['TOASTS'],
         action,
         mapper
       })
@@ -94,7 +94,7 @@ export class MessagesActions {
     return {
       type: MessagesActions.ADD_SUBSCRIPTION,
       payload: build(Message, {
-        channel: "TOASTS",
+        channels: ['TOASTS'],
         action,
         mapper: (e: any) => message
       })

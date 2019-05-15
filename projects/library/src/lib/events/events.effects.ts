@@ -1,13 +1,14 @@
-import { Injectable } from "@angular/core";
-import { Actions, Effect } from "@ngrx/effects";
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { filter, map } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { Actions, Effect } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
-import { EventActions, MessagesActions } from "./events.actions";
-import { Events, MessageSubscription } from "./events.models";
-import { Action } from "../store/models";
-import { messageSubscriptionsSelector } from "./events.selectors";
+import { EventActions, MessagesActions } from './events.actions';
+import { Events, MessageSubscription } from './events.models';
+import { messageSubscriptionsSelector } from './events.selectors';
+import { Action } from '../store/models';
+import { build } from '../shared/utils';
 
 @Injectable()
 export class EventEffects {
@@ -23,7 +24,7 @@ export class EventEffects {
 
   constructor(private actions$: Actions, private store: Store<any>) {
     this.store
-      .select(s => s["events"])
+      .select(s => s['events'])
       .subscribe(events => {
         this.events = events;
       });
@@ -47,7 +48,7 @@ export class MessagesEffects {
         this.messageSubscriptions.findIndex(x => x.action === action.type) !==
         -1
     ),
-    map(this.broadcast)
+    map(x => this.broadcast(x, this.messageSubscriptions))
   );
 
   constructor(private actions$: Actions, private store: Store<any>) {
@@ -58,9 +59,13 @@ export class MessagesEffects {
     });
   }
 
-  broadcast(action: Action): Action {
-    const subscription = this.messageSubscriptions.find(
-      x => x.action === action.type
+  broadcast(
+    action: Action,
+    messageSubscriptions: MessageSubscription[]
+  ): Action {
+    const subscription = build(
+      MessageSubscription,
+      messageSubscriptions.find(x => x.action === action.type)
     );
     return MessagesActions.add(subscription, action);
   }

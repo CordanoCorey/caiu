@@ -1,6 +1,6 @@
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { map, filter } from "rxjs/operators";
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 import {
   Events,
@@ -8,15 +8,15 @@ import {
   Messages,
   MessageSubscription,
   Message
-} from "./events.models";
-import { Dictionary } from "../shared/models";
-import { truthy } from "../shared/utils";
+} from './events.models';
+import { Dictionary } from '../shared/models';
+import { truthy, build } from '../shared/utils';
 
 export function eventsSelector(
   store: Store<any>
 ): Observable<Dictionary<Event>> {
   return store
-    .select(s => s["events"])
+    .select(s => s['events'])
     .pipe(map((events: Events) => events.items));
 }
 
@@ -35,7 +35,7 @@ export function eventValueSelector(
 }
 
 export function messagesSelector(store: Store<any>): Observable<Messages> {
-  return store.select("messages");
+  return store.select('messages');
 }
 
 export function messageSubscriptionsSelector(
@@ -49,7 +49,7 @@ export function messageSelector(
   channel: string
 ): Observable<string> {
   return messagesSelector(store).pipe(
-    map(x => x.get(channel).message),
+    map(x => build(Message, x.get(channel)).message),
     filter(x => truthy(x))
   );
 }

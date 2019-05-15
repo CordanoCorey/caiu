@@ -1,13 +1,13 @@
-import { Action } from "../store/models";
-import { Collection } from "../shared/collection";
-import { Dictionary } from "../shared/models";
-import { build } from "../shared/utils";
+import { Action } from '../store/models';
+import { Collection } from '../shared/collection';
+import { Dictionary } from '../shared/models';
+import { build } from '../shared/utils';
 
 export class Event {
   emittedCount = 0;
   handler: (action: Action) => any;
-  key = "";
-  onAction: string | string[] = "";
+  key = '';
+  onAction: string | string[] = '';
   value: any = null;
 }
 
@@ -16,7 +16,7 @@ export class Events extends Collection<Event> {
     return this.toArray().reduce((acc: any[], event: Event) => {
       const addValues = !event.onAction
         ? []
-        : typeof event.onAction === "string"
+        : typeof event.onAction === 'string'
         ? acc.indexOf(event.onAction) === -1
           ? [event.onAction]
           : []
@@ -27,7 +27,7 @@ export class Events extends Collection<Event> {
 
   get eventsByAction(): Dictionary<Event[]> {
     return this.toArray().reduce((acc: Dictionary<Event[]>, event: Event) => {
-      if (typeof event.onAction === "string") {
+      if (typeof event.onAction === 'string') {
         const val: Event[] = acc[event.onAction] || [];
         acc[event.onAction] = [...val, event];
       } else {
@@ -81,9 +81,9 @@ export class UpdateValuePayload {
 }
 
 export class Message {
-  action = "";
-  channel = "";
-  message = "";
+  action = '';
+  channel = '';
+  message = '';
 
   set id(value: string) {
     this.channel = value;
@@ -95,7 +95,7 @@ export class Message {
 }
 
 export class MessageSubscription {
-  action = "";
+  action = '';
   channels: string[] = [];
   mapper?: (payload: any) => string;
 }
@@ -107,7 +107,7 @@ export class Messages extends Collection<Message> {
   }
 
   addMessages(data: Message | Message[]): Messages {
-    return build(Messages, this.update(data));
+    return build(Messages, this, this.update(data));
   }
 
   removeMessages(channelNames: string[]): Messages {

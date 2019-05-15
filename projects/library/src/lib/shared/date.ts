@@ -162,7 +162,8 @@ export class DateHelper {
     return Math.floor(seconds) + ' seconds';
   }
 
-  static ToDayString(date: Date): string {
+  static ToDayString(d: Date): string {
+    const date = new Date(d);
     return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
   }
 
