@@ -1,7 +1,7 @@
 import { Action } from '../store/models';
 import { Collection } from '../shared/collection';
 import { Dictionary } from '../shared/models';
-import { build } from '../shared/utils';
+import { build, inArray } from '../shared/utils';
 
 export class Event {
   emittedCount = 0;
@@ -96,7 +96,7 @@ export class Message {
 
 export class MessageSubscription {
   action = '';
-  channels: string[] = [];
+  channel = '';
   mapper?: (payload: any) => string;
 }
 
@@ -110,6 +110,13 @@ export class Messages extends Collection<Message> {
     return build(Messages, this, this.update(data));
   }
 
+  clearMessages(data: Message | Message[]): Messages {
+    const channelNames = Array.isArray(data)
+      ? data.map(x => x.channel)
+      : [data.channel];
+    return build(Messages, this, this.removeMessages(channelNames));
+  }
+
   removeMessages(channelNames: string[]): Messages {
     return build(
       Messages,
@@ -119,29 +126,57 @@ export class Messages extends Collection<Message> {
     );
   }
 
-  addSubscription(subscription: MessageSubscription): Messages {
+  addSubscription(
+    arr: MessageSubscription[],
+    data: MessageSubscription
+  ): MessageSubscription[] {
+    return [
+      ...arr.filter(
+        x => !(x.action === data.action && x.channel === data.channel)
+      ),
+      data
+    ];
+  }
+
+  addSubscriptions(
+    data: MessageSubscription | MessageSubscription[]
+  ): Messages {
+    const subscriptions = Array.isArray(data)
+      ? data.reduce(
+          (acc, x) => this.addSubscription(acc, x),
+          this.subscriptions
+        )
+      : this.addSubscription(this.subscriptions, data);
     return build(Messages, this, {
-      subscriptions: [
-        ...this.subscriptions.filter(x => x.action !== subscription.action),
-        subscription
-      ]
+      subscriptions
     });
   }
 
-  removeSubscription(actionName: string): Messages {
-    return build(
-      Messages,
-      this.removeMessages(
-        build(
-          MessageSubscription,
-          this.subscriptions.find(x => x.action === actionName)
-        ).channels
-      ),
-      {
-        subscriptions: [
-          ...this.subscriptions.filter(x => x.action !== actionName)
-        ]
-      }
+  removeSubscription(
+    arr: MessageSubscription[],
+    data: MessageSubscription
+  ): MessageSubscription[] {
+    return arr.filter(
+      x => !(x.action === data.action && x.channel === data.channel)
     );
+  }
+
+  removeSubscriptions(
+    data: MessageSubscription | MessageSubscription[]
+  ): Messages {
+    const subscriptions = Array.isArray(data)
+      ? data.reduce(
+          (acc, x) => this.addSubscription(acc, x),
+          this.subscriptions
+        )
+      : this.addSubscription(this.subscriptions, data);
+    const channels = Array.isArray(data)
+      ? data.map(x => x.channel)
+      : [data.channel];
+    const items = this.asArray; // TODO: filter out messages from unsubscribed channels
+    return build(Messages, {
+      items,
+      subscriptions
+    });
   }
 }

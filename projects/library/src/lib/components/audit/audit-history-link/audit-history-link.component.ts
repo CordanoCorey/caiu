@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { distinctUntilChanged, switchMap, map, filter } from 'rxjs/operators';
@@ -22,7 +22,9 @@ import {
 })
 export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
   @Input() mapper: (data: any) => Audited;
+  @Input() preloadData = false;
   @Input() requestUrl = '';
+  @Output() dataLoaded = new EventEmitter<Audited[]>();
   columnMetadata$: Observable<ColumnMetadata[]>;
   columnsSubject = new BehaviorSubject<ColumnMetadata[]>([]);
   dataSourceSubject = new BehaviorSubject<Audited[]>([]);
@@ -85,6 +87,7 @@ export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
   set requestData(value: Audited[]) {
     this._requestData = value;
     this.dataSourceSubject.next(value);
+    this.dataLoaded.emit(value);
   }
 
   get requestData(): Audited[] {
@@ -106,10 +109,19 @@ export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
 
   ngOnInit() {
     this.sync(['requestData']);
+    if (this.preloadData) {
+      this.refreshData();
+    }
+  }
+
+  refreshData() {
+    this.requestUrlClicksSubject.next(this.requestUrl);
   }
 
   viewHistory() {
-    this.requestUrlClicksSubject.next(this.requestUrl);
+    if (!this.preloadData) {
+      this.refreshData();
+    }
     this.openDialog(AuditHistoryComponent, {
       data: build(AuditHistory, {
         dataSource: this.dataSource$,

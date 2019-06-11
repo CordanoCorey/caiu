@@ -1,5 +1,19 @@
-import { Component, OnChanges, Input, Output, EventEmitter, forwardRef, OnInit, SimpleChanges } from '@angular/core';
-import { FormGroup, AbstractControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import {
+  Component,
+  OnChanges,
+  Input,
+  Output,
+  EventEmitter,
+  forwardRef,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
+import {
+  FormGroup,
+  AbstractControl,
+  NG_VALUE_ACCESSOR,
+  ControlValueAccessor
+} from '@angular/forms';
 
 import { Control } from '../../../forms/decorators';
 import { DumbComponent } from '../../../shared/component';
@@ -18,14 +32,19 @@ export const ADDRESS_FORM_ACCESSOR: any = {
   styleUrls: ['./address-form.component.scss'],
   providers: [ADDRESS_FORM_ACCESSOR]
 })
-export class AddressFormComponent extends DumbComponent implements OnInit, OnChanges, ControlValueAccessor {
-
+export class AddressFormComponent extends DumbComponent
+  implements OnInit, OnChanges, ControlValueAccessor {
   @Control(Address) form: FormGroup;
   @Input() address: Address = new Address();
+  @Input() canDelete = false;
+  @Input() debug = false;
+  @Input() hasPrimaryAddress = true;
   @Input() manager = false;
   @Input() requireEffectiveDate = false;
   @Input() showName = false;
+  @Input() zipPlus4 = true;
   @Output() changes = new EventEmitter<Address>();
+  @Output() delete = new EventEmitter<Address>();
   @Output() save = new EventEmitter<Address>();
   private onModelChange: Function;
   private onTouch: Function;
@@ -52,19 +71,22 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
   }
 
   get showMakePrimaryButton(): boolean {
-    return this.canSave && !this.isPrimaryAddress && !this.requireEffectiveDate;
+    return this.canSave && !this.isPrimaryAddress && this.hasPrimaryAddress;
   }
 
   get valueOut(): Address {
     return build(Address, this.form.value, {
-      id: this.address.id
+      id: this.address.id,
+      isPrimaryAddress: this.isPrimaryAddress
     });
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (!equals(changes['address'], this.address)) {
-      console.log('\nCHANGE Address VALUE');
-      console.dir(getValue(this.address));
+      if (this.debug) {
+        console.log('\nCHANGE Address VALUE');
+        console.dir(getValue(this.address));
+      }
       this.setValue(this.address);
     }
   }
@@ -78,11 +100,16 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
   onActivate() {
     this.isPrimaryAddress = true;
     this.onSubmit();
+    this.isPrimaryAddress = false;
   }
 
   onChange() {
     this.value = this.form.value;
     this.changes.emit(this.valueOut);
+  }
+
+  onDelete() {
+    this.delete.emit(this.address);
   }
 
   onSubmit() {
@@ -97,14 +124,14 @@ export class AddressFormComponent extends DumbComponent implements OnInit, OnCha
     this.onTouch = fn;
   }
 
-  setDisabledState(isDisabled: boolean) {
-  }
+  setDisabledState(isDisabled: boolean) {}
 
   writeValue(value: Address) {
-    console.log('\nCHANGE Address VALUE');
-    console.dir(getValue(build(Address, value)));
+    if (this.debug) {
+      console.log('\nCHANGE Address VALUE');
+      console.dir(getValue(build(Address, value)));
+    }
     this.value = value;
     this.setValue(build(Address, value));
   }
-
 }

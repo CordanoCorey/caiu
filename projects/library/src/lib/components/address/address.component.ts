@@ -1,4 +1,11 @@
-import { Component, OnInit, forwardRef, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  forwardRef,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 
@@ -19,12 +26,15 @@ export const ADDRESS_ACCESSOR: any = {
   styleUrls: ['./address.component.scss'],
   providers: [ADDRESS_ACCESSOR]
 })
-export class AddressComponent extends DumbComponent implements OnInit, ControlValueAccessor {
-
+export class AddressComponent extends DumbComponent
+  implements OnInit, ControlValueAccessor {
   _addresses: Address[] = [];
+  @Input() debug = false;
   @Input() editing = false;
+  @Input() hasPrimaryAddress = true;
   @Input() requireEffectiveDate = false;
   @Input() showName = true;
+  @Input() zipPlus4 = true;
   @Output() activate = new EventEmitter<Address>();
   @Output() add = new EventEmitter<Address>();
   @Output() delete = new EventEmitter<Address>();
@@ -32,6 +42,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   private onModelChange: Function;
   private onTouch: Function;
   current: Address;
+  errorMessage = '';
   toBeDeleted: Address;
   _value: Address[];
 
@@ -45,8 +56,10 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   get addresses(): Address[] {
-    return this._addresses.findIndex(x => x.isPrimaryAddress) === -1 ?
-      this._addresses.map((x, index) => index === 0 ? build(Address, x, { isPrimaryAddress: true }) : x)
+    return this._addresses.findIndex(x => x.isPrimaryAddress) === -1
+      ? this._addresses.map((x, index) =>
+          index === 0 ? build(Address, x, { isPrimaryAddress: true }) : x
+        )
       : this._addresses;
   }
 
@@ -63,13 +76,18 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   get primaryAddress(): Address {
-    return this.addresses.find(x => x.isPrimaryAddress) || build(Address, this.addresses[0]);
+    return this.addresses.length === 0
+      ? null
+      : this.addresses.find(x => x.isPrimaryAddress) ||
+          build(Address, this.addresses[0]);
   }
 
   set primaryAddress(value: Address) {
     this.addresses = [
       build(Address, value, { isPrimaryAddress: true }),
-      ...this.removeAddress(value).map(x => build(Address, x, { isPrimaryAddress: false }))
+      ...this.removeAddress(value).map(x =>
+        build(Address, x, { isPrimaryAddress: false })
+      )
     ];
   }
 
@@ -81,8 +99,7 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     return this.addresses.length;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   registerOnChange(fn: Function) {
     this.onModelChange = fn;
@@ -92,18 +109,21 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     this.onTouch = fn;
   }
 
-  setDisabledState(isDisabled: boolean) {
-  }
+  setDisabledState(isDisabled: boolean) {}
 
   writeValue(value: Address[]) {
-    console.log('\nWRITE Address Manager VALUE');
-    console.dir(value);
+    if (this.debug) {
+      console.log('\nWRITE Address Manager VALUE');
+      console.dir(value);
+    }
     this.value = value;
   }
 
   changeValue(value: Address[]) {
-    console.log('\nCHANGE Address Manager VALUE');
-    console.dir(value);
+    if (this.debug) {
+      console.log('\nCHANGE Address Manager VALUE');
+      console.dir(value);
+    }
     this.value = value;
     if (this.onModelChange) {
       this.onModelChange(value);
@@ -120,6 +140,21 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     this.editing = true;
   }
 
+  addressExists(e: Address): boolean {
+    return (
+      this.addresses.findIndex(
+        x => x.address1 === e.address1 && x.cityStateZip === e.cityStateZip
+      ) !== -1
+    );
+  }
+
+  flashAddressExistsMessage() {
+    this.errorMessage = 'Cannot enter duplicate address!';
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 4000);
+  }
+
   back() {
     if (this.current.id === 0) {
       this.addresses = this.removeAddress(this.current);
@@ -131,6 +166,8 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
     if (e) {
       this.addresses = this.removeAddress(this.toBeDeleted);
       this.delete.emit(this.toBeDeleted);
+      this.toBeDeleted = undefined;
+      this.editing = false;
     }
   }
 
@@ -145,20 +182,29 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   save(e: Address) {
-    this.addresses = this.setActiveDates(this.addAddress(e));
-    if (e.id) {
-      this.add.emit(e);
-    } else {
-      this.update.emit(e);
+    if (!this.addressExists(e)) {
+      this.addresses = this.setActiveDates(this.addAddress(e));
+      if (e.id) {
+        this.add.emit(e);
+      } else {
+        this.update.emit(e);
+      }
+      this.editing = false;
+    } else if (!this.toBeDeleted) {
+      this.flashAddressExistsMessage();
     }
-    this.editing = false;
   }
 
   private addAddress(address: Address): Address[] {
-    return this.reorder([address, ...this.addresses
-      .filter(x => x.id === 0 || x.id !== address.id)
-      .map(x => address.isPrimaryAddress && x.isPrimaryAddress && x.id !== address.id ?
-        build(Address, x, { isPrimaryAddress: false }) : build(Address, x))
+    return this.reorder([
+      address,
+      ...this.addresses
+        .filter(x => x.id === 0 || x.id !== address.id)
+        .map(x =>
+          address.isPrimaryAddress && x.isPrimaryAddress && x.id !== address.id
+            ? build(Address, x, { isPrimaryAddress: false })
+            : build(Address, x)
+        )
     ]);
   }
 
@@ -167,18 +213,28 @@ export class AddressComponent extends DumbComponent implements OnInit, ControlVa
   }
 
   private reorder(addresses: Address[]): Address[] {
-    return addresses.reduce((acc, x) => x.isPrimaryAddress ? [x, ...acc] : [...acc, x], []);
+    return addresses.reduce(
+      (acc, x) => (x.isPrimaryAddress ? [x, ...acc] : [...acc, x]),
+      []
+    );
   }
 
   private setActiveDates(addresses: Address[]): Address[] {
-    const ordered = addresses.sort((a, b) => compareDates(a.effectiveDate, b.effectiveDate)).reverse();
+    const ordered = addresses
+      .sort((a, b) => compareDates(a.effectiveDate, b.effectiveDate))
+      .reverse();
     const now = new Date();
     return ordered.map((x, i) => {
       const startDate = x.effectiveDate;
-      const endDate = ordered[i + 1] && ordered[i + 1].effectiveDate && ordered[i + 1].effectiveDate > x.effectiveDate ? ordered[i + 1].effectiveDate : null;
-      const isPrimaryAddress = startDate < now && endDate > now ? true : false;
+      const endDate =
+        ordered[i + 1] &&
+        ordered[i + 1].effectiveDate &&
+        ordered[i + 1].effectiveDate > x.effectiveDate
+          ? ordered[i + 1].effectiveDate
+          : null;
+      const isPrimaryAddress =
+        x.isPrimaryAddress || (startDate < now && endDate > now ? true : false);
       return build(Address, x, { startDate, endDate, isPrimaryAddress });
     });
   }
-
 }

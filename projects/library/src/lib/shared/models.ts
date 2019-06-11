@@ -1,5 +1,9 @@
 import { build, truthy, convertCamel2Space } from './utils';
-import { Validators } from '../forms/validators';
+import {
+  Validators,
+  zipCodeValidator,
+  zipPlus4Validator
+} from '../forms/validators';
 
 export class Address {
   id = 0;
@@ -11,6 +15,7 @@ export class Address {
   stateCode = 'PA';
   stateId = null;
   zip = '';
+  zipPlus4 = '';
   isPrimaryAddress = false;
   effectiveDate: Date = new Date();
   startDate: Date = new Date();
@@ -28,12 +33,21 @@ export class Address {
       'startDate',
       'state'
     ],
-    address1: {},
+    address1: {
+      validators: [Validators.required]
+    },
     address2: {},
-    city: {},
-    stateId: {},
+    city: {
+      validators: [Validators.required]
+    },
+    stateCode: {
+      validators: [Validators.required]
+    },
     zip: {
-      validators: [Validators.zip]
+      validators: [zipCodeValidator]
+    },
+    zipPlus4: {
+      validators: [zipPlus4Validator()]
     }
   };
 

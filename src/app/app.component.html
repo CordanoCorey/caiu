@@ -88,7 +88,12 @@
 </div>
 <form>
   <div *ngIf="activeDemo === 'date'" class="example">
-    <iu-daterange></iu-daterange>
+    <iu-daterange [debug]="true"></iu-daterange>
+    <iu-daterange
+      startLabel="Service Start Date"
+      endLabel="Service End Date"
+      [debug]="true"
+    ></iu-daterange>
   </div>
   <div *ngIf="activeDemo === 'time'" class="example">
     <iu-timer
@@ -107,7 +112,14 @@
     {{ timeAgoTest }}
   </div>
   <div *ngIf="activeDemo === 'address-manager'" class="example">
-    <iu-address [addresses]="addresses"></iu-address>
+    <iu-address
+      [addresses]="addresses"
+      [showName]="false"
+      (activate)="logEvent($event)"
+      (add)="logEvent($event)"
+      (delete)="logEvent($event)"
+      (update)="logEvent($event)"
+    ></iu-address>
     <iu-address
       [addresses]="addresses"
       [requireEffectiveDate]="true"

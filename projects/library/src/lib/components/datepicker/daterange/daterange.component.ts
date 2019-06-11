@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, ViewChild, Output, EventEmitter, ChangeDetectorRef, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  ViewChild,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef,
+  OnInit
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { DatepickerComponent } from '../datepicker.component';
@@ -19,7 +29,7 @@ export const DATERANGE_ACCESSOR: any = {
   providers: [DATERANGE_ACCESSOR]
 })
 export class DaterangeComponent implements ControlValueAccessor, OnInit {
-
+  @Input() debug = false;
   @Input() inline = false;
   @Input() min: Date;
   @Input() max: Date;
@@ -36,13 +46,16 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   private onTouch: Function;
   _value: DateRange = new DateRange();
   focused: DateRange = new DateRange();
+  now = new Date();
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    /* console.dir(this.endDateValue.getDate());
-    console.dir(this.endDateValue.getMonth());
-    console.dir(this.endDateValue.getFullYear()); */
+    if (this.debug && this.endDateValue) {
+      console.dir(this.endDateValue.getDate());
+      console.dir(this.endDateValue.getMonth());
+      console.dir(this.endDateValue.getFullYear());
+    }
   }
 
   get value(): DateRange {
@@ -52,7 +65,17 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   @Input()
   set value(val: DateRange) {
     this._value = val;
-    if (this && this.changeDetectorRef && !this.changeDetectorRef['destroyed']) {
+    if (this.startDatepicker) {
+      this.startDatepicker.value = val.startDate;
+    }
+    if (this.endDatepicker) {
+      this.endDatepicker.value = val.endDate;
+    }
+    if (
+      this &&
+      this.changeDetectorRef &&
+      !this.changeDetectorRef['destroyed']
+    ) {
       this.changeDetectorRef.detectChanges();
     }
   }
@@ -74,7 +97,7 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   }
 
   get startDateValue(): Date {
-    return new Date(this.value.startDate);
+    return this.value.startDate ? new Date(this.value.startDate) : null;
   }
 
   set startDateValue(value: Date) {
@@ -82,7 +105,7 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   }
 
   get endDateValue(): Date {
-    return new Date(this.value.endDate);
+    return this.value.endDate ? new Date(this.value.endDate) : null;
   }
 
   set endDateValue(value: Date) {
@@ -90,37 +113,58 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   }
 
   get startDateLastDay() {
-    return new Date(this.startDateValue.getFullYear(), this.startDateValue.getMonth() + 1, 0);
+    return new Date(
+      this.startDateValue.getFullYear(),
+      this.startDateValue.getMonth() + 1,
+      0
+    );
   }
 
   filter = (d: Date): boolean => {
     return this.ifMonthSame(d) || this.ifMonthDifferent(d);
-  }
+  };
 
   changeStartDate(date: Date) {
-    const endDate = this.endDateValue.getDate();
-    const endMonth = this.endDateValue.getMonth();
-    const endYear = this.endDateValue.getFullYear();
-    this.onChange(build(DateRange, {
-      endDate: this.value.endDate,
-      startDate: date
-    }));
-    this.startDateChanged.emit(date);
-    if (endDate <= date.getDate() && endMonth <= date.getMonth() && endYear <= date.getFullYear()) {
-      this.onChange(build(DateRange, {
-        endDate: date,
+    // const endDate = this.endDateValue.getDate();
+    // const endMonth = this.endDateValue.getMonth();
+    // const endYear = this.endDateValue.getFullYear();
+    this.onChange(
+      build(DateRange, {
+        endDate: this.value.endDate,
         startDate: date
-      }));
-    }
+      })
+    );
+    this.startDateChanged.emit(date);
+    // if (
+    //   endDate <= date.getDate() &&
+    //   endMonth <= date.getMonth() &&
+    //   endYear <= date.getFullYear()
+    // ) {
+    //   this.onChange(
+    //     build(DateRange, {
+    //       endDate: date,
+    //       startDate: date
+    //     })
+    //   );
+    // }
   }
 
   ifMonthSame(d: Date) {
-    return d.getMonth() === this.startDateValue.getMonth() && d.getDate() >= this.startDateValue.getDate() && d.getFullYear() === this.startDateValue.getFullYear();
+    return (
+      d.getMonth() === this.startDateValue.getMonth() &&
+      d.getDate() >= this.startDateValue.getDate() &&
+      d.getFullYear() === this.startDateValue.getFullYear()
+    );
   }
 
   ifMonthDifferent(d: Date) {
-    return d.getMonth() > this.startDateValue.getMonth() && d.getFullYear() >= this.startDateValue.getFullYear() &&
-    (1 < d.getDate() || this.startDateValue.getDate() <= this.startDateLastDay.getDate()) || d.getFullYear() > this.startDateValue.getFullYear();
+    return (
+      (d.getMonth() > this.startDateValue.getMonth() &&
+        d.getFullYear() >= this.startDateValue.getFullYear() &&
+        (1 < d.getDate() ||
+          this.startDateValue.getDate() <= this.startDateLastDay.getDate())) ||
+      d.getFullYear() > this.startDateValue.getFullYear()
+    );
   }
 
   closeStartDate() {
@@ -132,24 +176,33 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   }
 
   changeEndDate(date: Date) {
-
-    const startDate = this.startDateValue.getDate();
-    const startMonth = this.startDateValue.getMonth();
-    const startYear = this.startDateValue.getFullYear();
-    this.onChange(build(DateRange, {
-      endDate: date,
-      startDate: this.value.startDate
-    }));
-    this.endDateChanged.emit(date);
-    if (startDate >= date.getDate() && startMonth >= date.getMonth() && startYear >= date.getFullYear()) {
-      this.onChange(build(DateRange, {
+    // const startDate = this.startDateValue.getDate();
+    // const startMonth = this.startDateValue.getMonth();
+    // const startYear = this.startDateValue.getFullYear();
+    this.onChange(
+      build(DateRange, {
         endDate: date,
-        startDate: date
-      }));
+        startDate: this.value.startDate
+      })
+    );
+    this.endDateChanged.emit(date);
+    // if (
+    //   startDate >= date.getDate() &&
+    //   startMonth >= date.getMonth() &&
+    //   startYear >= date.getFullYear()
+    // ) {
+    //   this.onChange(
+    //     build(DateRange, {
+    //       endDate: date,
+    //       startDate: date
+    //     })
+    //   );
+    // }
+    if (this.debug) {
+      console.dir('changeEndDate ran');
+      console.dir('Start Date: ' + this.startDateValue);
+      console.dir('End Date:' + date);
     }
-    console.dir('changeEndDate ran');
-    console.dir('Start Date: ' + this.startDateValue);
-    console.dir('End Date:' + date);
   }
 
   closeEndDate() {
@@ -179,8 +232,7 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  onBlur(value: DateRange) {
-  }
+  onBlur(value: DateRange) {}
 
   onFocus(value: DateRange) {
     this.focused = value;
@@ -188,5 +240,4 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
       this.onTouch();
     }
   }
-
 }

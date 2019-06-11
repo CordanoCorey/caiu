@@ -1,115 +1,125 @@
 .address {
-  position: relative;
-  border-radius: 4px;
-  background-color: #FFFFFF;
-  margin-bottom: 10px;
-  width: 100%;
-  word-wrap: break-word;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  padding-bottom: 25px;
-
-  .card-header {
-    padding: 15px 15px 0;
-    margin-bottom: 0;
+    position: relative;
+    border-radius: 4px;
     background-color: #FFFFFF;
-    border-bottom: none !important;
-
-    .card-title {
-      padding-left: 5px;
-      margin: 0;
-      color: #333333;
-      font-weight: 300;
-      font-size: 14px;
-      letter-spacing: 1px;
-      line-height: 24px;
-      text-decoration: none;
-      background-color: #F5F5F6;
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      border-color: rgba(0, 0, 0, 0.06);
-      text-align: -webkit-match-parent;
-    }
-  }
-
-  .card-body {
-    padding: 15px 15px 10px 15px;
-  }
-
-  .item {
-    color: #1b1b1b;
-    font-size: 14px;
-  }
-
-  .edit-icon {
-    font-size: 10pt;
-    color: #1b1b1b;
-  }
-
-  .activate-text {
-    color: #6d6d6d;
-  }
-
-  .edit-icon:hover {
-    color: #aebfbe;
-  }
-
-  h2 {
-    font-size: 14px;
-    letter-spacing: 1px;
-    line-height: 24px;
-    text-decoration: none;
-    color: #6d6d6d;
-    background-color: #F5F5F6;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    margin: 0;
-    margin-left: 5px;
-    border-color: rgba(0, 0, 0, 0.06);
-    text-align: -webkit-match-parent;
-  }
-
-  p {
-    font-size: 14px;
-    color: #1b1b1b;
-    margin: 5px 5px 0 20px;
-  }
-
-  mat-card-header {
-    background-color: #aebfbe;
-
-    .example-form-field {
-      width: 200px;
-      float: right;
-    }
-  }
-
-  mat-list-item {
+    margin-bottom: 10px;
     width: 100%;
-  }
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding-bottom: 25px;
+    overflow: auto;
 
-  td {
-    font-size: 10pt;
-    color: #1b1b1b;
-    margin: 5px 5px 0 20px;
-  }
+    .card-header {
+        padding: 15px 15px 0;
+        margin-bottom: 0;
+        background-color: #FFFFFF;
+        border-bottom: none !important;
 
-  button.action-icon {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 14px;
-    right: 28px;
-
-    .mat-button-wrapper {
-      padding: 8px 0;
-      display: inline-block;
-      line-height: 24px;
+        .card-title {
+            padding-left: 5px;
+            margin: 0;
+            color: #333333;
+            font-weight: 300;
+            font-size: 14px;
+            letter-spacing: 1px;
+            line-height: 24px;
+            text-decoration: none;
+            background-color: #F5F5F6;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-color: rgba(0, 0, 0, 0.06);
+            text-align: -webkit-match-parent;
+        }
     }
 
-    mat-icon {
-      color: #fff;
+    .card-body {
+        padding: 15px 15px 10px 15px;
+        min-width: 300px;
     }
-  }
+
+    .item {
+        color: #1b1b1b;
+        font-size: 14px;
+    }
+
+    .edit-icon {
+        font-size: 10pt;
+        color: #1b1b1b;
+    }
+
+    .activate-text {
+        color: #6d6d6d;
+    }
+
+    .edit-icon:hover {
+        color: #aebfbe;
+    }
+
+    h2 {
+        font-size: 14px;
+        letter-spacing: 1px;
+        line-height: 24px;
+        text-decoration: none;
+        color: #6d6d6d;
+        background-color: #F5F5F6;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        margin: 0;
+        margin-left: 5px;
+        border-color: rgba(0, 0, 0, 0.06);
+        text-align: -webkit-match-parent;
+    }
+
+    p {
+        font-size: 14px;
+        color: #1b1b1b;
+        margin: 5px 5px 0 20px;
+    }
+
+    mat-card-header {
+        background-color: #aebfbe;
+
+        .example-form-field {
+            width: 200px;
+            float: right;
+        }
+    }
+
+    mat-list-item {
+        width: 100%;
+    }
+
+    td {
+        font-size: 10pt;
+        color: #1b1b1b;
+        margin: 5px 5px 0 20px;
+    }
+
+    button.action-icon {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 14px;
+        right: 28px;
+
+        .mat-button-wrapper {
+            padding: 8px 0;
+            display: inline-block;
+            line-height: 24px;
+        }
+
+        mat-icon {
+            color: #fff;
+        }
+    }
+
+    #error-message {
+        color: red;
+        position: absolute;
+        bottom: 10px;
+        left: 50px;
+        font-size: 18px;
+    }
 }

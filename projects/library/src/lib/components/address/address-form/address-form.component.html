@@ -1,41 +1,184 @@
 <form class="address-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-
   <mat-form-field class="control first-name" *ngIf="showName">
-    <input matInput placeholder="First Name" type="text" formControlName="firstName">
+    <input
+      matInput
+      placeholder="First Name"
+      type="text"
+      formControlName="firstName"
+    />
   </mat-form-field>
 
   <mat-form-field class="control last-name" *ngIf="showName">
-    <input matInput placeholder="Last Name" type="text" formControlName="lastName">
+    <input
+      matInput
+      placeholder="Last Name"
+      type="text"
+      formControlName="lastName"
+    />
   </mat-form-field>
 
   <mat-form-field class="control address1">
-    <input matInput placeholder="Address 1" type="text" formControlName="address1">
+    <input
+      matInput
+      placeholder="Address 1"
+      type="text"
+      formControlName="address1"
+      #address1
+    />
+    <mat-error>Street address is required.</mat-error>
+    <button
+      mat-button
+      *ngIf="address1.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="address1.value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 
   <mat-form-field class="control address2">
-    <input matInput placeholder="Address 2" type="text" formControlName="address2">
+    <input
+      matInput
+      placeholder="Address 2"
+      type="text"
+      formControlName="address2"
+      #address2
+    />
+    <button
+      mat-button
+      *ngIf="address2.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="address2.value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 
   <mat-form-field class="control city">
-    <input matInput placeholder="City" type="text" formControlName="city">
+    <input
+      matInput
+      placeholder="City"
+      type="text"
+      formControlName="city"
+      #city
+    />
+    <mat-error>City is required.</mat-error>
+    <button
+      mat-button
+      *ngIf="city.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="city.value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 
-  <iu-state-picker class="control state" formControlName="stateCode"></iu-state-picker>
+  <iu-state-picker
+    class="control state"
+    formControlName="stateCode"
+  ></iu-state-picker>
 
+  <!--Zip Code Control-->
   <mat-form-field class="control zip">
-    <input matInput placeholder="Zip Code" type="text" formControlName="zip">
-    <mat-error *ngIf="form?.controls['zip']?.hasError('zip') && form.controls['zip'].touched">Please
-      enter a valid 5-digit zip code.</mat-error>
+    <input
+      matInput
+      placeholder="Zip Code"
+      type="text"
+      formControlName="zip"
+      #zip
+    />
+    <mat-error
+      *ngIf="
+        form?.controls['zip']?.hasError('zipCode') &&
+        form.controls['zip'].touched
+      "
+      >Please enter a valid 5-digit zip code.</mat-error
+    >
+    <button
+      mat-button
+      *ngIf="zip.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="zip.value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
+  <!--End Zip Code Control-->
+
+  <!--Zip Plus 4 Control-->
+  <mat-form-field class="control zip-4">
+    <input
+      matInput
+      placeholder="Zip + 4"
+      type="text"
+      formControlName="zipPlus4"
+      #zip4
+    />
+    <mat-error
+      *ngIf="
+        form?.controls['zipPlus4']?.hasError('zipPlus4') &&
+        form.controls['zipPlus4'].touched
+      "
+      >Please enter 4 numeric digits.</mat-error
+    >
+    <button
+      mat-button
+      *ngIf="zip4.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="zip4.value = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <!--End Zip Plus 4 Control-->
 
   <mat-form-field class="control active-date" *ngIf="requireEffectiveDate">
-    <input matInput [matDatepicker]="picker2" placeholder="Effective Date" formControlName="effectiveDate">
+    <input
+      matInput
+      [matDatepicker]="picker2"
+      placeholder="Effective Date"
+      formControlName="effectiveDate"
+    />
     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
 
-  <button *ngIf="showMakePrimaryButton" mat-raised-button color="primary" class="btn-save btn-activate" (click)="onActivate()">Save
-    and Make Primary</button>
-  <button *ngIf="canSave" mat-raised-button color="accent" class="btn-save" (click)="onSubmit()">Save</button>
-
+  <button
+    *ngIf="address.id && canDelete"
+    mat-raised-button
+    color="accent"
+    class="btn-delete"
+    (click)="onDelete()"
+    [style.right.px]="showMakePrimaryButton ? 282 : canSave ? 92 : 20"
+  >
+    Delete
+  </button>
+  <button
+    *ngIf="showMakePrimaryButton"
+    mat-raised-button
+    color="primary"
+    class="btn-save btn-activate"
+    (click)="onActivate()"
+  >
+    Save and Mark Active
+  </button>
+  <button
+    *ngIf="canSave"
+    mat-raised-button
+    color="accent"
+    class="btn-save"
+    (click)="onSubmit()"
+  >
+    Save
+  </button>
 </form>

@@ -1,8 +1,8 @@
 import { build, toInt, integerArray } from './utils';
 
 export class DateRange {
-  startDate: Date = new Date();
-  endDate: Date = new Date();
+  startDate: Date = null;
+  endDate: Date = null;
 }
 
 export class DateHelper {

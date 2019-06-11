@@ -42,7 +42,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
   @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'dialog';
+  activeDemo = 'date';
   addresses = [
     build(Address, {
       id: 1,
@@ -411,6 +411,10 @@ export class AppComponent extends SmartComponent implements OnInit {
         }
       });
     }
+  }
+
+  logEvent(e: any) {
+    console.dir(e);
   }
 
   onChangeCalendarId(id: number) {

@@ -579,6 +579,18 @@ export function isCyclic(obj: any) {
   return detect(obj);
 }
 
+export function isNumeric(str: string): boolean {
+  const asInt = parseInt(str, 10);
+  const isNumber = /^\d+$/.test(str);
+  return isNumber && typeof asInt === 'number';
+}
+
+export function isNumericAndHasLength(str: string, length: number): boolean {
+  const asInt = parseInt(str, 10);
+  const isNumber = /^\d+$/.test(str);
+  return isNumber && typeof asInt === 'number' && str.length === length;
+}
+
 /**
  * @param fromState The last state object from the store
  * @param dState A partial class containing all properties that have changed wrt fromState

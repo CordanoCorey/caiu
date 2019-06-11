@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -51,6 +51,14 @@ export class MessagesEffects {
     map(x => this.broadcast(x, this.messageSubscriptions))
   );
 
+  /**
+   * Clear messages after they have been emitted.
+   */
+  @Effect() onMessageAdded: Observable<Action> = this.actions$.pipe(
+    ofType(MessagesActions.ADD),
+    map((action: Action) => this.clearMessages(action))
+  );
+
   constructor(private actions$: Actions, private store: Store<any>) {
     messageSubscriptionsSelector(store).subscribe(x => {
       if (x && Array.isArray(x)) {
@@ -68,5 +76,12 @@ export class MessagesEffects {
       messageSubscriptions.find(x => x.action === action.type)
     );
     return MessagesActions.add(subscription, action);
+  }
+
+  clearMessages(action: Action): Action {
+    return {
+      type: MessagesActions.CLEAR,
+      payload: action.payload
+    };
   }
 }

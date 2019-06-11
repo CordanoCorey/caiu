@@ -6,14 +6,13 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatDatepicker } from '@angular/material';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 import { DateHelper } from '../../shared/date';
-
 
 export const DATEPICKER_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -29,7 +28,6 @@ export const DATEPICKER_ACCESSOR: any = {
   providers: [DATEPICKER_ACCESSOR]
 })
 export class DatepickerComponent implements ControlValueAccessor, OnInit {
-
   @Input() filter: (d: Date) => boolean;
   @Input() min: Date;
   @Input() max: Date;
@@ -38,14 +36,14 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
   @Input() startView: 'month' | 'year' = 'month';
   @Input() touchUi;
   @Output() selectedChanged = new EventEmitter<Date>();
-  @ViewChild('picker') datepicker: MatDatepicker<Date>;
+  @ViewChild('picker', { static: true }) datepicker: MatDatepicker<Date>;
   private onModelChange: Function;
   private onTouch: Function;
   _value: Date;
   dateFilter: (d: Date) => boolean;
   focused: Date;
 
-  constructor() { }
+  constructor() {}
 
   get value(): Date {
     return this._value;
@@ -55,7 +53,6 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
   set value(val: Date) {
     this._value = val;
   }
-
 
   registerOnChange(fn: Function) {
     this.onModelChange = fn;
@@ -113,5 +110,4 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
   open() {
     this.datepicker.open();
   }
-
 }

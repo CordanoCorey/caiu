@@ -1,14 +1,25 @@
-<div class="card address">
-
+<div class="card address scrollable">
   <div class="card-header">
     <h4 class="card-title">Address Information</h4>
   </div>
 
-  <button mat-mini-fab color="primary" class="action-icon" *ngIf="!editing" (click)="addNew()">
+  <button
+    mat-mini-fab
+    color="primary"
+    class="action-icon"
+    *ngIf="!editing"
+    (click)="addNew()"
+  >
     <mat-icon>add</mat-icon>
   </button>
 
-  <button mat-mini-fab color="primary" class="action-icon" *ngIf="editing" (click)="back()">
+  <button
+    mat-mini-fab
+    color="primary"
+    class="action-icon"
+    *ngIf="editing"
+    (click)="back()"
+  >
     <mat-icon>arrow_back</mat-icon>
   </button>
 
@@ -16,12 +27,19 @@
     <div class="card-header">
       <h4 class="card-title">Current Address</h4>
     </div>
-    <div class="card-body">
+    <div *ngIf="primaryAddress" class="card-body">
       <div class="body-content">
         <div class="row">
           <div class="col">
-            <iu-inline-address [address]="primaryAddress" [canActivate]="false" [canDelete]="true" [canEdit]="true"
-              [showName]="showName" (delete)="remove($event)" (edit)="edit($event)"></iu-inline-address>
+            <iu-inline-address
+              [address]="primaryAddress"
+              [canActivate]="false"
+              [canDelete]="true"
+              [canEdit]="true"
+              [showName]="showName"
+              (delete)="remove($event)"
+              (edit)="edit($event)"
+            ></iu-inline-address>
           </div>
         </div>
       </div>
@@ -31,14 +49,33 @@
     </div>
     <div class="card-body">
       <div class="body-content choose-address">
-        <iu-inline-address *ngFor="let choice of choices" [canActivate]="!requireEffectiveDate" [canDelete]="true"
-          [canEdit]="true" [showName]="showName" [address]="choice" (activate)="makePrimary($event)" (delete)="remove($event)"
-          (edit)="edit($event)"></iu-inline-address>
+        <iu-inline-address
+          *ngFor="let choice of choices"
+          [canActivate]="hasPrimaryAddress"
+          [canDelete]="true"
+          [canEdit]="true"
+          [showName]="showName"
+          [address]="choice"
+          (activate)="makePrimary($event)"
+          (delete)="remove($event)"
+          (edit)="edit($event)"
+        ></iu-inline-address>
       </div>
     </div>
   </div>
 
-  <iu-address-form *ngIf="editing" [address]="current" [showName]="showName" [manager]="true" [requireEffectiveDate]="requireEffectiveDate"
-    (save)="save($event)"></iu-address-form>
-
+  <iu-address-form
+    *ngIf="editing"
+    [address]="current"
+    [canDelete]="true"
+    [hasPrimaryAddress]="hasPrimaryAddress"
+    [showName]="showName"
+    [manager]="true"
+    [requireEffectiveDate]="requireEffectiveDate"
+    [zipPlus4]="zipPlus4"
+    [debug]="debug"
+    (save)="save($event)"
+    (delete)="remove($event)"
+  ></iu-address-form>
+  <span id="error-message">{{ errorMessage }}</span>
 </div>

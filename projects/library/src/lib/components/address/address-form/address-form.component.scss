@@ -1,46 +1,65 @@
 form {
-  color: #1b1b1b;
-  min-width: 150px;
-  max-width: 800px;
-  margin: 15px;
+    color: #1b1b1b;
+    min-width: 300px;
+    max-width: 800px;
+    margin: 10px;
 
-  .control {
-    margin-right: 2%;
-  }
+    .mat-form-field {
+        padding-bottom: 10px;
+    }
 
-  .control.first-name,
-  .control.last-name,
-  .control.address1,
-  .control.address2 {
-    width: 48%;
-    min-width: 180px;
-  }
+    .control {
+        margin-right: 2%;
+    }
 
-  .control.city {
-    width: 38%;
-    min-width: 180px;
-  }
+    .control.first-name,
+    .control.last-name,
+    .control.address1,
+    .control.address2 {
+        width: 48%;
+        min-width: 280px;
+    }
 
-  .control.state {
-    width: 36%;
-    min-width: 180px;
-    display: inline-grid;
-  }
+    .control.city {
+        width: 48%;
+        min-width: 280px;
+    }
 
-  .control.zip {
-    width: 20%;
-    min-width: 160px;
-    margin-bottom: 14px;
-  }
+    .control.state {
+        width: 48%;
+        min-width: 280px;
+        display: inline-grid;
+    }
 
-  .btn-save {
-    position: absolute;
-    bottom: 10px;
-    right: 240px;
-    color: #fff;
-  }
+    .control.zip {
+        width: 40%;
+        min-width: 260px;
+    }
 
-  .btn-save.btn-activate {
-    right: 40px;
-  }
+    .control.zip-4 {
+        width: 30%;
+        min-width: 220px;
+    }
+
+    .control.last {
+        margin-bottom: 14px;
+    }
+
+    .btn-save {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        color: #fff;
+    }
+
+    .btn-save.btn-activate {
+        right: 92px;
+    }
+
+    .btn-delete {
+        position: absolute;
+        bottom: 10px;
+        color: #fff;
+        background: red;
+    }
 }

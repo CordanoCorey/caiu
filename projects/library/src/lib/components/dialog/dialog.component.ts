@@ -58,8 +58,4 @@ export class DialogComponent implements AfterViewInit {
     //   this.closeDialogElements[1].nativeElement.click();
     // }, 3000);
   }
-
-  click(e) {
-    console.dir(e);
-  }
 }

@@ -32,14 +32,17 @@ export function messagesReducer(
     case MessagesActions.ADD:
       return state.addMessages(action.payload);
 
-    case MessagesActions.ADD_SUBSCRIPTION:
-      return state.addSubscription(action.payload);
+    case MessagesActions.CLEAR:
+      return state.clearMessages(action.payload);
+
+    case MessagesActions.SUBSCRIBE:
+      return state.addSubscriptions(action.payload);
 
     case MessagesActions.REMOVE:
       return state.removeMessages(action.payload);
 
-    case MessagesActions.REMOVE_SUBSCRIPTION:
-      return state.removeSubscription(action.payload);
+    case MessagesActions.UNSUBSCRIBE:
+      return state.removeSubscriptions(action.payload);
 
     default:
       return state;

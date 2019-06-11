@@ -59,44 +59,83 @@ export class EventActions {
 
 export class MessagesActions {
   static ADD = '[Messages] Add Messages';
+  static CLEAR = '[Messages] Clear Messages';
   static REMOVE = '[Messages] Remove Messages';
-  static ADD_SUBSCRIPTION = '[Messages] Add Subscription';
-  static REMOVE_SUBSCRIPTION = '[Messages] Remove Subscription';
+  static SUBSCRIBE = '[Messages] Subscribe';
+  static UNSUBSCRIBE = '[Messages] Unsubscribe';
 
   static add(e: MessageSubscription, action: Action): Action {
     return {
       type: MessagesActions.ADD,
-      payload: e.channels.map(channel =>
-        build(Message, {
-          channel,
-          action: e.action,
-          message:
-            e.mapper && typeof e.mapper === 'function'
-              ? e.mapper(action.payload)
-              : ''
-        })
-      )
+      payload: build(Message, {
+        channel: e.channel,
+        action: e.action,
+        message:
+          e.mapper && typeof e.mapper === 'function'
+            ? e.mapper(action.payload)
+            : ''
+      })
     };
   }
 
-  static toast(action: string, mapper: (e: any) => string): Action {
+  static error(action: string, mapper: (e: any) => string): Action {
     return {
-      type: MessagesActions.ADD_SUBSCRIPTION,
+      type: MessagesActions.SUBSCRIBE,
       payload: build(MessageSubscription, {
-        channels: ['TOASTS'],
+        channel: 'ERRORS',
         action,
         mapper
       })
     };
   }
 
+  static toast(action: string, mapper: (e: any) => string): Action {
+    return {
+      type: MessagesActions.SUBSCRIBE,
+      payload: build(MessageSubscription, {
+        channel: 'TOASTS',
+        action,
+        mapper
+      })
+    };
+  }
+
+  static subscribe(
+    payload: MessageSubscription | MessageSubscription[]
+  ): Action {
+    return {
+      type: MessagesActions.SUBSCRIBE,
+      payload
+    };
+  }
+
   static toastMessage(action: string, message: string): Action {
     return {
-      type: MessagesActions.ADD_SUBSCRIPTION,
+      type: MessagesActions.SUBSCRIBE,
       payload: build(Message, {
-        channels: ['TOASTS'],
+        channel: 'TOASTS',
         action,
         mapper: (e: any) => message
+      })
+    };
+  }
+
+  static unsubscribe(
+    payload: MessageSubscription | MessageSubscription[]
+  ): Action {
+    return {
+      type: MessagesActions.UNSUBSCRIBE,
+      payload
+    };
+  }
+
+  static warn(action: string, mapper: (e: any) => string): Action {
+    return {
+      type: MessagesActions.SUBSCRIBE,
+      payload: build(MessageSubscription, {
+        channel: 'WARNINGS',
+        action,
+        mapper
       })
     };
   }
