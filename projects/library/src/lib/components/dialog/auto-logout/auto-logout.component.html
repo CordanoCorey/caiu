@@ -1,0 +1,21 @@
+<div id="auto-logout">
+  <mat-toolbar mat-dialog-title>
+    <span class="dialog-title">
+      User Session Timed Out Due To Inactivity
+    </span>
+  </mat-toolbar>
+  <mat-dialog-content class="scrollable">
+    <div class="content-wrapper">
+      <h4>The system will automatically log you out in</h4>
+      <span class="countdown">{{ seconds }}</span>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="action" mat-raised-button (click)="close()">
+      Keep me logged in
+    </button>
+    <button class="action" mat-raised-button (click)="logout()">
+      Log Out
+    </button>
+  </mat-dialog-actions>
+</div>

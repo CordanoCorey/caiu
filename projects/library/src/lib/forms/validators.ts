@@ -4,7 +4,8 @@ import {
   ValidatorFn,
   ValidationErrors,
   AsyncValidatorFn,
-  FormControl
+  FormControl,
+  FormGroup
 } from '@angular/forms';
 
 import { falsy, isNumericAndHasLength } from '../shared/utils';
@@ -100,6 +101,16 @@ export class Validators {
   }
 }
 
+export function confirmPasswordValidator(fg: FormGroup) {
+  const pass = fg.controls['password'];
+  const confirm = fg.controls['confirmPassword'];
+  if (pass.value !== confirm.value) {
+    confirm.setErrors({ confirmPwdFail: true });
+    return { confirmPwdFail: true };
+  }
+  return null;
+}
+
 export function numericValidator(length: number, key = 'numeric'): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } => {
     const toInt = parseInt(control.value, 10);
@@ -110,6 +121,21 @@ export function numericValidator(length: number, key = 'numeric'): ValidatorFn {
       ? { [key]: { value: control.value } }
       : null;
   };
+}
+
+export function passwordValidator(ctrl: FormControl) {
+  // const lengthReq = '{6,100}';
+  // const atleastOneNumberReq = '(?=.*[0-9])';
+  // {6,100}           - Assert password is between 6 and 100 characters
+  // (?=.*[0-9])       - Assert a string has at least one number
+  if (
+    ctrl.value &&
+    ctrl.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)
+  ) {
+    return null;
+  }
+
+  return { password: true };
 }
 
 export function zipCodeValidator(control: FormControl) {

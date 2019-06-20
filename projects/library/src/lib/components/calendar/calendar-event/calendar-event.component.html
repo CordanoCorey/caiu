@@ -1,0 +1,24 @@
+<div *ngIf="!plusMore" class="calendar-event" (click)="editEvent()">
+  <p class="calendar-event-name">
+    {{ calendarEvent.name }}
+  </p>
+</div>
+
+<div
+  *ngIf="plusMore"
+  class="calendar-event plus-more"
+  (click)="gotToDay.emit()"
+>
+  <p class="calendar-event-name">+ {{ plusMore }} events...</p>
+</div>
+
+<!-- <span *ngIf="calendarEvent.allDay != true">
+    {{ calendarEvent.startHour }}:<span *ngIf="calendarEvent.startMinute < 10"
+      >0</span
+    >{{ calendarEvent.startMinute }} {{ calendarEvent.startTimePeriod }}
+    -
+    {{ calendarEvent.endHour }}:<span *ngIf="calendarEvent.endMinute < 10"
+      >0</span
+    >{{ calendarEvent.endMinute }} {{ calendarEvent.endTimePeriod }}
+  </span>
+  <span *ngIf="calendarEvent.allDay != false">All Day</span> -->

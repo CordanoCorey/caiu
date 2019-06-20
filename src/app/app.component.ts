@@ -19,9 +19,9 @@ import {
   Time,
   TimerComponent,
   LookupValue,
-  Calendar,
-  CalendarEvent,
-  CalendarDay,
+  SchedulerCalendar,
+  SchedulerCalendarEvent,
+  SchedulerCalendarDay,
   CalendarTime,
   SchedulerComponent,
   SmartComponent,
@@ -40,9 +40,10 @@ import { ExampleForm, environment, AuditHistoryRow } from './shared/models';
 })
 export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
-  @ViewChild(SchedulerComponent) schedulerCmpt: SchedulerComponent;
-  @ViewChild(TimerComponent) timer: TimerComponent;
-  activeDemo = 'date';
+  @ViewChild(SchedulerComponent, { static: true })
+  schedulerCmpt: SchedulerComponent;
+  @ViewChild(TimerComponent, { static: true }) timer: TimerComponent;
+  activeDemo = 'calendar';
   addresses = [
     build(Address, {
       id: 1,
@@ -180,28 +181,28 @@ export class AppComponent extends SmartComponent implements OnInit {
     }
   ];
   calendars = [
-    build(Calendar, {
+    build(SchedulerCalendar, {
       calendarId: 0,
       calendarName: 'Master Calendar',
       isMaster: true,
       isAllDayDefault: false,
       isAllDayEnforced: false
     }),
-    build(Calendar, {
+    build(SchedulerCalendar, {
       calendarId: 1,
       calendarName: 'All Day Enforced',
       isMaster: false,
       isAllDayDefault: true,
       isAllDayEnforced: true
     }),
-    build(Calendar, {
+    build(SchedulerCalendar, {
       calendarId: 2,
       calendarName: 'All Day Default',
       isMaster: false,
       isAllDayDefault: true,
       isAllDayEnforced: false,
       days: [
-        build(CalendarDay, {
+        build(SchedulerCalendarDay, {
           date: new Date(),
           instructionalDayNumber: 1
         })
@@ -209,7 +210,7 @@ export class AppComponent extends SmartComponent implements OnInit {
     })
   ];
   calendarEvents = [
-    build(CalendarEvent, {
+    build(SchedulerCalendarEvent, {
       allDay: false,
       description: 'In Session Description',
       eventId: 1,
@@ -230,7 +231,7 @@ export class AppComponent extends SmartComponent implements OnInit {
         timePeriod: 'PM'
       })
     }),
-    build(CalendarEvent, {
+    build(SchedulerCalendarEvent, {
       allDay: false,
       description: 'Graduation Ceremony Description',
       eventId: 2,

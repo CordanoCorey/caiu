@@ -1,0 +1,21 @@
+@import '~@angular/material/_theming';
+
+.calendar-day-content {
+    .calendar-day-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        h3 {
+            margin: 5px 0;
+        }
+
+        .calendar-day-type {
+            cursor: pointer;
+            height: 25px;
+            margin-top: 5px;
+            width: 200px;
+        }
+    }
+}

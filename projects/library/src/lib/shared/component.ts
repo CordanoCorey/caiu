@@ -9,7 +9,7 @@ import { getValue, truthy } from './utils';
 
 export class DumbComponent implements OnDestroy {
   dialog: MatDialog;
-  dialogRef: Subscription;
+  dialogSubscription: Subscription;
   form: FormGroup;
   requestState: 'DEFAULT' | 'SUCCESS' | 'ERROR' = 'DEFAULT';
   subscriptions: Subscription[] = [];
@@ -45,12 +45,12 @@ export class DumbComponent implements OnDestroy {
   }
 
   closeDialog(result: any) {
-    this.dialogRef.unsubscribe();
+    this.dialogSubscription.unsubscribe();
   }
 
   openDialog(component: any, config = {}) {
     const dialogRef = this.dialog.open(component, config);
-    this.dialogRef = dialogRef.afterClosed().subscribe(result => {
+    this.dialogSubscription = dialogRef.afterClosed().subscribe(result => {
       this.closeDialog(result);
     });
   }

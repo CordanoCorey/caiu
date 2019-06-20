@@ -16,3 +16,4 @@ $theme: mat-light-theme($primary-palette, $accent-palette);
 @include iu-palette($primary-palette, $accent-palette);
 @include scrollable(#fff, $primary-color);
 @include dialog-palette($primary-palette, $accent-palette);
+@include calendar-theme($theme);

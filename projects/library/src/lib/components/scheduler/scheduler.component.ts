@@ -17,11 +17,11 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { CalCreatorDialogComponent } from './cal-creator-dialog/cal-creator-dialog.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 import {
-  Calendar,
-  CalendarEvent,
-  CalendarDay,
+  SchedulerCalendar,
+  SchedulerCalendarEvent,
+  SchedulerCalendarDay,
   Day,
-  Month,
+  SchedulerMonth,
   MonthName
 } from './scheduler.model';
 import { ListViewComponent } from './list-view/list-view.component';
@@ -55,15 +55,17 @@ export class SchedulerComponent implements OnInit {
   @Output() changeCalendarId = new EventEmitter<number>();
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() updateEvent = new EventEmitter<any>();
-  @ViewChild(CalendarViewComponent)
+  @ViewChild(CalendarViewComponent, { static: true })
   calendarViewComponent: CalendarViewComponent;
-  @ContentChild('actionsTemplate') actionsTemplate: TemplateRef<any>;
-  @ViewChild(ListViewComponent) calendarListComponent: ListViewComponent;
-  @ContentChild('calendarsListTemplate') calendarsListTemplate: TemplateRef<
-    any
-  >;
-  @ContentChild('listItemTemplate') listItemTemplate: TemplateRef<any>;
-  @ViewChild('pdfLink') pdfLink: ElementRef;
+  @ContentChild('actionsTemplate', { static: true })
+  actionsTemplate: TemplateRef<any>;
+  @ViewChild(ListViewComponent, { static: true })
+  calendarListComponent: ListViewComponent;
+  @ContentChild('calendarsListTemplate', { static: true })
+  calendarsListTemplate: TemplateRef<any>;
+  @ContentChild('listItemTemplate', { static: true })
+  listItemTemplate: TemplateRef<any>;
+  @ViewChild('pdfLink', { static: true }) pdfLink: ElementRef;
   now = new Date();
   absoluteNow = new Date();
   exporting = false;
@@ -84,24 +86,24 @@ export class SchedulerComponent implements OnInit {
     return new Date(this.month + '1,' + this.currentYear);
   }
 
-  get calendar(): Calendar {
+  get calendar(): SchedulerCalendar {
     return build(
-      Calendar,
+      SchedulerCalendar,
       this.calendars.find(x => x.calendarId === this.selectedCalendarId)
     );
   }
 
-  get calendarDays(): CalendarDay[] {
+  get calendarDays(): SchedulerCalendarDay[] {
     return toArray(this.calendar.days);
   }
 
-  get calendarEvents(): CalendarEvent[] {
+  get calendarEvents(): SchedulerCalendarEvent[] {
     return this.events;
   }
 
   get calendarMonth(): any {
     return [
-      new Month(
+      new SchedulerMonth(
         this.monthId,
         this.month,
         this.shortMonthName,
@@ -186,7 +188,7 @@ export class SchedulerComponent implements OnInit {
 
   get selectedCalendar(): string {
     return build(
-      Calendar,
+      SchedulerCalendar,
       this.calendars.find(x => x.calendarId === this.selectedCalendarId)
     ).calendarName;
   }
@@ -288,7 +290,7 @@ export class SchedulerComponent implements OnInit {
     this.exporting = true;
     const link = this.renderer.selectRootElement('#open-pdf', true);
     // const headers = new HttpHeaders({'content-type': 'application/x-www-form-urlencoded'});
-    const headers = new HttpHeaders({'content-type': 'application/json'});
+    const headers = new HttpHeaders({ 'content-type': 'application/json' });
     this._http
       .post(
         // 'https://appservice.caiu.org/SaveAsPDF',

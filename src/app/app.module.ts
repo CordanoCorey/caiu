@@ -11,24 +11,27 @@ import {
   RouterModule,
   StorageModule,
   StoreModule,
-  configReducer
+  configReducer,
+  FormsModule
 } from 'library';
 import { GridModule } from 'grid';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccordionDemoComponent } from './accordion-demo/accordion-demo.component';
+import { CalendarDemoComponent } from './calendar-demo/calendar-demo.component';
 
 export const reducers: ActionReducerMap<any> = {
   config: configReducer
 };
 
 @NgModule({
-  declarations: [AppComponent, AccordionDemoComponent],
+  declarations: [AppComponent, AccordionDemoComponent, CalendarDemoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpModule.forRoot(apiBaseUrlSelector, authTokenSelector),
     LibraryModule,
     GridModule,

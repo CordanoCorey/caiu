@@ -40,8 +40,9 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   @Input() touchUi;
   @Output() startDateChanged = new EventEmitter<Date>();
   @Output() endDateChanged = new EventEmitter<Date>();
-  @ViewChild('startDate') startDatepicker: DatepickerComponent;
-  @ViewChild('endDate') endDatepicker: DatepickerComponent;
+  @ViewChild('startDate', { static: true })
+  startDatepicker: DatepickerComponent;
+  @ViewChild('endDate', { static: true }) endDatepicker: DatepickerComponent;
   private onModelChange: Function;
   private onTouch: Function;
   _value: DateRange = new DateRange();

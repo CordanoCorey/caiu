@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
-import { Calendar } from '../scheduler.model';
+import { SchedulerCalendar } from '../scheduler.model';
 import { EventCreatorDialogComponent } from '../event-creator-dialog/event-creator-dialog.component';
 import { LookupValue } from '../../../lookup/lookup.models';
 import { DumbComponent } from '../../../shared/component';
@@ -25,13 +25,13 @@ export class DayInfo {
   styleUrls: ['./calendar-view.component.scss']
 })
 export class CalendarViewComponent extends DumbComponent implements OnInit {
-  @ViewChild('wrapper') wrapper: ElementRef;
+  @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
   constructor(public dialog: MatDialog) {
     super();
   }
 
   @Input() masterCalendar: any[];
-  @Input() selectedCalendar: Calendar;
+  @Input() selectedCalendar: SchedulerCalendar;
   @Input() calendarInfo: any[];
   @Input() enableDebug: boolean;
   @Input() events: any[];

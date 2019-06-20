@@ -5,6 +5,20 @@ export class DateRange {
   endDate: Date = null;
 }
 
+export class Month {
+  index = 0;
+  name = '';
+  abbreviation = '';
+  initial = '';
+}
+
+export class Weekday {
+  index = 0;
+  name = '';
+  abbreviation = '';
+  initial = '';
+}
+
 export class DateHelper {
   static MonthNames = [
     'January',
@@ -58,6 +72,10 @@ export class DateHelper {
     );
   }
 
+  static CountDaysInMonth(date: Date): number {
+    return DateHelper.DaysInMonth(date).length;
+  }
+
   static DaysBetween(startDate: Date, endDate: Date): number {
     const millisecondsPerDay = 24 * 60 * 60 * 1000;
     return (
@@ -65,6 +83,17 @@ export class DateHelper {
         DateHelper.TreatAsUTC(new Date(startDate)).getTime()) /
       millisecondsPerDay
     );
+  }
+
+  static DaysInMonth(date: Date): Date[] {
+    const d = new Date(date.getFullYear(), date.getMonth(), 1);
+    const days = [];
+    const month = d.getMonth();
+    while (d.getMonth() === month) {
+      days.push(new Date(d));
+      d.setDate(d.getDate() + 1);
+    }
+    return days;
   }
 
   static FormatDate(date: Date): string {
@@ -114,6 +143,68 @@ export class DateHelper {
     return year && month ? new Date(year, month) : new Date();
   }
 
+  static GetFirstDayOfLastMonth(date: Date): Date {
+    const d = new Date(date);
+    return new Date(d.getFullYear(), d.getMonth() - 1, 1);
+  }
+
+  static GetFirstDayOfMonth(date: Date): Date {
+    const d = new Date(date);
+    return new Date(d.getFullYear(), d.getMonth(), 1);
+  }
+
+  static GetFirstDayOfNextMonth(date: Date): Date {
+    const d = new Date(date);
+    return new Date(d.getFullYear(), d.getMonth() + 1, 1);
+  }
+
+  static GetLastDayOfMonth(date: Date): Date {
+    const days = DateHelper.DaysInMonth(date);
+    return days[days.length - 1];
+  }
+
+  static GetHour(date: Date): number {
+    const d = new Date(date);
+    return d.getHours();
+  }
+
+  static GetMeridian(date: Date): 'AM' | 'PM' {
+    const hour = DateHelper.GetHour(date);
+    return hour >= 12 ? 'PM' : 'AM';
+  }
+
+  static GetMinute(date: Date): number {
+    const d = new Date(date);
+    return d.getMinutes();
+  }
+
+  static GetMonthIndex(date: Date): number {
+    const d = new Date(date);
+    return d.getMonth();
+  }
+
+  static GetMonthName(date: Date): string {
+    const d = new Date(date);
+    return build(Month, DateHelper.Months.find(x => x.index === d.getMonth()))
+      .name;
+  }
+
+  static GetShortMonthName(date: Date): string {
+    const d = new Date(date);
+    return build(Month, DateHelper.Months.find(x => x.index === d.getMonth()))
+      .abbreviation;
+  }
+
+  static GetWeekdayIndex(date: Date): number {
+    const d = new Date(date);
+    return d.getDay();
+  }
+
+  static GetYear(date: Date): number {
+    const d = new Date(date);
+    return d.getFullYear();
+  }
+
   static IsDate(date: any): boolean {
     return Object.prototype.toString.call(date) === '[object Date]';
   }
@@ -121,6 +212,16 @@ export class DateHelper {
   static IsValidDate(date: any): boolean {
     const dateWrapper = new Date(date);
     return !isNaN(dateWrapper.getDate());
+  }
+
+  static IsBetween(d: Date, startDate: Date, endDate: Date): boolean {
+    const date = new Date(d);
+    return (
+      startDate &&
+      date > new Date(startDate) &&
+      endDate &&
+      date < new Date(endDate)
+    );
   }
 
   static NextDay(fromDate: Date): Date {
@@ -160,6 +261,10 @@ export class DateHelper {
       return interval + ' minutes';
     }
     return Math.floor(seconds) + ' seconds';
+  }
+
+  static TimeBetween(startDate: Date, endDate: Date): number {
+    return new Date(endDate).getTime() - new Date(startDate).getTime();
   }
 
   static ToDayString(d: Date): string {
@@ -288,7 +393,13 @@ export class DateHelper {
   }
 
   static IsSameDay(d1: Date, d2: Date): boolean {
-    return !DateHelper.DateChanged(d1, d2);
+    const date1 = new Date(d1);
+    const date2 = new Date(d2);
+    return (
+      date1.getDate() === date2.getDate() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getFullYear() === date2.getFullYear()
+    );
   }
 
   static get YearStartDate(): Date {
@@ -381,5 +492,69 @@ export class DateHelper {
         break;
     }
     return build(DateRange, { startDate, endDate });
+  }
+
+  static get Months() {
+    return [
+      build(Month, { name: 'January', abbreviation: 'Jan', index: 0 }),
+      build(Month, { name: 'February', abbreviation: 'Feb', index: 1 }),
+      build(Month, { name: 'March', abbreviation: 'Mar', index: 2 }),
+      build(Month, { name: 'April', abbreviation: 'Apr', index: 3 }),
+      build(Month, { name: 'May', abbreviation: 'May', index: 4 }),
+      build(Month, { name: 'June', abbreviation: 'June', index: 5 }),
+      build(Month, { name: 'July', abbreviation: 'July', index: 6 }),
+      build(Month, { name: 'August', abbreviation: 'Aug', index: 7 }),
+      build(Month, { name: 'September', abbreviation: 'Sept', index: 8 }),
+      build(Month, { name: 'October', abbreviation: 'Oct', index: 9 }),
+      build(Month, { name: 'November', abbreviation: 'Nov', index: 10 }),
+      build(Month, { name: 'December', abbreviation: 'Dec', index: 11 })
+    ];
+  }
+
+  static get Weekdays() {
+    return [
+      build(Weekday, {
+        name: 'Sunday',
+        abbreviation: 'Sun',
+        initial: 'Su',
+        index: 0
+      }),
+      build(Weekday, {
+        name: 'Monday',
+        abbreviation: 'Mon',
+        initial: 'M',
+        index: 1
+      }),
+      build(Weekday, {
+        name: 'Tuesday',
+        abbreviation: 'Tues',
+        initial: 'T',
+        index: 2
+      }),
+      build(Weekday, {
+        name: 'Wednesday',
+        abbreviation: 'Wed',
+        initial: 'W',
+        index: 3
+      }),
+      build(Weekday, {
+        name: 'Thursday',
+        abbreviation: 'Thurs',
+        initial: 'Th',
+        index: 4
+      }),
+      build(Weekday, {
+        name: 'Friday',
+        abbreviation: 'Fri',
+        initial: 'F',
+        index: 5
+      }),
+      build(Weekday, {
+        name: 'Saturday',
+        abbreviation: 'Sat',
+        initial: 'S',
+        index: 6
+      })
+    ];
   }
 }

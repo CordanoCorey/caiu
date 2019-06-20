@@ -29,7 +29,7 @@ export class GridColumnComponent {
   @Input() style: { [key: string]: string };
   @Input() title: string;
   @Input() width: number;
-  @ViewChild('content') content: ElementRef;
+  @ViewChild('content', {static: true}) content: ElementRef;
 
   constructor(public view: ViewContainerRef) { }
 

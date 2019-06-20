@@ -34,7 +34,6 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
-    "@caiu/library": "^7.2.30",
     "@ngrx/effects": "^8.0.1",
     "@ngrx/store": "^8.0.1",
     "@progress/kendo-angular-buttons": "^4.3.2",

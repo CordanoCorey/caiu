@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
-import { Calendar } from '../scheduler.model';
+import { SchedulerCalendar } from '../scheduler.model';
 import { Control } from '../../../forms/decorators';
 import { build } from '../../../shared/utils';
 
@@ -12,16 +12,19 @@ import { build } from '../../../shared/utils';
   styleUrls: ['./cal-creator-dialog.component.scss']
 })
 export class CalCreatorDialogComponent implements OnInit {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<CalCreatorDialogComponent>
+  ) {}
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<CalCreatorDialogComponent>) { }
-
-  @Control(Calendar) calendarCreator: FormGroup;
+  @Control(SchedulerCalendar) calendarCreator: FormGroup;
 
   newId: string;
 
   onSubmit() {
-    this.newId = Math.random().toString(36).substr(2, 9);
+    this.newId = Math.random()
+      .toString(36)
+      .substr(2, 9);
     if (this.calendarCreator.status !== 'VALID') {
       alert('Please fill out remaining fields!');
     } else {
@@ -34,13 +37,11 @@ export class CalCreatorDialogComponent implements OnInit {
     return Math.random().toString(36).substr(2, 9);
   } */
 
-  get valueOut(): Calendar {
-    return build(Calendar, this.calendarCreator.value, {
-      calendarId: this.newId,
+  get valueOut(): SchedulerCalendar {
+    return build(SchedulerCalendar, this.calendarCreator.value, {
+      calendarId: this.newId
     });
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

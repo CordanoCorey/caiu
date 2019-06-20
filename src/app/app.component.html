@@ -33,6 +33,14 @@
     Scheduler
   </button>
   <button
+    (click)="activeDemo = 'calendar'"
+    mat-button
+    class="demo-link"
+    [class.active-demo]="activeDemo === 'calendar'"
+  >
+    Calendar
+  </button>
+  <button
     (click)="activeDemo = 'file-upload'"
     mat-button
     class="demo-link"
@@ -216,6 +224,10 @@
     Toggle Accordion 2
   </button>
   <docs-accordion-demo [opened]="opened"> </docs-accordion-demo>
+</div>
+
+<div *ngIf="activeDemo === 'calendar'" class="example">
+  <docs-calendar-demo></docs-calendar-demo>
 </div>
 
 <div *ngIf="activeDemo === 'dialog'" class="example">

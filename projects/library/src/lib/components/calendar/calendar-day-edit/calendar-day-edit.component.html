@@ -1,0 +1,33 @@
+<div class="calendar-day-edit">
+  <div class="calendar-day-content" *ngIf="!calendarDayEditTemplate">
+    <div class="calendar-day-header">
+      <h3>{{ calendarDay.date | date: 'longDate' }}</h3>
+      <select class="mat-select calendar-day-type" #dayTypeInput>
+        <option *ngFor="let lkp of calendarDayTypes" [value]="lkp.id">
+          {{ lkp.name }}
+        </option>
+      </select>
+    </div>
+    <div
+      class="calendar-event"
+      *ngFor="let event of calendarDay.events; index as i"
+    >
+      <iu-calendar-event-view
+        [calendarEvent]="event"
+        [calendarEventFormTemplate]="calendarEventFormTemplate"
+        [calendarEventViewTemplate]="calendarEventViewTemplate"
+        [calendarEventTypes]="calendarEventTypes"
+      ></iu-calendar-event-view>
+    </div>
+  </div>
+  <div class="calendar-day-content" *ngIf="calendarDayEditTemplate">
+    <ng-container
+      *ngTemplateOutlet="
+        calendarDayEditTemplate;
+        context: {
+          day: calendarDay
+        }
+      "
+    ></ng-container>
+  </div>
+</div>

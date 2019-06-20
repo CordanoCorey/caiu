@@ -1,0 +1,26 @@
+<div class="calendar-day" (click)="activate.emit(day)">
+  <p [class.active-day]="day.isActive">{{ day.date.getDate() }}</p>
+  <div class="calendar-day-content" *ngIf="!calendarDayTemplate">
+    <div class="calendar-event" *ngFor="let event of day.events; index as i">
+      <iu-calendar-event
+        *ngIf="i < 3"
+        [calendarEvent]="event"
+        [calendarEventTypes]="calendarEventTypes"
+        [plusMore]="
+          day.events.length > 3 && i === 2 ? day.events.length - 2 : 0
+        "
+        (gotToDay)="activate.emit(day)"
+      ></iu-calendar-event>
+    </div>
+  </div>
+  <div class="calendar-day-content" *ngIf="calendarDayTemplate">
+    <ng-container
+      *ngTemplateOutlet="
+        calendarDayTemplate;
+        context: {
+          day: day
+        }
+      "
+    ></ng-container>
+  </div>
+</div>

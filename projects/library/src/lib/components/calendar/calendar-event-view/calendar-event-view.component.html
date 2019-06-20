@@ -1,0 +1,26 @@
+<div class="event-view" *ngIf="calendarEventViewTemplate">
+  <ng-container
+    *ngTemplateOutlet="
+      calendarEventViewTemplate;
+      context: {
+        calendarEvent: calendarEvent,
+        form: form,
+        submit: submit,
+        dialogRef: dialogRef
+      }
+    "
+  >
+  </ng-container>
+</div>
+<div class="event-view" *ngIf="!calendarEventViewTemplate">
+  <div *ngIf="!calendarEvent.allDay" class="timeframe">
+    {{ calendarEvent.startTime | date: 'shortTime' }} -
+    {{ calendarEvent.endTime | date: 'shortTime' }}:
+  </div>
+  <div *ngIf="calendarEvent.allDay" class="timeframe">
+    ALL DAY
+  </div>
+  <div class="event-name">{{ calendarEvent.name }}</div>
+  <mat-icon color="primary" (click)="editEvent()">edit</mat-icon>
+  <!-- <p class="event-description">{{ calendarEvent.description }}</p> -->
+</div>

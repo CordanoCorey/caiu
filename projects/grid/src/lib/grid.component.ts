@@ -61,7 +61,7 @@ export class GridComponent implements OnChanges, OnInit, AfterContentInit {
   @Input() sort: SortDescriptor[] = [];
   @Input() total = 0; // need this for infinite scroll when not all rows are loaded
   @Output() changes = new EventEmitter<DataStateChangeEvent>();
-  @ViewChild('kendoGridInstance') grid: ElementRef;
+  @ViewChild('kendoGridInstance', {static: true}) grid: ElementRef;
   @ContentChildren(GridColumnComponent) contentChildren: QueryList<GridColumnComponent>;
   columns: GridColumnComponent[] = [];
   private _color: string;

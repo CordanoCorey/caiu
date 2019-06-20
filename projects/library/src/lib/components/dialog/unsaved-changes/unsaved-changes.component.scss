@@ -1,0 +1,74 @@
+iu-dialog#unsaved-changes {
+    width: 600px;
+    height: 600px;
+
+    .mat-dialog-actions button {
+        color: #fff !important;
+    }
+
+    .mat-toolbar {
+        margin: -24px;
+        width: calc(100% + 48px);
+        min-height: 32px;
+        background-color: #aebfbe;
+        padding: 10px 20px;
+        height: 48px;
+    }
+
+    .mat-toolbar-row {
+        margin-left: -24px;
+        margin-right: -24px;
+        height: 48px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 20px;
+        color: #656565;
+        font-size: 20px;
+        letter-spacing: 1px;
+        line-height: 24px;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+
+    mat-dialog-content {
+        width: 80%;
+        margin: 48px 10%;
+        color: #999999;
+    }
+
+    .mat-dialog-actions {
+        margin-left: -24px;
+        margin-right: -24px;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+
+        button {
+            padding: 12px 0;
+            color: #999999 !important;
+            margin-top: -2px;
+            -webkit-appearance: none;
+            cursor: pointer;
+            background: 0 0;
+            border: 0;
+        }
+
+        button:hover {
+            color: #999999;
+            cursor: pointer;
+            background: 0 0;
+            opacity: .9;
+        }
+    }
+
+    .mat-raised-button {
+        margin-left: 0 !important;
+    }
+
+    .dialog-title {
+        button {
+            display: none;
+        }
+    }
+}

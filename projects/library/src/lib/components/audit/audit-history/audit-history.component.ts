@@ -18,7 +18,7 @@ export class AuditHistoryComponent extends SmartComponent implements OnInit {
   dataSource: Audited[] = [];
   constructor(
     public store: Store<any>,
-    public myDialogRef?: MatDialogRef<AuditHistoryComponent>,
+    public dialogRef?: MatDialogRef<AuditHistoryComponent>,
     @Inject(MAT_DIALOG_DATA) public data?: AuditHistory
   ) {
     super(store);

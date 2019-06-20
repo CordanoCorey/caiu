@@ -1,0 +1,160 @@
+.calendar-wrapper {
+    width: 1000px;
+    height: 1000px;
+    margin: 0px auto;
+    position: relative;
+
+    .btn-edit {
+        position: absolute;
+        right: 0;
+        top: 95px;
+        z-index: 2;
+    }
+
+    .date-heading-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+
+        button {
+            margin: 21px 0px;
+            color: #fff;
+        }
+    }
+}
+
+@media screen and (min-width: 1250px),
+print {
+    .calendar-wrapper {
+        width: 1000px;
+        height: 1000px;
+        padding: 5px 10px;
+
+        .close-btn,
+        .add-btn {
+            display: block;
+        }
+
+        .close-btn.mini,
+        .add-btn.mini {
+            display: none;
+        }
+
+        .date-heading {
+            display: block;
+        }
+
+        .date-heading.mini {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1249px) and (min-width: 940px),
+print {
+    .calendar-wrapper {
+        width: 700px;
+        height: 800px;
+        padding: 5px 10px;
+
+        .close-btn,
+        .add-btn {
+            display: block;
+        }
+
+        .close-btn.mini,
+        .add-btn.mini {
+            display: none;
+        }
+
+        .date-heading {
+            display: block;
+        }
+
+        .date-heading.mini {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 939px) and (min-width: 600px) {
+    .calendar-wrapper {
+        width: 395px;
+        height: 495px;
+        padding: 0;
+
+        .close-btn,
+        .add-btn {
+            display: none;
+        }
+
+        .close-btn.mini,
+        .add-btn.mini {
+            display: block;
+        }
+
+        .date-heading {
+            display: block;
+        }
+
+        .date-heading.mini {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 599px) and (min-width: 375px) {
+    .calendar-wrapper {
+        width: 360px;
+        height: 460px;
+        padding: 0;
+
+        .close-btn,
+        .add-btn {
+            display: none;
+        }
+
+        .close-btn.mini,
+        .add-btn.mini {
+            display: block;
+        }
+
+        .date-heading {
+            display: none;
+        }
+
+        .date-heading.mini {
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .calendar-wrapper {
+        width: 300px;
+        padding: 0;
+
+        .close-btn,
+        .add-btn {
+            display: none;
+        }
+
+        .close-btn.mini,
+        .add-btn.mini {
+            display: block;
+        }
+
+        .selected-day-event {
+            font-size: 0.75rem;
+        }
+
+        .date-heading {
+            display: none;
+        }
+
+        .date-heading.mini {
+            display: block;
+        }
+    }
+}

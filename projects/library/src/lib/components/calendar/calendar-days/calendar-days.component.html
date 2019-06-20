@@ -1,0 +1,25 @@
+<!-- <form [formGroup]="form"></form> -->
+
+<div *ngFor="let day of calendarDays">
+  <div *ngIf="!calendarDayListItemTemplate">
+    <iu-calendar-day-edit
+      [calendarDay]="day"
+      [calendarDayEditTemplate]="calendarDayEditTemplate"
+      [calendarDayTypes]="calendarDayTypes"
+      [calendarEventFormTemplate]="calendarEventFormTemplate"
+      [calendarEventViewTemplate]="calendarEventViewTemplate"
+      [calendarEventTypes]="calendarEventTypes"
+    ></iu-calendar-day-edit>
+  </div>
+
+  <div *ngIf="calendarDayListItemTemplate">
+    <ng-container
+      *ngTemplateOutlet="
+        calendarDayListItemTemplate;
+        context: {
+          day: day
+        }
+      "
+    ></ng-container>
+  </div>
+</div>

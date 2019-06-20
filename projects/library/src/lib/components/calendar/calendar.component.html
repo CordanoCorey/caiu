@@ -1,0 +1,49 @@
+<div class="calendar-wrapper">
+  <button class="btn-edit" mat-button color="primary" (click)="editCalendar()">
+    Edit Calendar
+  </button>
+  <div class="date-heading-container">
+    <div>
+      <button mat-mini-fab (click)="toLastMonth()">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </button>
+    </div>
+    <div>
+      <h1 class="date-heading">{{ monthName }} {{ currentYear }}</h1>
+      <h1 class="date-heading mini">{{ shortMonthName }} {{ currentYear }}</h1>
+    </div>
+    <div>
+      <button mat-mini-fab (click)="toNextMonth()">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </button>
+    </div>
+  </div>
+  <mat-tab-group
+    (selectedTabChange)="changeTab($event.index)"
+    [selectedIndex]="selectedIndex"
+  >
+    <mat-tab label="Calendar View" id="calendar-view">
+      <iu-calendar-view
+        [activeDate]="activeDate"
+        [calendar]="calendar"
+        [calendarDayTemplate]="calendarDayTemplate"
+        [calendarDayEditTemplate]="calendarDayEditTemplate"
+        [calendarEventTypes]="calendarEventTypes"
+        (activate)="toDay($event)"
+      ></iu-calendar-view>
+    </mat-tab>
+    <mat-tab label="List View" id="list-view">
+      <iu-calendar-days
+        [activeDate]="activeDate"
+        [calendar]="calendar"
+        [calendarDayListItemTemplate]="calendarDayListItemTemplate"
+        [calendarDayEditTemplate]="calendarDayEditTemplate"
+        [calendarDayTypes]="calendarDayTypes"
+        [calendarEventFormTemplate]="calendarEventFormTemplate"
+        [calendarEventTypes]="calendarEventTypes"
+        [calendarEventViewTemplate]="calendarEventViewTemplate"
+      ></iu-calendar-days>
+    </mat-tab>
+  </mat-tab-group>
+  <a id="open-pdf" [href]="fileUrl" target="_blank" #pdfLink></a>
+</div>

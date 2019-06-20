@@ -7,7 +7,7 @@ import {
   TemplateRef
 } from '@angular/core';
 
-import { CalendarDay, Calendar, CalendarEvent, Day } from '../scheduler.model';
+import { SchedulerCalendarDay, SchedulerCalendar, SchedulerCalendarEvent, Day } from '../scheduler.model';
 import { build } from '../../../shared/utils';
 
 export class EventDialogInfo {
@@ -30,15 +30,15 @@ export class DayComponent implements OnInit {
 
   @Input() calendarInfo;
   @Input() date: Date = new Date();
-  @Input() day: CalendarDay;
+  @Input() day: SchedulerCalendarDay;
   @Input() enableDebug: boolean;
-  @Input() events: CalendarEvent[] = [];
+  @Input() events: SchedulerCalendarEvent[] = [];
   @Input() listItemTemplate: TemplateRef<any>;
   @Input() listView = false;
   @Input() week: Day[] = [];
   @Output() openEventDialog = new EventEmitter<any>();
-  _calendar: Calendar = new Calendar();
-  _master: Calendar = new Calendar();
+  _calendar: SchedulerCalendar = new SchedulerCalendar();
+  _master: SchedulerCalendar = new SchedulerCalendar();
 
   // allDay: boolean;
   dayOfWeek: string;
@@ -46,21 +46,21 @@ export class DayComponent implements OnInit {
   multipleEvents = [];
 
   @Input()
-  set calendar(value: Calendar) {
+  set calendar(value: SchedulerCalendar) {
     this._calendar = value;
   }
 
-  get calendar(): Calendar {
-    return build(Calendar, this._calendar);
+  get calendar(): SchedulerCalendar {
+    return build(SchedulerCalendar, this._calendar);
   }
 
   @Input()
-  set master(value: Calendar) {
+  set master(value: SchedulerCalendar) {
     this._master = value;
   }
 
-  get master(): Calendar {
-    return build(Calendar, this._master);
+  get master(): SchedulerCalendar {
+    return build(SchedulerCalendar, this._master);
   }
 
   get calDate(): number {

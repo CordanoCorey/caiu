@@ -1,0 +1,27 @@
+@import '~@angular/material/_theming';
+
+.calendar-event {
+    @include mat-elevation(4);
+    cursor: pointer;
+
+    .calendar-event-name {
+        line-height: 24px;
+        font-size: 15px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all .25s;
+        margin: 5px 0;
+    }
+
+}
+
+.calendar-event.plus-more {
+    // cursor: text;
+}
+
+.calendar-event:hover {
+    @include mat-elevation(1);
+    font-weight: bold;
+}

@@ -1,0 +1,44 @@
+<div class="calendar" id="CALENDAR" #wrapper>
+  <div class="cal-head">
+    <div class="cal-day"><p>Sunday</p></div>
+    <div class="cal-day"><p>Monday</p></div>
+    <div class="cal-day"><p>Tuesday</p></div>
+    <div class="cal-day"><p>Wednesday</p></div>
+    <div class="cal-day"><p>Thursday</p></div>
+    <div class="cal-day"><p>Friday</p></div>
+    <div class="cal-day"><p>Saturday</p></div>
+  </div>
+  <div class="cal-head-mini">
+    <div class="cal-day"><p>Sun</p></div>
+    <div class="cal-day"><p>Mon</p></div>
+    <div class="cal-day"><p>Tue</p></div>
+    <div class="cal-day"><p>Wed</p></div>
+    <div class="cal-day"><p>Thu</p></div>
+    <div class="cal-day"><p>Fri</p></div>
+    <div class="cal-day"><p>Sat</p></div>
+
+    <div class="cal-day micro"><p>S</p></div>
+    <div class="cal-day micro"><p>M</p></div>
+    <div class="cal-day micro"><p>T</p></div>
+    <div class="cal-day micro"><p>W</p></div>
+    <div class="cal-day micro"><p>T</p></div>
+    <div class="cal-day micro"><p>F</p></div>
+    <div class="cal-day micro"><p>S</p></div>
+  </div>
+  <div class="cal-body">
+    <span *ngFor="let weekday of weekdays" class="beginningSpacer">
+      <div class="day" *ngIf="weekday.index < firstDayIndex"></div>
+    </span>
+    <div class="day" *ngFor="let day of calendarDays">
+      <iu-calendar-day
+        [day]="day"
+        [calendarDayTemplate]="calendarDayTemplate"
+        [calendarEventTypes]="calendarEventTypes"
+        (activate)="activate.emit($event)"
+      ></iu-calendar-day>
+    </div>
+    <span *ngFor="let weekday of weekdays" class="endSpacer">
+      <div class="day" *ngIf="weekday.index > lastDayIndex"></div>
+    </span>
+  </div>
+</div>

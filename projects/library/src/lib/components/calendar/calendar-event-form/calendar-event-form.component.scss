@@ -1,0 +1,31 @@
+.calendar-form {
+    position: relative;
+    overflow: auto;
+
+    h1 {
+        margin-top: 0;
+    }
+
+    .event-name {
+        margin-right: 4%;
+    }
+
+    .event-name,
+    .event-type {
+        width: 344px;
+        width: 48%;
+    }
+
+    .all-day {
+        position: absolute;
+        top: 174px;
+        right: 30px;
+    }
+
+    .mat-raised-button {
+        color: #fff;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+}

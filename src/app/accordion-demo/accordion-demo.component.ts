@@ -68,7 +68,7 @@ interface ExampleFlatNode {
 })
 export class AccordionDemoComponent implements OnInit {
   @Input() opened = true;
-  @ViewChild(AccordionComponent) accordion: AccordionComponent;
+  @ViewChild(AccordionComponent, {static: true}) accordion: AccordionComponent;
 
   transformer = (node: FoodNode, level: number) => {
     return {

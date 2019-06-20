@@ -1,16 +1,16 @@
 import { Validators } from '@angular/forms';
 
-export class Calendar {
+export class SchedulerCalendar {
   calendarId = 0;
   calendarName = '';
   description = '';
   isAllDayDefault = false;
   isAllDayEnforced = false;
   isMaster = false;
-  days: CalendarDay[] = [];
+  days: SchedulerCalendarDay[] = [];
 }
 
-export class CalendarEvent {
+export class SchedulerCalendarEvent {
   allDay = false;
   description = '';
   eventId = '';
@@ -68,7 +68,7 @@ export class CalendarEvent {
   }
 }
 
-export class CalendarDay {
+export class SchedulerCalendarDay {
   date: Date = new Date();
 }
 
@@ -96,7 +96,7 @@ export class Day {
   constructor(public dayName: string, public position: number) {}
 }
 
-export class Month {
+export class SchedulerMonth {
   constructor(
     public monthId: number,
     public monthName: string,

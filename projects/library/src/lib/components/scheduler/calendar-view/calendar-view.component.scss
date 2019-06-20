@@ -1,29 +1,34 @@
-.cal-view-container{
+.cal-view-container {
     border: 1px solid black;
     width: 1000px;
     height: 1000px;
     margin: 0 auto;
-    .date-heading-container{
+
+    .date-heading-container {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-evenly;
-        button{
+
+        button {
             margin: 21px 0px;
             background-color: #e47777;
             color: white;
         }
     }
-    .calendar{
+
+    .calendar {
         .sidenav {
             width: 100%;
             background: #d1d1d1;
             overflow: hidden;
             box-shadow: inset 0px -20px 40px -10px #00000024;
+
             h1 {
                 padding-left: 10px;
                 color: #456.5A64;
             }
+
             .add-btn {
                 position: absolute;
                 bottom: 10px;
@@ -31,43 +36,43 @@
                 background: #e47777;
                 color: white;
             }
-            
+
             .close-btn {
                 margin-top: 15px;
                 background: #e47777;
                 color: white;
             }
-            
+
             .edit-btn {
                 background-color: rgb(228, 119, 119);
                 color: white
             }
-            
+
             .primary {
                 float: right;
                 margin-right: 15px;
             }
-            
+
             .secondary {
                 float: left;
                 margin-left: 15px;
             }
-            
+
             .selected-day-event-container {
                 height: 100%;
                 overflow-y: scroll;
             }
-            
+
             .selected-day-event-container::-webkit-scrollbar {
                 width: 0.25em;
             }
-            
+
             .selected-day-event-container::-webkit-scrollbar-thumb {
                 background-color: grey;
                 overflow: visible;
                 border-radius: 2px;
             }
-            
+
             .selected-day-event {
                 background: #fbf4ea;
                 width: 50%;
@@ -75,28 +80,33 @@
                 margin-bottom: 10px;
                 padding: 5px;
             }
-            
+
             .selected-day-event p {
                 padding-left: 15px;
             }
         }
-        .cal-head, .cal-head-mini{
+
+        .cal-head,
+        .cal-head-mini {
             color: #456564;
             background: #d1d1d1;
             flex-wrap: nowrap;
             flex-direction: row;
-            justify-content: space-evenly;   
-            .cal-day{
+            justify-content: space-evenly;
+
+            .cal-day {
                 width: 142px;
                 text-align: center;
             }
         }
-        .cal-body{
+
+        .cal-body {
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
             justify-content: flex-start;
-            .day{
+
+            .day {
                 /* width: 142px;
                 height: 142px; */
                 box-shadow: inset #0000003b 0px 0px 2px 0px;
@@ -104,106 +114,133 @@
                 flex-shrink: 1;
                 order: 2;
             }
+
             .day:hover {
                 box-shadow: inset #0000003b 0px 0px 10px 0px;
                 cursor: pointer;
             }
-            .beginningSpacer .day, .endSpacer .day{
+
+            .beginningSpacer .day,
+            .endSpacer .day {
                 /* width: 142px;
                 height: 142px; */
                 flex-grow: 1;
                 flex-shrink: 1;
             }
-            .beginningSpacer{
+
+            .beginningSpacer {
                 order: 1;
             }
-            .endSpacer{
+
+            .endSpacer {
                 order: 3;
             }
         }
     }
 }
 
-@media screen and (min-width: 1250px), print {
+@media screen and (min-width: 1250px),
+print {
     .cal-view-container {
         width: 1000px;
         height: 1000px;
         padding: 5px 10px;
+
         .cal-day p {
             width: 142px;
         }
+
         .cal-day.micro {
             display: none;
         }
-        .cal-body{
+
+        .cal-body {
             span {
                 height: 142px;
             }
+
             .day {
                 width: 142.25px;
                 height: 142.25px;
             }
         }
+
         .cal-head {
             display: flex;
         }
+
         .cal-head-mini {
             display: none;
         }
+
         .close-btn,
         .add-btn {
             display: block;
         }
+
         .close-btn.mini,
         .add-btn.mini {
             display: none;
         }
+
         .date-heading {
             display: block;
         }
+
         .date-heading.mini {
             display: none;
         }
     }
 }
 
-@media screen and (max-width: 1249px) and (min-width: 940px), print {
+@media screen and (max-width: 1249px) and (min-width: 940px),
+print {
     .cal-view-container {
         width: 700px;
         height: 800px;
         padding: 5px 10px;
+
         .cal-day p {
             width: 100px;
         }
+
         .cal-day.micro {
             display: none;
         }
-        .cal-body{
+
+        .cal-body {
             span {
                 height: 100px;
             }
+
             .day {
                 width: 100px;
                 height: 100px;
             }
         }
+
         .cal-head {
             display: flex;
         }
+
         .cal-head-mini {
             display: none;
         }
+
         .close-btn,
         .add-btn {
             display: block;
         }
+
         .close-btn.mini,
         .add-btn.mini {
             display: none;
         }
+
         .date-heading {
             display: block;
         }
+
         .date-heading.mini {
             display: none;
         }
@@ -215,33 +252,42 @@
         width: 395px;
         height: 495px;
         padding: 0;
+
         .cal-body .day {
             width: 56px;
             height: 56px;
         }
+
         .cal-day p {
             width: 56px;
         }
+
         .cal-day.micro {
             display: none;
         }
+
         .cal-head {
             display: none;
         }
+
         .cal-head-mini {
             display: flex;
         }
+
         .close-btn,
         .add-btn {
             display: none;
         }
+
         .close-btn.mini,
         .add-btn.mini {
             display: block;
         }
+
         .date-heading {
             display: block;
         }
+
         .date-heading.mini {
             display: none;
         }
@@ -253,33 +299,42 @@
         width: 360px;
         height: 460px;
         padding: 0;
+
         .cal-head {
             display: none;
         }
+
         .cal-head-mini {
             display: flex;
         }
+
         .cal-day p {
             width: 51.4px;
         }
+
         .cal-day.micro {
             display: none;
         }
+
         .cal-body .day {
             width: 51.4px;
             height: 51.4px;
         }
+
         .close-btn,
         .add-btn {
             display: none;
         }
+
         .close-btn.mini,
         .add-btn.mini {
             display: block;
         }
+
         .date-heading {
             display: none;
         }
+
         .date-heading.mini {
             display: block;
         }
@@ -290,45 +345,58 @@
     .cal-view-container {
         width: 300px;
         padding: 0;
+
         .cal-head {
             display: none;
         }
+
         .cal-head-mini {
             display: flex;
+
             p {
                 margin: 2.5px 0px;
             }
         }
+
         .mat-drawer-content.mat-sidenav-content {
             overflow: hidden;
         }
+
         .cal-day {
             display: none;
+
             p {
                 width: 42.8px;
             }
         }
+
         .cal-day.micro {
             display: block;
         }
+
         .cal-body .day {
             width: 42.8px;
             height: 42.8px;
         }
+
         .close-btn,
         .add-btn {
             display: none;
         }
+
         .close-btn.mini,
         .add-btn.mini {
             display: block;
         }
+
         .selected-day-event {
             font-size: 0.75rem;
         }
+
         .date-heading {
             display: none;
         }
+
         .date-heading.mini {
             display: block;
         }

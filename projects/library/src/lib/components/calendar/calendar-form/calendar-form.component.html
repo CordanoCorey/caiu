@@ -1,0 +1,35 @@
+<div class="calendar-form">
+  <div class="calendar-form" *ngIf="calendarFormTemplate">
+    <ng-container
+      *ngTemplateOutlet="
+        calendarFormTemplate;
+        context: {
+          calendar: calendar,
+          form: form,
+          submit: submit,
+          dialogRef: dialogRef
+        }
+      "
+    ></ng-container>
+  </div>
+
+  <form [formGroup]="form" *ngIf="!calendarFormTemplate">
+    <h1>Create Calendar</h1>
+    <mat-form-field>
+      <input
+        type="text"
+        formControlName="calendarName"
+        matInput
+        placeholder="Calendar Name"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Calendar Description"
+      ></textarea>
+    </mat-form-field>
+    <button mat-button (click)="submit()">Submit</button>
+  </form>
+</div>
