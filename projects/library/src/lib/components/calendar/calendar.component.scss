@@ -1,13 +1,22 @@
+@import '~@angular/material/_theming';
+
 .calendar-wrapper {
-    width: 1000px;
-    height: 1000px;
-    margin: 0px auto;
+    width: 98%;
+    margin: 0;
     position: relative;
+    padding: 1%;
+
+    iu-calendar-key {
+        position: absolute;
+        right: 0;
+        top: 180px;
+        width: 20%;
+    }
 
     .btn-edit {
         position: absolute;
-        right: 0;
-        top: 95px;
+        right: 50px;
+        top: 15px;
         z-index: 2;
     }
 
@@ -22,139 +31,27 @@
             color: #fff;
         }
     }
-}
 
-@media screen and (min-width: 1250px),
-print {
-    .calendar-wrapper {
-        width: 1000px;
-        height: 1000px;
-        padding: 5px 10px;
-
-        .close-btn,
-        .add-btn {
-            display: block;
-        }
-
-        .close-btn.mini,
-        .add-btn.mini {
-            display: none;
-        }
-
-        .date-heading {
-            display: block;
-        }
-
-        .date-heading.mini {
-            display: none;
-        }
+    .mat-tab-group,
+    .date-heading-container {
+        width: 78%;
     }
 }
 
-@media screen and (max-width: 1249px) and (min-width: 940px),
-print {
-    .calendar-wrapper {
-        width: 700px;
-        height: 800px;
-        padding: 5px 10px;
+#overview {
+    @include mat-elevation(16);
+    background-color: #fff;
+    height: 50%;
+    position: fixed;
+    top: 20%;
+    z-index: 1000;
+    padding: 60px 20px;
 
-        .close-btn,
-        .add-btn {
-            display: block;
-        }
-
-        .close-btn.mini,
-        .add-btn.mini {
-            display: none;
-        }
-
-        .date-heading {
-            display: block;
-        }
-
-        .date-heading.mini {
-            display: none;
-        }
-    }
-}
-
-@media screen and (max-width: 939px) and (min-width: 600px) {
-    .calendar-wrapper {
-        width: 395px;
-        height: 495px;
-        padding: 0;
-
-        .close-btn,
-        .add-btn {
-            display: none;
-        }
-
-        .close-btn.mini,
-        .add-btn.mini {
-            display: block;
-        }
-
-        .date-heading {
-            display: block;
-        }
-
-        .date-heading.mini {
-            display: none;
-        }
-    }
-}
-
-@media screen and (max-width: 599px) and (min-width: 375px) {
-    .calendar-wrapper {
-        width: 360px;
-        height: 460px;
-        padding: 0;
-
-        .close-btn,
-        .add-btn {
-            display: none;
-        }
-
-        .close-btn.mini,
-        .add-btn.mini {
-            display: block;
-        }
-
-        .date-heading {
-            display: none;
-        }
-
-        .date-heading.mini {
-            display: block;
-        }
-    }
-}
-
-@media screen and (max-width: 374px) {
-    .calendar-wrapper {
-        width: 300px;
-        padding: 0;
-
-        .close-btn,
-        .add-btn {
-            display: none;
-        }
-
-        .close-btn.mini,
-        .add-btn.mini {
-            display: block;
-        }
-
-        .selected-day-event {
-            font-size: 0.75rem;
-        }
-
-        .date-heading {
-            display: none;
-        }
-
-        .date-heading.mini {
-            display: block;
-        }
+    .mat-icon.btn-close {
+        cursor: pointer;
+        position: absolute;
+        top: 16px;
+        right: 64px;
+        font-size: 64px;
     }
 }

@@ -1,0 +1,14 @@
+.calendar-days {
+    // display: flex;
+    // flex-direction: column;
+
+    .calendar-days-list-item {}
+
+    iu-calendar-day-edit {
+        // align-self: flex-start;
+    }
+
+    iu-calendar-day-edit.right {
+        // align-self: flex-end;
+    }
+}

@@ -1,13 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy,
-  TemplateRef,
-  Output,
-  EventEmitter
-} from '@angular/core';
-import { CalendarDay, CalendarEventType } from '../calendar.model';
+import { Component, OnInit, Input, ChangeDetectionStrategy, TemplateRef, Output, EventEmitter } from '@angular/core';
+import { CalendarDay, CalendarEventType, CalendarEvent } from '../calendar.model';
 
 @Component({
   selector: 'iu-calendar-day',
@@ -20,8 +12,13 @@ export class CalendarDayComponent implements OnInit {
   @Input() calendarDayTemplate: TemplateRef<any>;
   @Input() calendarEventTypes: CalendarEventType[] = [];
   @Output() activate = new EventEmitter<CalendarDay>();
+  @Output() saveEvent = new EventEmitter<CalendarEvent>();
 
   constructor() {}
 
   ngOnInit() {}
+
+  onSave(e: CalendarEvent) {
+    this.saveEvent.emit(e);
+  }
 }

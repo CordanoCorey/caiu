@@ -23,9 +23,20 @@
     }
 
     .mat-raised-button {
-        color: #fff;
+        font-size: 16px;
         position: absolute;
-        right: 10px;
         bottom: 10px;
+    }
+
+    .mat-raised-button.btn-delete {
+        color: #fff;
+        background-color: red;
+        right: 85px;
+    }
+
+    .mat-raised-button.btn-save {
+        color: #fff;
+        background-color: green;
+        right: 10px;
     }
 }

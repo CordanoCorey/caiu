@@ -1,7 +1,9 @@
 <div class="calendar-wrapper">
-  <button class="btn-edit" mat-button color="primary" (click)="editCalendar()">
-    Edit Calendar
-  </button>
+  <div *ngIf="showActions" class="calendar-actions">
+    <button class="btn-edit" mat-button color="primary" (click)="editCalendar()">
+      Edit Calendar
+    </button>
+  </div>
   <div class="date-heading-container">
     <div>
       <button mat-mini-fab (click)="toLastMonth()">
@@ -10,7 +12,6 @@
     </div>
     <div>
       <h1 class="date-heading">{{ monthName }} {{ currentYear }}</h1>
-      <h1 class="date-heading mini">{{ shortMonthName }} {{ currentYear }}</h1>
     </div>
     <div>
       <button mat-mini-fab (click)="toNextMonth()">
@@ -18,32 +19,71 @@
       </button>
     </div>
   </div>
-  <mat-tab-group
-    (selectedTabChange)="changeTab($event.index)"
-    [selectedIndex]="selectedIndex"
-  >
+  <mat-tab-group (selectedTabChange)="changeTab($event.index)" [selectedIndex]="selectedIndex">
     <mat-tab label="Calendar View" id="calendar-view">
       <iu-calendar-view
         [activeDate]="activeDate"
-        [calendar]="calendar"
+        [calendarDays]="calendarDays"
+        [calendarEvents]="calendarEvents"
         [calendarDayTemplate]="calendarDayTemplate"
         [calendarDayEditTemplate]="calendarDayEditTemplate"
         [calendarEventTypes]="calendarEventTypes"
         (activate)="toDay($event)"
+        (saveEvent)="onSaveEvent($event)"
       ></iu-calendar-view>
     </mat-tab>
     <mat-tab label="List View" id="list-view">
       <iu-calendar-days
         [activeDate]="activeDate"
-        [calendar]="calendar"
+        [calendarDays]="calendarDays"
+        [calendarEvents]="calendarEvents"
         [calendarDayListItemTemplate]="calendarDayListItemTemplate"
         [calendarDayEditTemplate]="calendarDayEditTemplate"
         [calendarDayTypes]="calendarDayTypes"
         [calendarEventFormTemplate]="calendarEventFormTemplate"
         [calendarEventTypes]="calendarEventTypes"
         [calendarEventViewTemplate]="calendarEventViewTemplate"
+        (changeDayType)="changeDayType.emit($event)"
+        (saveEvent)="onSaveEvent($event)"
       ></iu-calendar-days>
     </mat-tab>
   </mat-tab-group>
   <a id="open-pdf" [href]="fileUrl" target="_blank" #pdfLink></a>
+  <iu-calendar-key [calendarEventTypes]="calendarEventTypes"></iu-calendar-key>
 </div>
+<div id="overview" [@overviewState]="activeDay ? 'open' : 'closed'">
+  <iu-calendar-day-edit
+    *ngIf="activeDay"
+    [calendarDay]="activeDay"
+    [calendarDayEditTemplate]="calendarDayEditTemplate"
+    [calendarDayTypes]="calendarDayTypes"
+    [calendarEventFormTemplate]="calendarEventFormTemplate"
+    [calendarEventViewTemplate]="calendarEventViewTemplate"
+    [calendarEventTypes]="calendarEventTypes"
+    (saveEvent)="onSaveEvent($event)"
+  >
+  </iu-calendar-day-edit>
+  <mat-icon class="btn-close" *ngIf="activeDay" (click)="closeOverview()">close</mat-icon>
+</div>
+
+<!-- <mat-form-field>
+  <mat-select placeholder="Calendar Day Type">
+    <mat-option *ngFor="let lkp of dayTypes" [value]="lkp.id">
+      {{ lkp.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field> -->
+
+<!-- <mat-form-field>
+  <mat-select placeholder="Calendar Day Type">
+    <mat-option [value]="1">
+      1
+    </mat-option>
+    <mat-option [value]="2">
+      2
+    </mat-option>
+    <mat-option [value]="3">
+      3
+    </mat-option>
+  </mat-select>
+</mat-form-field> -->

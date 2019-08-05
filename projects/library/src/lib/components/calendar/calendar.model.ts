@@ -28,14 +28,9 @@ export class Calendar {
   }
 }
 
-export class CalendarDay {
-  date: Date = new Date();
-  events: CalendarEvent[] = [];
-  isActive = false;
-}
-
 export class CalendarEventType extends LookupValue {
   allDay = false;
+  color = '';
 }
 
 export class CalendarEvent {
@@ -47,8 +42,9 @@ export class CalendarEvent {
   eventTypeId = 0;
   calendarId = 0;
   startTime: Date = new Date();
-  endTime: Date = new Date();
+  endTime: Date = null;
   _allDay = false;
+  _color = '';
 
   get metadata(): any {
     return {
@@ -57,6 +53,8 @@ export class CalendarEvent {
       },
       ignore: [
         '_allDay',
+        '_color',
+        'color',
         'dayOf',
         'description',
         'startHour',
@@ -78,6 +76,14 @@ export class CalendarEvent {
 
   get allDay(): boolean {
     return this._allDay || this.eventType.allDay;
+  }
+
+  set color(value: string) {
+    this._color = value;
+  }
+
+  get color(): string {
+    return this._color || this.eventType.color;
   }
 
   get endHour(): number {
@@ -103,4 +109,11 @@ export class CalendarEvent {
   get startTimePeriod(): string {
     return DateHelper.GetMeridian(this.startTime);
   }
+}
+
+export class CalendarDay {
+  date: Date = new Date();
+  dayType: CalendarEventType = new CalendarEventType();
+  events: CalendarEvent[] = [];
+  isActive = false;
 }

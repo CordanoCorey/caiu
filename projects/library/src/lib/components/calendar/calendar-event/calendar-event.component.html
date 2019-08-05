@@ -1,15 +1,11 @@
 <div *ngIf="!plusMore" class="calendar-event" (click)="editEvent()">
-  <p class="calendar-event-name">
+  <p class="calendar-event-name" [style.background]="calendarEvent.color">
     {{ calendarEvent.name }}
   </p>
 </div>
 
-<div
-  *ngIf="plusMore"
-  class="calendar-event plus-more"
-  (click)="gotToDay.emit()"
->
-  <p class="calendar-event-name">+ {{ plusMore }} events...</p>
+<div *ngIf="plusMore" class="calendar-event plus-more" (click)="goToDay.emit()">
+  <p class="calendar-event-name">+ {{ plusMore }} events</p>
 </div>
 
 <!-- <span *ngIf="calendarEvent.allDay != true">

@@ -49,18 +49,20 @@ export class TimeControlComponent extends FormComponent
   @Input()
   set value(value: Date) {
     this._value = value;
-    this.time = build(Time, {
+    const time = build(Time, {
       datetime: value
     });
+    if (time.datetime.getTime() !== this.time.datetime.getTime()) {
+      this.time = time;
+    }
   }
 
   set time(value: Time) {
-    this._time = value;
     this.setValue(value);
   }
 
   get time(): Time {
-    return this._time;
+    return build(Time, this.form.value);
   }
 
   registerOnChange(fn: Function) {
@@ -94,5 +96,9 @@ export class TimeControlComponent extends FormComponent
     return integerArray(60).filter(x => x > 9);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form.valueChanges.subscribe(x => {
+      this.onChange(build(Time, x).datetime);
+    });
+  }
 }

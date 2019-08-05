@@ -11,10 +11,13 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-import { Calendar, CalendarDay, CalendarEvent, CalendarEventType } from '../calendar.model';
+import {
+  CalendarDay,
+  CalendarEvent,
+  CalendarEventType
+} from '../calendar.model';
 import { DumbComponent } from '../../../shared/component';
 import { DateHelper } from '../../../shared/date';
-import { build } from '../../../shared/utils';
 
 @Component({
   selector: 'iu-calendar-view',
@@ -25,35 +28,21 @@ import { build } from '../../../shared/utils';
 export class CalendarViewComponent extends DumbComponent implements OnInit {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
   @Input() activeDate: Date = new Date();
-  @Input() calendar = new Calendar();
   @Input() calendarDayTemplate: TemplateRef<any>;
   @Input() calendarDayEditTemplate: TemplateRef<any>;
+  @Input() calendarDays: CalendarDay[] = [];
+  @Input() calendarEvents: CalendarEvent[] = [];
   @Input() calendarEventTypes: CalendarEventType[] = [];
   @Output() activate = new EventEmitter<CalendarDay>();
+  @Output() saveEvent = new EventEmitter<CalendarEvent>();
   weekdays = DateHelper.Weekdays;
 
-  get calendarDays(): CalendarDay[] {
-    return this.daysInMonth.map(date =>
-      build(CalendarDay, {
-        date,
-        events: this.calendarEvents
-          .filter(
-            event =>
-              DateHelper.IsBetween(date, event.startTime, event.endTime) ||
-              DateHelper.IsSameDay(date, event.startTime)
-          )
-          .map(event => build(CalendarEvent, event, {})),
-        isActive: DateHelper.IsSameDay(date, this.activeDate)
-      })
-    );
+  get calendarWidth(): number {
+    return this.el.nativeElement.offsetWidth;
   }
 
-  get calendarEvents(): CalendarEvent[] {
-    return this.calendar.events;
-  }
-
-  get daysInMonth(): Date[] {
-    return DateHelper.DaysInMonth(this.activeDate);
+  get dayWidth(): number {
+    return this.calendarWidth / 7 - 0.1;
   }
 
   get firstDayIndex(): number {
@@ -64,7 +53,7 @@ export class CalendarViewComponent extends DumbComponent implements OnInit {
     return DateHelper.GetLastDayOfMonth(this.activeDate).getDay();
   }
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, public el: ElementRef) {
     super();
   }
 

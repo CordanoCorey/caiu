@@ -20,27 +20,9 @@ export class Weekday {
 }
 
 export class DateHelper {
-  static MonthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
+  static MonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-  static BuildStartTime(
-    startDate: Date,
-    startHours: number,
-    startMinutes: number,
-    startMeridian: 'AM' | 'PM'
-  ): Date {
+  static BuildStartTime(startDate: Date, startHours: number, startMinutes: number, startMeridian: 'AM' | 'PM'): Date {
     const startTime = new Date(startDate);
     const hours = startMeridian === 'AM' ? startHours : startHours + 12;
     startTime.setHours(hours);
@@ -67,9 +49,7 @@ export class DateHelper {
   }
 
   static CalendarDayStringSpan(startDate: Date, endDate: Date): string[] {
-    return DateHelper.CalendarDaySpan(startDate, endDate).map(d =>
-      DateHelper.ToDayString(d)
-    );
+    return DateHelper.CalendarDaySpan(startDate, endDate).map(d => DateHelper.ToDayString(d));
   }
 
   static CountDaysInMonth(date: Date): number {
@@ -78,11 +58,7 @@ export class DateHelper {
 
   static DaysBetween(startDate: Date, endDate: Date): number {
     const millisecondsPerDay = 24 * 60 * 60 * 1000;
-    return (
-      (DateHelper.TreatAsUTC(new Date(endDate)).getTime() -
-        DateHelper.TreatAsUTC(new Date(startDate)).getTime()) /
-      millisecondsPerDay
-    );
+    return (DateHelper.TreatAsUTC(new Date(endDate)).getTime() - DateHelper.TreatAsUTC(new Date(startDate)).getTime()) / millisecondsPerDay;
   }
 
   static DaysInMonth(date: Date): Date[] {
@@ -185,14 +161,12 @@ export class DateHelper {
 
   static GetMonthName(date: Date): string {
     const d = new Date(date);
-    return build(Month, DateHelper.Months.find(x => x.index === d.getMonth()))
-      .name;
+    return build(Month, DateHelper.Months.find(x => x.index === d.getMonth())).name;
   }
 
   static GetShortMonthName(date: Date): string {
     const d = new Date(date);
-    return build(Month, DateHelper.Months.find(x => x.index === d.getMonth()))
-      .abbreviation;
+    return build(Month, DateHelper.Months.find(x => x.index === d.getMonth())).abbreviation;
   }
 
   static GetWeekdayIndex(date: Date): number {
@@ -205,6 +179,21 @@ export class DateHelper {
     return d.getFullYear();
   }
 
+  static HoursBetween(d1: Date, d2: Date): number {
+    return DateHelper.MillisecondsBetween(d1, d2) / 3600000;
+  }
+
+  static HoursFromBeginningOfDay(d: Date): number {
+    const date = new Date(d);
+    return date.getHours() + date.getMinutes() / 60;
+  }
+
+  static IsBetween(d: Date, startDate: Date, endDate: Date): boolean {
+    const date = new Date(d);
+    const calculatedEndDate = endDate || startDate;
+    return startDate && date > new Date(startDate) && date < new Date(calculatedEndDate);
+  }
+
   static IsDate(date: any): boolean {
     return Object.prototype.toString.call(date) === '[object Date]';
   }
@@ -214,14 +203,18 @@ export class DateHelper {
     return !isNaN(dateWrapper.getDate());
   }
 
-  static IsBetween(d: Date, startDate: Date, endDate: Date): boolean {
-    const date = new Date(d);
-    return (
-      startDate &&
-      date > new Date(startDate) &&
-      endDate &&
-      date < new Date(endDate)
-    );
+  static IsWeekday(d: Date): boolean {
+    const day = new Date(d).getDay();
+    return day === 1 || day === 2 || day === 3 || day === 4 || day === 5;
+  }
+
+  static IsWeekend(d: Date): boolean {
+    const day = new Date(d).getDay();
+    return day === 0 || day === 6;
+  }
+
+  static MillisecondsBetween(d1: Date, d2: Date): number {
+    return Math.abs(new Date(d1).getTime() - new Date(d2).getTime());
   }
 
   static NextDay(fromDate: Date): Date {
@@ -235,9 +228,7 @@ export class DateHelper {
     if (!date) {
       return '';
     }
-    const seconds = Math.floor(
-      (new Date().getTime() - new Date(date).getTime()) / 1000
-    );
+    const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
 
     let interval = Math.floor(seconds / 31536000);
 
@@ -327,9 +318,7 @@ export class DateHelper {
   }
 
   static get MonthNumbers(): any {
-    return DateHelper.MonthNames.reduce((acc, x, i) =>
-      Object.assign({}, acc, { [x]: i })
-    );
+    return DateHelper.MonthNames.reduce((acc, x, i) => Object.assign({}, acc, { [x]: i }));
   }
 
   static get Year(): number {
@@ -385,21 +374,13 @@ export class DateHelper {
   static DateChanged(d1: Date, d2: Date): boolean {
     const date1 = new Date(d1);
     const date2 = new Date(d2);
-    return (
-      date1.getDate() !== date2.getDate() ||
-      date1.getMonth() !== date2.getMonth() ||
-      date1.getFullYear() !== date2.getFullYear()
-    );
+    return date1.getDate() !== date2.getDate() || date1.getMonth() !== date2.getMonth() || date1.getFullYear() !== date2.getFullYear();
   }
 
   static IsSameDay(d1: Date, d2: Date): boolean {
     const date1 = new Date(d1);
     const date2 = new Date(d2);
-    return (
-      date1.getDate() === date2.getDate() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getFullYear() === date2.getFullYear()
-    );
+    return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
   }
 
   static get YearStartDate(): Date {

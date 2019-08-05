@@ -1,11 +1,11 @@
 import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
+import { Observable, of, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import { Config } from '../shared/config';
 import { Token } from '../shared/token';
 import { CurrentUser } from '../shared/user';
-import { build } from '../shared/utils';
+import { build, isMobile } from '../shared/utils';
 import { Window } from '../shared/window';
 
 export function allSelector(store: Store<any>): Observable<any> {
@@ -89,4 +89,12 @@ export function authTokenSelector(store: Store<any>): Observable<string> {
 
 export function userLastActiveSelector(store: Store<any>): Observable<Date> {
   return currentUserSelector(store).pipe(map(x => new Date(x.lastActive)));
+}
+
+export function isMobileSelector(store: Store<any>): Observable<boolean> {
+  return combineLatest(
+    windowHeightSelector(store),
+    windowWidthSelector(store),
+    (h, w) => w < h || isMobile()
+  );
 }

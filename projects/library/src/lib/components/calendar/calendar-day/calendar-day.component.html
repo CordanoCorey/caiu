@@ -9,7 +9,8 @@
         [plusMore]="
           day.events.length > 3 && i === 2 ? day.events.length - 2 : 0
         "
-        (gotToDay)="activate.emit(day)"
+        (goToDay)="activate.emit(day)"
+        (saveEvent)="onSave($event)"
       ></iu-calendar-event>
     </div>
   </div>

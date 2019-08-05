@@ -134,6 +134,12 @@ $container-color: $sky-blue;
     $accent: map-get($theme, accent);
 
     iu-calendar {
+        .mat-tab-body-wrapper {
+            -webkit-box-shadow: 0 8px 6px -6px black;
+            -moz-box-shadow: 0 8px 6px -6px black;
+            box-shadow: 0 8px 6px -6px black;
+        }
+
         .calendar-wrapper {
 
             .date-heading-container {
@@ -151,6 +157,50 @@ $container-color: $sky-blue;
                 background-color: mat-color($primary);
             }
         }
+
+        .calendar-day-edit {
+            .custom-template {
+                background-color: mat-color($primary);
+            }
+        }
+
+        .calendar {
+            @include mat-elevation(4);
+
+            .cal-head,
+            .cal-head-mini {
+                color: mat-color($primary);
+            }
+        }
+
+        .calendar-key {
+            border: 2px solid mat-color($primary);
+            color: mat-color($primary);
+        }
+
+        #overview {
+
+            .mat-icon.btn-close {
+                color: mat-color($primary);
+            }
+        }
+
+        .calendar-day-content {
+            .day-type-label {
+                color: mat-color($primary);
+            }
+
+            .calendar-date {
+                background-color: mat-color($primary);
+            }
+        }
+
+        .calendar-day-events {
+
+            .hours {
+                background-color: mat-color($primary);
+            }
+        }
     }
 
     .calendar-event {
@@ -162,8 +212,8 @@ $container-color: $sky-blue;
 
     .calendar-event.plus-more {
         .calendar-event-name {
-            color: #fff;
-            background-color: mat-color($primary);
+            color: mat-color($primary);
+            background-color: #fff;
         }
     }
 }

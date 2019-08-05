@@ -1,0 +1,23 @@
+@import '~@angular/material/_theming';
+
+.calendar-key {
+    @include mat-elevation(8);
+    background-color: #fff;
+    width: 90%;
+    padding: 0 1%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    max-height: 600px;
+
+    h3 {
+        @include mat-elevation(4);
+        color: #fff;
+        width: 94%;
+        margin: 0px 3% 10px 3%;
+    }
+
+    h3:last-of-type {
+        margin-bottom: 20px;
+    }
+}

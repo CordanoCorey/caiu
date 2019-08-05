@@ -1,25 +1,27 @@
-<!-- <form [formGroup]="form"></form> -->
-
-<div *ngFor="let day of calendarDays">
-  <div *ngIf="!calendarDayListItemTemplate">
+<div class="calendar-days">
+  <div class="calendar-days-list-item" *ngFor="let day of calendarDays; let odd = odd">
     <iu-calendar-day-edit
+      *ngIf="!calendarDayListItemTemplate"
       [calendarDay]="day"
       [calendarDayEditTemplate]="calendarDayEditTemplate"
       [calendarDayTypes]="calendarDayTypes"
       [calendarEventFormTemplate]="calendarEventFormTemplate"
       [calendarEventViewTemplate]="calendarEventViewTemplate"
       [calendarEventTypes]="calendarEventTypes"
+      (changeDayType)="onChangeDayType(day.date, $event)"
+      (saveEvent)="saveEvent.emit($event)"
+      [class.right]="odd"
     ></iu-calendar-day-edit>
-  </div>
 
-  <div *ngIf="calendarDayListItemTemplate">
-    <ng-container
-      *ngTemplateOutlet="
-        calendarDayListItemTemplate;
-        context: {
-          day: day
-        }
-      "
-    ></ng-container>
+    <div *ngIf="calendarDayListItemTemplate">
+      <ng-container
+        *ngTemplateOutlet="
+          calendarDayListItemTemplate;
+          context: {
+            day: day
+          }
+        "
+      ></ng-container>
+    </div>
   </div>
 </div>

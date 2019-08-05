@@ -1,33 +1,64 @@
-<div class="calendar-day-edit">
-  <div class="calendar-day-content" *ngIf="!calendarDayEditTemplate">
-    <div class="calendar-day-header">
-      <h3>{{ calendarDay.date | date: 'longDate' }}</h3>
-      <select class="mat-select calendar-day-type" #dayTypeInput>
+<div class="calendar-day-edit" #wrapper>
+  <div class="calendar-day-content">
+    <div class="calendar-date accordion-trigger" [style.background-color]="calendarDay.dayType.color">
+      <h3 class="date-weekday font-effect-3d-float">
+        {{ calendarDay.date | date: 'EEEE' }}
+      </h3>
+      <h2 class="date-month font-effect-3d-float">
+        {{ calendarDay.date | date: 'MMMM' }}
+      </h2>
+      <h1 class="date-day font-effect-3d-float">
+        {{ calendarDay.date | date: 'dd' }}
+      </h1>
+    </div>
+
+    <span class="day-type-label font-effect-outline" [style.color]="calendarDay.dayType.color">Day Type</span>
+
+    <div class="all-day-events">
+      <select class="mat-select select-day-type" #dayTypeInput (change)="onChangeDayType(dayTypeInput.value)">
         <option *ngFor="let lkp of calendarDayTypes" [value]="lkp.id">
           {{ lkp.name }}
         </option>
       </select>
+
+      <!-- <mat-select class="mat-select select-day-type">
+        <mat-option *ngFor="let lkp of calendarDayTypes" [value]="lkp.id">
+          {{ lkp.name }}
+        </mat-option>
+      </mat-select> -->
+
+      <!-- <div class="calendar-events-list">
+        <div
+          class="calendar-event accordion-content"
+          *ngFor="let event of calendarDay?.events; index as i"
+        >
+          <iu-calendar-event-view
+            (saveEvent)="saveEvent.emit($event)"
+            [calendarEvent]="event"
+            [calendarEventFormTemplate]="calendarEventFormTemplate"
+            [calendarEventViewTemplate]="calendarEventViewTemplate"
+            [calendarEventTypes]="calendarEventTypes"
+          ></iu-calendar-event-view>
+        </div>
+      </div> -->
     </div>
-    <div
-      class="calendar-event"
-      *ngFor="let event of calendarDay.events; index as i"
-    >
-      <iu-calendar-event-view
-        [calendarEvent]="event"
-        [calendarEventFormTemplate]="calendarEventFormTemplate"
-        [calendarEventViewTemplate]="calendarEventViewTemplate"
-        [calendarEventTypes]="calendarEventTypes"
-      ></iu-calendar-event-view>
+    <iu-calendar-day-events
+      *ngIf="!calendarDayEditTemplate"
+      [style.width.px]="eventsWidth"
+      [calendarEvents]="calendarDay.events"
+      [dayTypeColor]="calendarDay.dayType.color"
+      class="scrollable"
+    ></iu-calendar-day-events>
+    <div class="custom-template" [style.width.px]="contentWidth" [style.background-color]="calendarDay.dayType.color" *ngIf="calendarDayEditTemplate">
+      <ng-container
+        *ngTemplateOutlet="
+          calendarDayEditTemplate;
+          context: {
+            day: calendarDay,
+            color: calendarDay.dayType.color
+          }
+        "
+      ></ng-container>
     </div>
-  </div>
-  <div class="calendar-day-content" *ngIf="calendarDayEditTemplate">
-    <ng-container
-      *ngTemplateOutlet="
-        calendarDayEditTemplate;
-        context: {
-          day: calendarDay
-        }
-      "
-    ></ng-container>
   </div>
 </div>

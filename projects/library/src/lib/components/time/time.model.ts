@@ -43,7 +43,7 @@ export class Time {
     const d = new Date(value);
     const hours = d.getHours();
     this.date = d;
-    this.hour = hours % 12 === 0 ? 12 : hours % 12;
+    this.hour = hours === 12 ? 12 : hours % 12;
     this.minutes = d.getMinutes();
     this.meridian = hours >= 12 ? 'PM' : 'AM';
   }

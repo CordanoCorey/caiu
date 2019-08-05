@@ -223,6 +223,14 @@ export class SchedulerComponent implements OnInit {
     }
   }
 
+  copyCalendar(id: number) {
+    // const copy = build(Calendar, this.calendars.find(x => x.id === id), {
+    //   id: 0,
+    //   parentId: id
+    // });
+    // this.addCalendar(copy);
+  }
+
   onDeleteEvent(event) {
     const eventToDelete = this.events
       .map(function(e) {

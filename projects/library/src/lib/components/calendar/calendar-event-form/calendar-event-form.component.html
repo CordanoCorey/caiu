@@ -30,7 +30,8 @@
         context: {
           calendarEvent: calendarEvent,
           form: form,
-          submit: submit,
+          save: save,
+          delete: delete,
           dialogRef: dialogRef
         }
       "
@@ -40,35 +41,22 @@
 
   <form [formGroup]="form" *ngIf="!calendarEventFormTemplate">
     <mat-form-field class="event-name">
-      <input
-        type="text"
-        formControlName="name"
-        matInput
-        placeholder="Event Name"
-      />
+      <input type="text" formControlName="name" matInput placeholder="Event Name" />
     </mat-form-field>
     <mat-form-field class="event-type" *ngIf="calendarEventTypes">
       <mat-select placeholder="Event Type" formControlName="eventTypeId">
-        <mat-option *ngFor="let lkp of calendarEventTypes" [value]="lkp.id">
-          {{ lkp.name }}</mat-option
-        >
+        <mat-option *ngFor="let lkp of calendarEventTypes" [value]="lkp.id"> {{ lkp.name }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-checkbox class="all-day" formControlName="allDay"
-      >All Day Event</mat-checkbox
-    >
+    <mat-checkbox class="all-day" formControlName="allDay">All Day Event</mat-checkbox>
 
-    <iu-time-control
-      formControlName="startTime"
-      label="Start Time"
-    ></iu-time-control>
-    <iu-time-control
-      formControlName="endTime"
-      label="End Time"
-    ></iu-time-control>
-    <button mat-raised-button color="accent">
-      <span *ngIf="!editing">Submit</span>
-      <span *ngIf="editing">Save</span>
+    <iu-time-control *ngIf="showTime" formControlName="startTime" label="Start Time"></iu-time-control>
+    <iu-time-control *ngIf="showTime" formControlName="endTime" label="End Time"></iu-time-control>
+    <button *ngIf="editing" mat-raised-button class="btn-delete" (click)="delete()">
+      Delete
+    </button>
+    <button mat-raised-button color="accent" class="btn-save" (click)="save()">
+      Save
     </button>
   </form>
 </div>

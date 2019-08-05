@@ -1,16 +1,8 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy,
-  TemplateRef
-} from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Calendar, CalendarDay, CalendarEvent, CalendarEventType } from '../calendar.model';
 import { Control } from '../../../forms/decorators';
-import { DateHelper } from '../../../shared/date';
-import { build } from '../../../shared/utils';
 import { LookupValue } from '../../../lookup/lookup.models';
 
 @Component({
@@ -21,38 +13,23 @@ import { LookupValue } from '../../../lookup/lookup.models';
 })
 export class CalendarDaysComponent implements OnInit {
   @Input() activeDate: Date = new Date();
-  @Input() calendar = new Calendar();
   @Input() calendarDayEditTemplate: TemplateRef<any>;
   @Input() calendarDayListItemTemplate: TemplateRef<any>;
   @Input() calendarDayTypes: LookupValue[] = [];
+  @Input() calendarDays: CalendarDay[] = [];
+  @Input() calendarEvents: CalendarEvent[] = [];
   @Input() calendarEventFormTemplate: TemplateRef<any>;
   @Input() calendarEventTypes: CalendarEventType[] = [];
   @Input() calendarEventViewTemplate: TemplateRef<any>;
   @Control(Calendar) form: FormGroup;
+  @Output() changeDayType = new EventEmitter<{ date: Date; dayTypeId: number }>();
+  @Output() saveEvent = new EventEmitter<CalendarEvent>();
 
   constructor() {}
 
-  get calendarDays(): CalendarDay[] {
-    return this.daysInMonth.map(date =>
-      build(CalendarDay, {
-        date,
-        events: this.calendarEvents.filter(
-          event =>
-            DateHelper.IsBetween(date, event.startTime, event.endTime) ||
-            DateHelper.IsSameDay(date, event.startTime)
-        ),
-        isActive: DateHelper.IsSameDay(date, this.activeDate)
-      })
-    );
-  }
-
-  get calendarEvents(): CalendarEvent[] {
-    return this.calendar.events;
-  }
-
-  get daysInMonth(): Date[] {
-    return DateHelper.DaysInMonth(this.activeDate);
-  }
-
   ngOnInit() {}
+
+  onChangeDayType(date: Date, e: CalendarEventType) {
+    this.changeDayType.emit({ date, dayTypeId: e.id });
+  }
 }

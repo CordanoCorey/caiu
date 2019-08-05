@@ -1,0 +1,21 @@
+<div class="calendar-day-events scrollable">
+  <div
+    class="hours"
+    [style.width.px]="elementWidth"
+    [style.background-color]="dayTypeColor"
+  >
+    <h4 *ngFor="let hour of hours" [style.width.px]="hourWidth">{{ hour }}</h4>
+  </div>
+  <div class="events-list">
+    <span
+      class="inline-event"
+      *ngFor="let event of calendarEvents; let i = index"
+      [style.background]="event.color"
+      [style.top.px]="styles[i].top"
+      [style.left.px]="styles[i].left"
+      [style.height.px]="styles[i].height"
+      [style.width.px]="styles[i].width"
+      >{{ event.name }}</span
+    >
+  </div>
+</div>

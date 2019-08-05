@@ -1,14 +1,14 @@
 {
   "name": "@caiu/grid",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "@angular/common": "^7.1.0",
-    "@angular/core": "7.1.0",
-    "@angular/cdk": "^7.1.0",
-    "@angular/flex-layout": "^7.0.0-beta.19",
-    "@caiu/library": "^7.0.0",
+    "@angular/common": "^8.0.2",
+    "@angular/core": "^8.0.2",
+    "@angular/cdk": "^8.0.1",
+    "@angular/flex-layout": "^8.0.0-beta.26",
+    "@caiu/library": "^8.0.0",
     "@progress/kendo-angular-buttons": "^4.3.2",
     "@progress/kendo-angular-dateinputs": "^3.5.1",
     "@progress/kendo-angular-dropdowns": "^3.4.0",
@@ -21,6 +21,6 @@
     "@progress/kendo-drawing": "^1.5.7"
   },
   "dependencies": {
-    "@caiu/library": "^7.0.0"
+    "@caiu/library": "^8.0.0"
   }
 }
