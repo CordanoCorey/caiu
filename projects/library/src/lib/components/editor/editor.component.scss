@@ -1,25 +1,35 @@
-.mat-card {
+@import '~@angular/material/_theming';
+
+:host {
+  display: block;
+}
+
+.editor {
+  position: relative;
   display: block;
   clear: both;
   padding: 1px 3px 1px 1px;
+  padding: 0;
   border-radius: 2px;
-}
 
-#expand-editor {
-  font-size: 36px;
-  position: absolute;
-  right: 3px;
-  top: 3px;
-  color: #fff;
-  text-align: center;
-  min-width: 36px;
-  line-height: 24px;
-  padding: 2px;
-}
+  #expand-editor {
+    @include mat-elevation(4);
+    font-size: 36px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    color: #fff;
+    text-align: center;
+    min-width: 36px;
+    line-height: 24px;
+    padding: 3px 2px;
+    z-index: 1;
 
-.mat-icon {
-  font-size: 36px;
-  position: relative;
-  left: -6px;
-  top: -7px;
+    .mat-icon {
+      font-size: 36px;
+      position: relative;
+      left: -6px;
+      top: -7px;
+    }
+  }
 }

@@ -1,58 +1,74 @@
+@import '~@angular/material/_theming';
+
 #editor-window {
   #expanded-editor {
     margin: 0;
     padding: 0vh;
-    height: 60vh;
+    height: 55vh;
+    padding-top: 5vh;
   }
+
   .mat-toolbar {
-    margin: -24px -24px 0 -24px;
-    width: calc(100% + 48px);
+    margin: 0;
+    width: 100%;
     min-height: 32px !important;
+
     .mat-toolbar-row {
       height: 48px;
     }
+
     .dialog-title {
       position: relative;
       height: calc(100% - 8px);
       width: 100%;
       margin-top: 8px;
-      button {
-        cursor: pointer;
-        position: absolute;
-        right: 0;
-        top: -5px;
-        border-radius: 100%;
-        height: 42px;
-        width: 42px;
-        min-width: 36px;
-      }
-      button:hover {
-        font-weight: bold;
-        mat-icon {
-          font-weight: bold;
-        }
-      }
+    }
+
+    button {
+      @include mat-elevation(8);
+      cursor: pointer;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      border-radius: 100%;
+      height: 42px;
+      width: 42px;
+      min-width: 36px;
+    }
+
+    button:hover {
+      font-weight: bold;
+
       mat-icon {
-        position: absolute;
-        top: 9px;
-        right: 8px;
-        z-index: 1;
+        font-weight: bold;
       }
     }
+
+    mat-icon {
+      position: absolute;
+      top: 9px;
+      right: 8px;
+      z-index: 1;
+    }
   }
+
   .mat-toolbar-row {
     height: 48px;
   }
+
   .mat-dialog-actions {
     margin-left: -24px;
     margin-right: -24px;
     color: #fff;
     padding: 0;
+
     button {
       padding: 12px 0;
     }
+
     .mat-accent {
       color: #fff !important;
     }
   }
+
 }

@@ -1,13 +1,4 @@
-import {
-  Component,
-  Output,
-  EventEmitter,
-  forwardRef,
-  Input,
-  OnInit,
-  ViewEncapsulation,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, Output, EventEmitter, forwardRef, Input, OnInit, ViewEncapsulation, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
@@ -27,27 +18,22 @@ export const FILE_UPLOAD_ACCESSOR: any = {
   providers: [FILE_UPLOAD_ACCESSOR],
   encapsulation: ViewEncapsulation.None
 })
-export class FileUploadComponent implements OnInit, ControlValueAccessor {
+export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() id = `files-${guid()}`;
   @Input() multiple = false;
   @Input() ordered = true;
   @Input() preview = true;
   @Output() upload = new EventEmitter<FileUpload | FileUpload[]>();
+  @Output() delete = new EventEmitter<FileUpload>();
   private onModelChange: Function;
   private onTouch: Function;
-  changes$: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>(
-    new FileUpload()
-  );
+  changes$: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>(new FileUpload());
+  inDropZone = false;
   value: FileUpload[];
   focused: FileUpload[];
-  ordering: Ordering<FileUpload> = new Ordering<FileUpload>(
-    [],
-    FileUpload,
-    'order',
-    'name'
-  );
+  ordering: Ordering<FileUpload> = new Ordering<FileUpload>([], FileUpload, 'order', 'name');
 
-  constructor(private ref: ChangeDetectorRef) {}
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   get activeFile(): FileUpload {
     return this.hasUploads ? this.uploads[0] : new FileUpload();
@@ -80,6 +66,10 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
     });
   }
 
+  ngOnDestroy() {
+    this.writeValue([]);
+  }
+
   add(f: FileUpload) {
     if (!this.multiple && this.hasUploads) {
       this.remove();
@@ -107,7 +97,12 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
 
   remove(f?: FileUpload) {
     const removeFile = f || this.activeFile;
+    this.delete.emit(removeFile);
     this.uploads = this.ordering.removeItem(removeFile);
+  }
+
+  reorder(e: FileUpload[]) {
+    this.uploads = e;
   }
 
   update(f: FileUpload) {
@@ -115,10 +110,10 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
     if (index === -1) {
       this.add(f);
     } else {
-      this.uploads = this.uploads.map((x, i) =>
-        i === index ? build(FileUpload, f, { order: x.order }) : x
-      );
-      this.ref.detectChanges();
+      setTimeout(() => {
+        this.uploads = this.uploads.map((x, i) => (i === index ? build(FileUpload, f, { order: x.order }) : x));
+        // this.changeDetectorRef.detectChanges();
+      }, 0);
     }
   }
 
@@ -161,6 +156,35 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
     this.focused = [];
   }
 
+  onDragEnter(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.inDropZone = true;
+  }
+
+  onDragLeave(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.inDropZone = false;
+  }
+
+  onDragOver(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.inDropZone = true;
+  }
+
+  onDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.inDropZone = false;
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    Array.from(files).forEach((file: File) => {
+      this.setupReader(file);
+    });
+  }
+
   onFocus(value: FileUpload[]) {
     this.focused = value;
     this.onTouch();
@@ -172,7 +196,6 @@ export class FileUploadComponent implements OnInit, ControlValueAccessor {
   }
 
   setupReader(file: File) {
-    console.dir(file);
     const reader = new FileReader();
     const changes$ = this.changes$;
     const upload = build(FileUpload, {

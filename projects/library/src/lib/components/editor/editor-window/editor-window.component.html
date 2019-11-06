@@ -2,14 +2,14 @@
   <mat-toolbar color="primary" mat-dialog-title>
     <span class="dialog-title">
       {{ title }}
-      <button mat-button [mat-dialog-close]="null">
-        <mat-icon>close</mat-icon>
-      </button>
     </span>
+    <button mat-button [mat-dialog-close]="null">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-toolbar>
   <mat-dialog-content>
     <div id="expanded-editor">
-      <iu-editor [value]="data" [expanded]="true" [height]="380" (changes)="update($event)"></iu-editor>
+      <iu-editor [expanded]="true" [initialValue]="data" (onChange)="update($event)"></iu-editor>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>

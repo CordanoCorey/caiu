@@ -1,0 +1,46 @@
+<form [formGroup]="form" class="time-control">
+  <h3 class="time-text">{{ label }}</h3>
+  <mat-form-field class="date">
+    <input
+      matInput
+      [matDatepicker]="picker"
+      formControlName="date"
+      placeholder="Choose a date"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="hour" placeholder="Hour">
+      <mat-option *ngFor="let hour of hours" [value]="hour">
+        {{ hour }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="minutes" placeholder="Minute">
+      <mat-option [value]="0">00</mat-option>
+      <mat-option [value]="1">01</mat-option>
+      <mat-option [value]="2">02</mat-option>
+      <mat-option [value]="3">03</mat-option>
+      <mat-option [value]="4">04</mat-option>
+      <mat-option [value]="5">05</mat-option>
+      <mat-option [value]="6">06</mat-option>
+      <mat-option [value]="7">07</mat-option>
+      <mat-option [value]="8">08</mat-option>
+      <mat-option [value]="9">09</mat-option>
+      <mat-option *ngFor="let minute of minutes" [value]="minute">
+        {{ minute }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="meridian" placeholder="AM/PM">
+      <mat-option value="AM">AM</mat-option>
+      <mat-option value="PM">PM</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

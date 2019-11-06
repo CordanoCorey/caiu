@@ -1,9 +1,6 @@
 <div class="calendar-key">
-  <h2>Calendar Event Types</h2>
-  <h3
-    *ngFor="let type of calendarEventTypes"
-    [style.background-color]="type.color"
-  >
+  <h2>{{ heading }}</h2>
+  <h3 *ngFor="let type of calendarEventTypes" [style.background-color]="type.color">
     {{ type.name }}
   </h3>
 </div>

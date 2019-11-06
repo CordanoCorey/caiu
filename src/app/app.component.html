@@ -1,95 +1,41 @@
 <mat-toolbar color="primary">
-  <button
-    (click)="activeDemo = 'wallpaper'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'wallpaper'"
-  >
+  <button (click)="activeDemo = 'wallpaper'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'wallpaper'">
     Wallpaper
   </button>
   <!-- <button (click)="activeDemo='collage'" mat-button class="demo-link">Collage</button> -->
-  <button
-    (click)="activeDemo = 'date'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'date'"
-  >
+  <button (click)="activeDemo = 'date'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'date'">
     Date
   </button>
-  <button
-    (click)="activeDemo = 'address-manager'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'address-manager'"
-  >
+  <button (click)="activeDemo = 'address-manager'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'address-manager'">
     Address Manager
   </button>
-  <button
-    (click)="activeDemo = 'scheduler'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'scheduler'"
-  >
+  <button (click)="activeDemo = 'scheduler'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'scheduler'">
     Scheduler
   </button>
-  <button
-    (click)="activeDemo = 'calendar'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'calendar'"
-  >
+  <button (click)="activeDemo = 'calendar'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'calendar'">
     Calendar
   </button>
-  <button
-    (click)="activeDemo = 'file-upload'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'file-upload'"
-  >
+  <button (click)="activeDemo = 'file-upload'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'file-upload'">
     File Upload
   </button>
-  <button
-    (click)="activeDemo = 'time'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'time'"
-  >
+  <button (click)="activeDemo = 'time'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'time'">
     Time
   </button>
-  <button
-    (click)="activeDemo = 'audit'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'audit'"
-  >
+  <button (click)="activeDemo = 'audit'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'audit'">
     Audit Info
   </button>
-  <button
-    (click)="activeDemo = 'accordion'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'accordion'"
-  >
+  <button (click)="activeDemo = 'accordion'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'accordion'">
     Accordion
   </button>
-  <button
-    (click)="activeDemo = 'dialog'"
-    mat-button
-    class="demo-link"
-    [class.active-demo]="activeDemo === 'dialog'"
-  >
+  <button (click)="activeDemo = 'dialog'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'dialog'">
     Dialog
+  </button>
+  <button (click)="activeDemo = 'editor'" mat-button class="demo-link" [class.active-demo]="activeDemo === 'editor'">
+    Editor
   </button>
 </mat-toolbar>
 
-<iu-wallpaper
-  *ngIf="activeDemo === 'wallpaper'"
-  [images]="images"
-  [offsetTop]="64"
-  [offsetLeft]="0"
-  [style.height.px]="windowHeight"
-  [style.width.px]="windowWidth"
-></iu-wallpaper>
+<iu-wallpaper *ngIf="activeDemo === 'wallpaper'" [images]="images" [offsetTop]="64" [offsetLeft]="0" [style.height.px]="windowHeight" [style.width.px]="windowWidth"></iu-wallpaper>
 
 <div *ngIf="activeDemo === 'collage'" class="example">
   Collage
@@ -97,27 +43,15 @@
 <form>
   <div *ngIf="activeDemo === 'date'" class="example">
     <iu-daterange [debug]="true"></iu-daterange>
-    <iu-daterange
-      startLabel="Service Start Date"
-      endLabel="Service End Date"
-      [debug]="true"
-    ></iu-daterange>
+    <iu-daterange startLabel="Service Start Date" endLabel="Service End Date" [debug]="true"></iu-daterange>
   </div>
   <div *ngIf="activeDemo === 'time'" class="example">
-    <iu-timer
-      [countUp]="false"
-      [countDown]="true"
-      [countdownFrom]="countdownFrom"
-      (timesUp)="onTimesUp()"
-    ></iu-timer>
-    <iu-timer
-      [countUp]="true"
-      [countDown]="true"
-      [millisecondsAlways]="true"
-      [countdownFrom]="countdownFrom"
-    >
-    </iu-timer>
-    {{ timeAgoTest }}
+    <!-- <iu-timer [countUp]="false" [countDown]="true" [countdownFrom]="countdownFrom" (timesUp)="onTimesUp()"></iu-timer>
+    <iu-timer [countUp]="true" [countDown]="true" [millisecondsAlways]="true" [countdownFrom]="countdownFrom"> </iu-timer>
+    {{ timeAgoTest }} -->
+    <iu-datetime-control></iu-datetime-control>
+    <iu-time-control></iu-time-control>
+    <iu-time-control [isDisabled]="true"></iu-time-control>
   </div>
   <div *ngIf="activeDemo === 'address-manager'" class="example">
     <iu-address
@@ -128,19 +62,13 @@
       (delete)="logEvent($event)"
       (update)="logEvent($event)"
     ></iu-address>
-    <iu-address
-      [addresses]="addresses"
-      [requireEffectiveDate]="true"
-    ></iu-address>
-  </div>
-  <div *ngIf="activeDemo === 'file-upload'" class="example">
-    <iu-file-upload (upload)="onUpload($event)"></iu-file-upload>
-    <iu-file-upload
-      [multiple]="true"
-      (upload)="onUpload($event)"
-    ></iu-file-upload>
+    <iu-address [addresses]="addresses" [requireEffectiveDate]="true"></iu-address>
   </div>
 </form>
+
+<div *ngIf="activeDemo === 'file-upload'" class="example">
+  <docs-file-upload-demo></docs-file-upload-demo>
+</div>
 
 <div *ngIf="activeDemo === 'scheduler'" class="example">
   <iu-scheduler
@@ -156,11 +84,7 @@
     (deleteEvent)="schedulerTest($event)"
     (changeCalendarId)="onChangeCalendarId($event)"
   >
-    <ng-template
-      let-onAddCalendar="onAddCalendar"
-      let-defaultView="defaultView"
-      #actionsTemplate
-    >
+    <ng-template let-onAddCalendar="onAddCalendar" let-defaultView="defaultView" #actionsTemplate>
       <div class="actions">
         <button mat-raised-button color="primary" (click)="onAddCalendar()">
           Add Calendar
@@ -178,19 +102,10 @@
       <button mat-button color="primary" *ngFor="let calendar of calendars"
         (click)="changeCalendar(calendar.calendarId)">{{ calendar.calendarName }}</button>
     </ng-template> -->
-    <ng-template
-      let-day="day"
-      let-events="events"
-      let-openDialog="openDialog"
-      #listItemTemplate
-    >
+    <ng-template let-day="day" let-events="events" let-openDialog="openDialog" #listItemTemplate>
       <div class="calendar-day">
         <div>{{ day | json }}</div>
-        <div
-          class="calendar-event"
-          style="cursor: pointer;"
-          *ngFor="let e of events"
-        >
+        <div class="calendar-event" style="cursor: pointer;" *ngFor="let e of events">
           <h4>{{ e.eventName }}</h4>
           <p>{{ e.description }}</p>
         </div>
@@ -203,16 +118,9 @@
   <iu-audit-fields></iu-audit-fields>
   <iu-audit-history-link [data]="auditHistoryData"></iu-audit-history-link>
 
-  <iu-audit-history-link
-    placeholderText="View Dynamic Audit History"
-    requestUrl="posts"
-  ></iu-audit-history-link>
+  <iu-audit-history-link placeholderText="View Dynamic Audit History" requestUrl="posts"></iu-audit-history-link>
 
-  <iu-audit-history-link
-    placeholderText="View Mapped Audit History"
-    requestUrl="posts"
-    [mapper]="auditHistoryMapper"
-  ></iu-audit-history-link>
+  <iu-audit-history-link placeholderText="View Mapped Audit History" requestUrl="posts" [mapper]="auditHistoryMapper"></iu-audit-history-link>
 </div>
 
 <div *ngIf="activeDemo === 'accordion'" class="example">
@@ -228,6 +136,10 @@
 
 <div *ngIf="activeDemo === 'calendar'" class="example">
   <docs-calendar-demo></docs-calendar-demo>
+</div>
+
+<div *ngIf="activeDemo === 'editor'" class="example">
+  <docs-editor-demo></docs-editor-demo>
 </div>
 
 <div *ngIf="activeDemo === 'dialog'" class="example">

@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy
-} from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { CalendarEventType } from '../calendar.model';
 
@@ -15,6 +10,7 @@ import { CalendarEventType } from '../calendar.model';
 })
 export class CalendarKeyComponent implements OnInit {
   @Input() calendarEventTypes: CalendarEventType[] = [];
+  @Input() heading = '';
 
   constructor() {}
 

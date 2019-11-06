@@ -7,7 +7,7 @@ export class TreeItem<T> {
     order = 0;
     parentId = 0;
     treeId = 0;
-    index = 0;
+    index = 0; // overall order within the flattened tree
 
     static Build<T>(item: T): TreeItem<T> {
         return <TreeItem<T>>{
@@ -58,7 +58,7 @@ export class Tree<T> {
             .reduce((acc: TreeItem<T>[], treeItem: TreeItem<T>, index: number) => {
                 const item = treeItem.item;
                 const parent = treeItem.parent;
-                return [...acc, <TreeItem<T>>Object.assign(new TreeItem<T>(item, parent), treeItem, { index: index + 1 })];
+                return [...acc, <TreeItem<T>>Object.assign(new TreeItem<T>(item, parent), treeItem, { index })];
             }, []);
         return new Tree<T>(orderedItems, ctor);
     }

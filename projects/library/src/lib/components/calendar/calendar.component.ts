@@ -12,6 +12,7 @@ import { DateHelper } from '../../shared/date';
 import { CalendarFormComponent } from './calendar-form/calendar-form.component';
 import { build, inArray, toArray } from '../../shared/utils';
 import { COLORS } from '../../shared/lookup';
+import { TypeConstructor } from '../../shared/models';
 
 @Component({
   selector: 'iu-calendar',
@@ -44,14 +45,20 @@ import { COLORS } from '../../shared/lookup';
   ]
 })
 export class CalendarComponent extends DumbComponent implements OnInit {
-  @Input() activeDate: Date = new Date();
   @Input() allDayDefault = false;
   @Input() calendar = new Calendar();
   @Input() calendarView: 'DAYS';
+  @Input() dayCtor: TypeConstructor<any>;
+  @Input() defaultInactiveTypeId = 0;
   @Input() defaultWeekdayTypeId = 0;
   @Input() defaultWeekendTypeId = 0;
+  @Input() keyHeading = 'Calendar Event Types';
   @Input() showActions = false;
+  @Input() showKey = true;
+  @Input() startDate: Date;
+  @Input() endDate: Date;
   @Output() addEvent = new EventEmitter<CalendarEvent>();
+  @Output() changeActiveDate = new EventEmitter<Date>();
   @Output() changeDayType = new EventEmitter<{ date: Date; dayTypeId: number }>();
   @Output() deleteEvent = new EventEmitter<CalendarEvent>();
   @Output() updateCalendar = new EventEmitter<Calendar>();
@@ -80,6 +87,8 @@ export class CalendarComponent extends DumbComponent implements OnInit {
   activeDay: CalendarDay;
   fileUrl: SafeUrl = '';
   now = new Date();
+  _activeDate: Date = new Date();
+  _calendarDays: CalendarDay[];
   _calendarDayTypes: LookupValue[] = [];
   _calendarEventTypes: CalendarEventType[] = [];
   // dayTypes = [{ id: 1, name: '1' }, { id: 2, name: '2' }];
@@ -88,10 +97,20 @@ export class CalendarComponent extends DumbComponent implements OnInit {
   }
 
   @Input()
+  set activeDate(value: Date) {
+    this._activeDate = value;
+    this.changeActiveDate.emit(value);
+  }
+
+  get activeDate(): Date {
+    return this._activeDate;
+  }
+
+  @Input()
   set calendarEventTypes(value: CalendarEventType[]) {
     const colors = [];
     this._calendarEventTypes = toArray(value).map(x => {
-      let color = null;
+      let color = x.color;
       while (!color) {
         const randomColor = COLORS[Math.floor(Math.random() * COLORS.length)].name;
         color = inArray(colors, randomColor) ? null : randomColor;
@@ -117,21 +136,54 @@ export class CalendarComponent extends DumbComponent implements OnInit {
     return [build(LookupValue, { id: 0, name: '' }), ...types];
   }
 
+  @Input()
+  set calendarDays(value: CalendarDay[]) {
+    this._calendarDays = value;
+  }
+
   get calendarDays(): CalendarDay[] {
-    return this.daysInMonth.map(date => {
-      const events = this.calendarEvents
-        .filter(event => DateHelper.IsBetween(date, event.startTime, event.endTime) || DateHelper.IsSameDay(date, event.startTime))
-        .map(event => build(CalendarEvent, event, {}));
-      const eventTypeId =
-        build(CalendarEvent, events.find(y => y.eventType.allDay)).eventTypeId || (DateHelper.IsWeekend(date) ? this.defaultWeekendTypeId : this.defaultWeekdayTypeId);
-      const dayType = build(CalendarEventType, this.calendarEventTypes.find(x => x.id === eventTypeId));
-      return build(CalendarDay, {
-        date,
-        events,
-        dayType,
-        isActive: DateHelper.IsSameDay(date, this.activeDate)
-      });
-    });
+    const d =
+      this._calendarDays && Array.isArray(this._calendarDays)
+        ? DateHelper.DaysInMonth(this.activeDate).map(date => {
+            const day = build(this.ctor, this._calendarDays.find(x => DateHelper.IsSameDay(date, x.date)));
+            const dayType = build(
+              CalendarEventType,
+              this.calendarEventTypes.find(
+                x =>
+                  x.id ===
+                  (day && day.dayType
+                    ? day.dayType.id
+                    : DateHelper.IsBetween(date, this.startDate, this.endDate)
+                    ? DateHelper.IsWeekend(date)
+                      ? this.defaultWeekendTypeId
+                      : this.defaultWeekdayTypeId
+                    : this.defaultInactiveTypeId)
+              )
+            );
+            return build(this.ctor, day, {
+              date,
+              dayType,
+              isActive: DateHelper.IsSameDay(date, this.activeDate),
+              color: day.dayType.color || build(CalendarEventType, this.calendarEventTypes.find(y => y.id === dayType.id)).color
+            });
+          })
+        : DateHelper.DaysInMonth(this.activeDate).map(date => {
+            const events = this.calendarEvents
+              .filter(event => DateHelper.IsBetween(date, event.startTime, event.endTime) || DateHelper.IsSameDay(date, event.startTime))
+              .map(event => build(CalendarEvent, event, {}));
+            const eventTypeId =
+              build(CalendarEvent, events.find(y => y.eventType.allDay)).eventTypeId || (DateHelper.IsWeekend(date) ? this.defaultWeekendTypeId : this.defaultWeekdayTypeId);
+            const dayType = build(CalendarEventType, this.calendarEventTypes.find(x => x.id === eventTypeId));
+            return build(this.ctor, {
+              date,
+              events,
+              dayType,
+              isActive: DateHelper.IsSameDay(date, this.activeDate),
+              color: dayType.color || build(CalendarEventType, this.calendarEventTypes.find(y => y.id === dayType.id)).color
+            });
+          });
+    // console.dir(d);
+    return d;
   }
 
   get calendarEvents(): CalendarEvent[] {
@@ -143,12 +195,16 @@ export class CalendarComponent extends DumbComponent implements OnInit {
     );
   }
 
+  get ctor(): TypeConstructor<any> {
+    return this.dayCtor ? this.dayCtor : CalendarDay;
+  }
+
   get currentYear(): number {
     return DateHelper.GetYear(this.activeDate);
   }
 
-  get daysInMonth(): Date[] {
-    return DateHelper.DaysInMonth(this.activeDate);
+  get minWidth(): number {
+    return this.showKey ? 960 : 720;
   }
 
   get monthName(): string {
@@ -169,6 +225,10 @@ export class CalendarComponent extends DumbComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  ngOnChanges(changes) {
+    // console.dir(changes);
+  }
 
   changeTab(e: number) {
     switch (e) {

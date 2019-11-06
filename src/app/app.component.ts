@@ -1,22 +1,14 @@
-import {
-  Component,
-  ViewEncapsulation,
-  HostListener,
-  ViewChild,
-  OnInit,
-  Renderer2
-} from '@angular/core';
+import { Component, ViewEncapsulation, HostListener, ViewChild, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
 import {
   Control,
-  FileUpload,
   DateHelper,
   build,
   Address,
   Image,
-  Time,
+  Timer,
   TimerComponent,
   LookupValue,
   SchedulerCalendar,
@@ -43,7 +35,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   @ViewChild(SchedulerComponent, { static: true })
   schedulerCmpt: SchedulerComponent;
   @ViewChild(TimerComponent, { static: true }) timer: TimerComponent;
-  activeDemo = 'calendar';
+  activeDemo = 'time';
   addresses = [
     build(Address, {
       id: 1,
@@ -253,7 +245,7 @@ export class AppComponent extends SmartComponent implements OnInit {
       })
     })
   ];
-  countdownFrom = build(Time, {
+  countdownFrom = build(Timer, {
     minutes: 0,
     seconds: 10
   });
@@ -287,11 +279,7 @@ export class AppComponent extends SmartComponent implements OnInit {
   opened = true;
   timeAgoTest = DateHelper.TimeAgo(new Date('7/8/2018'));
 
-  constructor(
-    public store: Store<any>,
-    private renderer: Renderer2,
-    public dialog: MatDialog
-  ) {
+  constructor(public store: Store<any>, private renderer: Renderer2, public dialog: MatDialog) {
     super(store);
   }
 
@@ -332,10 +320,7 @@ export class AppComponent extends SmartComponent implements OnInit {
     getContainerElements(container);
     // getMediaQueries();
 
-    const html =
-      '<html><head></head><body style="margin: 0 auto;"> ' +
-      container.outerHTML.replace(/\s+/g, ' ').trim() +
-      ' </body></html>';
+    const html = '<html><head></head><body style="margin: 0 auto;"> ' + container.outerHTML.replace(/\s+/g, ' ').trim() + ' </body></html>';
     const css = styleText /* + ' ' + mediaText */;
     /* const pdfStrings = {
       html: '<html><head></head><body style="margin: 0 auto;"> ' +
@@ -399,13 +384,7 @@ export class AppComponent extends SmartComponent implements OnInit {
                 slice(y.cssRules).forEach(z => {
                   mediaStyles = mediaStyles + ' ' + z.cssText;
                 });
-                mediaText =
-                  mediaText +
-                  ' <style media="' +
-                  y.conditionText +
-                  '"> ' +
-                  mediaStyles +
-                  ' </style> ';
+                mediaText = mediaText + ' <style media="' + y.conditionText + '"> ' + mediaStyles + ' </style> ';
               }
             }
           });
@@ -431,33 +410,17 @@ export class AppComponent extends SmartComponent implements OnInit {
     this.timer.startAt(this.countdownFrom);
   }
 
-  onUpload(e: FileUpload[]) {
-    console.dir(e);
-  }
-
   @HostListener('window:load', ['$event'])
   onLoad(e: any) {
-    this.windowHeight =
-      e && e.currentTarget && e.currentTarget.innerHeight
-        ? e.currentTarget.innerHeight
-        : 0;
-    this.windowWidth =
-      e && e.currentTarget && e.currentTarget.innerWidth
-        ? e.currentTarget.innerWidth
-        : 0;
+    this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
     // console.log('\n\nwindow:load', this.windowWidth, this.windowHeight);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(e: any) {
-    this.windowHeight =
-      e && e.currentTarget && e.currentTarget.innerHeight
-        ? e.currentTarget.innerHeight
-        : 0;
-    this.windowWidth =
-      e && e.currentTarget && e.currentTarget.innerWidth
-        ? e.currentTarget.innerWidth
-        : 0;
+    this.windowHeight = e && e.currentTarget && e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    this.windowWidth = e && e.currentTarget && e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
     // console.log('\n\nwindow:resize', this.windowWidth, this.windowHeight);
   }
 

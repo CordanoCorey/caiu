@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule, MatButtonModule, MatNativeDateModule, MatSidenavModule } from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,12 +40,9 @@ import { PrintComponent } from './print/print.component';
     MatSelectModule,
     MatTooltipModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  entryComponents: [
-    EventCreatorDialogComponent,
-    CalCreatorDialogComponent,
-  ],
+  entryComponents: [EventCreatorDialogComponent, CalCreatorDialogComponent],
   declarations: [
     SchedulerComponent,
     CalendarViewComponent,
@@ -54,18 +51,9 @@ import { PrintComponent } from './print/print.component';
     DayComponent,
     ListViewComponent,
     CalCreatorDialogComponent,
-    PrintComponent,
+    PrintComponent
   ],
-  exports: [
-    SchedulerComponent,
-    CalendarViewComponent,
-    EventCreatorDialogComponent,
-    EventComponent,
-    DayComponent,
-    ListViewComponent,
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA,
-  ],
+  exports: [SchedulerComponent, CalendarViewComponent, EventCreatorDialogComponent, EventComponent, DayComponent, ListViewComponent, PrintComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SchedulerModule { }
+export class SchedulerModule {}

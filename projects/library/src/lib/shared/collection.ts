@@ -8,11 +8,7 @@ export class Collection<T> {
   _ctor: TypeConstructor<T>;
   _items: Dictionary<T> = {};
 
-  static AddItem<T>(
-    state: Dictionary<T>,
-    key: number | string,
-    item: T
-  ): Dictionary<T> {
+  static AddItem<T>(state: Dictionary<T>, key: number | string, item: T): Dictionary<T> {
     const newState: Dictionary<T> = {};
     Object.keys(state).forEach(k => {
       newState[k] = state[k];
@@ -53,23 +49,14 @@ export class Collection<T> {
   }
 
   static FilterAnd<T>(item: T, paths: string[]): boolean {
-    return (
-      Array.isArray(item['matches']) &&
-      paths.every(path => inArray(item['matches'], path))
-    );
+    return Array.isArray(item['matches']) && paths.every(path => inArray(item['matches'], path));
   }
 
   static FilterOr<T>(item: T, paths: string[]): boolean {
-    return (
-      Array.isArray(item['matches']) &&
-      paths.some(path => inArray(item['matches'], path))
-    );
+    return Array.isArray(item['matches']) && paths.some(path => inArray(item['matches'], path));
   }
 
-  static RemoveItem<T>(
-    state: Dictionary<T>,
-    key: number | string
-  ): Dictionary<T> {
+  static RemoveItem<T>(state: Dictionary<T>, key: number | string): Dictionary<T> {
     const newState: Dictionary<T> = {};
     Object.keys(state)
       .filter(k => k !== key)
@@ -79,23 +66,11 @@ export class Collection<T> {
     return newState;
   }
 
-  constructor(ctor?: TypeConstructor<T>) {
-    if (ctor) {
-      this.ctor = ctor;
-    }
-  }
+  constructor(public ctor?: TypeConstructor<T>, public findByKey: string = 'id') {}
 
   get active(): T {
     const item = this.items[this.activeId] || <T>{};
     return this.ctor ? build(this.ctor, item) : item;
-  }
-
-  get ctor(): TypeConstructor<T> {
-    return this._ctor;
-  }
-
-  set ctor(value: TypeConstructor<T>) {
-    this._ctor = value;
   }
 
   get count(): number {
@@ -146,15 +121,12 @@ export class Collection<T> {
   }
 
   toArray(): T[] {
-    return Object.keys(this.items).map(
-      (key: number | string) => <T>this.items[key]
-    );
+    return Object.keys(this.items).map((key: number | string) => <T>this.items[key]);
   }
 
-  activate(id: number, key: string = 'id'): Collection<T> {
-    const items = this.items[id]
-      ? this.copyItems()
-      : Object.assign(this.copyItems(), { [id]: { [key]: id } });
+  activate(id: number, key?: string): Collection<T> {
+    const findByKey = key || this.findByKey;
+    const items = this.items[id] ? this.copyItems() : Object.assign(this.copyItems(), { [id]: { [findByKey]: id } });
     return Object.assign(new Collection<T>(), this, { activeId: id, items });
   }
 
@@ -165,47 +137,37 @@ export class Collection<T> {
     });
   }
 
-  addItems(items: T[], key = 'id'): Collection<T> {
+  addItems(items: T[], key: string): Collection<T> {
+    const findByKey = key || this.findByKey;
     const newItems: Dictionary<T> = {};
     this.toArray().forEach(item => {
-      newItems[item[key]] = item;
+      newItems[item[findByKey]] = item;
     });
     items.forEach(item => {
-      const existingItem = newItems[item[key]] ? newItems[item[key]] : <T>{};
+      const existingItem = newItems[item[findByKey]] ? newItems[item[findByKey]] : <T>{};
       const existingMatches = existingItem['matches'] || [];
       const newMatches = item['matches'] || [];
       const matches = arrayUnion(existingMatches, newMatches);
       const newItem = this.buildItem(item, { matches: matches });
-      newItems[item[key]] = this.buildItem(existingItem, newItem);
+      newItems[item[findByKey]] = this.buildItem(existingItem, newItem);
     });
     this.items = newItems;
     return Object.assign(new Collection<T>(), this);
   }
 
-  build(
-    items: Dictionary<T>,
-    ctor?: TypeConstructor<Collection<T>>
-  ): Collection<T> {
-    return ctor
-      ? build(ctor, { items })
-      : <Collection<T>>Object.assign(this.instance, { items });
+  build(items: Dictionary<T>, ctor?: TypeConstructor<Collection<T>>): Collection<T> {
+    return ctor ? build(ctor, { items }) : <Collection<T>>Object.assign(this.instance, { items });
   }
 
   buildItem(existingItem: T, newItem: any, ctor?: TypeConstructor<T>): T {
     const existing = existingItem || {};
-    const item = ctor
-      ? build(ctor, existing, newItem)
-      : this.ctor
-      ? build(this.ctor, existing, newItem)
-      : Object.assign({}, existing, newItem);
+    const item = ctor ? build(ctor, existing, newItem) : this.ctor ? build(this.ctor, existing, newItem) : Object.assign({}, existing, newItem);
     return item;
   }
 
   buildItems(items: T[], ctor?: TypeConstructor<T>): T[] {
     const factory = ctor ? ctor : this.ctor;
-    return items.map(x =>
-      factory ? build(factory, x) : Object.assign(<T>{}, x)
-    );
+    return items.map(x => (factory ? build(factory, x) : Object.assign(<T>{}, x)));
   }
 
   copyItems(): Dictionary<T> {
@@ -238,9 +200,7 @@ export class Collection<T> {
 
   get(id: number | string): T {
     const existing = this.items[id];
-    return this.ctor
-      ? build(this.ctor, existing)
-      : Object.assign(<T>{}, existing);
+    return this.ctor ? build(this.ctor, existing) : Object.assign(<T>{}, existing);
   }
 
   keyExists(key: string): boolean {
@@ -271,9 +231,7 @@ export class Collection<T> {
 
   removeAt(key: number | string): Collection<T> {
     const keys = Object.keys(this.items);
-    const items = Collection.BuildDictionaryFromArray(
-      keys.filter(x => x.toString() !== key.toString()).map(y => this.items[y])
-    );
+    const items = Collection.BuildDictionaryFromArray(keys.filter(x => x.toString() !== key.toString()).map(y => this.items[y]));
     return Object.assign(new Collection<T>(), this, { items });
   }
 
@@ -286,10 +244,11 @@ export class Collection<T> {
     return collection;
   }
 
-  removeItems(filter: (item: T) => boolean, key = 'id') {
+  removeItems(filter: (item: T) => boolean, key: string) {
+    const findByKey = key || this.findByKey;
     const keys = this.toArray()
       .filter(filter)
-      .map(x => x[key]);
+      .map(x => x[findByKey]);
     this.removeKeys(keys);
   }
 
@@ -300,9 +259,7 @@ export class Collection<T> {
   }
 
   replace(itemsArray: T[]): Collection<T> {
-    const items = Collection.BuildDictionaryFromArray(
-      this.buildItems(itemsArray)
-    );
+    const items = Collection.BuildDictionaryFromArray(this.buildItems(itemsArray));
     return Object.assign(new Collection<T>(), this, { items });
   }
 
@@ -318,36 +275,24 @@ export class Collection<T> {
     return Object.assign(new Collection<T>(), this, value);
   }
 
-  update(
-    value: any | any[],
-    ctor?: TypeConstructor<T>,
-    key = 'id'
-  ): Collection<T> {
+  update(value: any | any[], ctor?: TypeConstructor<T>): Collection<T> {
     if (Array.isArray(value)) {
-      return this.updateItems(value, ctor, key);
+      return this.updateItems(value, ctor);
     }
-    return this.updateItem(value, value[key], ctor);
+    return this.updateItem(value, value[this.findByKey], ctor);
   }
 
-  updateItem(
-    item: any,
-    key: number | string,
-    ctor?: TypeConstructor<T>
-  ): Collection<T> {
+  updateItem(item: any, key: number | string, ctor?: TypeConstructor<T>): Collection<T> {
     const items = this.copyItems();
     const updatedItem = this.buildItem(items[key], item, ctor);
     return this.build(Object.assign(items, { [key]: updatedItem }));
   }
 
-  updateItems(
-    items: any[],
-    ctor?: TypeConstructor<T>,
-    key: string = 'id'
-  ): Collection<T> {
+  updateItems(items: any[], ctor?: TypeConstructor<T>): Collection<T> {
     const existingItems = this.copyItems();
     const updatedItems = items.reduce((acc, item) => {
-      const existingItem = acc[item[key]];
-      acc[item[key]] = this.buildItem(existingItem, item, ctor);
+      const existingItem = acc[item[this.findByKey]];
+      acc[item[this.findByKey]] = this.buildItem(existingItem, item, ctor);
       return acc;
     }, existingItems);
     return this.build(updatedItems);

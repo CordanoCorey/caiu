@@ -1,12 +1,6 @@
 import { SimpleChanges } from '@angular/core';
 
-import {
-  Metadata,
-  Dictionary,
-  ColumnMetadata,
-  TypeConstructor,
-  HasMetadata
-} from './models';
+import { Metadata, Dictionary, ColumnMetadata, TypeConstructor, HasMetadata } from './models';
 import { Action } from '../store/models';
 
 /**
@@ -76,18 +70,9 @@ export function build<T>(ctor: TypeConstructor<T>, ...args): T {
   }, instance);
 }
 
-export function buildColumnsFromMetadata(
-  model: any,
-  key: string
-): ColumnMetadata[] {
+export function buildColumnsFromMetadata(model: any, key: string): ColumnMetadata[] {
   const metadata = findMetadataFromInstance(model);
-  const columns = Array.isArray(metadata[key])
-    ? metadata[key]
-    : Array.isArray(model)
-    ? model.length > 0
-      ? Object.keys(model[0])
-      : []
-    : Object.keys(model);
+  const columns = Array.isArray(metadata[key]) ? metadata[key] : Array.isArray(model) ? (model.length > 0 ? Object.keys(model[0]) : []) : Object.keys(model);
   return columns.map((x: string | ColumnMetadata) =>
     typeof x === 'string'
       ? build(ColumnMetadata, {
@@ -95,6 +80,11 @@ export function buildColumnsFromMetadata(
         })
       : build(ColumnMetadata, x)
   );
+}
+
+/** Clamps a number between zero and a maximum. */
+export function clamp(value: number, max: number): number {
+  return Math.max(0, Math.min(max, value));
 }
 
 export function compareDates(a: Date, b: Date) {
@@ -118,11 +108,7 @@ export function compareStrings(a: string, b: string) {
 
 export function distinct(arr: any[], key = ''): any[] {
   return key
-    ? arr.reduce(
-        (acc, x) =>
-          acc.findIndex(y => y[key] === x[key]) === -1 ? [...acc, x] : acc,
-        []
-      )
+    ? arr.reduce((acc, x) => (acc.findIndex(y => y[key] === x[key]) === -1 ? [...acc, x] : acc), [])
     : arr.reduce((acc, x) => (acc.indexOf(x) === -1 ? [...acc, x] : acc), []);
 }
 
@@ -155,18 +141,13 @@ export function equals(x1: any, x2: any): boolean {
   }
 
   // account for non-matching null and undefined values
-  if (
-    ((x1 === null || x1 === undefined) && x2 !== null && x2 !== undefined) ||
-    ((x2 === null || x2 === undefined) && x1 !== null && x1 !== undefined)
-  ) {
+  if (((x1 === null || x1 === undefined) && x2 !== null && x2 !== undefined) || ((x2 === null || x2 === undefined) && x1 !== null && x1 !== undefined)) {
     return false;
   }
 
   // compare two arrays
   if (Array.isArray(x1) && Array.isArray(x2) && x1.length === x2.length) {
-    return x1.findIndex((x, index) => !equals(x, x2[index])) === -1
-      ? true
-      : false;
+    return x1.findIndex((x, index) => !equals(x, x2[index])) === -1 ? true : false;
   }
 
   // compare two objects
@@ -175,8 +156,7 @@ export function equals(x1: any, x2: any): boolean {
     typeof x1 === 'object' &&
     typeof x2 === 'object' &&
     Object.keys(x1).length === Object.keys(x2).length &&
-    Object.keys(x2).length ===
-      arrayUnion(Object.keys(x1), Object.keys(x2)).length
+    Object.keys(x2).length === arrayUnion(Object.keys(x1), Object.keys(x2)).length
   ) {
     return Object.keys(x1).findIndex(key => !equals(x1[key], x2[key])) === -1;
   }
@@ -230,10 +210,7 @@ export function findMetadataFromInstance(model: any): Metadata {
   if (!model) {
     return null;
   }
-  const instance: HasMetadata =
-    Array.isArray(model) && model.length > 0
-      ? <HasMetadata>model[0]
-      : <HasMetadata>model;
+  const instance: HasMetadata = Array.isArray(model) && model.length > 0 ? <HasMetadata>model[0] : <HasMetadata>model;
   return instance && instance.metadata ? instance.metadata : new Metadata();
 }
 
@@ -260,11 +237,7 @@ export function formatPhoneNumber(number = ''): string {
     return '000-000-0000';
   }
   const l = number.length;
-  return number && (l === 7 || l === 10)
-    ? l === 7
-      ? format7DigitPhoneNumber(number)
-      : format10DigitPhoneNumber(number)
-    : '000-000-0000';
+  return number && (l === 7 || l === 10) ? (l === 7 ? format7DigitPhoneNumber(number) : format10DigitPhoneNumber(number)) : '000-000-0000';
 }
 
 export function format7DigitPhoneNumber(number = '0000000'): string {
@@ -292,20 +265,11 @@ export function getTypeNameForDebugging(type: any): string {
 
 export function getAllProps(obj: any): string[] {
   const mapped =
-    obj['metadata'] &&
-    obj['metadata']['include'] &&
-    Array.isArray(obj['metadata']['include'])
-      ? obj['metadata']['include'].reduce(
-          (acc, key) => Object.assign({}, acc, { [key]: obj[key] }),
-          {}
-        )
+    obj['metadata'] && obj['metadata']['include'] && Array.isArray(obj['metadata']['include'])
+      ? obj['metadata']['include'].reduce((acc, key) => Object.assign({}, acc, { [key]: obj[key] }), {})
       : obj;
 
-  if (
-    obj['metadata'] &&
-    obj['metadata']['exclude'] &&
-    Array.isArray(obj['metadata']['exclude'])
-  ) {
+  if (obj['metadata'] && obj['metadata']['exclude'] && Array.isArray(obj['metadata']['exclude'])) {
     obj['metadata']['exclude'].forEach(key => {
       delete mapped[key];
     });
@@ -316,25 +280,15 @@ export function getAllProps(obj: any): string[] {
 
 export function getGetters(obj: any): string[] {
   return Object.keys(obj.constructor.prototype).filter(name => {
-    return (
-      typeof Object.getOwnPropertyDescriptor(obj.constructor.prototype, name)[
-        'get'
-      ] === 'function'
-    );
+    return typeof Object.getOwnPropertyDescriptor(obj.constructor.prototype, name)['get'] === 'function';
   });
 }
 
 export function getKeyValues(model: any): any {
   const keys = getAllProps(model);
   return model['metadata'] && model['metadata']['include']
-    ? toArray(model['metadata']['include']).reduce(
-        (acc, key) => Object.assign({}, acc, { [key]: model[key] }),
-        {}
-      )
-    : keys.reduce(
-        (acc, key) => Object.assign({}, acc, { [key]: model[key] }),
-        {}
-      );
+    ? toArray(model['metadata']['include']).reduce((acc, key) => Object.assign({}, acc, { [key]: model[key] }), {})
+    : keys.reduce((acc, key) => Object.assign({}, acc, { [key]: model[key] }), {});
 }
 
 export function getRandomInt(max) {
@@ -358,10 +312,7 @@ function getRandomIntInRange(min, max) {
 
 export function getSetters(obj: any): string[] {
   return Object.keys(obj.prototype).filter(name => {
-    return (
-      typeof Object.getOwnPropertyDescriptor(obj.prototype, name)['set'] ===
-      'function'
-    );
+    return typeof Object.getOwnPropertyDescriptor(obj.prototype, name)['set'] === 'function';
   });
 }
 
@@ -388,12 +339,7 @@ export function getStyle(el: Element, styleProp: string): string {
 }
 
 export function getValue(model: any): any {
-  if (
-    model === null ||
-    typeof model === 'string' ||
-    typeof model === 'string' ||
-    model instanceof Date
-  ) {
+  if (model === null || typeof model === 'string' || typeof model === 'string' || model instanceof Date) {
     return model;
   }
   const keys = getAllProps(model);
@@ -422,33 +368,12 @@ export function guid() {
       .toString(16)
       .substring(1);
   }
-  return (
-    s4() +
-    s4() +
-    '-' +
-    s4() +
-    '-' +
-    s4() +
-    '-' +
-    s4() +
-    '-' +
-    s4() +
-    s4() +
-    s4()
-  );
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
-export function hasChanged(
-  changes: SimpleChanges,
-  key: string,
-  props: string[]
-) {
-  const currentValue =
-    changes[key] && changes[key].currentValue ? changes[key].currentValue : {};
-  const previousValue =
-    changes[key] && changes[key].previousValue
-      ? changes[key].previousValue
-      : {};
+export function hasChanged(changes: SimpleChanges, key: string, props: string[]) {
+  const currentValue = changes[key] && changes[key].currentValue ? changes[key].currentValue : {};
+  const previousValue = changes[key] && changes[key].previousValue ? changes[key].previousValue : {};
   return props.reduce((acc, prop) => {
     return acc ? true : currentValue[prop] !== previousValue[prop];
   }, false);
@@ -459,9 +384,7 @@ export function hashToArray(hashMap: object): any[] {
 }
 
 export function htmlToString(element): string {
-  return `${htmlElementTag(element)}${htmlElementContents(
-    element
-  )}${htmlElementCloseTag(element)}`;
+  return `${htmlElementTag(element)}${htmlElementContents(element)}${htmlElementCloseTag(element)}`;
 }
 
 export function htmlElementTag(element): string {
@@ -473,10 +396,7 @@ export function htmlElementTag(element): string {
 
 export function htmlElementContents(element): string {
   const children = Array.from(element.children);
-  return `${children.length === 0 ? element.innerText : ''}${children.reduce(
-    (acc, el) => acc + htmlToString(el),
-    ''
-  )}`;
+  return `${children.length === 0 ? element.innerText : ''}${children.reduce((acc, el) => acc + htmlToString(el), '')}`;
 }
 
 export function htmlElementCloseTag(element): string {
@@ -486,40 +406,21 @@ export function htmlElementCloseTag(element): string {
 
 export function htmlStyleElementToString(element): string {
   const computedStyle = window.getComputedStyle(element);
-  return [
-    'background',
-    'border',
-    'bottom',
-    'color',
-    'display',
-    'fontSize',
-    'height',
-    'left',
-    'margin',
-    'overflow',
-    'padding',
-    'position',
-    'right',
-    'top',
-    'width'
-  ].reduce((acc, attr) => {
-    return `${acc}${attr}:${computedStyle[convertDash2Camel(attr)]};`;
-  }, '');
+  return ['background', 'border', 'bottom', 'color', 'display', 'fontSize', 'height', 'left', 'margin', 'overflow', 'padding', 'position', 'right', 'top', 'width'].reduce(
+    (acc, attr) => {
+      return `${acc}${attr}:${computedStyle[convertDash2Camel(attr)]};`;
+    },
+    ''
+  );
 }
 
 export function htmlWrap(html: string, style: string): string {
-  return `<head>${
-    style ? '<style>' + style + '</style>' : ''
-  }</head><body>${html}</body>`;
+  return `<head>${style ? '<style>' + style + '</style>' : ''}</head><body>${html}</body>`;
 }
 
 export function idChanged(changes: SimpleChanges, key: string) {
-  const newId = changes[key].currentValue
-    ? changes[key].currentValue['id'] || 0
-    : 0;
-  const oldId = changes[key].previousValue
-    ? changes[key].previousValue['id'] || 0
-    : 0;
+  const newId = changes[key].currentValue ? changes[key].currentValue['id'] || 0 : 0;
+  const oldId = changes[key].previousValue ? changes[key].previousValue['id'] || 0 : 0;
   return newId !== oldId;
 }
 
@@ -581,9 +482,7 @@ export function isCyclic(obj: any) {
 
 export function isMobile() {
   return (
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    ) ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
     (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(
       navigator.userAgent
     ) ||
@@ -640,6 +539,10 @@ export function removeProps(obj: any): any {
   return obj;
 }
 
+export function roundToDecimalPlace(num: number, decimalPlace: number): number {
+  return Math.round(num * Math.pow(10, decimalPlace)) / Math.pow(10, decimalPlace);
+}
+
 export function serialize(model: any) {
   if (!model) {
     return model;
@@ -650,12 +553,7 @@ export function serialize(model: any) {
   if (model.serialize && typeof model.serialize === 'function') {
     return serialize(model.serialize());
   }
-  if (
-    model === null ||
-    typeof model === 'number' ||
-    typeof model === 'string' ||
-    model instanceof Date
-  ) {
+  if (model === null || typeof model === 'number' || typeof model === 'string' || model instanceof Date) {
     return model;
   }
   const keys = getAllProps(model);
@@ -664,11 +562,7 @@ export function serialize(model: any) {
   }
   return keys.reduce((acc, key) => {
     let val = null;
-    if (
-      model[key] !== null &&
-      typeof model[key] === 'object' &&
-      !(model[key] instanceof Date)
-    ) {
+    if (model[key] !== null && typeof model[key] === 'object' && !(model[key] instanceof Date)) {
       if (model[key].serialize && typeof model[key].serialize === 'function') {
         val = model[key].serialize();
       } else {
@@ -723,9 +617,7 @@ export function str2CharCode(str: string): number {
 }
 
 export function str2Id(str: string): number {
-  const charCodes = str
-    ? str.split('').reduce((acc, x) => `${acc}${str2CharCode(x)}`, '')
-    : '';
+  const charCodes = str ? str.split('').reduce((acc, x) => `${acc}${str2CharCode(x)}`, '') : '';
   return toInt(charCodes);
 }
 
@@ -743,8 +635,7 @@ export function throwException(errorName: string, errorMessage: string) {
     name: errorName,
     level: 'Show Stopper',
     message: errorMessage,
-    htmlMessage:
-      "Error detected. Please contact the <a href='mailto:agendamanager@caiu.com'>system administrator</a>.",
+    htmlMessage: 'Error detected. Please contact the <a href=\'mailto:agendamanager@caiu.com\'>system administrator</a>.',
     toString: function() {
       return errorName + ': ' + errorMessage;
     }
@@ -789,10 +680,7 @@ export function valueChanged(changes: SimpleChanges, key = '') {
   return key
     ? changes[key].currentValue !== changes[key].previousValue
     : Object.keys(changes).reduce((acc, currentKey) => {
-        return acc
-          ? true
-          : changes[currentKey].currentValue !==
-              changes[currentKey].previousValue;
+        return acc ? true : changes[currentKey].currentValue !== changes[currentKey].previousValue;
       }, false);
 }
 

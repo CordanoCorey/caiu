@@ -116,4 +116,5 @@ export class CalendarDay {
   dayType: CalendarEventType = new CalendarEventType();
   events: CalendarEvent[] = [];
   isActive = false;
+  color = '';
 }

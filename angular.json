@@ -24,12 +24,58 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*", "input": "node_modules/tinymce/skins", "output": "/tinymce/skins/" },
+              { "glob": "**/*", "input": "node_modules/tinymce/themes", "output": "/tinymce/themes/" },
+              { "glob": "**/*", "input": "node_modules/tinymce/plugins", "output": "/tinymce/plugins/" }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "styles": ["src/styles.scss"],
+            "scripts": [
+              "node_modules/tinymce/tinymce.js",
+              "node_modules/tinymce/themes/silver/theme.js",
+              "node_modules/tinymce/plugins/advlist/plugin.js",
+              "node_modules/tinymce/plugins/anchor/plugin.js",
+              "node_modules/tinymce/plugins/autolink/plugin.js",
+              "node_modules/tinymce/plugins/autoresize/plugin.js",
+              "node_modules/tinymce/plugins/autosave/plugin.js",
+              "node_modules/tinymce/plugins/bbcode/plugin.js",
+              "node_modules/tinymce/plugins/charmap/plugin.js",
+              "node_modules/tinymce/plugins/code/plugin.js",
+              "node_modules/tinymce/plugins/codesample/plugin.js",
+              "node_modules/tinymce/plugins/colorpicker/plugin.js",
+              "node_modules/tinymce/plugins/contextmenu/plugin.js",
+              "node_modules/tinymce/plugins/directionality/plugin.js",
+              "node_modules/tinymce/plugins/fullpage/plugin.js",
+              "node_modules/tinymce/plugins/fullscreen/plugin.js",
+              "node_modules/tinymce/plugins/help/plugin.js",
+              "node_modules/tinymce/plugins/hr/plugin.js",
+              "node_modules/tinymce/plugins/image/plugin.js",
+              "node_modules/tinymce/plugins/imagetools/plugin.js",
+              "node_modules/tinymce/plugins/importcss/plugin.js",
+              "node_modules/tinymce/plugins/insertdatetime/plugin.js",
+              "node_modules/tinymce/plugins/legacyoutput/plugin.js",
+              "node_modules/tinymce/plugins/link/plugin.js",
+              "node_modules/tinymce/plugins/lists/plugin.js",
+              "node_modules/tinymce/plugins/media/plugin.js",
+              "node_modules/tinymce/plugins/nonbreaking/plugin.js",
+              "node_modules/tinymce/plugins/noneditable/plugin.js",
+              "node_modules/tinymce/plugins/pagebreak/plugin.js",
+              "node_modules/tinymce/plugins/paste/plugin.js",
+              "node_modules/tinymce/plugins/preview/plugin.js",
+              "node_modules/tinymce/plugins/print/plugin.js",
+              "node_modules/tinymce/plugins/save/plugin.js",
+              "node_modules/tinymce/plugins/searchreplace/plugin.js",
+              "node_modules/tinymce/plugins/spellchecker/plugin.js",
+              "node_modules/tinymce/plugins/tabfocus/plugin.js",
+              "node_modules/tinymce/plugins/table/plugin.js",
+              "node_modules/tinymce/plugins/template/plugin.js",
+              "node_modules/tinymce/plugins/textcolor/plugin.js",
+              "node_modules/tinymce/plugins/textpattern/plugin.js",
+              "node_modules/tinymce/plugins/toc/plugin.js",
+              "node_modules/tinymce/plugins/visualblocks/plugin.js",
+              "node_modules/tinymce/plugins/visualchars/plugin.js",
+              "node_modules/tinymce/plugins/wordcount/plugin.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -75,26 +121,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
+            "assets": ["src/favicon.ico", "src/assets"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -119,9 +155,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -160,13 +194,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "projects/library/tsconfig.lib.json",
-              "projects/library/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["projects/library/tsconfig.lib.json", "projects/library/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -200,13 +229,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "projects/grid/tsconfig.lib.json",
-              "projects/grid/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["projects/grid/tsconfig.lib.json", "projects/grid/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }

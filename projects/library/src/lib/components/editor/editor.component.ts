@@ -4,19 +4,27 @@ import {
   EventEmitter,
   Input,
   OnDestroy,
-  OnInit,
   Output,
   AfterViewInit,
   forwardRef,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ElementRef,
+  NgZone,
+  PLATFORM_ID,
+  Inject
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 
 import { EditorWindowComponent } from './editor-window/editor-window.component';
+import { Events } from './Events';
+import * as ScriptLoader from './ScriptLoader';
+import { getTinymce } from './TinyMCE';
+import { bindHandlers, isTextarea, mergePlugins, uuid, noop } from './utils';
 
-declare var tinymce: any;
+const scriptState = ScriptLoader.create();
 
 export const EDITOR_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -31,204 +39,133 @@ export const EDITOR_ACCESSOR: any = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [EDITOR_ACCESSOR]
 })
-export class EditorComponent
-  implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
-  @Input() type: 'basic' | 'full' = 'full';
-  @Input() elementId: string;
-  @Input() expanded = false;
-  @Input() height = 100;
-  @Input() plugins = [
-    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-    'searchreplace wordcount visualblocks visualchars code fullscreen',
-    'insertdatetime media nonbreaking save table contextmenu directionality',
-    'emoticons template paste textcolor colorpicker textpattern imagetools toc help'
-  ];
-  @Input() skinUrl = '/assets/skins/lightgray-gradient';
-  @Input() templates = [
-    { title: 'Test template 1', content: 'Test 1' },
-    { title: 'Test template 2', content: 'Test 2' }
-  ];
-  @Output() changes = new EventEmitter<any>();
-  private onModelChange: Function;
-  private onTouch: Function;
-  _value: string;
-  focused: string;
-  dialogRef: Subscription;
-  editorRef: any;
-
-  constructor(public dialog: MatDialog, private ref: ChangeDetectorRef) {}
-
-  @Input() set value(val: string) {
-    this._value = val;
-    this.setContent(this._value);
-  }
-
-  get value() {
-    return this._value;
-  }
-
-  get basic(): boolean {
-    return this.type === 'basic';
-  }
-
-  get full(): boolean {
-    return this.type === 'full';
-  }
-
-  get config(): any {
-    switch (this.type) {
-      case 'basic':
-        return this.configBasic;
-      case 'full':
-        return this.configFull;
-      default:
-        return this.configFull;
+export class EditorComponent extends Events implements AfterViewInit, ControlValueAccessor, OnDestroy {
+  @Input()
+  set disabled(val) {
+    this._disabled = val;
+    if (this._editor && this._editor.initialized) {
+      this._editor.setMode(val ? 'readonly' : 'design');
     }
   }
 
-  get configBasic(): any {
-    return {
-      height: this.height,
-      selector: '#' + this.elementId,
-      menubar: false,
-      skin_url: this.skinUrl,
-      theme: 'modern',
-      plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table contextmenu paste code'
-      ],
-      toolbar: `undo redo | insert | styleselect | bold italic |
-       alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link`,
-      content_css: [
-        '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-        '//www.tinymce.com/css/codepen.min.css'
-      ],
-      setup: editor => {
-        this.editorRef = editor;
-        editor.on('keyup', e => {
-          e.preventDefault();
-          const content = editor.getContent();
-          this.onKeyup(content);
-        });
-        editor.on('change', e => {
-          e.preventDefault();
-          const content = editor.getContent();
-          this.onChange(content);
-        });
-        editor.on('viewcontentloaded', e => {
-          editor.setContent('');
-        });
-      }
-    };
+  get disabled() {
+    return this._disabled;
   }
 
-  get configFull(): any {
-    return {
-      height: this.height,
-      selector: '#' + this.elementId,
-      plugins: this.plugins,
-      skin_url: this.skinUrl,
-      templates: this.templates,
-      theme: 'modern',
-      toolbar1: `undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent`,
-      toolbar2: 'print preview | forecolor backcolor | link',
-      setup: editor => {
-        this.editorRef = editor;
-        editor.on('keyup', e => {
-          e.preventDefault();
-          const content = editor.getContent();
-          this.onKeyup(content);
-        });
-        editor.on('change', e => {
-          e.preventDefault();
-          const content = editor.getContent();
-          this.onChange(content);
-        });
-        editor.on('viewcontentloaded', e => {
-          editor.setContent('');
-        });
-      },
-      image_advtab: true,
-      content_css: [
-        '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-        '//www.tinymce.com/css/codepen.min.css'
-      ]
-    };
+  get editor() {
+    return this._editor;
   }
 
-  get hasValue() {
-    return this.value ? true : false;
+  @Input()
+  set plugins(value: string | string[] | undefined) {
+    this._plugins = value;
+  }
+
+  get plugins(): string | string[] | undefined {
+    if (this._plugins) {
+      return this._plugins;
+    }
+    switch (this.type) {
+      case 'BASIC':
+        return this.basicPlugins;
+      case 'FULL':
+        return this.fullPlugins;
+      default:
+        return 'lists advlist';
+    }
+  }
+
+  @Input()
+  set toolbar(value: string | string[] | null) {
+    this._toolbar = value;
+  }
+
+  get toolbar(): string | string[] | null {
+    if (this._toolbar) {
+      return this._toolbar;
+    }
+    switch (this.type) {
+      case 'BASIC':
+        return this.basicToolbar;
+      case 'FULL':
+        return this.fullToolbar;
+      default:
+        return 'undo redo | bold italic | bullist numlist outdent indent';
+    }
+  }
+
+  public ngZone: NgZone;
+
+  @Input() public cloudChannel = '5';
+  @Input() public apiKey = 'no-api-key';
+  @Input() public init: Record<string, any> | undefined;
+  @Input() public id = '';
+  @Input() public initialValue: string | undefined;
+  @Input() public inline: boolean | undefined;
+  @Input() public tagName: string | undefined;
+  @Input() expanded = false;
+  @Input() height: number;
+  @Input() type: 'BASIC' | 'FULL';
+
+  baseUrl = '/tinymce'; // Root for resources
+  suffix = '.min'; // Suffix to use when loading resources
+  dialogRef: Subscription;
+
+  private _elementRef: ElementRef;
+  private _element: Element | undefined = undefined;
+  private _disabled: boolean | undefined;
+  private _editor: any;
+  basicPlugins = [
+    'advlist autolink lists link image charmap print preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table contextmenu paste code'
+  ];
+  basicToolbar = `undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link`;
+  fullPlugins = [
+    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+    'searchreplace wordcount visualblocks visualchars code fullscreen',
+    'insertdatetime media nonbreaking save table contextmenu directionality',
+    'template paste textcolor colorpicker textpattern imagetools toc help'
+  ];
+  fullToolbar = [
+    `undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent`,
+    'print preview | forecolor backcolor | link'
+  ];
+  _plugins: string | string[] | undefined;
+  _toolbar: string | string[] | null;
+
+  private onTouchedCallback = noop;
+  private onChangeCallback = noop;
+
+  constructor(elementRef: ElementRef, ngZone: NgZone, @Inject(PLATFORM_ID) private platformId: Object, public dialog: MatDialog, private ref: ChangeDetectorRef) {
+    super();
+    this._elementRef = elementRef;
+    this.ngZone = ngZone;
+    this.initialise = this.initialise.bind(this);
+  }
+
+  get basic(): boolean {
+    return this.type === 'BASIC';
+  }
+
+  get full(): boolean {
+    return this.type === 'FULL';
   }
 
   get showExpand() {
-    return this.full && !this.expanded;
-  }
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    tinymce.init(this.config);
-  }
-
-  ngOnDestroy() {
-    tinymce.remove(this.editorRef);
-  }
-
-  clear() {
-    this.value = '';
+    return !this.expanded;
   }
 
   expand(e: any) {
-    console.dir(e);
     if (e && e.preventDefault) {
       e.preventDefault();
     }
     const config = {
-      data: this.editorRef.getContent(),
-      width: '1200px'
+      data: this._editor.getContent(),
+      width: '1200px',
+      id: this.id ? `${this.id}-dialog` : null
     };
     this.openDialog(config);
-  }
-
-  registerOnChange(fn: Function) {
-    this.onModelChange = fn;
-  }
-
-  registerOnTouched(fn: Function) {
-    this.onTouch = fn;
-  }
-
-  writeValue(value: string) {
-    this.value = value;
-  }
-
-  onChange(value: string) {
-    this.value = value;
-    this.changes.emit(value);
-    if (this.onModelChange) {
-      this.onModelChange(value);
-    }
-  }
-
-  onUpdate(value: string) {
-    this.onChange(value);
-    this.setContent(this.value);
-  }
-
-  onKeyup(value: string) {
-    this.onChange(value);
-  }
-
-  onBlur(value: string) {
-    this.focused = '';
-  }
-
-  onFocus(value: string) {
-    this.focused = value;
-    if (this.onTouch) {
-      this.onTouch();
-    }
   }
 
   openDialog(config: any) {
@@ -240,17 +177,115 @@ export class EditorComponent
 
   closeDialog(value: string) {
     if (value) {
-      this.onChange(value);
+      this.changeValue(value);
     }
     this.dialogRef.unsubscribe();
   }
 
-  setContent(value: string) {
-    if (this.editorRef && this.editorRef.getContent) {
-      const content = this.editorRef.getContent();
-      if (value && content != value) {
-        this.editorRef.setContent(value);
+  changeValue(value: string) {
+    this.writeValue(value);
+    this.onChangeCallback(value);
+  }
+
+  public writeValue(value: string | null): void {
+    this.initialValue = value || this.initialValue;
+    value = value || '';
+
+    if (this._editor && this._editor.initialized && typeof value === 'string') {
+      this._editor.setContent(value);
+    }
+  }
+
+  public registerOnChange(fn: (_: any) => void): void {
+    this.onChangeCallback = fn;
+  }
+
+  public registerOnTouched(fn: any): void {
+    this.onTouchedCallback = fn;
+  }
+
+  public setDisabledState(isDisabled: boolean) {
+    if (this._editor) {
+      this._editor.setMode(isDisabled ? 'readonly' : 'design');
+    } else if (isDisabled) {
+      this.init = { ...this.init, readonly: true };
+    }
+  }
+
+  public ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.id = this.id || uuid('tiny-angular');
+      this.inline = typeof this.inline !== 'undefined' ? (typeof this.inline === 'boolean' ? this.inline : true) : this.init && this.init.inline;
+      this.createElement();
+      if (getTinymce() !== null) {
+        this.initialise();
+      } else if (this._element && this._element.ownerDocument) {
+        const doc = this._element.ownerDocument;
+        const channel = this.cloudChannel;
+        const apiKey = this.apiKey;
+
+        ScriptLoader.load(scriptState, doc, `https://cdn.tiny.cloud/1/${apiKey}/tinymce/${channel}/tinymce.min.js`, this.initialise);
       }
     }
+  }
+
+  public ngOnDestroy() {
+    if (getTinymce() !== null) {
+      getTinymce().remove(this._editor);
+    }
+  }
+
+  public createElement() {
+    const tagName = typeof this.tagName === 'string' ? this.tagName : 'div';
+    this._element = document.createElement(this.inline ? tagName : 'textarea');
+    if (this._element) {
+      this._element.id = this.id;
+      if (isTextarea(this._element)) {
+        this._element.style.visibility = 'hidden';
+      }
+      this._elementRef.nativeElement.appendChild(this._element);
+    }
+  }
+
+  public initialise() {
+    const finalInit = {
+      ...this.init,
+      base_url: this.baseUrl,
+      suffix: this.suffix,
+      target: this._element,
+      inline: this.inline,
+      readonly: this.disabled,
+      plugins: mergePlugins(this.init && this.init.plugins, this.plugins),
+      toolbar: this.toolbar || (this.init && this.init.toolbar),
+      height: this.height,
+      branding: false, // Note: The “Powered by Tiny” product attribution is required for users on the Tiny Cloud Starter plan. Product attribution is optional for premium users.
+      setup: (editor: any) => {
+        this._editor = editor;
+        editor.on('init', (e: Event) => {
+          this.initEditor(e, editor);
+        });
+
+        if (this.init && typeof this.init.setup === 'function') {
+          this.init.setup(editor);
+        }
+      }
+    };
+
+    if (isTextarea(this._element)) {
+      this._element.style.visibility = '';
+    }
+
+    this.ngZone.runOutsideAngular(() => {
+      getTinymce().init(finalInit);
+    });
+  }
+
+  private initEditor(initEvent: Event, editor: any) {
+    if (typeof this.initialValue === 'string') {
+      this.ngZone.run(() => editor.setContent(this.initialValue));
+    }
+    editor.on('blur', () => this.ngZone.run(() => this.onTouchedCallback()));
+    editor.on('change keyup undo redo', () => this.ngZone.run(() => this.onChangeCallback(editor.getContent())));
+    bindHandlers(this, editor, initEvent);
   }
 }

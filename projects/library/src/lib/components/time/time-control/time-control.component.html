@@ -1,15 +1,5 @@
-<form [formGroup]="form" class="time-control">
+<form [formGroup]="timeForm" class="time-control">
   <h3 class="time-text">{{ label }}</h3>
-  <mat-form-field class="date">
-    <input
-      matInput
-      [matDatepicker]="picker"
-      formControlName="date"
-      placeholder="Choose a date"
-    />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
 
   <mat-form-field>
     <mat-select formControlName="hour" placeholder="Hour">
@@ -19,7 +9,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="minutes-control">
     <mat-select formControlName="minutes" placeholder="Minute">
       <mat-option [value]="0">00</mat-option>
       <mat-option [value]="1">01</mat-option>
@@ -37,7 +27,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="meridian-control">
     <mat-select formControlName="meridian" placeholder="AM/PM">
       <mat-option value="AM">AM</mat-option>
       <mat-option value="PM">PM</mat-option>

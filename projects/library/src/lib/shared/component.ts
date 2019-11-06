@@ -6,6 +6,8 @@ import { Subscription, Observable } from 'rxjs';
 
 import { HasId } from './models';
 import { getValue, truthy } from './utils';
+import { MessageSubscription } from '../events/events.models';
+import { MessagesActions } from '../events/events.actions';
 
 export class DumbComponent implements OnDestroy {
   dialog: MatDialog;
@@ -25,11 +27,7 @@ export class DumbComponent implements OnDestroy {
   }
 
   get message(): string {
-    return this.inErrorState
-      ? `An error has occurred. Please try again later.`
-      : this.inSuccessState
-      ? `Saved successfully!`
-      : '';
+    return this.inErrorState ? `An error has occurred. Please try again later.` : this.inSuccessState ? `Saved successfully!` : '';
   }
 
   get showMessage(): boolean {
@@ -71,9 +69,7 @@ export class DumbComponent implements OnDestroy {
     const iframe = document.createElement('iframe');
 
     iframe.onload = function() {
-      const doc = iframe.contentDocument
-        ? iframe.contentDocument
-        : iframe.contentWindow.document;
+      const doc = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
       doc.getElementsByTagName('body')[0].innerHTML = html;
 
       iframe.contentWindow.focus(); // This is key, the iframe must have focus first
@@ -213,22 +209,36 @@ export class FormComponent extends DumbComponent {
   }
 }
 
-export class SmartComponent extends DumbComponent {
+export class SmartComponent extends DumbComponent implements OnDestroy {
   events;
+  messages: MessageSubscription[] = [];
 
   constructor(public store: Store<any>) {
     super();
+  }
+
+  get hasMessages(): boolean {
+    return this.messages && Array.isArray(this.messages) && this.messages.length > 0;
+  }
+
+  onInit() {
+    if (this.hasMessages) {
+      this.dispatch(MessagesActions.subscribe(this.messages));
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.hasMessages) {
+      this.dispatch(MessagesActions.unsubscribe(this.messages));
+    }
+    super.ngOnDestroy();
   }
 
   dispatch(action: Action) {
     this.store.dispatch(action);
   }
 
-  dispatchAndSubscribe(
-    action: Action,
-    onSuccess?: (e: any) => void,
-    onError?: (e: any) => void
-  ) {
+  dispatchAndSubscribe(action: Action, onSuccess?: (e: any) => void, onError?: (e: any) => void) {
     const f1 = onSuccess
       ? onSuccess
       : e => {

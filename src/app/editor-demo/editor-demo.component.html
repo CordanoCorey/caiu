@@ -1,0 +1,14 @@
+<form class="demo" [formGroup]="form">
+  <iu-editor id="form-editor" formControlName="editor"></iu-editor>
+</form>
+
+<div class="demo">
+  <h1>Default Editor</h1>
+  <iu-editor id="editor"></iu-editor>
+  <h1>Basic Editor</h1>
+  <iu-editor id="editor1" type="BASIC"></iu-editor>
+  <h1>Full Editor</h1>
+  <iu-editor id="editor2" type="FULL"></iu-editor>
+  <h1>Custom Editor</h1>
+  <iu-editor id="editor3" [plugins]="plugins" [toolbar]="toolbar"></iu-editor>
+</div>

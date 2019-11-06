@@ -6,10 +6,7 @@ import { Component, OnInit, Input, Renderer2 } from '@angular/core';
   styleUrls: ['./print.component.scss']
 })
 export class PrintComponent implements OnInit {
-
-  constructor(
-    private renderer: Renderer2,
-  ) { }
+  constructor(private renderer: Renderer2) {}
 
   @Input() containerToPrint: string;
   @Input() customStyleString = '';
@@ -19,10 +16,11 @@ export class PrintComponent implements OnInit {
   styleText: string;
   mediaText = '';
 
-  getContainerElements(container) { 
+  getContainerElements(container) {
     // tslint:disable-next-line: deprecation
     this.slice(document.all).forEach(x => {
-      if (container.contains(x)) { // gets each element within the container; use this to get the class names and styles
+      if (container.contains(x)) {
+        // gets each element within the container; use this to get the class names and styles
         let selector = ''; // Selector is either the class on the element, or just the normal selector (Ex: 'p' for <p></p>)
         if (x.classList.length > 1) {
           // get all of the classes to be used as selectors
@@ -46,7 +44,8 @@ export class PrintComponent implements OnInit {
 
   getStyleSheets(selector) {
     this.slice(document.styleSheets).forEach(y => {
-      if (y.href === null && y.cssRules !== undefined) { // Makes sure stylesheets aren't external
+      if (y.href === null && y.cssRules !== undefined) {
+        // Makes sure stylesheets aren't external
         this.slice(y.cssRules).forEach(rule => {
           if (rule.selectorText !== undefined) {
             if (rule.selectorText.includes(selector)) {
@@ -63,18 +62,18 @@ export class PrintComponent implements OnInit {
   getMediaQueries() {
     this.slice(document.styleSheets).forEach(x => {
       if (x.href === null && x.cssRules !== undefined) {
-          this.slice(x.cssRules).forEach(y => {
-            if (y.media !== undefined) {
-              if (y.media.length > 0) {
-                let mediaStyles = '';
-                this.slice(y.cssRules).forEach(z => {
-                  mediaStyles = mediaStyles + ' ' + z.cssText;
-                });
-                /* this.mediaText = this.mediaText + ' <style media="' + y.conditionText + '"> ' + mediaStyles + ' </style> '; */
-                this.mediaText = this.mediaText + ' @media ' + y.conditionText + ' { ' + mediaStyles + ' }';
-              }
+        this.slice(x.cssRules).forEach(y => {
+          if (y.media !== undefined) {
+            if (y.media.length > 0) {
+              let mediaStyles = '';
+              this.slice(y.cssRules).forEach(z => {
+                mediaStyles = mediaStyles + ' ' + z.cssText;
+              });
+              /* this.mediaText = this.mediaText + ' <style media="' + y.conditionText + '"> ' + mediaStyles + ' </style> '; */
+              this.mediaText = this.mediaText + ' @media ' + y.conditionText + ' { ' + mediaStyles + ' }';
             }
-          });
+          }
+        });
       }
     });
   }
@@ -87,23 +86,28 @@ export class PrintComponent implements OnInit {
     this.getMediaQueries();
 
     if (this.styleText.includes('background-image')) {
-      console.warn('Defined container has styles that utilizes a background-image. ' +
-       'Unless your browser settings allow for you to print background images. ' +
-       'View guide here: https://github.com/Soundwubz/Element-Printer/blob/master/PRINTGUIDE.md');
+      console.warn(
+        'Defined container has styles that utilizes a background-image. ' +
+          'Unless your browser settings allow for you to print background images. ' +
+          'View guide here: https://github.com/Soundwubz/Element-Printer/blob/master/PRINTGUIDE.md'
+      );
     }
 
     if (this.customStyleString !== '') {
       this.styleText = this.styleText + ' ' + this.customStyleString;
-      this.styleText = this.styleText.replace(/\s+/g,' ').trim();
+      this.styleText = this.styleText.replace(/\s+/g, ' ').trim();
     }
 
-    const html = container.outerHTML.replace(/\s+/g,' ').trim();
+    const html = container.outerHTML.replace(/\s+/g, ' ').trim();
 
     if (this.enableDebug) {
       console.dir(this.containerToPrint);
       console.dir(container);
       console.log('document.styleSheets: ');
       console.dir(document.styleSheets);
+      console.log(this.styleText);
+      console.log(this.mediaText);
+      console.log(html);
     }
 
     // Creating Print Window
@@ -122,12 +126,9 @@ export class PrintComponent implements OnInit {
     win.document.close();
     win.print();
     /* win.close(); */
-
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
 
 //

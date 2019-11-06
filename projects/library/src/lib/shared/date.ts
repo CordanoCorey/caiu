@@ -38,10 +38,10 @@ export class DateHelper {
   }
 
   static CalendarDaySpan(startDate: Date, endDate: Date): Date[] {
-    const daysBetween = Math.ceil(DateHelper.DaysBetween(startDate, endDate));
+    const daysBetween = Math.ceil(DateHelper.DaysBetween(startDate, endDate) + 1);
     return daysBetween && daysBetween > 0
       ? integerArray(daysBetween).map(i => {
-          const d = new Date();
+          const d = new Date(startDate);
           d.setDate(new Date(startDate).getDate() + i);
           return d;
         })
@@ -211,6 +211,10 @@ export class DateHelper {
   static IsWeekend(d: Date): boolean {
     const day = new Date(d).getDay();
     return day === 0 || day === 6;
+  }
+
+  static IsSameMonth(d1: Date, d2: Date): boolean {
+    return new Date(d1).getMonth() === new Date(d2).getMonth();
   }
 
   static MillisecondsBetween(d1: Date, d2: Date): number {

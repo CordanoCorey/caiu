@@ -1,68 +1,68 @@
 @import '~@angular/material/_theming';
 
 :host {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .calendar {
+  min-width: 760px;
+  background-color: #fff;
 
-    background-color: #fff;
+  .cal-head,
+  .cal-head-mini {
+    background: #d1d1d1;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-evenly;
 
-    .cal-head,
-    .cal-head-mini {
-        background: #d1d1d1;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        justify-content: space-evenly;
+    .cal-day {
+      text-align: center;
+    }
+  }
 
-        .cal-day {
-            text-align: center;
-        }
+  .cal-body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .day {
+      box-shadow: inset #0000003b 0px 0px 2px 0px;
+      transition: all 0.1s;
+      flex-shrink: 1;
+      order: 2;
     }
 
-    .cal-body {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: flex-start;
-
-        .day {
-            box-shadow: inset #0000003b 0px 0px 2px 0px;
-            transition: all 0.1s;
-            flex-shrink: 1;
-            order: 2;
-        }
-
-        .day:hover {
-            box-shadow: inset #0000003b 0px 0px 10px 0px;
-            cursor: pointer;
-        }
-
-        .beginningSpacer .day,
-        .endSpacer .day {
-            flex-grow: 1;
-            flex-shrink: 1;
-        }
-
-        .beginningSpacer {
-            order: 1;
-        }
-
-        .endSpacer {
-            order: 3;
-        }
+    .day:hover {
+      box-shadow: inset #0000003b 0px 0px 10px 0px;
+      cursor: pointer;
     }
 
-    .cal-day.micro {
-        display: none;
+    .beginningSpacer .day,
+    .endSpacer .day {
+      flex-grow: 1;
+      flex-shrink: 1;
     }
 
-    .cal-head {
-        display: flex;
+    .beginningSpacer {
+      order: 1;
     }
 
-    .cal-head-mini {
-        display: none;
+    .endSpacer {
+      order: 3;
     }
+  }
+
+  .cal-day.micro {
+    display: none;
+  }
+
+  .cal-head {
+    display: flex;
+  }
+
+  .cal-head-mini {
+    display: none;
+  }
 }

@@ -1,21 +1,24 @@
 @import '~@angular/material/_theming';
 
 .time-control {
-    // @include mat-elevation(4);
-    // border-radius: 10px;
-    // background: rgba(0, 0, 0, 0.1);
+  // @include mat-elevation(4);
+  // border-radius: 10px;
+  // background: rgba(0, 0, 0, 0.1);
 
-    h3 {
-        margin: 5px;
-    }
+  h3 {
+    margin: 5px;
+  }
 
-    .mat-form-field {
-        width: 60px;
-        margin: 0 5px;
-    }
+  .mat-form-field {
+    width: 60px;
+    margin: 0 5px;
+  }
 
-    .mat-form-field.date {
-        width: 120px;
-        margin-right: 15px;
-    }
+  .mat-form-field.minutes-control {
+    width: 120px;
+  }
+
+  .mat-form-field.meridian-control {
+    width: 120px;
+  }
 }

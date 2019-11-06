@@ -1,4 +1,4 @@
-<mat-card class="editor">
+<!-- <div class="editor">
   <textarea [id]="elementId">
     <ng-content *ngIf="!hasValue"></ng-content>
     <span *ngIf="hasValue">{{ value }}</span>
@@ -6,4 +6,11 @@
   <button *ngIf="showExpand" id="expand-editor" (click)="expand($event)" mat-button>
     <mat-icon>fullscreen</mat-icon>
   </button>
-</mat-card>
+</div> -->
+
+<div class="editor">
+  <ng-template></ng-template>
+  <button *ngIf="showExpand" id="expand-editor" (click)="expand($event)" mat-button>
+    <mat-icon>fullscreen</mat-icon>
+  </button>
+</div>

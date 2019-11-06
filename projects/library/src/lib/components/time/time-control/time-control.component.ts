@@ -1,15 +1,10 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
-import {
-  FormGroup,
-  NG_VALUE_ACCESSOR,
-  ControlValueAccessor,
-  FormControl
-} from '@angular/forms';
+import { FormGroup, NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 
 import { Time } from '../time.model';
 import { Control } from '../../../forms/decorators';
 import { FormComponent } from '../../../shared/component';
-import { build, integerArray } from '../../../shared/utils';
+import { build, integerArray, getValue } from '../../../shared/utils';
 
 export const TIME_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -23,10 +18,8 @@ export const TIME_ACCESSOR: any = {
   styleUrls: ['./time-control.component.scss'],
   providers: [TIME_ACCESSOR]
 })
-export class TimeControlComponent extends FormComponent
-  implements OnInit, ControlValueAccessor {
-  form: FormGroup = new FormGroup({
-    date: new FormControl(),
+export class TimeControlComponent extends FormComponent implements OnInit, ControlValueAccessor {
+  timeForm: FormGroup = new FormGroup({
     hour: new FormControl(),
     minutes: new FormControl(),
     meridian: new FormControl()
@@ -36,10 +29,24 @@ export class TimeControlComponent extends FormComponent
   private onTouch: Function;
   _value: Date;
   focused: Date;
+  _isDisabled = false;
   _time: Time = new Time();
 
   constructor() {
     super();
+  }
+
+  @Input() set isDisabled(value: boolean) {
+    this._isDisabled = value;
+    if (value) {
+      this.timeForm.disable();
+    } else {
+      this.timeForm.enable();
+    }
+  }
+
+  get isDisabled(): boolean {
+    return this._isDisabled;
   }
 
   get value(): Date {
@@ -49,12 +56,6 @@ export class TimeControlComponent extends FormComponent
   @Input()
   set value(value: Date) {
     this._value = value;
-    const time = build(Time, {
-      datetime: value
-    });
-    if (time.datetime.getTime() !== this.time.datetime.getTime()) {
-      this.time = time;
-    }
   }
 
   set time(value: Time) {
@@ -62,7 +63,7 @@ export class TimeControlComponent extends FormComponent
   }
 
   get time(): Time {
-    return build(Time, this.form.value);
+    return build(Time, this.timeForm.value);
   }
 
   registerOnChange(fn: Function) {
@@ -96,9 +97,9 @@ export class TimeControlComponent extends FormComponent
     return integerArray(60).filter(x => x > 9);
   }
 
-  ngOnInit() {
-    this.form.valueChanges.subscribe(x => {
-      this.onChange(build(Time, x).datetime);
-    });
+  ngOnInit() {}
+
+  setValue(value: Time) {
+    this.timeForm.setValue(getValue(value));
   }
 }

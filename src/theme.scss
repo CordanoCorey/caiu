@@ -7,13 +7,15 @@ $theme: mat-light-theme($primary-palette, $accent-palette);
 @include angular-material-theme($theme);
 
 .dark-theme {
-    $dark-primary: mat-palette($material-primary-color);
-    $dark-accent: mat-palette($material-accent-color);
-    $dark-theme: mat-dark-theme($dark-primary, $dark-accent);
-    @include angular-material-theme($dark-theme);
+  $dark-primary: mat-palette($material-primary-color);
+  $dark-accent: mat-palette($material-accent-color);
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent);
+  @include angular-material-theme($dark-theme);
 }
 
 @include iu-palette($primary-palette, $accent-palette);
 @include scrollable(#fff, $primary-color);
 @include dialog-palette($primary-palette, $accent-palette);
 @include calendar-theme($theme);
+@include editor-theme($theme);
+@include file-upload-theme($theme);

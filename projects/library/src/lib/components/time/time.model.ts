@@ -1,7 +1,7 @@
 import { Metadata } from '../../shared/models';
 import { build } from '../../shared/utils';
 
-export class MilitaryTime {
+export class MilitaryDateTime {
   date: Date = new Date();
   hour = 0;
   minutes = 0;
@@ -27,7 +27,7 @@ export class MilitaryTime {
   }
 }
 
-export class Time {
+export class DateTime {
   date: Date = new Date();
   hour = 0;
   minutes = 0;
@@ -49,8 +49,31 @@ export class Time {
   }
 
   get datetime(): Date {
-    return build(MilitaryTime, this, {
+    return build(MilitaryDateTime, this, {
       hour: this.meridian === 'AM' ? this.hour : this.hour + 12
     }).datetime;
+  }
+}
+
+export class MilitaryTime {
+  hour = 0;
+  minutes = 0;
+
+  get metadata(): Metadata {
+    return build(Metadata, {
+      ignore: []
+    });
+  }
+}
+
+export class Time {
+  hour = 0;
+  minutes = 0;
+  meridian: 'AM' | 'PM' = 'AM';
+
+  get metadata(): Metadata {
+    return build(Metadata, {
+      ignore: []
+    });
   }
 }

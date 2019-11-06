@@ -8,7 +8,6 @@ import { FileUpload } from '../file-upload.model';
   styleUrls: ['./file-preview.component.scss']
 })
 export class FilePreviewComponent {
-
   @Input() file: FileUpload = new FileUpload();
   @Input() height: number;
   @Input() width: number;
@@ -19,7 +18,7 @@ export class FilePreviewComponent {
   @Output() moveDown = new EventEmitter<FileUpload>();
   @Output() remove = new EventEmitter<FileUpload>();
 
-  constructor() { }
+  constructor() {}
 
   get cursorStyle(): string {
     return this.ordered ? 'move' : 'default';
@@ -63,5 +62,4 @@ export class FilePreviewComponent {
   onRemove() {
     this.remove.emit(this.file);
   }
-
 }

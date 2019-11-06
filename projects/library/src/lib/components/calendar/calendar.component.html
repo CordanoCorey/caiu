@@ -1,4 +1,4 @@
-<div class="calendar-wrapper">
+<div id="calendar-wrapper" class="calendar-wrapper" [style.min-width.px]="minWidth">
   <div *ngIf="showActions" class="calendar-actions">
     <button class="btn-edit" mat-button color="primary" (click)="editCalendar()">
       Edit Calendar
@@ -6,7 +6,7 @@
   </div>
   <div class="date-heading-container">
     <div>
-      <button mat-mini-fab (click)="toLastMonth()">
+      <button class="date-heading-arrow" mat-mini-fab (click)="toLastMonth()">
         <i class="material-icons">keyboard_arrow_left</i>
       </button>
     </div>
@@ -14,7 +14,7 @@
       <h1 class="date-heading">{{ monthName }} {{ currentYear }}</h1>
     </div>
     <div>
-      <button mat-mini-fab (click)="toNextMonth()">
+      <button class="date-heading-arrow" mat-mini-fab (click)="toNextMonth()">
         <i class="material-icons">keyboard_arrow_right</i>
       </button>
     </div>
@@ -49,7 +49,7 @@
     </mat-tab>
   </mat-tab-group>
   <a id="open-pdf" [href]="fileUrl" target="_blank" #pdfLink></a>
-  <iu-calendar-key [calendarEventTypes]="calendarEventTypes"></iu-calendar-key>
+  <iu-calendar-key [calendarEventTypes]="calendarEventTypes" *ngIf="showKey" [heading]="keyHeading"></iu-calendar-key>
 </div>
 <div id="overview" [@overviewState]="activeDay ? 'open' : 'closed'">
   <iu-calendar-day-edit

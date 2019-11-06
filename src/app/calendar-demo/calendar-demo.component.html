@@ -1,16 +1,18 @@
 <iu-calendar
   [calendar]="calendar"
+  [calendarView]="null"
   [calendarEventTypes]="calendarEventTypes"
   [defaultWeekdayTypeId]="7"
   [defaultWeekendTypeId]="8"
+  [showKey]="false"
   (updateCalendar)="updateCalendar($event)"
   (addEvent)="addEvent($event)"
   (deleteEvent)="deleteEvent($event)"
   (updateEvent)="updateEvent($event)"
 >
   <!-- <ng-template let-day="day" #calendarDayTemplate>
-    <div class="calendar-demo-day">
-      <h3>{{ day.date | date: 'shortDate' }}</h3>
+    <div class="calendar-demo-day" [style.text-align]="'center'">
+      <h4 [style.color]="day.color">{{ day?.dayType?.name }}</h4>
     </div>
   </ng-template> -->
 
@@ -20,13 +22,13 @@
     </div>
   </ng-template> -->
 
-  <ng-template let-day="day" let-color="color" #calendarDayEditTemplate>
+  <!-- <ng-template let-day="day" let-color="color" #calendarDayEditTemplate>
     <div class="calendar-demo-day-edit font-effect-emboss" [style.background-color]="color">
       <div class="day-type-wrapper">
         <span class="day-type" [style.color]="color">{{ day?.dayType?.name }}</span>
       </div>
     </div>
-  </ng-template>
+  </ng-template> -->
 
   <!-- <ng-template
     let-calendar="calendar"
@@ -68,3 +70,4 @@
     </form>
   </ng-template> -->
 </iu-calendar>
+<iu-print containerToPrint="calendar-wrapper" [enableDebug]="true"></iu-print>

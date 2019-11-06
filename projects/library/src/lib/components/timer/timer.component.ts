@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-import { Time } from './timer.model';
+import { Timer } from './timer.model';
 import { DumbComponent } from '../../shared/component';
 import { build } from '../../shared/utils';
 
@@ -12,38 +12,33 @@ import { build } from '../../shared/utils';
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent extends DumbComponent implements OnInit {
-
   @Input() countUp = false;
   @Input() millisecondsAlways = false;
   @Input() millisecondsUnderMinute = false;
   @Input() showHours = false;
   @Output() timesUp = new EventEmitter();
   stopped = false;
-  timeElapsed: Time = new Time();
-  timeElapsed$: Observable<Time>;
-  timeElapsedSubject = new BehaviorSubject<Time>(new Time());
-  timeRemaining: Time = new Time();
-  timeRemaining$: Observable<Time>;
-  timeRemainingSubject = new BehaviorSubject<Time>(new Time());
+  timeElapsed: Timer = new Timer();
+  timeElapsed$: Observable<Timer>;
+  timeElapsedSubject = new BehaviorSubject<Timer>(new Timer());
+  timeRemaining: Timer = new Timer();
+  timeRemaining$: Observable<Timer>;
+  timeRemainingSubject = new BehaviorSubject<Timer>(new Timer());
   _countDown = false;
-  _countdownFrom: Time = new Time();
+  _countdownFrom: Timer = new Timer();
 
   constructor() {
     super();
-    this.timeElapsed$ = this.timeElapsedSubject.asObservable().pipe(
-      distinctUntilChanged(Time.Equals)
-    );
-    this.timeRemaining$ = this.timeRemainingSubject.asObservable().pipe(
-      distinctUntilChanged(Time.Equals)
-    );
+    this.timeElapsed$ = this.timeElapsedSubject.asObservable().pipe(distinctUntilChanged(Timer.Equals));
+    this.timeRemaining$ = this.timeRemainingSubject.asObservable().pipe(distinctUntilChanged(Timer.Equals));
   }
 
-  @Input() set countdownFrom(value: Time) {
-    this._countdownFrom = build(Time, value);
+  @Input() set countdownFrom(value: Timer) {
+    this._countdownFrom = build(Timer, value);
     this.timeRemainingSubject.next(this._countdownFrom);
   }
 
-  get countdownFrom(): Time {
+  get countdownFrom(): Timer {
     return this._countdownFrom;
   }
 
@@ -87,24 +82,21 @@ export class TimerComponent extends DumbComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.subscribe([
-      this.timeElapsedChanges,
-      this.timeRemainingChanges,
-    ]);
+    this.subscribe([this.timeElapsedChanges, this.timeRemainingChanges]);
   }
 
-  setTimeElapsed(time: Time) {
+  setTimeElapsed(time: Timer) {
     this.stopped = true;
-    this.timeElapsedSubject.next(build(Time, time));
+    this.timeElapsedSubject.next(build(Timer, time));
   }
 
-  setTimeRemaining(time: Time) {
+  setTimeRemaining(time: Timer) {
     // this.stopped = true;
-    this.timeRemainingSubject.next(build(Time, time));
+    this.timeRemainingSubject.next(build(Timer, time));
   }
 
   start(e?: any) {
-    if (e && typeof (e.preventDefault) === 'function') {
+    if (e && typeof e.preventDefault === 'function') {
       e.preventDefault();
     }
     this.stopped = false;
@@ -115,13 +107,13 @@ export class TimerComponent extends DumbComponent implements OnInit {
     }
   }
 
-  startAt(time: Time) {
+  startAt(time: Timer) {
     this.setTimeRemaining(time);
     // this.start();
   }
 
   stop(e?: any) {
-    if (e && typeof (e.preventDefault) === 'function') {
+    if (e && typeof e.preventDefault === 'function') {
       e.preventDefault();
     }
     this.stopped = true;
@@ -166,5 +158,4 @@ export class TimerComponent extends DumbComponent implements OnInit {
       this.timeElapsedSubject.next(this.timeElapsed.incrementSecond());
     }
   }
-
 }

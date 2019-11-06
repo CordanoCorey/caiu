@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule, MatIconModule, MatProgressBarModule, MatProgressSpinnerModule } from '@angular/material';
 
 import { FileUploadComponent } from './file-upload.component';
@@ -8,24 +9,8 @@ import { UploadComponent } from './upload/upload.component';
 import { UploadsComponent } from './uploads/uploads.component';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    MatCardModule,
-    MatIconModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-  ],
-  declarations: [
-    FileUploadComponent,
-    FilePreviewComponent,
-    UploadComponent,
-    UploadsComponent,
-  ],
-  exports: [
-    FileUploadComponent,
-    FilePreviewComponent,
-    UploadComponent,
-    UploadsComponent,
-  ]
+  imports: [SharedModule, DragDropModule, MatCardModule, MatIconModule, MatProgressBarModule, MatProgressSpinnerModule],
+  declarations: [FileUploadComponent, FilePreviewComponent, UploadComponent, UploadsComponent],
+  exports: [FileUploadComponent, FilePreviewComponent, UploadComponent, UploadsComponent]
 })
-export class FileUploadModule { }
+export class FileUploadModule {}

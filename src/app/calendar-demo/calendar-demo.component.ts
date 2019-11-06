@@ -11,15 +11,16 @@ export class CalendarDemoComponent implements OnInit {
     build(CalendarEventType, {
       id: 1,
       name: 'Event Type 1',
-      allDay: true
+      allDay: true,
+      color: 'blue'
     }),
     build(CalendarEventType, { id: 2, name: 'Event Type 2' }),
-    build(CalendarEventType, { id: 3, name: 'Event Type 3', allDay: true }),
+    build(CalendarEventType, { id: 3, name: 'Event Type 3', allDay: true, color: 'green' }),
     build(CalendarEventType, { id: 4, name: 'Event Type 4' }),
     build(CalendarEventType, { id: 5, name: 'Event Type 5' }),
-    build(CalendarEventType, { id: 6, name: 'Event Type 6', allDay: true }),
-    build(CalendarEventType, { id: 7, name: 'Event Type 7', allDay: true }),
-    build(CalendarEventType, { id: 8, name: 'Event Type 8', allDay: true })
+    build(CalendarEventType, { id: 6, name: 'Event Type 6', allDay: true, color: 'red' }),
+    build(CalendarEventType, { id: 7, name: 'Event Type 7', allDay: true, color: 'purple' }),
+    build(CalendarEventType, { id: 8, name: 'Event Type 8', allDay: true, color: 'pink' })
   ];
   now = new Date();
 
