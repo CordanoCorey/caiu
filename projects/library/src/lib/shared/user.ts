@@ -29,8 +29,14 @@ export class CurrentUser extends User {
     return this.token && this.token.authenticated;
   }
 
+  set fullName(value: string) {
+  }
+
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  set userRoles(value: UserRoles) {
   }
 
   get userRoles(): UserRoles {
@@ -39,7 +45,7 @@ export class CurrentUser extends User {
 }
 
 export class UserRoles {
-  constructor(public user: CurrentUser = new CurrentUser()) {}
+  constructor(public user: CurrentUser = new CurrentUser()) { }
 }
 
 export class Login {

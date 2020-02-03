@@ -7,6 +7,7 @@ import {
 
 export class Address {
   id = 0;
+  addressTypeId = 0;
   firstName = '';
   lastName = '';
   address1 = '';
@@ -57,7 +58,7 @@ export class Address {
       : '';
   }
 
-  set cityStateZip(value: string) {}
+  set cityStateZip(value: string) { }
 
   get fullName(): string {
     return this.firstName && this.lastName
@@ -65,7 +66,7 @@ export class Address {
       : '';
   }
 
-  set fullName(value: string) {}
+  set fullName(value: string) { }
 
   get hasAddress(): boolean {
     return this.hasStreetAddress && this.hasCityStateZip;
@@ -87,6 +88,15 @@ export class Address {
 export class Alert {
   message = '';
   type: 'ERROR' | 'SUCCESS';
+}
+
+export interface Audit {
+  createdDate: Date;
+  createdById: number;
+  createdByName: string;
+  lastModifiedDate: Date;
+  lastModifiedById: number;
+  lastModifiedByName: string;
 }
 
 export class Coordinates {
@@ -224,8 +234,8 @@ export class Image {
 export class Metadata {
   controls?: string[] = [];
   ignore?: string[] = [];
-  label? = '';
-  name? = '';
+  label?= '';
+  name?= '';
   value?: any;
   [key: string]: any;
 }
@@ -241,8 +251,8 @@ export enum MetadataType {
 
 export class PropertyMetadata<T> {
   ignore?: string[] = [];
-  label? = '';
-  name? = '';
+  label?= '';
+  name?= '';
   value?: T;
 }
 
@@ -295,6 +305,10 @@ export class QueryModel<T> {
   static BuildQueryString(query: QueryModel<any>): string {
     const path = QueryModel.AppendQueryString(query);
     return path ? `?${path}` : '';
+  }
+
+  static BuildQueryStringFromObject(obj: any): string {
+    return Object.keys(obj).reduce((acc, key) => acc ? `${acc}&${key}=${obj[key]}` : `?${key}=${obj[key]}`, '');
   }
 
   static BuildQueryObject(query: QueryModel<any>): any {
@@ -475,9 +489,9 @@ export class ColumnMetadata {
 }
 
 export interface Type<T> extends Function {
-  new (...args: any[]): T;
+  new(...args: any[]): T;
 }
 
 export interface TypeConstructor<T> {
-  new (): T;
+  new(): T;
 }

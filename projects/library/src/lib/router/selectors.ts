@@ -87,6 +87,13 @@ export function urlSelector(store: Store<any>): Observable<string> {
   );
 }
 
+export function urlPathSelector(store: Store<any>): Observable<string> {
+  return urlSelector(store).pipe(
+    map(url => url.indexOf('?') === -1 ? url : url.substring(0, url.indexOf('?'))),
+    distinctUntilChanged()
+  );
+}
+
 export function querySelector(store: Store<any>): Observable<QueryModel<any>> {
   const skip$ = routeParamIntSelector(store, 'skip');
   const take$ = routeParamIntSelector(store, 'take');

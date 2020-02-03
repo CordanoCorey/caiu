@@ -101,6 +101,12 @@ export class Validators {
   }
 }
 
+export function atLeastOneAlphaNumericValidator(c: FormControl) {
+  return c.value ? /^(?=.*[a-zA-Z].*)([a-zA-Z0-9]+)$/i.test(c.value.replace(/[^\w\s]/gi, '').replace(/\s/g, '').replace(/_/g, '')) ? null : {
+    atLeastOneAlphaNumeric: true
+  } : null;
+}
+
 export function confirmPasswordValidator(fg: FormGroup) {
   const pass = fg.controls['password'];
   const confirm = fg.controls['confirmPassword'];

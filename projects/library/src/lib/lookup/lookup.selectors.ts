@@ -21,8 +21,8 @@ export function lookupValuesSelector(
   key: string
 ): Observable<LookupValue[]> {
   return lookupKeySelector(store, key).pipe(
-    map(lookup => lookup.values),
-    map(statuses => statuses.filter(x => truthy(x.name) && x.name !== 'Select'))
+    map(lookup => lookup.values)
+    // map(statuses => statuses.filter(x => truthy(x.name) && x.name !== 'Select'))
   );
 }
 

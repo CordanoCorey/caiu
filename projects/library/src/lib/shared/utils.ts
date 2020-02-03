@@ -29,6 +29,12 @@ export function applyMixins(derivedCtor: any, baseCtors: any[]) {
   });
 }
 
+export function arrayDistinct(arr: any[]): any[] {
+  return arr.reduce((acc, x) => {
+    return acc.findIndex(y => equals(x, y)) === -1 ? [...acc, x] : acc;
+  }, []);
+}
+
 /**
  * Find distinct elements in the union of 2 arrays.
  * @param array1
@@ -76,8 +82,8 @@ export function buildColumnsFromMetadata(model: any, key: string): ColumnMetadat
   return columns.map((x: string | ColumnMetadata) =>
     typeof x === 'string'
       ? build(ColumnMetadata, {
-          name: x
-        })
+        name: x
+      })
       : build(ColumnMetadata, x)
   );
 }
@@ -113,7 +119,7 @@ export function distinct(arr: any[], key = ''): any[] {
 }
 
 export function convertCamel2Dash(str: string): string {
-  return str.replace(/([a-z][A-Z])/g, function(g) {
+  return str.replace(/([a-z][A-Z])/g, function (g) {
     return g[0] + '-' + g[1].toLowerCase();
   });
 }
@@ -124,7 +130,7 @@ export function convertCamel2Space(str: string): string {
 }
 
 export function convertDash2Camel(str: string): string {
-  return str.replace(/-([a-z])/g, function(g) {
+  return str.replace(/-([a-z])/g, function (g) {
     return g[1].toUpperCase();
   });
 }
@@ -253,7 +259,7 @@ export function format10DigitPhoneNumber(number = '0000000000'): string {
 }
 
 export function formatPrice(total: number): string {
-  const dollars = total.toFixed(2).replace(/./g, function(c, i, a) {
+  const dollars = total.toFixed(2).replace(/./g, function (c, i, a) {
     return i && c !== '.' && (a.length - i) % 3 === 0 ? ',' + c : c;
   });
   return `$${dollars}`;
@@ -328,7 +334,7 @@ export function getStyle(el: Element, styleProp: string): string {
   } else if (el['currentStyle']) {
     // IE
     // sanitize property name to camelCase
-    styleProp = styleProp.replace(/\-(\w)/g, function(str, letter) {
+    styleProp = styleProp.replace(/\-(\w)/g, function (str, letter) {
       return letter.toUpperCase();
     });
     value = el['currentStyle'][styleProp];
@@ -636,7 +642,7 @@ export function throwException(errorName: string, errorMessage: string) {
     level: 'Show Stopper',
     message: errorMessage,
     htmlMessage: 'Error detected. Please contact the <a href=\'mailto:agendamanager@caiu.com\'>system administrator</a>.',
-    toString: function() {
+    toString: function () {
       return errorName + ': ' + errorMessage;
     }
   };
@@ -680,8 +686,8 @@ export function valueChanged(changes: SimpleChanges, key = '') {
   return key
     ? changes[key].currentValue !== changes[key].previousValue
     : Object.keys(changes).reduce((acc, currentKey) => {
-        return acc ? true : changes[currentKey].currentValue !== changes[currentKey].previousValue;
-      }, false);
+      return acc ? true : changes[currentKey].currentValue !== changes[currentKey].previousValue;
+    }, false);
 }
 
 export function valueEquals(value, formValue) {

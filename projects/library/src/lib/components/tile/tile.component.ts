@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { Tile } from './tile.model';
+import { build } from '../../shared/utils';
 
 @Component({
   selector: 'iu-tile',
@@ -10,10 +11,19 @@ import { Tile } from './tile.model';
 })
 export class TileComponent implements OnInit {
 
-  @Input() tile: Tile = new Tile();
+  _tile: Tile = new Tile();
   @Input() imageOpacity = 1;
 
   constructor() { }
+
+  @Input()
+  set tile(value: Tile) {
+    this._tile = value;
+  }
+
+  get tile(): Tile {
+    return build(Tile, this._tile);
+  }
 
   get backgroundColor(): string {
     return '';

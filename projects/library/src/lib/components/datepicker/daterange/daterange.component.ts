@@ -49,7 +49,7 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
   focused: DateRange = new DateRange();
   now = new Date();
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     if (this.debug && this.endDateValue) {
@@ -233,7 +233,7 @@ export class DaterangeComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  onBlur(value: DateRange) {}
+  onBlur(value: DateRange) { }
 
   onFocus(value: DateRange) {
     this.focused = value;

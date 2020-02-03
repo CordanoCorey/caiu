@@ -41,10 +41,10 @@ export class DateHelper {
     const daysBetween = Math.ceil(DateHelper.DaysBetween(startDate, endDate) + 1);
     return daysBetween && daysBetween > 0
       ? integerArray(daysBetween).map(i => {
-          const d = new Date(startDate);
-          d.setDate(new Date(startDate).getDate() + i);
-          return d;
-        })
+        const d = new Date(startDate);
+        d.setDate(new Date(startDate).getDate() + i);
+        return d;
+      })
       : [new Date(startDate)];
   }
 
@@ -226,6 +226,11 @@ export class DateHelper {
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
     return tomorrow;
+  }
+
+  static ParseDateDashes(date: string): Date {
+    const arr = date.split('-');
+    return new Date(toInt(arr[0]), toInt(arr[1]) - 1, toInt(arr[2]));
   }
 
   static TimeAgo(date: Date): string {
