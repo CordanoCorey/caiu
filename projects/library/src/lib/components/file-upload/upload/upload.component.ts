@@ -17,6 +17,9 @@ export class UploadComponent {
   constructor() { }
 
   get graphic(): string {
+    if (!this.upload) {
+      return null;
+    }
     if (this.upload.loading) {
       return 'cloud_upload';
     } else if (this.upload.isImage) {

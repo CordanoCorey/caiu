@@ -1,9 +1,9 @@
-<p [ngClass]="{'list-event-name': listView}">
+<p [class.list-event-name]="listView">
   {{ event.eventName }}
   <span *ngIf="listView === true && event.allDay != true">
-      {{ event.startHour }}:<span *ngIf="event.startMinute < 10">0</span>{{event.startMinute}} {{event.startTimePeriod}}
-      -
-      {{ event.endHour }}:<span *ngIf="event.endMinute < 10">0</span>{{event.endMinute}} {{event.endTimePeriod}}   
+    {{ event.startHour }}:<span *ngIf="event.startMinute < 10">0</span>{{event.startMinute}} {{event.startTimePeriod}}
+    -
+    {{ event.endHour }}:<span *ngIf="event.endMinute < 10">0</span>{{event.endMinute}} {{event.endTimePeriod}}
   </span>
   <span *ngIf="listView === true && event.allDay != false">All Day</span>
 </p>

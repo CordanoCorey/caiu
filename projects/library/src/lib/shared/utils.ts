@@ -29,9 +29,9 @@ export function applyMixins(derivedCtor: any, baseCtors: any[]) {
   });
 }
 
-export function arrayDistinct(arr: any[]): any[] {
+export function arrayDistinct(arr: any[], map: (x: any) => any = x => x): any[] {
   return arr.reduce((acc, x) => {
-    return acc.findIndex(y => equals(x, y)) === -1 ? [...acc, x] : acc;
+    return acc.findIndex(y => equals(map(x), map(y))) === -1 ? [...acc, x] : acc;
   }, []);
 }
 
@@ -86,6 +86,10 @@ export function buildColumnsFromMetadata(model: any, key: string): ColumnMetadat
       })
       : build(ColumnMetadata, x)
   );
+}
+
+export function buildQueryStringFromObject(obj: any): string {
+  return Object.keys(obj).reduce((acc, key) => obj[key] ? acc ? `${acc}&${key}=${obj[key]}` : `?${key}=${obj[key]}` : acc, '');
 }
 
 /** Clamps a number between zero and a maximum. */

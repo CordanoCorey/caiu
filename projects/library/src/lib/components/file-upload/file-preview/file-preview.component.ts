@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 import { FileUpload } from '../file-upload.model';
+import { build } from '../../../shared/utils';
 
 @Component({
   selector: 'iu-file-preview',
@@ -8,7 +9,6 @@ import { FileUpload } from '../file-upload.model';
   styleUrls: ['./file-preview.component.scss']
 })
 export class FilePreviewComponent {
-  @Input() file: FileUpload = new FileUpload();
   @Input() height: number;
   @Input() width: number;
   @Input() ordered = true;
@@ -17,14 +17,27 @@ export class FilePreviewComponent {
   @Output() moveUp = new EventEmitter<FileUpload>();
   @Output() moveDown = new EventEmitter<FileUpload>();
   @Output() remove = new EventEmitter<FileUpload>();
+  _file: FileUpload = new FileUpload();
 
-  constructor() {}
+  constructor() { }
+
+  @Input()
+  set file(value: FileUpload) {
+    this._file = value;
+  }
+
+  get file(): FileUpload {
+    return build(FileUpload, this._file);
+  }
 
   get cursorStyle(): string {
     return this.ordered ? 'move' : 'default';
   }
 
   get graphic(): string {
+    if (!this.file) {
+      return null;
+    }
     if (this.file.loading) {
       return 'cloud_upload';
     } else if (this.file.isImage) {

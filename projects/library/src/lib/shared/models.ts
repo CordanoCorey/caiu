@@ -275,6 +275,8 @@ export class QueryModel<T> {
   params = {};
   skip = 0;
   sort: string[] = [];
+  sortBy = '';
+  sortDirection: 'asc' | 'desc' | '';
   take = 0;
   term = '';
 

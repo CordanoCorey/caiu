@@ -30,6 +30,8 @@ export * from './lib/components/audit/audit-history/audit-history.component';
 export * from './lib/components/audit/audit-history-link/audit-history-link.component';
 export * from './lib/components/calendar/calendar.module';
 export * from './lib/components/calendar/calendar.component';
+export * from './lib/components/calendar/calendar-day/calendar-day.component';
+export * from './lib/components/calendar/calendar-days/calendar-days.component';
 export * from './lib/components/calendar/calendar.model';
 export * from './lib/components/collage/collage.module';
 export * from './lib/components/collage/collage.component';
