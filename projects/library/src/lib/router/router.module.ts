@@ -9,7 +9,7 @@ import { RouterService } from './router.service';
   exports: [NGRouterModule]
 })
 export class RouterModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<RouterModule> {
     return {
       ngModule: RouterModule,
       providers: [RouterService, RouterEffects]

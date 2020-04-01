@@ -22,9 +22,6 @@ import { SharedModule } from '../../shared/shared.module';
     EditorComponent,
     EditorWindowComponent,
   ],
-  entryComponents: [
-    EditorWindowComponent,
-  ],
   exports: [
     EditorComponent,
     EditorWindowComponent,

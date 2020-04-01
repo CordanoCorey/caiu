@@ -59,11 +59,6 @@ import { CalendarDayEventsComponent } from './calendar-day-events/calendar-day-e
     CalendarDayComponent,
     CalendarDaysComponent,
     CalendarEventComponent
-  ],
-  entryComponents: [
-    CalendarDayEditComponent,
-    CalendarFormComponent,
-    CalendarEventFormComponent
   ]
 })
-export class CalendarModule {}
+export class CalendarModule { }

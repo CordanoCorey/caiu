@@ -13,7 +13,7 @@ import { FormsModule as Ng2FormsModule, ReactiveFormsModule } from '@angular/for
 })
 export class FormsModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<FormsModule> {
     return {
       ngModule: FormsModule,
       providers: []

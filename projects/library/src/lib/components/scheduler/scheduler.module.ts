@@ -42,7 +42,6 @@ import { PrintComponent } from './print/print.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  entryComponents: [EventCreatorDialogComponent, CalCreatorDialogComponent],
   declarations: [
     SchedulerComponent,
     CalendarViewComponent,
@@ -56,4 +55,4 @@ import { PrintComponent } from './print/print.component';
   exports: [SchedulerComponent, CalendarViewComponent, EventCreatorDialogComponent, EventComponent, DayComponent, ListViewComponent, PrintComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SchedulerModule {}
+export class SchedulerModule { }

@@ -46,7 +46,7 @@ export function provideHttpContext(urlSelector: Selector<string>, authTokenSelec
 })
 export class HttpModule {
 
-  static forRoot(baseUrlSelector: Selector<string>, authTokenSelector: Selector<string>): ModuleWithProviders {
+  static forRoot(baseUrlSelector: Selector<string>, authTokenSelector: Selector<string>): ModuleWithProviders<HttpModule> {
     return {
       ngModule: HttpModule,
       providers: provideHttpContext(baseUrlSelector, authTokenSelector)

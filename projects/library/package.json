@@ -8,6 +8,7 @@
     "@angular/core": "^9.1.0",
     "@angular/cdk": "^9.2.0",
     "@angular/flex-layout": "^9.0.0-beta.29",
+    "@angular/material": "^9.2.0",
     "@ngrx/effects": "^9.0.0",
     "@ngrx/store": "^9.0.0"
   }

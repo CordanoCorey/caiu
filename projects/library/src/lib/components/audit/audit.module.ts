@@ -21,7 +21,6 @@ import { SharedModule } from '../../shared/shared.module';
     AuditHistoryComponent,
     AuditHistoryLinkComponent
   ],
-  entryComponents: [AuditHistoryComponent],
   imports: [SharedModule, MatButtonModule, MatTableModule, MatIconModule]
 })
-export class AuditModule {}
+export class AuditModule { }

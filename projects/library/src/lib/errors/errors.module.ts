@@ -9,7 +9,7 @@ import { GlobalErrorsService } from './global-errors.service';
   declarations: []
 })
 export class ErrorsModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<ErrorsModule> {
     return {
       ngModule: ErrorsModule,
       providers: [

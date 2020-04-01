@@ -9,11 +9,11 @@ import { EffectsModule as NgrxEffectsModule } from '@ngrx/effects';
 })
 export class EffectsModule {
 
-  static forFeature(featureEffects: Type<any>[]): ModuleWithProviders {
+  static forFeature(featureEffects: Type<any>[]): ModuleWithProviders<NgrxEffectsModule> {
     return NgrxEffectsModule.forFeature(featureEffects);
   }
 
-  static forRoot(rootEffects: Type<any>[]): ModuleWithProviders {
+  static forRoot(rootEffects: Type<any>[]): ModuleWithProviders<NgrxEffectsModule> {
     return NgrxEffectsModule.forRoot(rootEffects);
   }
 

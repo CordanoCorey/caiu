@@ -24,28 +24,28 @@ export function provideLookup(path = '', keys: string[] = []): any[] {
 })
 export class LookupModule {
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<LookupModule> {
     return {
       ngModule: LookupModule,
       providers: provideLookup('lookup', [])
     };
   }
 
-  static forRootWithPath(path = ''): ModuleWithProviders {
+  static forRootWithPath(path = ''): ModuleWithProviders<LookupModule> {
     return {
       ngModule: LookupModule,
       providers: provideLookup(path, [])
     };
   }
 
-  static forRootWithKeys(keys: string[]): ModuleWithProviders {
+  static forRootWithKeys(keys: string[]): ModuleWithProviders<LookupModule> {
     return {
       ngModule: LookupModule,
       providers: provideLookup('lookup', keys)
     };
   }
 
-  static forRootWithPathAndKeys(path = '', keys: string[]): ModuleWithProviders {
+  static forRootWithPathAndKeys(path = '', keys: string[]): ModuleWithProviders<LookupModule> {
     return {
       ngModule: LookupModule,
       providers: provideLookup(path, keys)

@@ -25,11 +25,6 @@ import { UnsavedChangesComponent } from './unsaved-changes/unsaved-changes.compo
     AutoLogoutComponent,
     ConfirmDeleteComponent,
     UnsavedChangesComponent
-  ],
-  entryComponents: [
-    AutoLogoutComponent,
-    ConfirmDeleteComponent,
-    UnsavedChangesComponent
   ]
 })
-export class DialogModule {}
+export class DialogModule { }

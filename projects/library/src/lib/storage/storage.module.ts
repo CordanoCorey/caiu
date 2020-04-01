@@ -25,7 +25,7 @@ export class StorageModule {
    * Provides StorageModule with storage service and effects.
    * @param storeKey - The name of the key containing the store in storage.
    */
-  static forRoot(storeKey: string): ModuleWithProviders {
+  static forRoot(storeKey: string): ModuleWithProviders<StorageModule> {
     return {
       ngModule: StorageModule,
       providers: provideStorage(storeKey)
