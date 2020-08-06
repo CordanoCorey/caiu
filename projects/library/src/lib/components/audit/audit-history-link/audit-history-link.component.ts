@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { distinctUntilChanged, switchMap, map, filter } from 'rxjs/operators';
 

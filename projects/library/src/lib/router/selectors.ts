@@ -96,7 +96,9 @@ export function urlPathSelector(store: Store<any>): Observable<string> {
 
 export function querySelector(store: Store<any>): Observable<QueryModel<any>> {
   const skip$ = routeParamIntSelector(store, 'skip');
-  const take$ = routeParamIntSelector(store, 'take');
+  const take$ = routeParamIntSelector(store, 'take').pipe(
+    map(x => x === 0 ? 20 : x)
+  );
   const term$ = routeParamSelector(store, 'term');
   return combineLatest(skip$, take$, term$, (skip, take, term) =>
     Object.assign(new QueryModel<any>(), {

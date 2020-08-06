@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
-import {
-  MatDialogModule,
-  MatIconModule,
-  MatToolbarModule
-} from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { DialogComponent } from './dialog.component';
 import { SharedModule } from '../../shared/shared.module';

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 
 import { TimerComponent } from './timer.component';
 import { TimerPipe } from './timer.pipe';

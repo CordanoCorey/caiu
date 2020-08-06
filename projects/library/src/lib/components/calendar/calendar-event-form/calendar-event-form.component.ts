@@ -1,6 +1,6 @@
 import { Component, OnInit, Optional, Inject, Input, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { CalendarEvent, CalendarEventType } from '../calendar.model';
 import { Control } from '../../../forms/decorators';

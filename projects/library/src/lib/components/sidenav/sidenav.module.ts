@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 
 import { SidenavComponent } from './sidenav.component';
 import { SocialIconsModule } from '../social-icons/social-icons.module';

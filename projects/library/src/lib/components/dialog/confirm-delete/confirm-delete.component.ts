@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation, Optional, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { DialogModel, DialogAction } from '../dialog.model';
 import { build } from '../../../shared/utils';

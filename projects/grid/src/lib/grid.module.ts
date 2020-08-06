@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatIconModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '@caiu/library';
 import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
 import { GridModule as KendoGridModule, PDFModule } from '@progress/kendo-angular-grid';

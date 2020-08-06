@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
-import {
-  MatButtonModule,
-  MatTableModule,
-  MatIconModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 import { AuditFieldsComponent } from './audit-fields/audit-fields.component';
 import { AuditHistoryComponent } from './audit-history/audit-history.component';

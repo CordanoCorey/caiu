@@ -9,7 +9,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import {
   CalendarDay,

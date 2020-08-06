@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatInputModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatSelectModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTableModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
 import { LibraryComponent } from './library.component';
@@ -24,7 +22,6 @@ import { DatepickerModule } from './components/datepicker/datepicker.module';
 import { DialogModule } from './components/dialog/dialog.module';
 import { FileUploadModule } from './components/file-upload/file-upload.module';
 import { NotFoundModule } from './components/not-found/not-found.module';
-import { SchedulerModule } from './components/scheduler/scheduler.module';
 import { TileModule } from './components/tile/tile.module';
 import { TimeModule } from './components/time/time.module';
 import { TimerModule } from './components/timer/timer.module';
@@ -55,7 +52,6 @@ import { SharedModule } from './shared/shared.module';
     MatTableModule,
     MatToolbarModule,
     PipesModule,
-    SchedulerModule,
     TimeModule,
     TimerModule
   ],
@@ -84,9 +80,8 @@ import { SharedModule } from './shared/shared.module';
     MatTabsModule,
     MatToolbarModule,
     PipesModule,
-    SchedulerModule,
     TimeModule,
     TimerModule
   ]
 })
-export class LibraryModule {}
+export class LibraryModule { }

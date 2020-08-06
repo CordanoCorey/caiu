@@ -1,6 +1,6 @@
 import { OnDestroy } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Store, Action } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
 

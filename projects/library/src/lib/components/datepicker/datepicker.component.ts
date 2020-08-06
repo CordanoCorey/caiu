@@ -9,7 +9,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatDatepicker } from '@angular/material';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 import { DateHelper } from '../../shared/date';

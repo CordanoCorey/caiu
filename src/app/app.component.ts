@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, HostListener, ViewChild, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import {
   Control,

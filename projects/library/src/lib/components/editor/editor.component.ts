@@ -1,10 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
   OnDestroy,
-  Output,
   AfterViewInit,
   forwardRef,
   ChangeDetectorRef,
@@ -15,7 +13,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 
 import { EditorWindowComponent } from './editor-window/editor-window.component';

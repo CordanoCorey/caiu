@@ -7,7 +7,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ConfirmDeleteComponent } from '../dialog/confirm-delete/confirm-delete.component';
 import { DumbComponent } from '../../shared/component';
