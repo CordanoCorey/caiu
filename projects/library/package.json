@@ -11,5 +11,8 @@
     "@angular/material": "^9.2.0",
     "@ngrx/effects": "^9.0.0",
     "@ngrx/store": "^9.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

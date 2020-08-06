@@ -9,6 +9,7 @@ import { getValue, truthy } from './utils';
 import { MessageSubscription } from '../events/events.models';
 import { MessagesActions } from '../events/events.actions';
 
+// TODO: Add Angular decorator.
 export class DumbComponent implements OnDestroy {
   dialog: MatDialog;
   dialogSubscription: Subscription;
@@ -209,6 +210,7 @@ export class FormComponent extends DumbComponent {
   }
 }
 
+// TODO: Add Angular decorator.
 export class SmartComponent extends DumbComponent implements OnDestroy {
   events;
   messages: MessageSubscription[] = [];
