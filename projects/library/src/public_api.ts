@@ -1,6 +1,6 @@
-/*
- * Public API Surface of library
- */
+// /*
+//  * Public API Surface of library
+//  */
 
 export * from './lib/library.service';
 export * from './lib/library.component';
@@ -22,7 +22,6 @@ export * from './lib/components/address/address.component';
 export * from './lib/components/address/address-form/address-form.component';
 export * from './lib/components/address/inline-address/inline-address.component';
 export * from './lib/components/address/state-picker/state-picker.component';
-export * from './lib/components/address/address.component';
 export * from './lib/components/audit/audit.module';
 export * from './lib/components/audit/audit.model';
 export * from './lib/components/audit/audit-fields/audit-fields.component';
@@ -83,14 +82,14 @@ export * from './lib/components/timer/timer.pipe';
 export * from './lib/components/wallpaper/wallpaper.module';
 export * from './lib/components/wallpaper/wallpaper.component';
 
-/**
- * Effects
- */
+// /**
+//  * Effects
+//  */
 export * from './lib/effects/effects.module';
 
-/**
- * Errors
- */
+// /**
+//  * Errors
+//  */
 export * from './lib/errors/errors.module';
 export * from './lib/errors/errors.actions';
 export * from './lib/errors/errors.effects';
@@ -100,9 +99,9 @@ export * from './lib/errors/errors.selectors';
 export * from './lib/errors/errors.service';
 export * from './lib/errors/global-errors.service';
 
-/**
- * Events
- */
+// /**
+//  * Events
+//  */
 export * from './lib/events/events.module';
 export * from './lib/events/events.actions';
 export * from './lib/events/events.effects';
@@ -111,9 +110,9 @@ export * from './lib/events/events.reducer';
 export * from './lib/events/events.selectors';
 export * from './lib/events/events.service';
 
-/**
- * Forms
- */
+// /**
+//  * Forms
+//  */
 export * from './lib/forms/forms.module';
 export * from './lib/forms/actions';
 export * from './lib/forms/decorators';
@@ -121,9 +120,9 @@ export * from './lib/forms/models';
 export * from './lib/forms/validators';
 export * from './lib/forms/utils';
 
-/**
- * HTTP
- */
+// /**
+//  * HTTP
+//  */
 export * from './lib/http/http.module';
 export * from './lib/http/http.actions';
 export * from './lib/http/http.commands';
@@ -132,8 +131,14 @@ export * from './lib/http/http.models';
 export * from './lib/http/http.service';
 
 /**
- * Lookup
+ * Hub
  */
+export * from './lib/hub/hub.module';
+export * from './lib/hub/hub.service';
+
+// /**
+//  * Lookup
+//  */
 export * from './lib/lookup/lookup.module';
 export * from './lib/lookup/lookup.actions';
 export * from './lib/lookup/lookup.models';
@@ -141,9 +146,9 @@ export * from './lib/lookup/lookup.reducer';
 export * from './lib/lookup/lookup.selectors';
 export * from './lib/lookup/lookup.service';
 
-/**
- * Pipes
- */
+// /**
+//  * Pipes
+//  */
 export * from './lib/pipes/pipes.module';
 export * from './lib/pipes/list.pipe';
 export * from './lib/pipes/pad-left.pipe';
@@ -152,9 +157,9 @@ export * from './lib/pipes/safe-html.pipe';
 export * from './lib/pipes/time-ago.pipe';
 export * from './lib/pipes/yes-no.pipe';
 
-/**
- * Router
- */
+// /**
+//  * Router
+//  */
 export * from './lib/router/router.module';
 export * from './lib/router/actions';
 export * from './lib/router/router.effects';
@@ -164,10 +169,11 @@ export * from './lib/router/selectors';
 export * from './lib/router/router.service';
 export * from './lib/router/guards/authenticated.guard';
 
-/**
- * Shared
- */
+// /**
+//  * Shared
+//  */
 export * from './lib/shared/shared.module';
+export * from './lib/shared/actions';
 export * from './lib/shared/base-entity';
 export * from './lib/shared/collection';
 export * from './lib/shared/component';
@@ -193,11 +199,20 @@ export * from './lib/storage/storage.effects';
 export * from './lib/storage/storage.models';
 export * from './lib/storage/storage.service';
 
-/**
- * Store
- */
+// /**
+//  * Store
+//  */
 export * from './lib/store/store.module';
 export * from './lib/store/actions';
 export * from './lib/store/models';
 export * from './lib/store/reducers';
 export * from './lib/store/selectors';
+
+/**
+ * Widgets
+ */
+export * from './lib/widgets/widgets.module';
+export * from './lib/widgets/widgets.model';
+export * from './lib/widgets/widgets.reducer';
+export * from './lib/widgets/widget/widget.component';
+export * from './lib/widgets/widgets-menu/widgets-menu.component';

@@ -1,0 +1,99 @@
+@import '~@angular/material/_theming';
+
+:host {
+  display: block;
+}
+
+.widgets-menu {
+  width: 100%;
+  background: transparent;
+  position: relative;
+  height: 51px;
+  display: flex;
+  align-items: center;
+
+  .btn-reset {
+    // @include light-green-gradient();
+    color: #fff;
+    min-width: 96px;
+
+    mat-icon {
+      color: #000;
+    }
+  }
+
+  mat-spinner {
+    margin: 0 20px;
+  }
+
+  .hint {
+    // color: $accent-color;
+    padding: 0 10px;
+    min-width: 90px;
+    max-width: 90px;
+  }
+
+  .arrow {
+    height: 36px;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background: $primary-color;
+    // @include dark-blue-gradient();
+
+    mat-icon {
+      font-size: 36px;
+      height: 36px;
+      width: 36px;
+      color: #fff;
+    }
+  }
+
+  .arrow:hover {
+    // @include light-green-gradient();
+    color: #fff;
+    ;
+  }
+
+  .more {
+    // color: $accent-color;
+    font-size: 48px;
+    margin: 0 20px;
+    height: 48px;
+    width: 48px;
+  }
+
+  .widgets-list {
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    //background: rgba(0, 0, 0, 0.3);
+  }
+
+  .btn-widget {
+    margin: 5px 0px;
+    position: relative;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: rbga(0, 0, 0, 0.7);
+
+    .btn-add {
+      // color: $accent-color;
+      cursor: pointer;
+    }
+
+    .btn-remove {
+      color: red;
+      cursor: pointer;
+    }
+
+    .btn-remove:hover {
+      color: red;
+    }
+  }
+}

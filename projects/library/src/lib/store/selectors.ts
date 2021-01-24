@@ -1,7 +1,9 @@
+import { Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { Observable, of, combineLatest } from 'rxjs';
-import { map, distinctUntilChanged } from 'rxjs/operators';
+import { map, distinctUntilChanged, filter, take } from 'rxjs/operators';
 
+import { Action } from './models';
 import { Config } from '../shared/config';
 import { Token } from '../shared/token';
 import { CurrentUser } from '../shared/user';
@@ -26,6 +28,13 @@ export function authenticatedSelector(store: Store<any>): Observable<boolean> {
   return currentUserSelector(store).pipe(
     map(user => user.authenticated),
     distinctUntilChanged()
+  );
+}
+
+export function loggedInSelector(store: Store<any>): Observable<boolean> {
+  return currentUserSelector(store).pipe(
+    map(user => user.authenticated),
+    take(1)
   );
 }
 
@@ -96,5 +105,12 @@ export function isMobileSelector(store: Store<any>): Observable<boolean> {
     windowHeightSelector(store),
     windowWidthSelector(store),
     (h, w) => w < h || isMobile()
+  );
+}
+
+export function actionTypeSelector(actions$: Actions, actionType: string): Observable<any> {
+  return actions$.pipe(
+    map((action: Action) => (action.type === actionType ? action.payload : null)),
+    filter(x => x !== null)
   );
 }

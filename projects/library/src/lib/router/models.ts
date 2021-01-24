@@ -13,6 +13,7 @@ import {
   Params,
   Data
 } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { build, assignProps } from '../shared/utils';
 import { Dictionary } from '../shared/models';
@@ -23,7 +24,11 @@ export class ActivatedRoutePayload {
 }
 
 export class Breadcrumbs {
-  constructor(public segments: RouteSegment[]) {}
+  constructor(public segments: RouteSegment[]) { }
+}
+
+export interface CanComponentDeactivate {
+  canDeactivate: (dest?: string) => boolean | Observable<boolean>;
 }
 
 export class CustomRoute implements Route {
@@ -155,23 +160,23 @@ export class RouterState {
   ): Dictionary<RouteSegment> {
     return root
       ? root.children.reduce(
-          (
-            acc: Dictionary<RouteSegment>,
-            r: ActivatedRouteSnapshot,
-            currentIndex
-          ) => {
-            const i = index + currentIndex;
-            const routeName = RouterState.GetRouteName(r);
-            const existing = build(RouteSegment, acc[routeName]);
-            const outlet = RouterState.GetRouteSegment(r, existing, i);
-            return routeName
-              ? Object.assign(acc, RouterState.GetActivatedOutlets(r, i + 1), {
-                  [routeName]: outlet
-                })
-              : Object.assign(acc, RouterState.GetActivatedOutlets(r, i + 1));
-          },
-          {}
-        )
+        (
+          acc: Dictionary<RouteSegment>,
+          r: ActivatedRouteSnapshot,
+          currentIndex
+        ) => {
+          const i = index + currentIndex;
+          const routeName = RouterState.GetRouteName(r);
+          const existing = build(RouteSegment, acc[routeName]);
+          const outlet = RouterState.GetRouteSegment(r, existing, i);
+          return routeName
+            ? Object.assign(acc, RouterState.GetActivatedOutlets(r, i + 1), {
+              [routeName]: outlet
+            })
+            : Object.assign(acc, RouterState.GetActivatedOutlets(r, i + 1));
+        },
+        {}
+      )
       : {};
   }
 
@@ -180,19 +185,19 @@ export class RouterState {
   ): ActivatedRouteSnapshot {
     return root && Array.isArray(root.children)
       ? root.children.reduce(
-          (acc: ActivatedRouteSnapshot, r: ActivatedRouteSnapshot) => {
-            return RouterState.GetActivatedRoute(r);
-          },
-          root
-        )
+        (acc: ActivatedRouteSnapshot, r: ActivatedRouteSnapshot) => {
+          return RouterState.GetActivatedRoute(r);
+        },
+        root
+      )
       : null;
   }
 
   static GetAllParams(route: ActivatedRouteSnapshot): any {
     return route
       ? route.children.reduce((acc: any, r: ActivatedRouteSnapshot) => {
-          return Object.assign({}, acc, RouterState.GetAllParams(r));
-        }, Object.assign({}, route.params, route.queryParams))
+        return Object.assign({}, acc, RouterState.GetAllParams(r));
+      }, Object.assign({}, route.params, route.queryParams))
       : {};
   }
 

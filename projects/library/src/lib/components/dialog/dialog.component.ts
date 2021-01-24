@@ -7,15 +7,17 @@ import {
   ElementRef,
   AfterViewInit
 } from '@angular/core';
-import { MatDialogClose } from '@angular/material/dialog';
+import { MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 
 import { DialogAction, DialogModel } from './dialog.model';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'iu-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
   encapsulation: ViewEncapsulation.None
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogComponent implements AfterViewInit {
   @Input() model: DialogModel = new DialogModel();
@@ -25,7 +27,7 @@ export class DialogComponent implements AfterViewInit {
   @Input() defaultActionColor = 'accent';
   @ViewChildren(MatDialogClose) actionElements!: QueryList<MatDialogClose>;
 
-  constructor() {}
+  constructor(public dialogRef: MatDialogRef<DialogComponent>) { }
 
   get actions(): DialogAction[] {
     return this.model.actions;
@@ -57,5 +59,15 @@ export class DialogComponent implements AfterViewInit {
     //   console.log(typeof this.closeDialogElements[1].nativeElement['click']);
     //   this.closeDialogElements[1].nativeElement.click();
     // }, 3000);
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnChanges(e) {
+  }
+
+  close(e: any) {
+    this.dialogRef.close(e);
   }
 }

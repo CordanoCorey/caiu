@@ -1,13 +1,6 @@
 <div cdkDropList class="uploads" [style.height]="height" [style.width]="width" (cdkDropListDropped)="onDrop($event)">
-  <iu-file-preview
-    *ngFor="let upload of uploads; let first = first; let last = last"
-    [file]="upload"
-    [first]="first"
-    [last]="last"
-    [ordered]="ordered"
-    (moveUp)="onMoveUp($event)"
-    (moveDown)="onMoveDown($event)"
-    (remove)="onRemove($event)"
-    cdkDrag
-  ></iu-file-preview>
+  <iu-file-preview *ngFor="let upload of uploads; let first = first; let last = last" [file]="upload" [first]="first"
+    [last]="last" [ordered]="ordered" [isPrivateMessage]="isPrivateMessage" (moveUp)="onMoveUp($event)"
+    (moveDown)="onMoveDown($event)" (remove)="onRemove($event)" (changePrivacyStatus)="onChangePrivacyStatus($event)"
+    cdkDrag></iu-file-preview>
 </div>

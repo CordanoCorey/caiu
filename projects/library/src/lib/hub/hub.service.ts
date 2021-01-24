@@ -17,7 +17,10 @@ export class HubService {
 
   startConnection(url: string) {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(url)
+      .withUrl(url, {
+        skipNegotiation: true,
+        transport: signalR.HttpTransportType.WebSockets
+      })
       .build();
 
     this.hubConnection.start();
@@ -26,13 +29,17 @@ export class HubService {
   }
 
   addEffect(channel: string, action: string) {
+    this.removeEffect(channel); // make sure no existing streams exist for this channel
     this.hubConnection.on(channel, (payload) => {
-      console.dir(payload);
       this.store.dispatch({
         type: action,
         payload
       });
     });
+  }
+
+  removeEffect(channel: string) {
+    this.hubConnection.off(channel);
   }
 
   addListener(functionName: string, func: Function) {

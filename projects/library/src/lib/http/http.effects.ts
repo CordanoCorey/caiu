@@ -47,7 +47,7 @@ export class HttpEffects<T> {
     mergeMap((action: Action) => this.search$(action.payload))
   );
 
-  constructor(private actions$: Actions, private commands: HttpCommands<T>) {}
+  constructor(private actions$: Actions, private commands: HttpCommands<T>) { }
 
   delete$(payload: HttpDeletePayload<T>): Observable<Action> {
     // console.log('DELETE:\t', payload.onSuccess);

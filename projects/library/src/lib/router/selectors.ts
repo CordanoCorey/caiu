@@ -4,7 +4,7 @@ import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import { RouterState, Breadcrumbs } from './models';
 import { QueryModel } from '../shared/models';
-import { toArray, toInt } from '../shared/utils';
+import { toArray, toInt, truthy } from '../shared/utils';
 
 export function routeSelector(store: Store<any>): Observable<RouterState> {
   return store.select('route');
@@ -64,6 +64,13 @@ export function routeParamArraySelector(
   key: string
 ): Observable<any[]> {
   return routeParamSelector(store, key, []).pipe(map(x => toArray(x)));
+}
+
+export function routeParamBoolSelector(
+  store: Store<any>,
+  key: string
+): Observable<boolean> {
+  return routeParamSelector(store, key).pipe(map(x => x !== 'false' && (x === 'true' || truthy(x))));
 }
 
 export function routeParamIdSelector(

@@ -127,6 +127,12 @@ export class Dimensions {
   }
 }
 
+export interface Distance {
+  x: number;
+  y: number;
+  zIndex?: number;
+}
+
 export class Email {
   id = 0;
   bcc = '';

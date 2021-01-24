@@ -4,9 +4,10 @@
     <mat-icon *ngIf="!showImage" class="icon-graphic">{{ graphic }}</mat-icon>
   </div>
   <mat-progress-bar mode="indeterminate" *ngIf="file.loading"></mat-progress-bar>
-  <div class="file-info">
+  <div class="file-info" [class.has-security]="isPrivateMessage">
     <span class="file-name">{{ file.name }}</span>
   </div>
+  <mat-checkbox *ngIf="isPrivateMessage" [(ngModel)]="isPrivate">{{ isPrivateMessage }}</mat-checkbox>
   <mat-icon *ngIf="showUpArrow" class="up-arrow" (click)="onMoveUp()">keyboard_arrow_up</mat-icon>
   <mat-icon *ngIf="showDownArrow" class="down-arrow" (click)="onMoveDown()">keyboard_arrow_down</mat-icon>
   <mat-icon class="remove-upload" (click)="onRemove()">cancel</mat-icon>

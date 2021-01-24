@@ -3,19 +3,25 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angul
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { authenticatedSelector } from '../../store/selectors';
+import { RouterService } from '../router.service';
+import { loggedInSelector } from '../../store/selectors';
 
 @Injectable()
 export class AuthenticatedGuard implements CanActivate {
 
-    authenticated$: Observable<boolean>;
+  authenticated = false;
 
-    constructor(public store: Store<any>) {
-        this.authenticated$ = authenticatedSelector(this.store);
-    }
+  constructor(public store: Store<any>, public routerService: RouterService) {
+    loggedInSelector(store).subscribe(x => {
+      this.authenticated = x;
+    });
+  }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-        return this.authenticated$;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
+    if (!this.authenticated) {
+      this.routerService.navigate([`/login`]);
     }
+    return true;
+  }
 
 }

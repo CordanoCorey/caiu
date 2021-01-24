@@ -289,9 +289,9 @@ export function getAllProps(obj: any): string[] {
 }
 
 export function getGetters(obj: any): string[] {
-  return Object.keys(obj.constructor.prototype).filter(name => {
+  return Reflect.ownKeys(obj.constructor.prototype).filter(name => {
     return typeof Object.getOwnPropertyDescriptor(obj.constructor.prototype, name)['get'] === 'function';
-  });
+  }) as string[];
 }
 
 export function getKeyValues(model: any): any {
@@ -570,7 +570,7 @@ export function serialize(model: any) {
   if (keys.length === 0) {
     return model;
   }
-  return keys.reduce((acc, key) => {
+  return keys.filter(key => !inArray(['arguments', 'caller', 'callee'], key)).reduce((acc, key) => {
     let val = null;
     if (model[key] !== null && typeof model[key] === 'object' && !(model[key] instanceof Date)) {
       if (model[key].serialize && typeof model[key].serialize === 'function') {

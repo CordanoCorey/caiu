@@ -1,38 +1,27 @@
 <div class="file-upload">
-  <div
-    class="box"
-    [class.hovering]="inDropZone"
-    fxLayout="row"
-    fxLayoutAlign="center end"
-    (dragenter)="onDragEnter($event)"
-    (dragleave)="onDragLeave($event)"
-    (dragover)="onDragOver($event)"
-    (drop)="onDrop($event)"
-  >
+  <div class="box" [class.hovering]="inDropZone" fxLayout="row" fxLayoutAlign="center end"
+    (dragenter)="onDragEnter($event)" (dragleave)="onDragLeave($event)" (dragover)="onDragOver($event)"
+    (drop)="onDrop($event)">
     <p id="dragdrop-message" *ngIf="showMultiple">
       <strong>Choose files</strong>
       <span class="dragndrop"> or drag them here</span>.
     </p>
-    <input id="file-upload" *ngIf="showMultiple" type="file" (change)="onInputChange($event)" [id]="id" multiple />
+    <input *ngIf="showMultiple" type="file" (change)="onInputChange($event)" [id]="id" multiple />
     <p id="dragdrop-message" *ngIf="!multiple">
       <strong>Choose a file</strong>
       <span class="dragndrop"> or drag it here</span>.
     </p>
-    <input id="file-upload" *ngIf="!multiple" type="file" (change)="onInputChange($event)" [id]="id" />
+    <input *ngIf="!multiple" type="file" (change)="onInputChange($event)" [id]="id" />
     <label [for]="id" class="custom-file-upload">
       <figure>
         <mat-icon>cloud_upload</mat-icon>
       </figure>
     </label>
   </div>
-  <iu-uploads
-    *ngIf="multiple"
-    [uploads]="uploads"
-    [ordered]="ordered"
-    (moveUp)="moveUp($event)"
-    (moveDown)="moveDown($event)"
-    (remove)="remove($event)"
-    (reorder)="reorder($event)"
-  ></iu-uploads>
-  <iu-upload *ngIf="preview && !multiple && hasUploads" [upload]="activeFile" [height]="200" (remove)="remove()"></iu-upload>
+  <iu-uploads *ngIf="multiple" [uploads]="uploads" [ordered]="ordered" [isPrivateMessage]="isPrivateMessage"
+    (moveUp)="moveUp($event)" (moveDown)="moveDown($event)" (remove)="remove($event)" (reorder)="reorder($event)"
+    (changePrivacyStatus)="changePrivacyStatus($event)">
+  </iu-uploads>
+  <iu-upload *ngIf="preview && !multiple && hasUploads" [upload]="activeFile" [height]="200" (remove)="remove()">
+  </iu-upload>
 </div>

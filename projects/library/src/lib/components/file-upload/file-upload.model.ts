@@ -1,13 +1,14 @@
 import { build } from '../../shared/utils';
 
 export class FileUpload {
+  isPrivate = false;
   lastModified = 0;
   lastModifiedDate: Date = new Date();
   name = '';
   size = 0;
   type = '';
   webkitRelativePath = '';
-  order ? = 0;
+  order?= 0;
   readyState: 'EMPTY' | 'LOADING' | 'DONE' = 'EMPTY';
   src = '';
 

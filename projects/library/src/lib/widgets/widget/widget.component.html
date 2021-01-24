@@ -1,0 +1,37 @@
+<div class="wrapper" [style.height.px]="heightPx + wrapperWidth + wrapperWidth"
+  [style.width.px]="widthPx + wrapperWidth + wrapperWidth" [style.top.px]="top - wrapperWidth"
+  [style.left.px]="left - wrapperWidth" [style.z-index]="zIndex" (mouseenter)="hovering = true"
+  (mousedown)="onMousedown($event)" (mouseleave)="onMouseout($event)" (mousemove)="onMousemove($event)"
+  (mouseup)="onMouseup($event)" (cdkDragEnded)="onDrop($event)" (cdkDragStarted)="onDrag()"
+  [cdkDragDisabled]="resizable" cdkDrag>
+  <!-- <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+    </path>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+  </svg> -->
+  <div class="widget scrollable" [class.active]="isFocused" [style.border-width.px]="borderWidth"
+    [style.height.px]="heightPx" [style.width.px]="widthPx" [style.cursor]="cursorStyle" (click)="onFocus()"
+    #widgetWrapper>
+    <ng-content></ng-content>
+  </div>
+  <button class="icons-trigger" *ngIf="!hasIcons && !mini && isFocused" mat-button (click)="onShowIcons()"
+    [class.open]="hasIcons" [style.top.px]="iconsTopPx" [style.right.px]="iconsRightPx" [style.z-index]="zIndex + 1">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <h2 class="font-effect-emboss" *ngIf="heading && borderWidth > 0" [style.top.px]="headingTopPx"
+    [style.left.px]="headingLeftPx" [style.z-index]="zIndex + 1">
+    {{ heading }}
+  </h2>
+  <div class="icons" [class.top]="iconsTop" [style.top.px]="iconsTopPx" [style.right.px]="iconsRightPx"
+    [style.z-index]="zIndex + 1" [@toggle]="hasIcons ? 'show' : 'hide'">
+    <mat-icon class="btn-collapse" *ngIf="!mini" (click)="onHideIcons()">double_arrow</mat-icon>
+    <mat-icon *ngIf="!mini" (click)="justifyLeft.emit()">format_align_left</mat-icon>
+    <mat-icon *ngIf="!mini" (click)="justifyCenter.emit()">format_align_center</mat-icon>
+    <mat-icon *ngIf="!mini" (click)="justifyRight.emit()">format_align_right</mat-icon>
+    <mat-icon *ngIf="!mini" (click)="justifyTop.emit()">vertical_align_top</mat-icon>
+    <mat-icon *ngIf="!mini" (click)="justifyCenterVertical.emit()">vertical_align_center</mat-icon>
+    <mat-icon *ngIf="!mini" (click)="justifyBottom.emit()">vertical_align_bottom</mat-icon>
+    <mat-icon *ngIf="!mini" class="expand" (click)="toFullScreen.emit()">fullscreen</mat-icon>
+    <mat-icon class="btn-remove" (click)="onRemove()">cancel</mat-icon>
+  </div>
+</div>

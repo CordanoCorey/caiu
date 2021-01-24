@@ -1,15 +1,20 @@
-import { OnDestroy } from '@angular/core';
+import { OnDestroy, Directive } from '@angular/core';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Store, Action } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
 
 import { HasId } from './models';
 import { getValue, truthy } from './utils';
 import { MessageSubscription } from '../events/events.models';
 import { MessagesActions } from '../events/events.actions';
+import { HttpActions } from '../http/http.actions';
+import { actionsStreamSelector } from './actions';
+import { Action } from '../store/models';
+import { HubService } from '../hub/hub.service';
 
-// TODO: Add Angular decorator.
+@Directive()
 export class DumbComponent implements OnDestroy {
   dialog: MatDialog;
   dialogSubscription: Subscription;
@@ -17,7 +22,7 @@ export class DumbComponent implements OnDestroy {
   requestState: 'DEFAULT' | 'SUCCESS' | 'ERROR' = 'DEFAULT';
   subscriptions: Subscription[] = [];
 
-  constructor() {}
+  constructor() { }
 
   get inErrorState(): boolean {
     return this.requestState === 'ERROR';
@@ -69,7 +74,7 @@ export class DumbComponent implements OnDestroy {
   print(html: string) {
     const iframe = document.createElement('iframe');
 
-    iframe.onload = function() {
+    iframe.onload = function () {
       const doc = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
       doc.getElementsByTagName('body')[0].innerHTML = html;
 
@@ -152,6 +157,7 @@ export class DumbComponent implements OnDestroy {
   }
 }
 
+@Directive()
 export class FormComponent extends DumbComponent {
   form: FormGroup;
   model: HasId;
@@ -210,13 +216,17 @@ export class FormComponent extends DumbComponent {
   }
 }
 
-// TODO: Add Angular decorator.
+@Directive()
 export class SmartComponent extends DumbComponent implements OnDestroy {
+  actions$: Observable<Action>;
   events;
+  hubService: HubService;
   messages: MessageSubscription[] = [];
+  private channels: string[] = [];
 
   constructor(public store: Store<any>) {
     super();
+    this.actions$ = actionsStreamSelector(store);
   }
 
   get hasMessages(): boolean {
@@ -233,7 +243,15 @@ export class SmartComponent extends DumbComponent implements OnDestroy {
     if (this.hasMessages) {
       this.dispatch(MessagesActions.unsubscribe(this.messages));
     }
+    this.removeChannels();
     super.ngOnDestroy();
+  }
+
+  addChannel(channel: string, action: string) {
+    if (this.hubService && typeof this.hubService.addEffect == 'function' && (this.channels.findIndex(x => x === channel) === -1)) {
+      this.hubService.addEffect(channel, action);
+      this.channels.push(channel);
+    }
   }
 
   dispatch(action: Action) {
@@ -244,14 +262,14 @@ export class SmartComponent extends DumbComponent implements OnDestroy {
     const f1 = onSuccess
       ? onSuccess
       : e => {
-          this.flashSuccessMessage();
-        };
+        this.flashSuccessMessage();
+      };
 
     const f2 = onError
       ? onError
       : e => {
-          this.flashErrorMessage();
-        };
+        this.flashErrorMessage();
+      };
 
     if (this.events && this.events.dispatch) {
       this.addSubscription(this.events.dispatch(action).subscribe(f1, f2));
@@ -259,4 +277,51 @@ export class SmartComponent extends DumbComponent implements OnDestroy {
       this.store.dispatch(action);
     }
   }
+
+  httpDelete(path: string, payload: any, onSuccess: string, onError: string): Observable<Action> {
+    this.dispatch(HttpActions.delete(path, payload, onSuccess, onError));
+    return this.actions$.pipe(
+      filter(x => x.payload.type === onSuccess || x.payload.type === onError),
+      take(1)
+    );
+  }
+
+  httpGet(path: string, onSuccess: string, onError: string): Observable<Action> {
+    this.dispatch(HttpActions.get(path, onSuccess, onError));
+    return this.actions$.pipe(
+      filter(x => x.payload.type === onSuccess || x.payload.type === onError),
+      take(1)
+    );
+  }
+
+  httpPost(path: string, payload: any, onSuccess: string, onError: string): Observable<Action> {
+    this.dispatch(HttpActions.post(path, payload, onSuccess, onError));
+    return this.actions$.pipe(
+      filter(x => x.payload.type === onSuccess || x.payload.type === onError),
+      take(1)
+    );
+  }
+
+  httpPut(path: string, payload: any, onSuccess: string, onError: string): Observable<Action> {
+    this.dispatch(HttpActions.put(path, payload, onSuccess, onError));
+    return this.actions$.pipe(
+      filter(x => x.payload.type === onSuccess || x.payload.type === onError),
+      take(1)
+    );
+  }
+
+  removeChannel(channel: string) {
+    if (this.hubService && typeof this.hubService.removeEffect == 'function') {
+      this.hubService.removeEffect(channel);
+    }
+  }
+
+  removeChannels() {
+    if (this.hubService && typeof this.hubService.removeEffect == 'function') {
+      this.channels.forEach(x => {
+        this.hubService.removeEffect(x);
+      });
+    }
+  }
+
 }

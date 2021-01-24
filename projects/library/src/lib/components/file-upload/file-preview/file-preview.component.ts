@@ -14,6 +14,8 @@ export class FilePreviewComponent {
   @Input() ordered = true;
   @Input() first = false;
   @Input() last = false;
+  @Input() isPrivateMessage = '';
+  @Output() changePrivacyStatus = new EventEmitter<FileUpload>();
   @Output() moveUp = new EventEmitter<FileUpload>();
   @Output() moveDown = new EventEmitter<FileUpload>();
   @Output() remove = new EventEmitter<FileUpload>();
@@ -50,6 +52,16 @@ export class FilePreviewComponent {
           return 'cloud_done';
       }
     }
+  }
+
+  set isPrivate(value: boolean) {
+    this.changePrivacyStatus.emit(build(FileUpload, this.file, {
+      isPrivate: value
+    }));
+  }
+
+  get isPrivate(): boolean {
+    return this._file.isPrivate;
   }
 
   get showImage(): boolean {

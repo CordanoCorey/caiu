@@ -2,6 +2,13 @@
   height: 80px;
   margin: 2px 0;
   position: relative;
+
+  mat-checkbox {
+    position: absolute;
+    bottom: 5px;
+    right: 50px;
+    font-size: 12px;
+  }
 }
 
 .mat-card {
@@ -40,6 +47,10 @@
   height: 72px;
   max-width: 300px;
   text-align: center;
+}
+
+.filo-info.has-security {
+  left: 200px !important;
 }
 
 .file-name {

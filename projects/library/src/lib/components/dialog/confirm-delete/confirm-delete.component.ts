@@ -13,11 +13,10 @@ import { build } from '../../../shared/utils';
 export class ConfirmDeleteComponent {
   @Input() header = 'Delete Confirmation';
   @Input() question = 'Are you sure you want to delete this record?';
+  dialog = new DialogModel();
 
-  constructor(@Optional() public dialogRef?: MatDialogRef<ConfirmDeleteComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data?: any) {}
-
-  get dialog(): DialogModel {
-    return build(DialogModel, {
+  constructor(@Optional() public dialogRef?: MatDialogRef<ConfirmDeleteComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data?: any) {
+    this.dialog = build(DialogModel, {
       title: this.headerText,
       actions: [build(DialogAction, { label: `Yes`, value: true }), build(DialogAction, { label: `Cancel`, value: false })]
     });

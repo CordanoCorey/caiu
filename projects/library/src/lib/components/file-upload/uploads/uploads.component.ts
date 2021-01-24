@@ -14,13 +14,15 @@ export class UploadsComponent {
   @Input() height: number;
   @Input() width: number;
   @Input() ordered = true;
+  @Input() isPrivateMessage = '';
+  @Output() changePrivacyStatus = new EventEmitter<FileUpload>();
   @Output() moveUp = new EventEmitter<FileUpload>();
   @Output() moveDown = new EventEmitter<FileUpload>();
   @Output() remove = new EventEmitter<FileUpload>();
   @Output() reorder = new EventEmitter<FileUpload[]>();
   _uploads: FileUpload[] = [];
 
-  constructor() {}
+  constructor() { }
 
   @Input()
   set uploads(value: FileUpload[]) {
@@ -29,6 +31,10 @@ export class UploadsComponent {
 
   get uploads(): FileUpload[] {
     return this._uploads;
+  }
+
+  onChangePrivacyStatus(f: FileUpload) {
+    this.changePrivacyStatus.emit(f);
   }
 
   onDrop(e: CdkDragDrop<string[]>) {

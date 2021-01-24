@@ -1,0 +1,24 @@
+<div *ngIf="(routeName$ | async) === 'dashboard'" class="widgets-menu">
+  <button *ngIf="!restoringDefaults" mat-raised-button class="btn-reset" (click)="restoreDefault()">
+    <mat-icon>settings_backup_restore</mat-icon>
+    Reset
+  </button>
+  <mat-spinner *ngIf="restoringDefaults" color="accent" [diameter]="30"></mat-spinner>
+  <span class="hint font-effect-emboss">Add Widgets to Dashboard:</span>
+  <button mat-fab class="arrow" (click)="back()" *ngIf="showBack">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+  <!-- <mat-icon *ngIf="showBack" class="more">more_horiz</mat-icon> -->
+  <div class="widgets-list" [style.width.px]="hostWidth">
+    <button class="btn-widget font-effect-outline" mat-button *ngFor="let w of visibleItems" [disabled]="w.id !== 0"
+      color="accent" (click)="onAdd(w.name)" #btnWidget>
+      <mat-icon *ngIf="!w.active" class="btn-add" (click)="deleteWidget(w.id, w.active)">add_circle</mat-icon>
+      <mat-icon *ngIf="w.active" class="btn-remove" (click)="deleteWidget(w.id, w.active)">cancel</mat-icon>
+      {{ w.label }}
+    </button>
+  </div>
+  <!-- <mat-icon class="more" *ngIf="showNext">more_horiz</mat-icon> -->
+  <button mat-fab class="arrow" (click)="next()" *ngIf="showNext">
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+</div>

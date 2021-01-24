@@ -1,10 +1,10 @@
-import { Component, Output, EventEmitter, forwardRef, Input, OnInit, ViewEncapsulation, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, Output, EventEmitter, forwardRef, Input, OnInit, ViewEncapsulation, ChangeDetectorRef, OnDestroy, OnChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
-import { FileUpload, getReadyState } from './file-upload.model';
+import { FileUpload } from './file-upload.model';
 import { Ordering } from '../../shared/ordering';
-import { build, guid, equals } from '../../shared/utils';
+import { build, guid, equals, toArray } from '../../shared/utils';
 
 export const FILE_UPLOAD_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -18,22 +18,24 @@ export const FILE_UPLOAD_ACCESSOR: any = {
   providers: [FILE_UPLOAD_ACCESSOR],
   encapsulation: ViewEncapsulation.None
 })
-export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAccessor, OnChanges {
   @Input() id = `files-${guid()}`;
   @Input() multiple = false;
   @Input() ordered = true;
   @Input() preview = true;
+  @Input() isPrivateMessage = '';
   @Output() upload = new EventEmitter<FileUpload | FileUpload[]>();
   @Output() delete = new EventEmitter<FileUpload>();
   private onModelChange: Function;
   private onTouch: Function;
   changes$: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>(new FileUpload());
   inDropZone = false;
-  value: FileUpload[];
+  _value: FileUpload[];
   focused: FileUpload[];
   ordering: Ordering<FileUpload> = new Ordering<FileUpload>([], FileUpload, 'order', 'name');
+  showMultiple = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   get activeFile(): FileUpload {
     return this.hasUploads ? this.uploads[0] : new FileUpload();
@@ -43,8 +45,18 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
     return this.uploads.length > 0;
   }
 
-  get showMultiple(): boolean {
-    return this.preview && this.multiple;
+  // get showMultiple(): boolean {
+  //   return this.preview && this.multiple;
+  // }
+
+  set value(value: FileUpload[]) {
+    // console.log('set value');
+    // console.dir(value);
+    this._value = value;
+  }
+
+  get value(): FileUpload[] {
+    return this._value;
   }
 
   get uploads(): FileUpload[] {
@@ -70,11 +82,19 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
     this.writeValue([]);
   }
 
+  ngOnChanges(e) {
+    this.showMultiple = this.preview && this.multiple;
+  }
+
   add(f: FileUpload) {
     if (!this.multiple && this.hasUploads) {
       this.remove();
     }
     this.uploads = this.ordering.addItem(f);
+  }
+
+  changePrivacyStatus(f: FileUpload) {
+    this.uploads = this.uploads.map(x => x.name === f.name ? f : x);
   }
 
   emit() {
@@ -126,6 +146,9 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
   }
 
   writeValue(value: FileUpload[]) {
+    // console.log('write value');
+    // console.dir(value);
+    this.uploads = [];
     this.value = value;
     this.uploadAll(value);
   }
@@ -143,7 +166,7 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
   }
 
   onInputChange(e: any) {
-    const input = event.target;
+    const input = e.target;
     const files = input['files'];
     if (files && files.length > 0) {
       for (let i = 0; i < files.length; i++) {
@@ -180,7 +203,7 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
     this.inDropZone = false;
     const dt = e.dataTransfer;
     const files = dt.files;
-    Array.from(files).forEach((file: File) => {
+    toArray(Array.from(files)).forEach((file: File) => {
       this.setupReader(file);
     });
   }
@@ -206,7 +229,7 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
       type: file['type'],
       webkitRelativePath: file['webkitRelativePath']
     });
-    reader.onload = function(e: any) {
+    reader.onload = function (e: any) {
       const src = reader.result;
       const readyState = FileUpload.GetReadyState(reader);
       changes$.next(Object.assign(upload, { src, readyState }));
@@ -220,7 +243,7 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
   }
 
   uploadAll(uploads: FileUpload[]) {
-    uploads.forEach(upload => {
+    toArray(uploads).forEach(upload => {
       this.onUpload(upload);
     });
   }

@@ -9,7 +9,7 @@
 <mat-dialog-content class="scrollable">
   <ng-content></ng-content>
 </mat-dialog-content>
-<mat-dialog-actions *ngIf="showActions && actions.length > 0">
+<!-- <mat-dialog-actions *ngIf="showActions && actions.length > 0">
   <button
     class="action"
     *ngFor="let action of actions; let first = first"
@@ -21,14 +21,15 @@
   >
     {{ action.label }}
   </button>
+</mat-dialog-actions> -->
+<mat-dialog-actions *ngIf="showActions && actions.length > 0">
+  <button class="action" *ngFor="let action of actions; let first = first" mat-raised-button
+    (click)="close(action.value)" [style.width]="actionWidth" color="primary" [autofocus]="first">
+    {{ action.label }}
+  </button>
 </mat-dialog-actions>
 <mat-dialog-actions *ngIf="showCloseAction && actions.length === 0">
-  <button
-    mat-raised-button
-    mat-dialog-close="close"
-    color="primary"
-    [style.width]="actionWidth"
-  >
+  <button mat-raised-button mat-dialog-close="close" color="primary" [style.width]="actionWidth">
     Close
   </button>
 </mat-dialog-actions>

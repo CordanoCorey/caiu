@@ -279,7 +279,9 @@ export class HttpService {
           ? res['json']()
           : res
       ),
-      catchError(err => this.onError(err ? err.error : err)),
+      catchError(err => {
+        return this.onError(err ? err.error : err);
+      }),
       finalize(() => {
         this.onComplete('PUT', url);
       })
