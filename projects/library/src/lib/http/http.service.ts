@@ -145,6 +145,20 @@ export class HttpService {
   }
 
   /**
+   * Make a GET request.
+   * @param fullPath
+   * @param headers
+   * @param options
+   */
+  getFullPath(
+    fullPath: string,
+    headers = {},
+    options: HttpOptions = new HttpOptions()
+  ): Observable<any> {
+    return this.get(fullPath, headers, Object.assign({}, options, { prependBaseUrl: false }));
+  }
+
+  /**
    * Make an autocomplete GET request.
    * @param relativePath
    * @param headers

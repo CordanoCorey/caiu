@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { FileUpload } from './file-upload.model';
 import { Ordering } from '../../shared/ordering';
-import { build, guid, equals, toArray } from '../../shared/utils';
+import { build, guid, equals, toArray, toInt } from '../../shared/utils';
 
 export const FILE_UPLOAD_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -20,6 +20,8 @@ export const FILE_UPLOAD_ACCESSOR: any = {
 })
 export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAccessor, OnChanges {
   @Input() id = `files-${guid()}`;
+  @Input() debug = false;
+  @Input() maxFileSize = 97000000;
   @Input() multiple = false;
   @Input() ordered = true;
   @Input() preview = true;
@@ -33,6 +35,7 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
   _value: FileUpload[];
   focused: FileUpload[];
   ordering: Ordering<FileUpload> = new Ordering<FileUpload>([], FileUpload, 'order', 'name');
+  showMaxUploadError = false;
   showMultiple = false;
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
@@ -50,8 +53,10 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
   // }
 
   set value(value: FileUpload[]) {
-    // console.log('set value');
-    // console.dir(value);
+    if (this.debug) {
+      console.log('set value');
+      console.dir(value);
+    }
     this._value = value;
   }
 
@@ -65,11 +70,20 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
 
   set uploads(value: FileUpload[]) {
     this.ordering.updateItems(value.filter(upload => upload.name !== ''));
+    if (this.debug) {
+      console.log('setting uploads');
+      console.dir(value);
+      console.dir(this.uploads);
+    }
     this.onChange(this.uploads);
   }
 
   get orderedUploads(): FileUpload[] {
     return this.uploads;
+  }
+
+  get validFileSize(): boolean {
+    return this.value.reduce((acc, x) => acc + x.file.fileSize, 0) < this.maxFileSize;
   }
 
   ngOnInit() {
@@ -146,8 +160,10 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
   }
 
   writeValue(value: FileUpload[]) {
-    // console.log('write value');
-    // console.dir(value);
+    if (this.debug) {
+      console.log('write value');
+      console.dir(value);
+    }
     this.uploads = [];
     this.value = value;
     this.uploadAll(value);
@@ -155,20 +171,37 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
 
   onChange(value: FileUpload[]) {
     if (!equals(this.value, value)) {
+      if (this.debug) {
+        console.log('on change');
+        console.dir(value);
+      }
       this.value = value;
       if (value.every(x => x.readyState === 'DONE')) {
         this.emit();
       }
-      if (this.onModelChange) {
-        this.onModelChange(value);
+    }
+    if (this.onModelChange) {
+      if (this.debug) {
+        console.log('on model change');
+        console.dir(value);
       }
+      this.onModelChange(value);
     }
   }
 
   onInputChange(e: any) {
     const input = e.target;
-    const files = input['files'];
-    if (files && files.length > 0) {
+    const files = toArray(Array.from(input['files']));
+    if (this.debug) {
+      console.dir(files);
+      console.log(files.reduce((acc, x) => acc + toInt(x['size']), 0));
+    }
+    if (files.reduce((acc, x) => acc + toInt(x['size']), 0) > this.maxFileSize) {
+      this.showMaxUploadError = true;
+      setTimeout(() => {
+        this.showMaxUploadError = false;
+      }, 8000);
+    } else if (files && files.length > 0) {
       for (let i = 0; i < files.length; i++) {
         this.setupReader(files[i]);
       }
@@ -202,10 +235,21 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
     e.stopPropagation();
     this.inDropZone = false;
     const dt = e.dataTransfer;
-    const files = dt.files;
-    toArray(Array.from(files)).forEach((file: File) => {
-      this.setupReader(file);
-    });
+    const files = toArray(Array.from(dt.files));
+    if (this.debug) {
+      console.dir(files);
+      console.log(files.reduce((acc, x) => acc + toInt(x['size']), 0));
+    }
+    if (files.reduce((acc, x) => acc + toInt(x['size']), 0) > this.maxFileSize) {
+      this.showMaxUploadError = true;
+      setTimeout(() => {
+        this.showMaxUploadError = false;
+      }, 8000);
+    } else {
+      files.forEach((file: File) => {
+        this.setupReader(file);
+      });
+    }
   }
 
   onFocus(value: FileUpload[]) {

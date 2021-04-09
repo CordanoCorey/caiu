@@ -8,6 +8,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { FileUploadComponent } from './file-upload.component';
+import { FileControlComponent } from './file-control/file-control.component';
 import { FilePreviewComponent } from './file-preview/file-preview.component';
 import { UploadComponent } from './upload/upload.component';
 import { UploadsComponent } from './uploads/uploads.component';
@@ -25,12 +26,14 @@ import { SharedModule } from '../../shared/shared.module';
     MatProgressSpinnerModule
   ],
   declarations: [
+    FileControlComponent,
     FileUploadComponent,
     FilePreviewComponent,
     UploadComponent,
     UploadsComponent
   ],
   exports: [
+    FileControlComponent,
     FileUploadComponent,
     FilePreviewComponent,
     UploadComponent,

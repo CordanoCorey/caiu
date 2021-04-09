@@ -2,7 +2,7 @@ import { Component, Input, ViewEncapsulation, Optional, Inject } from '@angular/
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { DialogModel, DialogAction } from '../dialog.model';
-import { build } from '../../../shared/utils';
+import { build, toArray } from '../../../shared/utils';
 
 @Component({
   selector: 'iu-confirm-delete',
@@ -18,7 +18,7 @@ export class ConfirmDeleteComponent {
   constructor(@Optional() public dialogRef?: MatDialogRef<ConfirmDeleteComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data?: any) {
     this.dialog = build(DialogModel, {
       title: this.headerText,
-      actions: [build(DialogAction, { label: `Yes`, value: true }), build(DialogAction, { label: `Cancel`, value: false })]
+      actions: data && data.actions ? toArray(data.actions) : [build(DialogAction, { label: `Yes`, value: true }), build(DialogAction, { label: `Cancel`, value: false })]
     });
   }
 

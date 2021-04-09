@@ -1,7 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 import { FileUpload } from '../file-upload.model';
-import { build } from '../../../shared/utils';
+import { build, truthy } from '../../../shared/utils';
 
 @Component({
   selector: 'iu-file-preview',
@@ -65,7 +65,7 @@ export class FilePreviewComponent {
   }
 
   get showImage(): boolean {
-    return this.graphic === 'image';
+    return this.file.isImage && truthy(this.file.src);
   }
 
   get showUpArrow(): boolean {

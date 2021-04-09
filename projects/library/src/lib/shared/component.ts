@@ -278,34 +278,34 @@ export class SmartComponent extends DumbComponent implements OnDestroy {
     }
   }
 
-  httpDelete(path: string, payload: any, onSuccess: string, onError: string): Observable<Action> {
+  httpDelete(path: string, payload: any, onSuccess: string, onError?: string): Observable<Action> {
     this.dispatch(HttpActions.delete(path, payload, onSuccess, onError));
     return this.actions$.pipe(
-      filter(x => x.payload.type === onSuccess || x.payload.type === onError),
+      filter(x => x && (x.type === onSuccess || x.type === onError)),
       take(1)
     );
   }
 
-  httpGet(path: string, onSuccess: string, onError: string): Observable<Action> {
+  httpGet(path: string, onSuccess: string, onError?: string): Observable<Action> {
     this.dispatch(HttpActions.get(path, onSuccess, onError));
     return this.actions$.pipe(
-      filter(x => x.payload.type === onSuccess || x.payload.type === onError),
+      filter(x => x && (x.type === onSuccess || x.type === onError)),
       take(1)
     );
   }
 
-  httpPost(path: string, payload: any, onSuccess: string, onError: string): Observable<Action> {
+  httpPost(path: string, payload: any, onSuccess: string, onError?: string): Observable<Action> {
     this.dispatch(HttpActions.post(path, payload, onSuccess, onError));
     return this.actions$.pipe(
-      filter(x => x.payload.type === onSuccess || x.payload.type === onError),
+      filter(x => x && (x.type === onSuccess || x.type === onError)),
       take(1)
     );
   }
 
-  httpPut(path: string, payload: any, onSuccess: string, onError: string): Observable<Action> {
+  httpPut(path: string, payload: any, onSuccess: string, onError?: string): Observable<Action> {
     this.dispatch(HttpActions.put(path, payload, onSuccess, onError));
     return this.actions$.pipe(
-      filter(x => x.payload.type === onSuccess || x.payload.type === onError),
+      filter(x => x && (x.type === onSuccess || x.type === onError)),
       take(1)
     );
   }

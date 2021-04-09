@@ -101,11 +101,11 @@ export function userLastActiveSelector(store: Store<any>): Observable<Date> {
 }
 
 export function isMobileSelector(store: Store<any>): Observable<boolean> {
-  return combineLatest(
+  return combineLatest([
     windowHeightSelector(store),
-    windowWidthSelector(store),
-    (h, w) => w < h || isMobile()
-  );
+    windowWidthSelector(store)]).pipe(
+      map(x => x[1] < x[0] || isMobile())
+    );
 }
 
 export function actionTypeSelector(actions$: Actions, actionType: string): Observable<any> {

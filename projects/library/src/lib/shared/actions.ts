@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -21,7 +21,7 @@ export function actionsStreamReducer(state: Action = null, action: Action): Acti
 
   switch (action.type) {
     case StreamActions.UPDATE:
-      return action;
+      return { type: action.payload.type, payload: action.payload.payload };
 
     default:
       return state;
@@ -37,7 +37,7 @@ export class ActionsEffects {
    */
   @Effect() onAction: Observable<Action> = this.actions$.pipe(
     filter(action => action.type !== StreamActions.UPDATE),
-    map(action => StreamActions.update(action))
+    map((action: Action) => StreamActions.update(action))
   );
 
   constructor(private actions$: Actions) {

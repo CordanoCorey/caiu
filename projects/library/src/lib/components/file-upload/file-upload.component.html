@@ -1,4 +1,5 @@
 <div class="file-upload">
+  <span *ngIf="!validFileSize || showMaxUploadError" class="error">Files exceed max upload size!</span>
   <div class="box" [class.hovering]="inDropZone" fxLayout="row" fxLayoutAlign="center end"
     (dragenter)="onDragEnter($event)" (dragleave)="onDragLeave($event)" (dragover)="onDragOver($event)"
     (drop)="onDrop($event)">

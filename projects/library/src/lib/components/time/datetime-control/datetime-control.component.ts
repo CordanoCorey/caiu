@@ -26,6 +26,7 @@ export class DateTimeControlComponent extends FormComponent implements OnInit, C
     meridian: new FormControl()
   });
   @Input() label = 'Time';
+  @Input() hideDate = false;
   private onModelChange: Function;
   private onTouch: Function;
   _value: Date;

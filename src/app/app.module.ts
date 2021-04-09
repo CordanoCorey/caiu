@@ -12,13 +12,14 @@ import { AccordionDemoComponent } from './accordion-demo/accordion-demo.componen
 import { CalendarDemoComponent } from './calendar-demo/calendar-demo.component';
 import { EditorDemoComponent } from './editor-demo/editor-demo.component';
 import { FileUploadDemoComponent } from './file-upload-demo/file-upload-demo.component';
+import { FileControlComponent } from './components/file-upload/file-control/file-control.component';
 
 export const reducers: ActionReducerMap<any> = {
   config: configReducer
 };
 
 @NgModule({
-  declarations: [AppComponent, AccordionDemoComponent, CalendarDemoComponent, EditorDemoComponent, FileUploadDemoComponent],
+  declarations: [AppComponent, AccordionDemoComponent, CalendarDemoComponent, EditorDemoComponent, FileUploadDemoComponent, FileControlComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

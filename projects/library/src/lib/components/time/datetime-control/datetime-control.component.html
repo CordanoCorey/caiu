@@ -1,12 +1,7 @@
 <form [formGroup]="form" class="time-control">
   <h3 class="time-text">{{ label }}</h3>
-  <mat-form-field class="date">
-    <input
-      matInput
-      [matDatepicker]="picker"
-      formControlName="date"
-      placeholder="Choose a date"
-    />
+  <mat-form-field *ngIf="!hideDate" class="date">
+    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date" />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>

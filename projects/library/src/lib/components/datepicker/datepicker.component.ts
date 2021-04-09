@@ -13,6 +13,7 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 import { DateHelper } from '../../shared/date';
+import { truthy } from '../../shared/utils';
 
 export const DATEPICKER_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -43,7 +44,7 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
   dateFilter: (d: Date) => boolean;
   focused: Date;
 
-  constructor() {}
+  constructor() { }
 
   get value(): Date {
     return this._value;
@@ -74,10 +75,12 @@ export class DatepickerComponent implements ControlValueAccessor, OnInit {
   }
 
   onBlur(input: any) {
-    if (DateHelper.IsValidDate(input)) {
-      this.changeSelected(input.value);
-    } else {
-      input.value = DateHelper.FormatDate(this.value);
+    if (truthy(input.value)) {
+      if (DateHelper.IsValidDate(input.value)) {
+        this.changeSelected(input.value);
+      } else {
+        input.value = DateHelper.FormatDate(this.value);
+      }
     }
   }
 

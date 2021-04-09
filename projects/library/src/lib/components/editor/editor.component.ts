@@ -9,7 +9,9 @@ import {
   ElementRef,
   NgZone,
   PLATFORM_ID,
-  Inject
+  Inject,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -21,6 +23,7 @@ import { Events } from './Events';
 import * as ScriptLoader from './ScriptLoader';
 import { getTinymce } from './TinyMCE';
 import { bindHandlers, isTextarea, mergePlugins, uuid, noop } from './utils';
+import { BASIC_PLUGINS, BASIC_TOOLBAR, FULL_PLUGINS, FULL_TOOLBAR } from './editor.model';
 
 const scriptState = ScriptLoader.create();
 
@@ -65,9 +68,9 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
     }
     switch (this.type) {
       case 'BASIC':
-        return this.basicPlugins;
+        return BASIC_PLUGINS;
       case 'FULL':
-        return this.fullPlugins;
+        return FULL_PLUGINS;
       default:
         return 'lists advlist';
     }
@@ -84,9 +87,9 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
     }
     switch (this.type) {
       case 'BASIC':
-        return this.basicToolbar;
+        return BASIC_TOOLBAR;
       case 'FULL':
-        return this.fullToolbar;
+        return FULL_TOOLBAR;
       default:
         return 'undo redo | bold italic | bullist numlist outdent indent';
     }
@@ -94,6 +97,7 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
 
   public ngZone: NgZone;
 
+  @Input() debug = false;
   @Input() public cloudChannel = '5';
   @Input() public apiKey = 'no-api-key';
   @Input() public init: Record<string, any> | undefined;
@@ -103,7 +107,8 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
   @Input() public tagName: string | undefined;
   @Input() expanded = false;
   @Input() height: number;
-  @Input() type: 'BASIC' | 'FULL';
+  @Input() type: 'BASIC' | 'FULL' = null;
+  @Output() loaded = new EventEmitter<any>();
 
   baseUrl = '/tinymce'; // Root for resources
   suffix = '.min'; // Suffix to use when loading resources
@@ -113,22 +118,6 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
   private _element: Element | undefined = undefined;
   private _disabled: boolean | undefined;
   private _editor: any;
-  basicPlugins = [
-    'advlist autolink lists link image charmap print preview anchor',
-    'searchreplace visualblocks code fullscreen',
-    'insertdatetime media table contextmenu paste code'
-  ];
-  basicToolbar = `undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link`;
-  fullPlugins = [
-    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-    'searchreplace wordcount visualblocks visualchars code fullscreen',
-    'insertdatetime media nonbreaking save table contextmenu directionality',
-    'template paste textcolor colorpicker textpattern imagetools toc help'
-  ];
-  fullToolbar = [
-    `undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent`,
-    'print preview | forecolor backcolor | link'
-  ];
   _plugins: string | string[] | undefined;
   _toolbar: string | string[] | null;
 
@@ -246,17 +235,19 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
   }
 
   public initialise() {
-    const finalInit = {
-      ...this.init,
+    const finalInit = Object.assign({}, {
       base_url: this.baseUrl,
       suffix: this.suffix,
       target: this._element,
       inline: this.inline,
       readonly: this.disabled,
-      plugins: mergePlugins(this.init && this.init.plugins, this.plugins),
-      toolbar: this.toolbar || (this.init && this.init.toolbar),
+      plugins: this.plugins,
+      toolbar: this.toolbar,
       height: this.height,
       branding: false, // Note: The “Powered by Tiny” product attribution is required for users on the Tiny Cloud Starter plan. Product attribution is optional for premium users.
+      default_link_target: "_blank",
+      contextmenu: "paste | link image inserttable | cell row column deletetable",
+      contextmenu_never_use_native: true,
       setup: (editor: any) => {
         this._editor = editor;
         editor.on('init', (e: Event) => {
@@ -267,15 +258,19 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
           this.init.setup(editor);
         }
       }
-    };
+    }, this.init);
 
     if (isTextarea(this._element)) {
       this._element.style.visibility = '';
     }
-
+    if (this.debug) {
+      console.dir(this.init);
+      console.dir(finalInit);
+    }
     this.ngZone.runOutsideAngular(() => {
       getTinymce().init(finalInit);
     });
+    this.loaded.emit(finalInit);
   }
 
   private initEditor(initEvent: Event, editor: any) {

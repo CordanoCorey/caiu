@@ -144,6 +144,13 @@ export function passwordValidator(ctrl: FormControl) {
   return { password: true };
 }
 
+export function phoneNumberValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } => {
+    const formatted = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(control.value);
+    return !formatted ? { phoneNumber: { value: control.value } } : null;
+  };
+}
+
 export function zipCodeValidator(control: FormControl) {
   const val = control.value.replace(/\s/g, '');
   if (!val) {

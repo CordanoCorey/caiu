@@ -50,6 +50,7 @@ export * from './lib/components/dialog/auto-logout/auto-logout.component';
 export * from './lib/components/dialog/confirm-delete/confirm-delete.component';
 export * from './lib/components/dialog/unsaved-changes/unsaved-changes.component';
 export * from './lib/components/editor/editor.module';
+export * from './lib/components/editor/editor.model';
 export * from './lib/components/editor/editor.component';
 export * from './lib/components/editor/editor-window/editor-window.component';
 export * from './lib/components/file-upload/file-upload.module';

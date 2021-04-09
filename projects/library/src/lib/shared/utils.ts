@@ -348,13 +348,13 @@ export function getStyle(el: Element, styleProp: string): string {
   return '';
 }
 
-export function getValue(model: any): any {
+export function getValue(model: any, ignore: string[] = []): any {
   if (model === null || typeof model === 'string' || typeof model === 'string' || model instanceof Date) {
     return model;
   }
   const keys = getAllProps(model);
   const props = keys
-    .filter(key => key !== 'metadata' && !ignoreKey(model, key))
+    .filter(key => key !== 'metadata' && !ignoreKey(model, key) && !inArray(ignore, key))
     .map(key => {
       const obj = {};
       obj[key] =
@@ -512,6 +512,11 @@ export function isNumericAndHasLength(str: string, length: number): boolean {
   const asInt = parseInt(str, 10);
   const isNumber = /^\d+$/.test(str);
   return isNumber && typeof asInt === 'number' && str.length === length;
+}
+
+export function isValidEmail(email: string): boolean {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
 
 /**

@@ -2,9 +2,10 @@ import { Store } from '@ngrx/store';
 import { Observable, of, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
-import { RouterState, Breadcrumbs } from './models';
+import { RouterState, Breadcrumbs, VisitedRoute } from './models';
 import { QueryModel } from '../shared/models';
 import { toArray, toInt, truthy } from '../shared/utils';
+import { NavigationEnd, NavigationStart } from '@angular/router';
 
 export function routeSelector(store: Store<any>): Observable<RouterState> {
   return store.select('route');
@@ -101,18 +102,18 @@ export function urlPathSelector(store: Store<any>): Observable<string> {
   );
 }
 
-export function querySelector(store: Store<any>): Observable<QueryModel<any>> {
+export function querySelector(store: Store<any>, take = 10, skip = 0, term = 0): Observable<QueryModel<any>> {
   const skip$ = routeParamIntSelector(store, 'skip');
   const take$ = routeParamIntSelector(store, 'take').pipe(
-    map(x => x === 0 ? 20 : x)
+    map(x => x === 0 ? take : x)
   );
   const term$ = routeParamSelector(store, 'term');
-  return combineLatest(skip$, take$, term$, (skip, take, term) =>
-    Object.assign(new QueryModel<any>(), {
-      skip,
-      take,
-      term
-    })
+  return combineLatest([skip$, take$, term$]).pipe(
+    map(x => Object.assign(new QueryModel<any>(), {
+      skip: x[0],
+      take: x[1],
+      term: x[2]
+    }))
   );
 }
 
@@ -131,5 +132,21 @@ export function navigationEndedSelector(
   return navigationStatusSelector(store).pipe(
     map(x => x === 5),
     distinctUntilChanged()
+  );
+}
+
+export function previousUrlsSelector(store: Store<any>): Observable<string[]> {
+  return routeSelector(store).pipe(
+    map(x => {
+      return x.events.filter(y => y.eventType === 5).map(y => (<NavigationStart>y.event)['urlAfterRedirects']);
+    })
+  );
+}
+
+export function previousUrlSelector(store: Store<any>): Observable<string> {
+  return previousUrlsSelector(store).pipe(
+    map(x => {
+      return x.length > 0 ? x[x.length - 1] : '/';
+    })
   );
 }

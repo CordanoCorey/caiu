@@ -1,4 +1,4 @@
-import { build } from '../../shared/utils';
+import { build, truthy } from '../../shared/utils';
 
 export class FileUpload {
   isPrivate = false;
@@ -40,7 +40,7 @@ export class FileUpload {
   }
 
   get isImage(): boolean {
-    return this.type.split('/')[0] === 'image';
+    return this.type ? this.type.split('/')[0] === 'image' : false;
   }
 
   get loading(): boolean {
@@ -88,15 +88,14 @@ export class File {
     });
   }
 
-  static GetImageBinarySrc(img: File | File[], defaultSrc = '') {
-    if (Array.isArray(img)) {
-      if (img.length > 0) {
-        return `data:${img[0].mimeType};base64,${img[0].fileBinary}`;
-      } else {
-        return defaultSrc;
-      }
+  static GetImageBinarySrc(img: File | File[], defaultSrc = null) {
+    if (Array.isArray(img) && img.length > 0) {
+      return File.GetImageBinarySrc(img[0]);
+    } else {
+      return img && truthy((<File>img).mimeType) && truthy((<File>img).fileBinary) ?
+        `data:${(<File>img).mimeType};base64,${(<File>img).fileBinary}`
+        : defaultSrc;
     }
-    return img && img.mimeType && img.fileBinary ? `data:${img.mimeType};base64,${img.fileBinary}` : defaultSrc;
   }
 
   static GetSrcPrefix(mimeType: string): string {
