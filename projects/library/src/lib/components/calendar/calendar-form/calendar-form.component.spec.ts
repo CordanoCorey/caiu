@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CalendarFormComponent } from './calendar-form.component';
 
@@ -6,7 +6,7 @@ describe('CalendarFormComponent', () => {
   let component: CalendarFormComponent;
   let fixture: ComponentFixture<CalendarFormComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CalendarFormComponent ]
     })

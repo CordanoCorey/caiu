@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { WidgetsMenuComponent } from './widgets-menu.component';
 
@@ -6,7 +6,7 @@ describe('WidgetsMenuComponent', () => {
   let component: WidgetsMenuComponent;
   let fixture: ComponentFixture<WidgetsMenuComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ WidgetsMenuComponent ]
     })

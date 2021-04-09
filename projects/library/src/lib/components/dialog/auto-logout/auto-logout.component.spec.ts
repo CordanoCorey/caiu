@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AutoLogoutComponent } from './auto-logout.component';
 
@@ -6,7 +6,7 @@ describe('AutoLogoutComponent', () => {
   let component: AutoLogoutComponent;
   let fixture: ComponentFixture<AutoLogoutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AutoLogoutComponent ]
     })

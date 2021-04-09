@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { InlineAddressComponent } from './inline-address.component';
 
@@ -6,7 +6,7 @@ describe('InlineAddressComponent', () => {
   let component: InlineAddressComponent;
   let fixture: ComponentFixture<InlineAddressComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ InlineAddressComponent ]
     })
