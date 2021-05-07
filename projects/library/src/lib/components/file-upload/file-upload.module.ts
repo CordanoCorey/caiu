@@ -13,6 +13,7 @@ import { FilePreviewComponent } from './file-preview/file-preview.component';
 import { UploadComponent } from './upload/upload.component';
 import { UploadsComponent } from './uploads/uploads.component';
 import { SharedModule } from '../../shared/shared.module';
+import { UploaderComponent } from './uploader/uploader.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { SharedModule } from '../../shared/shared.module';
     FileUploadComponent,
     FilePreviewComponent,
     UploadComponent,
-    UploadsComponent
+    UploadsComponent,
+    UploaderComponent
   ],
   exports: [
     FileControlComponent,

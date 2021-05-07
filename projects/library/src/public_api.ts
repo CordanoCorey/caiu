@@ -58,6 +58,7 @@ export * from './lib/components/file-upload/file-upload.component';
 export * from './lib/components/file-upload/file-upload.model';
 export * from './lib/components/file-upload/file-preview/file-preview.component';
 export * from './lib/components/file-upload/upload/upload.component';
+export * from './lib/components/file-upload/uploader/uploader.component';
 export * from './lib/components/file-upload/uploads/uploads.component';
 export * from './lib/components/header/header.module';
 export * from './lib/components/header/header.component';
