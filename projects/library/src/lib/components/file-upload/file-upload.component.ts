@@ -28,6 +28,7 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
   @Input() isPrivateMessage = '';
   @Output() upload = new EventEmitter<FileUpload | FileUpload[]>();
   @Output() delete = new EventEmitter<FileUpload>();
+  @Output() reorderUploads = new EventEmitter<FileUpload[]>();
   private onModelChange: Function;
   private onTouch: Function;
   changes$: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>(new FileUpload());
@@ -123,20 +124,24 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
 
   moveUp(f: FileUpload) {
     this.uploads = this.ordering.moveUp(f);
+    this.reorderUploads.emit(this.uploads);
   }
 
   moveDown(f: FileUpload) {
     this.uploads = this.ordering.moveDown(f);
+    this.reorderUploads.emit(this.uploads);
   }
 
   remove(f?: FileUpload) {
     const removeFile = f || this.activeFile;
     this.delete.emit(removeFile);
     this.uploads = this.ordering.removeItem(removeFile);
+    this.reorderUploads.emit(this.uploads);
   }
 
   reorder(e: FileUpload[]) {
     this.uploads = e;
+    this.reorderUploads.emit(this.uploads);
   }
 
   update(f: FileUpload) {
