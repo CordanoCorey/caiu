@@ -339,7 +339,7 @@ export class HttpService {
     //     errorBody.message.indexOf(' at')
     //   );
     // }
-    return throwError({ message: error.Message, statusCode: error.Code });
+    return throwError({ message: error && error.Message ? error.Message : 'An error occurred in the API.', statusCode: error && error.Code ? error.Code : null });
   }
 
   private onComplete(method: string, url: string): void {

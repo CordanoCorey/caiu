@@ -58,7 +58,7 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
       console.log('set value');
       console.dir(value);
     }
-    this._value = value;
+    this._value = toArray(value);
   }
 
   get value(): FileUpload[] {

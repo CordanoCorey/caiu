@@ -1,1 +1,22 @@
-<p>phone-number works!</p>
+<form class="phone-number" [formGroup]="fg">
+    <h3>Phone Number</h3>
+    <mat-form-field appearance="fill" *ngIf="!multi">
+        <span matPrefix *ngIf="showPrefix">+1 &nbsp;</span>
+        <input type="tel" matInput [placeholder]="placeholder" formControlName="full">
+        <mat-error *ngIf="fg.hasError('phoneNumber')">
+            Please enter a valid phone number
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="multi" *ngIf="multi" appearance="fill">
+        <span matPrefix>+1 &nbsp;</span>
+        <input matInput [placeholder]="placeholder" formControlName="areaCode"
+            (keyup)="onChangeAreaCode(areaCodeEl.value)" #areaCodeEl>
+    </mat-form-field>
+    <mat-form-field class="multi" *ngIf="multi" appearance="fill">
+        <input matInput [placeholder]="placeholder" formControlName="prefix" (keyup)="onChangePrefix(prefixEl.value)"
+            #prefixEl>
+    </mat-form-field>
+    <mat-form-field class="multi" *ngIf="multi" appearance="fill">
+        <input matInput [placeholder]="placeholder" formControlName="lineNumber" #lineNumberEl>
+    </mat-form-field>
+</form>

@@ -50,7 +50,7 @@ export class UserRoles {
 
 export class Login {
   grant_type = 'password';
-  userName = '';
+  email = '';
   password = '';
 }
 

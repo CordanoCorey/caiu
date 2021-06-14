@@ -267,7 +267,8 @@ export class QueryItem {
   value: any;
 }
 
-export class QueryModel<T> {
+export abstract class QueryModel<T> {
+  abstract params: any;
   userId = 0;
   accountId = 0;
   fields: string[] = [];
@@ -278,7 +279,6 @@ export class QueryModel<T> {
   include: (x: T) => any;
   map: (x: T) => any;
   orderBy: (x: T) => any;
-  params = {};
   skip = 0;
   sort: string[] = [];
   sortBy = '';
@@ -291,7 +291,7 @@ export class QueryModel<T> {
   }
 
   get keys(): string[] {
-    return Object.keys(new QueryModel<T>());
+    return Object.keys(this);
   }
 
   get totalParams(): number {
@@ -404,8 +404,17 @@ export class QueryModel<T> {
   }
 }
 
+export class BaseQueryModel extends QueryModel<any> {
+  params = {};
+}
+
 export class Search<T> {
-  query: QueryModel<T> = new QueryModel<T>();
+  query?: QueryModel<T>
+  results: T[] = [];
+  total = 0;
+}
+
+export class SearchResults<T> {
   results: T[] = [];
   total = 0;
 }

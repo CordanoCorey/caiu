@@ -39,10 +39,15 @@ export class HubService {
   }
 
   removeEffect(channel: string) {
-    this.hubConnection.off(channel);
+    this.removeListener(channel);
   }
 
   addListener(functionName: string, func: Function) {
     this.hubConnection.on(functionName, (data) => func(data));
   }
+
+  removeListener(channel: string) {
+    this.hubConnection.off(channel);
+  }
+
 }

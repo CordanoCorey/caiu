@@ -3,7 +3,7 @@ import { Observable, of, combineLatest } from 'rxjs';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
 import { RouterState, Breadcrumbs, VisitedRoute } from './models';
-import { QueryModel } from '../shared/models';
+import { BaseQueryModel, QueryModel } from '../shared/models';
 import { toArray, toInt, truthy } from '../shared/utils';
 import { NavigationEnd, NavigationStart } from '@angular/router';
 
@@ -102,14 +102,14 @@ export function urlPathSelector(store: Store<any>): Observable<string> {
   );
 }
 
-export function querySelector(store: Store<any>, take = 10, skip = 0, term = 0): Observable<QueryModel<any>> {
+export function querySelector(store: Store<any>, take = 10, skip = 0, term = 0): Observable<any> {
   const skip$ = routeParamIntSelector(store, 'skip');
   const take$ = routeParamIntSelector(store, 'take').pipe(
     map(x => x === 0 ? take : x)
   );
   const term$ = routeParamSelector(store, 'term');
   return combineLatest([skip$, take$, term$]).pipe(
-    map(x => Object.assign(new QueryModel<any>(), {
+    map(x => Object.assign(new BaseQueryModel(), {
       skip: x[0],
       take: x[1],
       term: x[2]

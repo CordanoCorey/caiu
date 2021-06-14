@@ -27,7 +27,6 @@ import { TimeModule } from './components/time/time.module';
 import { TimerModule } from './components/timer/timer.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SharedModule } from './shared/shared.module';
-import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
 
 @NgModule({
   imports: [
@@ -56,7 +55,7 @@ import { PhoneNumberComponent } from './components/phone-number/phone-number.com
     TimeModule,
     TimerModule
   ],
-  declarations: [LibraryComponent, PhoneNumberComponent],
+  declarations: [LibraryComponent],
   exports: [
     LibraryComponent,
     SharedModule,

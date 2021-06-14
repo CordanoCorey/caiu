@@ -246,8 +246,7 @@ export class EditorComponent extends Events implements AfterViewInit, ControlVal
       height: this.height,
       branding: false, // Note: The “Powered by Tiny” product attribution is required for users on the Tiny Cloud Starter plan. Product attribution is optional for premium users.
       default_link_target: "_blank",
-      contextmenu: "paste | link image inserttable | cell row column deletetable",
-      contextmenu_never_use_native: true,
+      contextmenu: false,
       setup: (editor: any) => {
         this._editor = editor;
         editor.on('init', (e: Event) => {

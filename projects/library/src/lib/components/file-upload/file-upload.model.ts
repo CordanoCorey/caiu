@@ -35,12 +35,21 @@ export class FileUpload {
     }
   }
 
+  set extension(value: string) {
+  }
+
   get extension(): string {
     return this.name.split('.').pop();
   }
 
+  set isImage(value: boolean) {
+  }
+
   get isImage(): boolean {
     return this.type ? this.type.split('/')[0] === 'image' : false;
+  }
+
+  set loading(value: boolean) {
   }
 
   get loading(): boolean {
