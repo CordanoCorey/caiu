@@ -1,25 +1,26 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subscription, of, throwError } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, Subscription, of, throwError } from "rxjs";
 import {
   catchError,
   debounceTime,
   distinctUntilChanged,
   finalize,
-  map
-} from 'rxjs/operators';
+  map,
+  tap
+} from "rxjs/operators";
 
-import { HttpActions } from './http.actions';
-import { HttpOptions } from './http.models';
-import { QueryModel } from '../shared/models';
-import { serialize } from '../shared/utils';
+import { HttpActions } from "./http.actions";
+import { HttpOptions } from "./http.models";
+import { QueryModel } from "../shared/models";
+import { serialize } from "../shared/utils";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class HttpService {
-  private _authToken = '';
-  private _baseUrl = '';
+  private _authToken = "";
+  private _baseUrl = "";
   private authTokenChanges: Subscription;
   private baseUrlChanges: Subscription;
   headers = {};
@@ -57,9 +58,9 @@ export class HttpService {
 
   get defaultHeaders(): HttpHeaders {
     let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Content-type', 'application/json');
+    headers = headers.append("Content-type", "application/json");
     if (this.authToken) {
-      headers = headers.append('Authorization', 'Bearer ' + this.authToken);
+      headers = headers.append("Authorization", "Bearer " + this.authToken);
     }
     return headers;
   }
@@ -102,13 +103,13 @@ export class HttpService {
     });
     return obs.pipe(
       map(res =>
-        res && res['json'] && typeof res['json'] === 'function'
-          ? res['json']()
+        res && res["json"] && typeof res["json"] === "function"
+          ? res["json"]()
           : res
       ),
       catchError(err => this.onError(err.error)),
       finalize(() => {
-        this.onComplete('DELETE', url);
+        this.onComplete("DELETE", url);
       })
     );
   }
@@ -132,16 +133,45 @@ export class HttpService {
       headers: httpHeaders
     });
     return obs.pipe(
-      map(res =>
-        res && res['json'] && typeof res['json'] === 'function'
-          ? res['json']()
-          : res
-      ),
+      map(res => {
+        return res && res["json"] && typeof res["json"] === "function"
+          ? res["json"]()
+          : res;
+      }),
       catchError(err => this.onError(err ? err.error : err)),
       finalize(() => {
-        this.onComplete('GET', url);
+        this.onComplete("GET", url);
       })
     );
+  }
+
+  /**
+   * Make a GET request.
+   * @param relativePath
+   * @param headers
+   * @param options
+   */
+  getValue(relativePath: string): Observable<any> {
+    const url = this.formatUrl(relativePath);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append("Content-type", "text/plain");
+    if (this.authToken) {
+      headers = headers.append("Authorization", "Bearer " + this.authToken);
+    }
+    const obs = this.http.get(url, {
+      headers
+    });
+    return obs
+    // .pipe(
+    //   tap(x => {
+    //     console.log(x);
+    //   }),
+    //   catchError(err => this.onError(err ? err.error : err)),
+    //   finalize(() => {
+    //     this.onComplete("GET", url);
+    //   })
+    // )
+    ;
   }
 
   /**
@@ -155,7 +185,11 @@ export class HttpService {
     headers = {},
     options: HttpOptions = new HttpOptions()
   ): Observable<any> {
-    return this.get(fullPath, headers, Object.assign({}, options, { prependBaseUrl: false }));
+    return this.get(
+      fullPath,
+      headers,
+      Object.assign({}, options, { prependBaseUrl: false })
+    );
   }
 
   /**
@@ -183,8 +217,8 @@ export class HttpService {
     });
     return obs.pipe(
       map(res =>
-        res && res['json'] && typeof res['json'] === 'function'
-          ? res['json']()
+        res && res["json"] && typeof res["json"] === "function"
+          ? res["json"]()
           : res
       ),
       debounceTime(500),
@@ -192,7 +226,7 @@ export class HttpService {
       map(json => HttpActions.matchPath(path, json)),
       catchError(err => this.onError(err ? err.error : err)),
       finalize(() => {
-        this.onComplete('GET', url);
+        this.onComplete("GET", url);
       })
     );
   }
@@ -219,15 +253,15 @@ export class HttpService {
     });
     return obs.pipe(
       map(res =>
-        res && res['json'] && typeof res['json'] === 'function'
-          ? res['json']()
+        res && res["json"] && typeof res["json"] === "function"
+          ? res["json"]()
           : res
       ),
       catchError(err => {
         return this.onError(err ? err.error : err);
       }),
       finalize(() => {
-        this.onComplete('POST', url);
+        this.onComplete("POST", url);
       })
     );
   }
@@ -249,20 +283,20 @@ export class HttpService {
       ? this.formatUrl(relativePath)
       : relativePath;
     const httpHeaders = new HttpHeaders({
-      'content-type': 'application/x-www-form-urlencoded'
+      "content-type": "application/x-www-form-urlencoded"
     });
     const obs = this.http.post(url, body, {
       headers: httpHeaders
     });
     return obs.pipe(
       map(res =>
-        res && res['json'] && typeof res['json'] === 'function'
-          ? res['json']()
+        res && res["json"] && typeof res["json"] === "function"
+          ? res["json"]()
           : res
       ),
       catchError(err => this.onError(err)),
       finalize(() => {
-        this.onComplete('POST FORM URL-ENCODED', url);
+        this.onComplete("POST FORM URL-ENCODED", url);
       })
     );
   }
@@ -288,16 +322,16 @@ export class HttpService {
       headers: httpHeaders
     });
     return obs.pipe(
-      map(res =>
-        res && res['json'] && typeof res['json'] === 'function'
-          ? res['json']()
-          : res
-      ),
+      map(res => {
+        return res && res["json"] && typeof res["json"] === "function"
+          ? res["json"]()
+          : res;
+      }),
       catchError(err => {
         return this.onError(err ? err.error : err);
       }),
       finalize(() => {
-        this.onComplete('PUT', url);
+        this.onComplete("PUT", url);
       })
     );
   }
@@ -319,6 +353,7 @@ export class HttpService {
   }
 
   private onError(error: any) {
+    console.log(error);
     // let errorBody: any;
     // try {
     //   errorBody = error._body
@@ -339,7 +374,13 @@ export class HttpService {
     //     errorBody.message.indexOf(' at')
     //   );
     // }
-    return throwError({ message: error && error.Message ? error.Message : 'An error occurred in the API.', statusCode: error && error.Code ? error.Code : null });
+    return throwError({
+      message:
+        error && error.Message
+          ? error.Message
+          : "An error occurred in the API.",
+      statusCode: error && error.Code ? error.Code : null
+    });
   }
 
   private onComplete(method: string, url: string): void {

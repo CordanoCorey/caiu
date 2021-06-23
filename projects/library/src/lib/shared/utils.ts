@@ -669,6 +669,10 @@ export function toInt(val: string | number): number {
   return val && val.toString ? str2int(val.toString()) : 0;
 }
 
+export function toFullName(first: string, last: string): string {
+  return truthy(first) && truthy(last) ? `${first} ${last}` : null;
+}
+
 export function toPayload(action: Action): any {
   return action ? action.payload : null;
 }

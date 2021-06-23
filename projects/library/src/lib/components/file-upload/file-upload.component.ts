@@ -25,6 +25,7 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
   @Input() multiple = false;
   @Input() ordered = true;
   @Input() preview = true;
+  @Input() prompt = '';
   @Input() isPrivateMessage = '';
   @Output() upload = new EventEmitter<FileUpload | FileUpload[]>();
   @Output() delete = new EventEmitter<FileUpload>();
