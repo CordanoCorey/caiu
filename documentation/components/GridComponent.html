@@ -1,0 +1,3217 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caiu documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caiu documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>GridComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/grid/src/lib/grid.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterContentInit" target="_blank" >AfterContentInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>iu-grid</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./grid.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./grid.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_color">_color</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_preloaded">_preloaded</a>
+                            </li>
+                            <li>
+                                <a href="#columns">columns</a>
+                            </li>
+                            <li>
+                                <a href="#contentChildren">contentChildren</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#filtering">filtering</a>
+                            </li>
+                            <li>
+                                <a href="#grid">grid</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_setElementColor">_setElementColor</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_updateColor">_updateColor</a>
+                            </li>
+                            <li>
+                                <a href="#dataStateChange">dataStateChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#filterChange">filterChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#filterRows">filterRows</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterContentInit">ngAfterContentInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#pageChange">pageChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#pageRows">pageRows</a>
+                            </li>
+                            <li>
+                                <a href="#save">save</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#sortChange">sortChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#sortRows">sortRows</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#advancedFilter">advancedFilter</a>
+                            </li>
+                            <li>
+                                <a href="#autoCalculateHeight">autoCalculateHeight</a>
+                            </li>
+                            <li>
+                                <a href="#buttonClass">buttonClass</a>
+                            </li>
+                            <li>
+                                <a href="#buttonColor">buttonColor</a>
+                            </li>
+                            <li>
+                                <a href="#buttonCount">buttonCount</a>
+                            </li>
+                            <li>
+                                <a href="#color">color</a>
+                            </li>
+                            <li>
+                                <a href="#detailRowHeight">detailRowHeight</a>
+                            </li>
+                            <li>
+                                <a href="#export">export</a>
+                            </li>
+                            <li>
+                                <a href="#fileName">fileName</a>
+                            </li>
+                            <li>
+                                <a href="#filter">filter</a>
+                            </li>
+                            <li>
+                                <a href="#filterable">filterable</a>
+                            </li>
+                            <li>
+                                <a href="#group">group</a>
+                            </li>
+                            <li>
+                                <a href="#groupable">groupable</a>
+                            </li>
+                            <li>
+                                <a href="#height">height</a>
+                            </li>
+                            <li>
+                                <a href="#model">model</a>
+                            </li>
+                            <li>
+                                <a href="#pageable">pageable</a>
+                            </li>
+                            <li>
+                                <a href="#pager">pager</a>
+                            </li>
+                            <li>
+                                <a href="#pagerInfo">pagerInfo</a>
+                            </li>
+                            <li>
+                                <a href="#pagerType">pagerType</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize">pageSize</a>
+                            </li>
+                            <li>
+                                <a href="#pageSizes">pageSizes</a>
+                            </li>
+                            <li>
+                                <a href="#pdfHeader">pdfHeader</a>
+                            </li>
+                            <li>
+                                <a href="#preloaded">preloaded</a>
+                            </li>
+                            <li>
+                                <a href="#previousNext">previousNext</a>
+                            </li>
+                            <li>
+                                <a href="#rowClass">rowClass</a>
+                            </li>
+                            <li>
+                                <a href="#rowHeight">rowHeight</a>
+                            </li>
+                            <li>
+                                <a href="#rowHeightMax">rowHeightMax</a>
+                            </li>
+                            <li>
+                                <a href="#scrollable">scrollable</a>
+                            </li>
+                            <li>
+                                <a href="#selectable">selectable</a>
+                            </li>
+                            <li>
+                                <a href="#skip">skip</a>
+                            </li>
+                            <li>
+                                <a href="#sort">sort</a>
+                            </li>
+                            <li>
+                                <a href="#sortable">sortable</a>
+                            </li>
+                            <li>
+                                <a href="#total">total</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changes">changes</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#color">color</a>
+                                </li>
+                                <li>
+                                    <a href="#preloaded">preloaded</a>
+                                </li>
+                                <li>
+                                    <a href="#activeRows">activeRows</a>
+                                </li>
+                                <li>
+                                    <a href="#computedRowHeight">computedRowHeight</a>
+                                </li>
+                                <li>
+                                    <a href="#dynamicHeight">dynamicHeight</a>
+                                </li>
+                                <li>
+                                    <a href="#excelFileName">excelFileName</a>
+                                </li>
+                                <li>
+                                    <a href="#filters">filters</a>
+                                </li>
+                                <li>
+                                    <a href="#gridData">gridData</a>
+                                </li>
+                                <li>
+                                    <a href="#headerHeight">headerHeight</a>
+                                </li>
+                                <li>
+                                    <a href="#numericHeight">numericHeight</a>
+                                </li>
+                                <li>
+                                    <a href="#pagerHeight">pagerHeight</a>
+                                </li>
+                                <li>
+                                    <a href="#pagerSettings">pagerSettings</a>
+                                </li>
+                                <li>
+                                    <a href="#pdfFileName">pdfFileName</a>
+                                </li>
+                                <li>
+                                    <a href="#rows">rows</a>
+                                </li>
+                                <li>
+                                    <a href="#showFilters">showFilters</a>
+                                </li>
+                                <li>
+                                    <a href="#take">take</a>
+                                </li>
+                                <li>
+                                    <a href="#toolbarHeight">toolbarHeight</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_elementRef: <a href="https://angular.io/api/core/ElementRef" target="_blank">ElementRef</a>, _renderer: <a href="https://angular.io/api/core/Renderer2" target="_blank">Renderer2</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/grid/src/lib/grid.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_elementRef</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_renderer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/Renderer2" target="_blank" >Renderer2</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="advancedFilter"></a>
+                        <b>advancedFilter</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/grid/src/lib/grid.component.ts:31</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="autoCalculateHeight"></a>
+                        <b>autoCalculateHeight</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/grid/src/lib/grid.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="buttonClass"></a>
+                        <b>buttonClass</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;toolbar-button&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/grid/src/lib/grid.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="buttonColor"></a>
+                        <b>buttonColor</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;#fff&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/grid/src/lib/grid.component.ts:33</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="buttonCount"></a>
+                        <b>buttonCount</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>5</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/grid/src/lib/grid.component.ts:34</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="color"></a>
+                        <b>color</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/grid/src/lib/grid.component.ts:76</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The color of the toolbar. Can be primary, accent, or warn. </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="detailRowHeight"></a>
+                        <b>detailRowHeight</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/grid/src/lib/grid.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="export"></a>
+                        <b>export</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/grid/src/lib/grid.component.ts:41</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fileName"></a>
+                        <b>fileName</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;export&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/grid/src/lib/grid.component.ts:42</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filter"></a>
+                        <b>filter</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CompositeFilterDescriptor.html" target="_self" >CompositeFilterDescriptor</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ logic: &#x27;and&#x27;, filters: [] }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/grid/src/lib/grid.component.ts:43</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filterable"></a>
+                        <b>filterable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/grid/src/lib/grid.component.ts:44</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="group"></a>
+                        <b>group</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/grid/src/lib/grid.component.ts:59</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="groupable"></a>
+                        <b>groupable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/GroupableSettings.html" target="_self" >GroupableSettings | boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/grid/src/lib/grid.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="height"></a>
+                        <b>height</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/grid/src/lib/grid.component.ts:46</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="model"></a>
+                        <b>model</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Grid.html" target="_self" >Grid&lt;any&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/grid/src/lib/grid.component.ts:30</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageable"></a>
+                        <b>pageable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any | boolean</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/grid/src/lib/grid.component.ts:48</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pager"></a>
+                        <b>pager</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    pageSizes: [10, 20, 50, 100]
+  }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/grid/src/lib/grid.component.ts:49</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pagerInfo"></a>
+                        <b>pagerInfo</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/grid/src/lib/grid.component.ts:36</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pagerType"></a>
+                        <b>pagerType</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;numeric&quot; | &quot;input&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;numeric&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/grid/src/lib/grid.component.ts:37</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageSize"></a>
+                        <b>pageSize</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>20</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/grid/src/lib/grid.component.ts:47</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageSizes"></a>
+                        <b>pageSizes</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/grid/src/lib/grid.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pdfHeader"></a>
+                        <b>pdfHeader</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/grid/src/lib/grid.component.ts:52</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="preloaded"></a>
+                        <b>preloaded</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/grid/src/lib/grid.component.ts:85</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="previousNext"></a>
+                        <b>previousNext</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/grid/src/lib/grid.component.ts:39</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rowClass"></a>
+                        <b>rowClass</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Func" target="_self" >Function</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/grid/src/lib/grid.component.ts:60</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rowHeight"></a>
+                        <b>rowHeight</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/grid/src/lib/grid.component.ts:53</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rowHeightMax"></a>
+                        <b>rowHeightMax</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/grid/src/lib/grid.component.ts:54</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="scrollable"></a>
+                        <b>scrollable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/grid/src/lib/grid.component.ts:55</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectable"></a>
+                        <b>selectable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/grid/src/lib/grid.component.ts:56</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="skip"></a>
+                        <b>skip</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/grid/src/lib/grid.component.ts:57</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sort"></a>
+                        <b>sort</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/SortDescriptor.html" target="_self" >SortDescriptor[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/grid/src/lib/grid.component.ts:61</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sortable"></a>
+                        <b>sortable</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#SortSettings" target="_self" >SortSettings</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ mode: &#x27;multiple&#x27; }</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/grid/src/lib/grid.component.ts:58</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="total"></a>
+                        <b>total</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/grid/src/lib/grid.component.ts:62</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="changes"></a>
+                        <b>changes</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Event.html" target="_self" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/grid/src/lib/grid.component.ts:63</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_setElementColor"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _setElementColor
+                        </b>
+                        <a href="#_setElementColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_setElementColor(color: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, isAdd: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:99</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>color</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>isAdd</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_updateColor"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _updateColor
+                        </b>
+                        <a href="#_updateColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_updateColor(newColor: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>newColor</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataStateChange"></a>
+                    <span class="name">
+                        <b>
+                            dataStateChange
+                        </b>
+                        <a href="#dataStateChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dataStateChange(state: <a href="../interfaces/DataStateChangeEvent.html">DataStateChangeEvent</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:197</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>state</td>
+                                    <td>
+                                                <code><a href="../interfaces/DataStateChangeEvent.html" target="_self" >DataStateChangeEvent</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterChange"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            filterChange
+                        </b>
+                        <a href="#filterChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>filterChange(e: <a href="../interfaces/CompositeFilterDescriptor.html">CompositeFilterDescriptor</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="223"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:223</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="../interfaces/CompositeFilterDescriptor.html" target="_self" >CompositeFilterDescriptor</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterRows"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            filterRows
+                        </b>
+                        <a href="#filterRows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>filterRows(rows: any[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="236"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:236</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>rows</td>
+                                    <td>
+                                            <code>any[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>any[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterContentInit"></a>
+                    <span class="name">
+                        <b>
+                            ngAfterContentInit
+                        </b>
+                        <a href="#ngAfterContentInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterContentInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="191"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:191</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <b>
+                            ngOnChanges
+                        </b>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="177"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:177</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageChange"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            pageChange
+                        </b>
+                        <a href="#pageChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>pageChange(e: <a href="../interfaces/PageChangeEvent.html">PageChangeEvent</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="227"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:227</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="../interfaces/PageChangeEvent.html" target="_self" >PageChangeEvent</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageRows"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            pageRows
+                        </b>
+                        <a href="#pageRows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>pageRows(rows: any[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:240</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>rows</td>
+                                    <td>
+                                            <code>any[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>any[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <b>
+                            save
+                        </b>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>save(component)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="204"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:204</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>component</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortChange"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            sortChange
+                        </b>
+                        <a href="#sortChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sortChange(sort: <a href="../interfaces/SortDescriptor.html">SortDescriptor[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="232"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:232</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sort</td>
+                                    <td>
+                                                <code><a href="../interfaces/SortDescriptor.html" target="_self" >SortDescriptor[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortRows"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            sortRows
+                        </b>
+                        <a href="#sortRows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>sortRows(rows: any[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="244"
+                            class="link-to-prism">projects/grid/src/lib/grid.component.ts:244</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>rows</td>
+                                    <td>
+                                            <code>any[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>any[]</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_color"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _color</b>
+                            <a href="#_color"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/grid/src/lib/grid.component.ts:67</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_preloaded"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _preloaded</b>
+                            <a href="#_preloaded"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">projects/grid/src/lib/grid.component.ts:68</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="columns"></a>
+                        <span class="name">
+                            <b>
+                            columns</b>
+                            <a href="#columns"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../components/GridColumnComponent.html" target="_self" >GridColumnComponent[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/grid/src/lib/grid.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="contentChildren"></a>
+                        <span class="name">
+                            <b>
+                            contentChildren</b>
+                            <a href="#contentChildren"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../components/GridColumnComponent.html" target="_self" >QueryList&lt;GridColumnComponent&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ContentChildren(GridColumnComponent)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/grid/src/lib/grid.component.ts:65</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filtering"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            filtering</b>
+                            <a href="#filtering"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>true</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/grid/src/lib/grid.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="grid"></a>
+                        <span class="name">
+                            <b>
+                            grid</b>
+                            <a href="#grid"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;kendoGridInstance&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/grid/src/lib/grid.component.ts:64</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="color"></a>
+                        <span class="name"><b>color</b><a href="#color"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>color(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/grid/src/lib/grid.component.ts:80</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="preloaded"></a>
+                        <span class="name"><b>preloaded</b><a href="#preloaded"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>preloaded(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">projects/grid/src/lib/grid.component.ts:89</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="activeRows"></a>
+                        <span class="name"><b>activeRows</b><a href="#activeRows"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>activeRows()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">projects/grid/src/lib/grid.component.ts:111</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="computedRowHeight"></a>
+                        <span class="name"><b>computedRowHeight</b><a href="#computedRowHeight"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>computedRowHeight()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">projects/grid/src/lib/grid.component.ts:115</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dynamicHeight"></a>
+                        <span class="name"><b>dynamicHeight</b><a href="#dynamicHeight"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>dynamicHeight()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/grid/src/lib/grid.component.ts:119</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="excelFileName"></a>
+                        <span class="name"><b>excelFileName</b><a href="#excelFileName"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>excelFileName()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/grid/src/lib/grid.component.ts:126</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filters"></a>
+                        <span class="name"><b>filters</b><a href="#filters"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>filters()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/grid/src/lib/grid.component.ts:130</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="gridData"></a>
+                        <span class="name"><b>gridData</b><a href="#gridData"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>gridData()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/grid/src/lib/grid.component.ts:134</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="headerHeight"></a>
+                        <span class="name"><b>headerHeight</b><a href="#headerHeight"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>headerHeight()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">projects/grid/src/lib/grid.component.ts:141</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="numericHeight"></a>
+                        <span class="name"><b>numericHeight</b><a href="#numericHeight"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>numericHeight()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">projects/grid/src/lib/grid.component.ts:145</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pagerHeight"></a>
+                        <span class="name"><b>pagerHeight</b><a href="#pagerHeight"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>pagerHeight()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">projects/grid/src/lib/grid.component.ts:149</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pagerSettings"></a>
+                        <span class="name"><b>pagerSettings</b><a href="#pagerSettings"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>pagerSettings()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">projects/grid/src/lib/grid.component.ts:153</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pdfFileName"></a>
+                        <span class="name"><b>pdfFileName</b><a href="#pdfFileName"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>pdfFileName()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">projects/grid/src/lib/grid.component.ts:157</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rows"></a>
+                        <span class="name"><b>rows</b><a href="#rows"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>rows()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">projects/grid/src/lib/grid.component.ts:161</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showFilters"></a>
+                        <span class="name"><b>showFilters</b><a href="#showFilters"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>showFilters()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">projects/grid/src/lib/grid.component.ts:165</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="take"></a>
+                        <span class="name"><b>take</b><a href="#take"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>take()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">projects/grid/src/lib/grid.component.ts:169</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="toolbarHeight"></a>
+                        <span class="name"><b>toolbarHeight</b><a href="#toolbarHeight"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>toolbarHeight()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">projects/grid/src/lib/grid.component.ts:173</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChild,
+  ViewEncapsulation,
+  Output,
+  EventEmitter
+} from &#x27;@angular/core&#x27;;
+import { str2int } from &#x27;@caiu/library&#x27;;
+
+import { Grid } from &#x27;./grid.model&#x27;;
+import { GridColumnComponent } from &#x27;./grid-column/grid-column.component&#x27;;
+import { SortDescriptor, CompositeFilterDescriptor, GroupableSettings, SortSettings, GridDataResult, DataStateChangeEvent, PageChangeEvent } from &#x27;./shared/kendo&#x27;;
+
+@Component({
+  selector: &#x27;iu-grid&#x27;,
+  templateUrl: &#x27;./grid.component.html&#x27;,
+  styleUrls: [&#x27;./grid.component.scss&#x27;],
+  encapsulation: ViewEncapsulation.None
+})
+export class GridComponent implements OnChanges, OnInit, AfterContentInit {
+
+  @Input() model: Grid&lt;any&gt;;
+  @Input() advancedFilter &#x3D; false;
+  @Input() autoCalculateHeight &#x3D; true;
+  @Input() buttonColor &#x3D; &#x27;#fff&#x27;;
+  @Input() buttonCount &#x3D; 5;
+  @Input() buttonClass &#x3D; &#x27;toolbar-button&#x27;;
+  @Input() pagerInfo &#x3D; true;
+  @Input() pagerType: &#x27;numeric&#x27; | &#x27;input&#x27; &#x3D; &#x27;numeric&#x27;;
+  @Input() pageSizes &#x3D; true;
+  @Input() previousNext &#x3D; true;
+  @Input() detailRowHeight: number;
+  @Input() export &#x3D; false;
+  @Input() fileName &#x3D; &#x27;export&#x27;;
+  @Input() filter: CompositeFilterDescriptor &#x3D; { logic: &#x27;and&#x27;, filters: [] };
+  @Input() filterable &#x3D; true;
+  @Input() groupable: GroupableSettings | boolean;
+  @Input() height: number;
+  @Input() pageSize &#x3D; 20;
+  @Input() pageable: any | boolean;
+  @Input() pager: any &#x3D; {
+    pageSizes: [10, 20, 50, 100]
+  };
+  @Input() pdfHeader &#x3D; &#x27;&#x27;;
+  @Input() rowHeight: number;
+  @Input() rowHeightMax: number;
+  @Input() scrollable: any;
+  @Input() selectable: boolean;
+  @Input() skip &#x3D; 0;
+  @Input() sortable: SortSettings &#x3D; { mode: &#x27;multiple&#x27; };
+  @Input() group: any[];
+  @Input() rowClass: Function;
+  @Input() sort: SortDescriptor[] &#x3D; [];
+  @Input() total &#x3D; 0; // need this for infinite scroll when not all rows are loaded
+  @Output() changes &#x3D; new EventEmitter&lt;DataStateChangeEvent&gt;();
+  @ViewChild(&#x27;kendoGridInstance&#x27;, {static: true}) grid: ElementRef;
+  @ContentChildren(GridColumnComponent) contentChildren: QueryList&lt;GridColumnComponent&gt;;
+  columns: GridColumnComponent[] &#x3D; [];
+  private _color: string;
+  private _preloaded: boolean;
+  private filtering &#x3D; true;
+
+  constructor(private _elementRef: ElementRef, private _renderer: Renderer2) {
+  }
+
+  /** The color of the toolbar. Can be primary, accent, or warn. */
+  @Input()
+  get color(): string {
+    return this._color;
+  }
+
+  set color(value: string) {
+    this._updateColor(value);
+  }
+
+  @Input()
+  get preloaded(): boolean {
+    return this._preloaded || this.total &#x3D;&#x3D;&#x3D; 0;
+  }
+
+  set preloaded(value: boolean) {
+    this._preloaded &#x3D; value;
+  }
+
+  private _updateColor(newColor: string) {
+    this._setElementColor(this._color, false);
+    this._setElementColor(newColor, true);
+    this._color &#x3D; newColor;
+  }
+
+  private _setElementColor(color: string, isAdd: boolean) {
+    if (color !&#x3D; null &amp;&amp; color !&#x3D;&#x3D; &#x27;&#x27;) {
+      const element &#x3D; this._elementRef.nativeElement;
+
+      if (isAdd) {
+        this._renderer.addClass(element, &#x60;mat-${color}&#x60;);
+      } else {
+        this._renderer.removeClass(element, &#x60;mat-${color}&#x60;);
+      }
+    }
+  }
+
+  get activeRows(): any[] {
+    return this.preloaded ? this.pageRows(this.filterRows(this.sortRows(this.rows))) : this.rows;
+  }
+
+  get computedRowHeight(): number {
+    return this.rowHeightMax || 32;
+  }
+
+  get dynamicHeight(): number {
+    return this.autoCalculateHeight ? (this.activeRows.length &#x3D;&#x3D;&#x3D; 0 || !this.numericHeight) ?
+      null : Math.max(96 + this.headerHeight + this.pagerHeight + this.toolbarHeight,
+        Math.min(this.computedRowHeight * this.activeRows.length + this.headerHeight + this.pagerHeight + this.toolbarHeight, this.numericHeight))
+      : this.numericHeight;
+  }
+
+  get excelFileName(): string {
+    return &#x60;${this.fileName}.xlsx&#x60;;
+  }
+
+  get filters(): any[] {
+    return this.filter.filters;
+  }
+
+  get gridData(): GridDataResult {
+    return {
+      data: this.activeRows,
+      total: this.total ? this.total : this.rows.length
+    };
+  }
+
+  get headerHeight(): number {
+    return this.filterable ? 66 : 27;
+  }
+
+  get numericHeight(): number {
+    return typeof (this.height) &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? str2int(this.height) : this.height;
+  }
+
+  get pagerHeight(): number {
+    return this.pageable ? 46 : 0;
+  }
+
+  get pagerSettings(): any {
+    return this.pager;
+  }
+
+  get pdfFileName(): string {
+    return &#x60;${this.fileName}.pdf&#x60;;
+  }
+
+  get rows(): any[] {
+    return this.model.data ? this.model.data.toArray() : [];
+  }
+
+  get showFilters(): boolean {
+    return this.filterable &amp;&amp; this.filtering;
+  }
+
+  get take(): number {
+    return this.pageSize || 20;
+  }
+
+  get toolbarHeight(): number {
+    return this.export ? 53 : 0;
+  }
+
+  ngOnChanges() {
+    this.model.update(this);
+  }
+
+  ngOnInit() {
+    this.pageable &#x3D; {
+      buttonCount: this.buttonCount,
+      info: this.pagerInfo,
+      type: this.pagerType,
+      pageSizes: this.pageSizes,
+      previousNext: this.previousNext
+    };
+  }
+
+  ngAfterContentInit() {
+    this.contentChildren.forEach(x &#x3D;&gt; {
+      this.columns.push(x);
+    });
+  }
+
+  dataStateChange(state: DataStateChangeEvent): void {
+    this.filterChange(state[&#x27;filter&#x27;]);
+    this.pageChange({ skip: state[&#x27;skip&#x27;], take: state[&#x27;take&#x27;] });
+    this.sortChange(state[&#x27;sort&#x27;]);
+    this.changes.emit(state);
+  }
+
+  save(component): void {
+    const options &#x3D; component.workbookOptions();
+    const rows &#x3D; options.sheets[0].rows;
+
+    let altIdx &#x3D; 0;
+    rows.forEach((row) &#x3D;&gt; {
+      if (row.type &#x3D;&#x3D;&#x3D; &#x27;data&#x27;) {
+        if (altIdx % 2 !&#x3D;&#x3D; 0) {
+          row.cells.forEach((cell) &#x3D;&gt; {
+            cell.background &#x3D; &#x27;#aabbcc&#x27;;
+          });
+        }
+        altIdx++;
+      }
+    });
+
+    component.save(options);
+  }
+
+  protected filterChange(e: CompositeFilterDescriptor) {
+    this.filter &#x3D; e;
+  }
+
+  protected pageChange(e: PageChangeEvent): void {
+    this.skip &#x3D; e.skip;
+    this.pageSize &#x3D; str2int(e.take.toString());
+  }
+
+  protected sortChange(sort: SortDescriptor[]): void {
+    this.sort &#x3D; sort;
+  }
+
+  private filterRows(rows: any[]): any[] {
+    return Grid.FilterRows(rows, this.filters);
+  }
+
+  protected pageRows(rows: any[]): any[] {
+    return this.pager ? Grid.PageRows(rows, this.skip, this.take) : rows;
+  }
+
+  protected sortRows(rows: any[]): any[] {
+    return Grid.SortRows(rows, this.sort);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-card class&#x3D;&quot;grid mat-primary&quot; [class.mat-card]&#x3D;&quot;!export&quot;&gt;
+  &lt;kendo-grid [data]&#x3D;&quot;gridData&quot; [filter]&#x3D;&quot;filter&quot; [filterable]&#x3D;&quot;showFilters&quot; [groupable]&#x3D;&quot;groupable&quot; [height]&#x3D;&quot;dynamicHeight&quot;
+    [pageSize]&#x3D;&quot;pageSize&quot; [pageable]&#x3D;&quot;pagerSettings&quot; [rowHeight]&#x3D;&quot;rowHeight&quot; [scrollable]&#x3D;&quot;scrollable&quot; [selectable]&#x3D;&quot;selectable&quot;
+    [skip]&#x3D;&quot;skip&quot; [sortable]&#x3D;&quot;sortable&quot; [group]&#x3D;&quot;group&quot; [sort]&#x3D;&quot;sort&quot; (dataStateChange)&#x3D;&quot;dataStateChange($event)&quot; #kendoGridInstance&#x3D;&quot;kendoGrid&quot;&gt;
+
+    &lt;!-- Toolbar Template --&gt;
+    &lt;ng-template kendoGridToolbarTemplate *ngIf&#x3D;&quot;export&quot;&gt;
+      &lt;button mat-raised-button class&#x3D;&quot;toolbar-button pdf-button&quot; kendoGridPDFCommand&gt;
+        &lt;mat-icon&gt;picture_as_pdf&lt;/mat-icon&gt;Export to PDF&lt;/button&gt;
+      &lt;button mat-raised-button class&#x3D;&quot;toolbar-button excel-button&quot; (click)&#x3D;&quot;save(excelexport)&quot;&gt;
+        &lt;mat-icon&gt;import_export&lt;/mat-icon&gt;Export To Excel&lt;/button&gt;
+    &lt;/ng-template&gt;
+
+    &lt;!-- Grid Columns --&gt;
+    &lt;kendo-grid-column *ngFor&#x3D;&quot;let col of columns&quot; [class]&#x3D;&quot;col.class&quot; [editable]&#x3D;&quot;col.editable&quot; [editor]&#x3D;&quot;col.editor&quot; [field]&#x3D;&quot;col.colField&quot;
+      [filter]&#x3D;&quot;col.filter&quot; [filterable]&#x3D;&quot;col.filterable&quot; [footerClass]&#x3D;&quot;col.footerClass&quot; [footerStyle]&#x3D;&quot;col.footerStyle&quot; [format]&#x3D;&quot;col.format&quot;
+      [headerClass]&#x3D;&quot;col.headerClass&quot; [headerStyle]&#x3D;&quot;col.headerStyle&quot; [hidden]&#x3D;&quot;col.hidden&quot; [locked]&#x3D;&quot;col.locked&quot; [media]&#x3D;&quot;col.media&quot;
+      [sortable]&#x3D;&quot;col.sortable&quot; [style]&#x3D;&quot;col.style&quot; [title]&#x3D;&quot;col.colTitle&quot; [width]&#x3D;&quot;col.width&quot;&gt;
+      &lt;ng-template *ngIf&#x3D;&quot;col.templateRef&quot; kendoGridCellTemplate let-dataItem&gt;
+        &lt;iu-grid-cell [templateRef]&#x3D;&quot;col.templateRef&quot; [dataItem]&#x3D;&quot;dataItem&quot;&gt;&lt;/iu-grid-cell&gt;
+      &lt;/ng-template&gt;
+    &lt;/kendo-grid-column&gt;
+
+    &lt;!-- Export to PDF --&gt;
+    &lt;kendo-grid-pdf *ngIf&#x3D;&quot;export&quot; [fileName]&#x3D;&quot;pdfFileName&quot; [allPages]&#x3D;&quot;true&quot; paperSize&#x3D;&quot;A4&quot; [repeatHeaders]&#x3D;&quot;true&quot; [landscape]&#x3D;&quot;true&quot;&gt;
+      &lt;kendo-grid-pdf-margin top&#x3D;&quot;2cm&quot; left&#x3D;&quot;1cm&quot; right&#x3D;&quot;1cm&quot; bottom&#x3D;&quot;2cm&quot;&gt;&lt;/kendo-grid-pdf-margin&gt;
+      &lt;ng-template kendoGridPDFTemplate let-pageNum&#x3D;&quot;pageNum&quot; let-totalPages&#x3D;&quot;totalPages&quot;&gt;
+        &lt;div class&#x3D;&quot;page-template&quot;&gt;
+          &lt;div class&#x3D;&quot;header&quot;&gt;
+            &lt;div style&#x3D;&quot;float: right&quot;&gt;Page {{ pageNum }} of {{ totalPages }}&lt;/div&gt;
+            {{ pdfHeader }}
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;footer&quot;&gt;
+            Page {{ pageNum }} of {{ totalPages }}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/ng-template&gt;
+    &lt;/kendo-grid-pdf&gt;
+
+    &lt;!-- Export to Excel --&gt;
+    &lt;kendo-excelexport [data]&#x3D;&quot;activeRows&quot; [fileName]&#x3D;&quot;excelFileName&quot; [filterable]&#x3D;&quot;true&quot; #excelexport&gt;
+      &lt;kendo-excelexport-column *ngFor&#x3D;&quot;let col of columns&quot; [field]&#x3D;&quot;col.colField&quot; [title]&#x3D;&quot;col.colTitle&quot;&gt;
+      &lt;/kendo-excelexport-column&gt;
+    &lt;/kendo-excelexport&gt;
+
+  &lt;/kendo-grid&gt;
+&lt;/mat-card&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./grid.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &#x27;~@angular/material/_theming&#x27;;
+
+.mat-card.grid {
+  padding: 0;
+}
+
+.grid {
+  .k-grid-header {
+    padding-right: 13px;
+  }
+
+  th.k-grid-header:first-child {
+    padding-left: 6px;
+  }
+
+  .mat-raised-button {
+    color: #fff;
+  }
+}
+
+.k-grid-header .k-header&gt;.k-link {
+  font-size: 16px;
+  padding: 2px 12px;
+}
+
+.k-grid td {
+  border: none;
+  padding: 6px 12px;
+}
+
+.k-widget {
+  border: none;
+}
+
+.k-filter-row&gt;th {
+  padding: 4px;
+  max-width: 190px;
+  border-width: 0 0 1px 1px;
+  border-style: solid;
+}
+
+.k-textbox,
+.k-input.k-textbox {
+  height: calc(1em + (4px * 2) + (1px * 2)) !important;
+  min-width: 80px;
+}
+
+.k-filtercell&gt;span,
+.k-filtercell .k-filtercell-wrapper {
+  padding-right: calc(1.5em + 8px + 2px + 4px);
+}
+
+.k-filtercell .k-dropdown-operator {
+  display: none;
+}
+
+.k-picker-wrap.k-state-default {
+  border-bottom-width: 1px;
+}
+
+.k-pager-wrap .k-link,
+.k-pager-wrap .k-state-selected {
+  padding: 8px;
+}
+
+.page-template {
+  font-family: &quot;DejaVu Sans&quot;, &quot;Arial&quot;, sans-serif;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.page-template .header {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  border-bottom: 1px solid #888;
+  color: #888;
+}
+
+.page-template .footer {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  border-top: 1px solid #888;
+  text-align: center;
+  color: #888;
+}
+
+.toolbar-button {
+  color: #fff;
+  background-image: none;
+  vertical-align: middle;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-card class="grid mat-primary" [class.mat-card]="!export">  <kendo-grid [data]="gridData" [filter]="filter" [filterable]="showFilters" [groupable]="groupable" [height]="dynamicHeight"    [pageSize]="pageSize" [pageable]="pagerSettings" [rowHeight]="rowHeight" [scrollable]="scrollable" [selectable]="selectable"    [skip]="skip" [sortable]="sortable" [group]="group" [sort]="sort" (dataStateChange)="dataStateChange($event)" #kendoGridInstance="kendoGrid">    <!-- Toolbar Template -->    <ng-template kendoGridToolbarTemplate *ngIf="export">      <button mat-raised-button class="toolbar-button pdf-button" kendoGridPDFCommand>        <mat-icon>picture_as_pdf</mat-icon>Export to PDF</button>      <button mat-raised-button class="toolbar-button excel-button" (click)="save(excelexport)">        <mat-icon>import_export</mat-icon>Export To Excel</button>    </ng-template>    <!-- Grid Columns -->    <kendo-grid-column *ngFor="let col of columns" [class]="col.class" [editable]="col.editable" [editor]="col.editor" [field]="col.colField"      [filter]="col.filter" [filterable]="col.filterable" [footerClass]="col.footerClass" [footerStyle]="col.footerStyle" [format]="col.format"      [headerClass]="col.headerClass" [headerStyle]="col.headerStyle" [hidden]="col.hidden" [locked]="col.locked" [media]="col.media"      [sortable]="col.sortable" [style]="col.style" [title]="col.colTitle" [width]="col.width">      <ng-template *ngIf="col.templateRef" kendoGridCellTemplate let-dataItem>        <iu-grid-cell [templateRef]="col.templateRef" [dataItem]="dataItem"></iu-grid-cell>      </ng-template>    </kendo-grid-column>    <!-- Export to PDF -->    <kendo-grid-pdf *ngIf="export" [fileName]="pdfFileName" [allPages]="true" paperSize="A4" [repeatHeaders]="true" [landscape]="true">      <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>      <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">        <div class="page-template">          <div class="header">            <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>            {{ pdfHeader }}          </div>          <div class="footer">            Page {{ pageNum }} of {{ totalPages }}          </div>        </div>      </ng-template>    </kendo-grid-pdf>    <!-- Export to Excel -->    <kendo-excelexport [data]="activeRows" [fileName]="excelFileName" [filterable]="true" #excelexport>      <kendo-excelexport-column *ngFor="let col of columns" [field]="col.colField" [title]="col.colTitle">      </kendo-excelexport-column>    </kendo-excelexport>  </kendo-grid></mat-card></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'iu-accordion'},{'name': 'AccordionDemoComponent', 'selector': 'docs-accordion-demo'},{'name': 'AddressComponent', 'selector': 'iu-address'},{'name': 'AddressFormComponent', 'selector': 'iu-address-form'},{'name': 'AppComponent', 'selector': 'docs-root'},{'name': 'AuditFieldsComponent', 'selector': 'iu-audit-fields'},{'name': 'AuditHistoryComponent', 'selector': 'iu-audit-history'},{'name': 'AuditHistoryLinkComponent', 'selector': 'iu-audit-history-link'},{'name': 'AutoLogoutComponent', 'selector': 'iu-auto-logout'},{'name': 'BreadcrumbsComponent', 'selector': 'iu-breadcrumbs'},{'name': 'CalendarComponent', 'selector': 'iu-calendar'},{'name': 'CalendarDayComponent', 'selector': 'iu-calendar-day'},{'name': 'CalendarDayEditComponent', 'selector': 'iu-calendar-day-edit'},{'name': 'CalendarDayEventsComponent', 'selector': 'iu-calendar-day-events'},{'name': 'CalendarDaysComponent', 'selector': 'iu-calendar-days'},{'name': 'CalendarDayViewComponent', 'selector': 'iu-calendar-day-view'},{'name': 'CalendarDemoComponent', 'selector': 'docs-calendar-demo'},{'name': 'CalendarEventComponent', 'selector': 'iu-calendar-event'},{'name': 'CalendarEventFormComponent', 'selector': 'iu-calendar-event-form'},{'name': 'CalendarEventViewComponent', 'selector': 'iu-calendar-event-view'},{'name': 'CalendarFormComponent', 'selector': 'iu-calendar-form'},{'name': 'CalendarKeyComponent', 'selector': 'iu-calendar-key'},{'name': 'CalendarViewComponent', 'selector': 'iu-calendar-view'},{'name': 'CollageComponent', 'selector': 'iu-collage'},{'name': 'ConfirmDeleteComponent', 'selector': 'iu-confirm-delete'},{'name': 'ContainerComponent', 'selector': 'iu-container'},{'name': 'DatepickerComponent', 'selector': 'iu-datepicker'},{'name': 'DaterangeComponent', 'selector': 'iu-daterange'},{'name': 'DateTimeControlComponent', 'selector': 'iu-datetime-control'},{'name': 'DialogComponent', 'selector': 'iu-dialog'},{'name': 'EditorComponent', 'selector': 'iu-editor'},{'name': 'EditorDemoComponent', 'selector': 'docs-editor-demo'},{'name': 'EditorWindowComponent', 'selector': 'iu-editor-window'},{'name': 'FileControlComponent', 'selector': 'iu-file-control'},{'name': 'FilePreviewComponent', 'selector': 'iu-file-preview'},{'name': 'FileUploadComponent', 'selector': 'iu-file-upload'},{'name': 'FileUploadDemoComponent', 'selector': 'docs-file-upload-demo'},{'name': 'GridCellComponent', 'selector': 'iu-grid-cell'},{'name': 'GridColumnComponent', 'selector': 'iu-grid-column'},{'name': 'GridComponent', 'selector': 'iu-grid'},{'name': 'HeaderComponent', 'selector': 'iu-header'},{'name': 'InlineAddressComponent', 'selector': 'iu-inline-address'},{'name': 'LibraryComponent', 'selector': 'iu-library'},{'name': 'NavbarComponent', 'selector': 'iu-navbar'},{'name': 'NotFoundComponent', 'selector': 'iu-not-found'},{'name': 'PhoneNumberComponent', 'selector': 'iu-phone-number'},{'name': 'SidenavComponent', 'selector': 'iu-sidenav'},{'name': 'SimpleGridComponent', 'selector': 'iu-simple-grid'},{'name': 'SocialIconsComponent', 'selector': 'iu-social-icons'},{'name': 'StatePickerComponent', 'selector': 'iu-state-picker'},{'name': 'TileComponent', 'selector': 'iu-tile'},{'name': 'TimeControlComponent', 'selector': 'iu-time-control'},{'name': 'TimerComponent', 'selector': 'iu-timer'},{'name': 'UnsavedChangesComponent', 'selector': 'iu-unsaved-changes'},{'name': 'UploadComponent', 'selector': 'iu-upload'},{'name': 'UploaderComponent', 'selector': 'iu-uploader'},{'name': 'UploadsComponent', 'selector': 'iu-uploads'},{'name': 'WallpaperComponent', 'selector': 'iu-wallpaper'},{'name': 'WidgetComponent', 'selector': 'iu-widget'},{'name': 'WidgetsMenuComponent', 'selector': 'iu-widgets-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'GridComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GridComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1040 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caiu documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caiu documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>HttpEffects</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/library/src/lib/http/http.effects.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onDelete$">onDelete$</a>
+                            </li>
+                            <li>
+                                <a href="#onGet$">onGet$</a>
+                            </li>
+                            <li>
+                                <a href="#onPost$">onPost$</a>
+                            </li>
+                            <li>
+                                <a href="#onPostFormUrlEncoded$">onPostFormUrlEncoded$</a>
+                            </li>
+                            <li>
+                                <a href="#onPut$">onPut$</a>
+                            </li>
+                            <li>
+                                <a href="#onSearch$">onSearch$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#delete$">delete$</a>
+                            </li>
+                            <li>
+                                <a href="#get$">get$</a>
+                            </li>
+                            <li>
+                                <a href="#post$">post$</a>
+                            </li>
+                            <li>
+                                <a href="#postFormUrlEncoded$">postFormUrlEncoded$</a>
+                            </li>
+                            <li>
+                                <a href="#put$">put$</a>
+                            </li>
+                            <li>
+                                <a href="#search$">search$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(actions$: <a href="../interfaces/Action.html">Actions</a>, commands: <a href="../injectables/HttpCommands.html">HttpCommands<T></a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/library/src/lib/http/http.effects.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>actions$</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/Action.html" target="_self" >Actions</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>commands</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HttpCommands.html" target="_self" >HttpCommands&lt;T&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete$"></a>
+                    <span class="name">
+                        <b>
+                            delete$
+                        </b>
+                        <a href="#delete$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete$(payload: <a href="../classes/HttpDeletePayload.html">HttpDeletePayload<T></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">projects/library/src/lib/http/http.effects.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payload</td>
+                                    <td>
+                                                <code><a href="../classes/HttpDeletePayload.html" target="_self" >HttpDeletePayload&lt;T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Action.html" target="_self" >Observable&lt;Action&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="get$"></a>
+                    <span class="name">
+                        <b>
+                            get$
+                        </b>
+                        <a href="#get$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>get$(payload: <a href="../classes/HttpGetPayload.html">HttpGetPayload<T></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">projects/library/src/lib/http/http.effects.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payload</td>
+                                    <td>
+                                                <code><a href="../classes/HttpGetPayload.html" target="_self" >HttpGetPayload&lt;T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Action.html" target="_self" >Observable&lt;Action&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="post$"></a>
+                    <span class="name">
+                        <b>
+                            post$
+                        </b>
+                        <a href="#post$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>post$(payload: <a href="../classes/HttpPostPayload.html">HttpPostPayload<T></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">projects/library/src/lib/http/http.effects.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payload</td>
+                                    <td>
+                                                <code><a href="../classes/HttpPostPayload.html" target="_self" >HttpPostPayload&lt;T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Action.html" target="_self" >Observable&lt;Action&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="postFormUrlEncoded$"></a>
+                    <span class="name">
+                        <b>
+                            postFormUrlEncoded$
+                        </b>
+                        <a href="#postFormUrlEncoded$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>postFormUrlEncoded$(payload: <a href="../classes/HttpPostPayload.html">HttpPostPayload<T></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">projects/library/src/lib/http/http.effects.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payload</td>
+                                    <td>
+                                                <code><a href="../classes/HttpPostPayload.html" target="_self" >HttpPostPayload&lt;T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Action.html" target="_self" >Observable&lt;Action&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="put$"></a>
+                    <span class="name">
+                        <b>
+                            put$
+                        </b>
+                        <a href="#put$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>put$(payload: <a href="../classes/HttpPutPayload.html">HttpPutPayload<T></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">projects/library/src/lib/http/http.effects.ts:95</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payload</td>
+                                    <td>
+                                                <code><a href="../classes/HttpPutPayload.html" target="_self" >HttpPutPayload&lt;T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Action.html" target="_self" >Observable&lt;Action&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="search$"></a>
+                    <span class="name">
+                        <b>
+                            search$
+                        </b>
+                        <a href="#search$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>search$(payload: <a href="../classes/HttpGetPayload.html">HttpGetPayload<T></a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/library/src/lib/http/http.effects.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payload</td>
+                                    <td>
+                                                <code><a href="../classes/HttpGetPayload.html" target="_self" >HttpGetPayload&lt;T&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Action.html" target="_self" >Observable&lt;Action&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onDelete$"></a>
+                        <span class="name">
+                            <b>
+                            onDelete$</b>
+                            <a href="#onDelete$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.actions$.pipe(
+    ofType(HttpActions.DELETE),
+    mergeMap((action: Action) &#x3D;&gt; this.delete$(action.payload))
+  )</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Effect()<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/library/src/lib/http/http.effects.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onGet$"></a>
+                        <span class="name">
+                            <b>
+                            onGet$</b>
+                            <a href="#onGet$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.actions$.pipe(
+    ofType(HttpActions.GET),
+    mergeMap((action: Action) &#x3D;&gt; this.get$(action.payload))
+  )</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Effect()<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/library/src/lib/http/http.effects.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onPost$"></a>
+                        <span class="name">
+                            <b>
+                            onPost$</b>
+                            <a href="#onPost$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.actions$.pipe(
+    ofType(HttpActions.POST),
+    mergeMap((action: Action) &#x3D;&gt; this.post$(action.payload))
+  )</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Effect()<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/library/src/lib/http/http.effects.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onPostFormUrlEncoded$"></a>
+                        <span class="name">
+                            <b>
+                            onPostFormUrlEncoded$</b>
+                            <a href="#onPostFormUrlEncoded$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.actions$.pipe(
+    ofType(HttpActions.POST_FORM_URL_ENCODED),
+    mergeMap((action: Action) &#x3D;&gt; this.postFormUrlEncoded$(action.payload))
+  )</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Effect()<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/library/src/lib/http/http.effects.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onPut$"></a>
+                        <span class="name">
+                            <b>
+                            onPut$</b>
+                            <a href="#onPut$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.actions$.pipe(
+    ofType(HttpActions.PUT),
+    mergeMap((action: Action) &#x3D;&gt; this.put$(action.payload))
+  )</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Effect()<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/library/src/lib/http/http.effects.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onSearch$"></a>
+                        <span class="name">
+                            <b>
+                            onSearch$</b>
+                            <a href="#onSearch$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.actions$.pipe(
+    ofType(HttpActions.SEARCH),
+    mergeMap((action: Action) &#x3D;&gt; this.search$(action.payload))
+  )</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Effect()<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/library/src/lib/http/http.effects.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Actions, Effect, ofType } from &#x27;@ngrx/effects&#x27;;
+import { Observable, of } from &#x27;rxjs&#x27;;
+import { map, mergeMap, catchError } from &#x27;rxjs/operators&#x27;;
+
+import { HttpActions } from &#x27;./http.actions&#x27;;
+import { HttpCommands } from &#x27;./http.commands&#x27;;
+import {
+  HttpGetPayload,
+  HttpPostPayload,
+  HttpPutPayload,
+  HttpDeletePayload
+} from &#x27;./http.models&#x27;;
+import { Error } from &#x27;../errors/errors.models&#x27;;
+import { Action } from &#x27;../store/models&#x27;;
+import { build } from &#x27;../shared/utils&#x27;;
+
+@Injectable()
+export class HttpEffects&lt;T&gt; {
+  @Effect() onDelete$ &#x3D; this.actions$.pipe(
+    ofType(HttpActions.DELETE),
+    mergeMap((action: Action) &#x3D;&gt; this.delete$(action.payload))
+  );
+
+  @Effect() onGet$ &#x3D; this.actions$.pipe(
+    ofType(HttpActions.GET),
+    mergeMap((action: Action) &#x3D;&gt; this.get$(action.payload))
+  );
+
+  @Effect() onPost$ &#x3D; this.actions$.pipe(
+    ofType(HttpActions.POST),
+    mergeMap((action: Action) &#x3D;&gt; this.post$(action.payload))
+  );
+
+  @Effect() onPostFormUrlEncoded$ &#x3D; this.actions$.pipe(
+    ofType(HttpActions.POST_FORM_URL_ENCODED),
+    mergeMap((action: Action) &#x3D;&gt; this.postFormUrlEncoded$(action.payload))
+  );
+
+  @Effect() onPut$ &#x3D; this.actions$.pipe(
+    ofType(HttpActions.PUT),
+    mergeMap((action: Action) &#x3D;&gt; this.put$(action.payload))
+  );
+
+  @Effect() onSearch$ &#x3D; this.actions$.pipe(
+    ofType(HttpActions.SEARCH),
+    mergeMap((action: Action) &#x3D;&gt; this.search$(action.payload))
+  );
+
+  constructor(private actions$: Actions, private commands: HttpCommands&lt;T&gt;) { }
+
+  delete$(payload: HttpDeletePayload&lt;T&gt;): Observable&lt;Action&gt; {
+    // console.log(&#x27;DELETE:\t&#x27;, payload.onSuccess);
+    return this.commands.delete$(payload).pipe(
+      map((model: T) &#x3D;&gt;
+        HttpActions.deleteSuccess(payload.data || model, payload.onSuccess)
+      ),
+      catchError((e: Error) &#x3D;&gt;
+        of(
+          HttpActions.deleteError(
+            build(Error, e, { data: payload.data }),
+            payload.onError
+          )
+        )
+      )
+    );
+  }
+
+  get$(payload: HttpGetPayload&lt;T&gt;): Observable&lt;Action&gt; {
+    // console.log(&#x27;GET:\t&#x27;, payload.onSuccess);
+    return this.commands.get$(payload).pipe(
+      map((model: T) &#x3D;&gt; HttpActions.getSuccess(model, payload.onSuccess)),
+      catchError((e: Error) &#x3D;&gt; of(HttpActions.getError(e, payload.onError)))
+    );
+  }
+
+  post$(payload: HttpPostPayload&lt;T&gt;): Observable&lt;Action&gt; {
+    // console.log(&#x27;POST:\t&#x27;, payload.onSuccess);
+    return this.commands.post$(payload).pipe(
+      map((model: T) &#x3D;&gt; HttpActions.postSuccess(model, payload.onSuccess)),
+      catchError((e: Error) &#x3D;&gt; {
+        return of(HttpActions.postError(e, payload.onError));
+      })
+    );
+  }
+
+  postFormUrlEncoded$(payload: HttpPostPayload&lt;T&gt;): Observable&lt;Action&gt; {
+    // console.log(&#x27;POST:\t&#x27;, payload.onSuccess);
+    return this.commands.postFormUrlEncoded$(payload).pipe(
+      map((model: T) &#x3D;&gt; HttpActions.postSuccess(model, payload.onSuccess)),
+      catchError((e: Error) &#x3D;&gt; of(HttpActions.postError(e, payload.onError)))
+    );
+  }
+
+  put$(payload: HttpPutPayload&lt;T&gt;): Observable&lt;Action&gt; {
+    // console.log(&#x27;PUT:\t&#x27;, payload.onSuccess);
+    return this.commands.put$(payload).pipe(
+      map((model: T) &#x3D;&gt; HttpActions.putSuccess(model, payload.onSuccess)),
+      catchError((e: Error) &#x3D;&gt; of(HttpActions.putError(e, payload.onError)))
+    );
+  }
+
+  search$(payload: HttpGetPayload&lt;T&gt;): Observable&lt;Action&gt; {
+    // console.log(&#x27;SEARCH:\t&#x27;, payload.onSuccess);
+    return this.commands.get$(payload).pipe(
+      map((model: T) &#x3D;&gt;
+        HttpActions.searchSuccess(model, payload.onSuccess, payload.path)
+      ),
+      catchError((e: Error) &#x3D;&gt; of(HttpActions.getError(e, payload.onError)))
+    );
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'HttpEffects.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

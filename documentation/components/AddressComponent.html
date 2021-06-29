@@ -1,0 +1,2912 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caiu documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caiu documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AddressComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/library/src/lib/components/address/address.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code>DumbComponent</code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="../miscellaneous/functions.html#Control" target="_self" >ControlValueAccessor</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../miscellaneous/variables.html#ADDRESS_ACCESSOR" target="_self" >ADDRESS_ACCESSOR</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>iu-address</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./address.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./address.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_addresses">_addresses</a>
+                            </li>
+                            <li>
+                                <a href="#_value">_value</a>
+                            </li>
+                            <li>
+                                <a href="#current">current</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage">errorMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#onModelChange">onModelChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#onTouch">onTouch</a>
+                            </li>
+                            <li>
+                                <a href="#toBeDeleted">toBeDeleted</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#addAddress">addAddress</a>
+                            </li>
+                            <li>
+                                <a href="#addNew">addNew</a>
+                            </li>
+                            <li>
+                                <a href="#addressExists">addressExists</a>
+                            </li>
+                            <li>
+                                <a href="#back">back</a>
+                            </li>
+                            <li>
+                                <a href="#changeValue">changeValue</a>
+                            </li>
+                            <li>
+                                <a href="#closeDialog">closeDialog</a>
+                            </li>
+                            <li>
+                                <a href="#edit">edit</a>
+                            </li>
+                            <li>
+                                <a href="#flashAddressExistsMessage">flashAddressExistsMessage</a>
+                            </li>
+                            <li>
+                                <a href="#makePrimary">makePrimary</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                <a href="#remove">remove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#removeAddress">removeAddress</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#reorder">reorder</a>
+                            </li>
+                            <li>
+                                <a href="#save">save</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setActiveDates">setActiveDates</a>
+                            </li>
+                            <li>
+                                <a href="#setDisabledState">setDisabledState</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue">writeValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addresses">addresses</a>
+                            </li>
+                            <li>
+                                <a href="#debug">debug</a>
+                            </li>
+                            <li>
+                                <a href="#editing">editing</a>
+                            </li>
+                            <li>
+                                <a href="#hasPrimaryAddress">hasPrimaryAddress</a>
+                            </li>
+                            <li>
+                                <a href="#requireEffectiveDate">requireEffectiveDate</a>
+                            </li>
+                            <li>
+                                <a href="#showName">showName</a>
+                            </li>
+                            <li>
+                                <a href="#zipPlus4">zipPlus4</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activate">activate</a>
+                            </li>
+                            <li>
+                                <a href="#add">add</a>
+                            </li>
+                            <li>
+                                <a href="#delete">delete</a>
+                            </li>
+                            <li>
+                                <a href="#update">update</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#addresses">addresses</a>
+                                </li>
+                                <li>
+                                    <a href="#value">value</a>
+                                </li>
+                                <li>
+                                    <a href="#choices">choices</a>
+                                </li>
+                                <li>
+                                    <a href="#primaryAddress">primaryAddress</a>
+                                </li>
+                                <li>
+                                    <a href="#showChoices">showChoices</a>
+                                </li>
+                                <li>
+                                    <a href="#totalChoices">totalChoices</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addresses"></a>
+                        <b>addresses</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:53</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="debug"></a>
+                        <b>debug</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editing"></a>
+                        <b>editing</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:33</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hasPrimaryAddress"></a>
+                        <b>hasPrimaryAddress</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:34</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="requireEffectiveDate"></a>
+                        <b>requireEffectiveDate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showName"></a>
+                        <b>showName</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:36</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="zipPlus4"></a>
+                        <b>zipPlus4</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:37</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="activate"></a>
+                        <b>activate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Event.html" target="_self" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="add"></a>
+                        <b>add</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Event.html" target="_self" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:39</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="delete"></a>
+                        <b>delete</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Event.html" target="_self" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="update"></a>
+                        <b>update</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Event.html" target="_self" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:41</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addAddress"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            addAddress
+                        </b>
+                        <a href="#addAddress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addAddress(address: <a href="../classes/Address.html">Address</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="198"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:198</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>address</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addNew"></a>
+                    <span class="name">
+                        <b>
+                            addNew
+                        </b>
+                        <a href="#addNew"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addNew()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:138</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addressExists"></a>
+                    <span class="name">
+                        <b>
+                            addressExists
+                        </b>
+                        <a href="#addressExists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addressExists(e: <a href="../classes/Address.html">Address</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:143</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="back"></a>
+                    <span class="name">
+                        <b>
+                            back
+                        </b>
+                        <a href="#back"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>back()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:158</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeValue"></a>
+                    <span class="name">
+                        <b>
+                            changeValue
+                        </b>
+                        <a href="#changeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeValue(value: <a href="../classes/Address.html">Address[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:122</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeDialog"></a>
+                    <span class="name">
+                        <b>
+                            closeDialog
+                        </b>
+                        <a href="#closeDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeDialog(e: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="edit"></a>
+                    <span class="name">
+                        <b>
+                            edit
+                        </b>
+                        <a href="#edit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>edit(e: <a href="../classes/Address.html">Address</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="179"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:179</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flashAddressExistsMessage"></a>
+                    <span class="name">
+                        <b>
+                            flashAddressExistsMessage
+                        </b>
+                        <a href="#flashAddressExistsMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>flashAddressExistsMessage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:151</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="makePrimary"></a>
+                    <span class="name">
+                        <b>
+                            makePrimary
+                        </b>
+                        <a href="#makePrimary"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>makePrimary(e: <a href="../classes/Address.html">Address</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="133"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:133</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnChange"></a>
+                    <span class="name">
+                        <b>
+                            registerOnChange
+                        </b>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnChange(fn: <a href="../undefineds/Func.html">Function</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:104</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Func" target="_self" >Function</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnTouched"></a>
+                    <span class="name">
+                        <b>
+                            registerOnTouched
+                        </b>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="../undefineds/Func.html">Function</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Func" target="_self" >Function</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                        <b>
+                            remove
+                        </b>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>remove(e: <a href="../classes/Address.html">Address</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="174"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:174</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeAddress"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            removeAddress
+                        </b>
+                        <a href="#removeAddress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeAddress(address: <a href="../classes/Address.html">Address</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>address</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reorder"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            reorder
+                        </b>
+                        <a href="#reorder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>reorder(addresses: <a href="../classes/Address.html">Address[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="215"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:215</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>addresses</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <b>
+                            save
+                        </b>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>save(e: <a href="../classes/Address.html">Address</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="184"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:184</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>e</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setActiveDates"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            setActiveDates
+                        </b>
+                        <a href="#setActiveDates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setActiveDates(addresses: <a href="../classes/Address.html">Address[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="222"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:222</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>addresses</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDisabledState"></a>
+                    <span class="name">
+                        <b>
+                            setDisabledState
+                        </b>
+                        <a href="#setDisabledState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDisabledState(isDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>isDisabled</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(value: <a href="../classes/Address.html">Address[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_addresses"></a>
+                        <span class="name">
+                            <b>
+                            _addresses</b>
+                            <a href="#_addresses"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_value"></a>
+                        <span class="name">
+                            <b>
+                            _value</b>
+                            <a href="#_value"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Address.html" target="_self" >Address[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="current"></a>
+                        <span class="name">
+                            <b>
+                            current</b>
+                            <a href="#current"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:44</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="errorMessage"></a>
+                        <span class="name">
+                            <b>
+                            errorMessage</b>
+                            <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onModelChange"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            onModelChange</b>
+                            <a href="#onModelChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Func" target="_self" >Function</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onTouch"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            onTouch</b>
+                            <a href="#onTouch"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Func" target="_self" >Function</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="toBeDeleted"></a>
+                        <span class="name">
+                            <b>
+                            toBeDeleted</b>
+                            <a href="#toBeDeleted"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addresses"></a>
+                        <span class="name"><b>addresses</b><a href="#addresses"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>addresses()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:58</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>addresses(value: [])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:53</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="value"></a>
+                        <span class="name"><b>value</b><a href="#value"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>value()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:66</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>value(value: [])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:70</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="choices"></a>
+                        <span class="name"><b>choices</b><a href="#choices"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>choices()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:74</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="primaryAddress"></a>
+                        <span class="name"><b>primaryAddress</b><a href="#primaryAddress"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>primaryAddress()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:78</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>primaryAddress(value)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:85</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showChoices"></a>
+                        <span class="name"><b>showChoices</b><a href="#showChoices"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>showChoices()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:94</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalChoices"></a>
+                        <span class="name"><b>totalChoices</b><a href="#totalChoices"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>totalChoices()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">projects/library/src/lib/components/address/address.component.ts:98</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  forwardRef,
+  Input,
+  Output,
+  EventEmitter
+} from &#x27;@angular/core&#x27;;
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+
+import { ConfirmDeleteComponent } from &#x27;../dialog/confirm-delete/confirm-delete.component&#x27;;
+import { DumbComponent } from &#x27;../../shared/component&#x27;;
+import { Address } from &#x27;../../shared/models&#x27;;
+import { build, compareDates } from &#x27;../../shared/utils&#x27;;
+
+export const ADDRESS_ACCESSOR: any &#x3D; {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() &#x3D;&gt; AddressComponent),
+  multi: true
+};
+
+@Component({
+  selector: &#x27;iu-address&#x27;,
+  templateUrl: &#x27;./address.component.html&#x27;,
+  styleUrls: [&#x27;./address.component.scss&#x27;],
+  providers: [ADDRESS_ACCESSOR]
+})
+export class AddressComponent extends DumbComponent
+  implements OnInit, ControlValueAccessor {
+  _addresses: Address[] &#x3D; [];
+  @Input() debug &#x3D; false;
+  @Input() editing &#x3D; false;
+  @Input() hasPrimaryAddress &#x3D; true;
+  @Input() requireEffectiveDate &#x3D; false;
+  @Input() showName &#x3D; true;
+  @Input() zipPlus4 &#x3D; true;
+  @Output() activate &#x3D; new EventEmitter&lt;Address&gt;();
+  @Output() add &#x3D; new EventEmitter&lt;Address&gt;();
+  @Output() delete &#x3D; new EventEmitter&lt;Address&gt;();
+  @Output() update &#x3D; new EventEmitter&lt;Address&gt;();
+  private onModelChange: Function;
+  private onTouch: Function;
+  current: Address;
+  errorMessage &#x3D; &#x27;&#x27;;
+  toBeDeleted: Address;
+  _value: Address[];
+
+  constructor(public dialog: MatDialog) {
+    super();
+  }
+
+  @Input() set addresses(value: Address[]) {
+    this._addresses &#x3D; value;
+    this.changeValue(this._addresses);
+  }
+
+  get addresses(): Address[] {
+    return this._addresses.findIndex(x &#x3D;&gt; x.isPrimaryAddress) &#x3D;&#x3D;&#x3D; -1
+      ? this._addresses.map((x, index) &#x3D;&gt;
+          index &#x3D;&#x3D;&#x3D; 0 ? build(Address, x, { isPrimaryAddress: true }) : x
+        )
+      : this._addresses;
+  }
+
+  get value(): Address[] {
+    return this._value;
+  }
+
+  set value(value: Address[]) {
+    this._value &#x3D; value;
+  }
+
+  get choices(): Address[] {
+    return this.addresses.filter((x, i) &#x3D;&gt; !x.isPrimaryAddress);
+  }
+
+  get primaryAddress(): Address {
+    return this.addresses.length &#x3D;&#x3D;&#x3D; 0
+      ? null
+      : this.addresses.find(x &#x3D;&gt; x.isPrimaryAddress) ||
+          build(Address, this.addresses[0]);
+  }
+
+  set primaryAddress(value: Address) {
+    this.addresses &#x3D; [
+      build(Address, value, { isPrimaryAddress: true }),
+      ...this.removeAddress(value).map(x &#x3D;&gt;
+        build(Address, x, { isPrimaryAddress: false })
+      )
+    ];
+  }
+
+  get showChoices(): boolean {
+    return this.totalChoices &gt; 0;
+  }
+
+  get totalChoices(): number {
+    return this.addresses.length;
+  }
+
+  ngOnInit() {}
+
+  registerOnChange(fn: Function) {
+    this.onModelChange &#x3D; fn;
+  }
+
+  registerOnTouched(fn: Function) {
+    this.onTouch &#x3D; fn;
+  }
+
+  setDisabledState(isDisabled: boolean) {}
+
+  writeValue(value: Address[]) {
+    if (this.debug) {
+      console.log(&#x27;\nWRITE Address Manager VALUE&#x27;);
+      console.dir(value);
+    }
+    this.value &#x3D; value;
+  }
+
+  changeValue(value: Address[]) {
+    if (this.debug) {
+      console.log(&#x27;\nCHANGE Address Manager VALUE&#x27;);
+      console.dir(value);
+    }
+    this.value &#x3D; value;
+    if (this.onModelChange) {
+      this.onModelChange(value);
+    }
+  }
+
+  makePrimary(e: Address) {
+    this.primaryAddress &#x3D; e;
+    this.activate.emit(e);
+  }
+
+  addNew() {
+    this.current &#x3D; new Address();
+    this.editing &#x3D; true;
+  }
+
+  addressExists(e: Address): boolean {
+    return (
+      this.addresses.findIndex(
+        x &#x3D;&gt; x.address1 &#x3D;&#x3D;&#x3D; e.address1 &amp;&amp; x.cityStateZip &#x3D;&#x3D;&#x3D; e.cityStateZip
+      ) !&#x3D;&#x3D; -1
+    );
+  }
+
+  flashAddressExistsMessage() {
+    this.errorMessage &#x3D; &#x27;Cannot enter duplicate address!&#x27;;
+    setTimeout(() &#x3D;&gt; {
+      this.errorMessage &#x3D; &#x27;&#x27;;
+    }, 4000);
+  }
+
+  back() {
+    if (this.current.id &#x3D;&#x3D;&#x3D; 0) {
+      this.addresses &#x3D; this.removeAddress(this.current);
+    }
+    this.editing &#x3D; false;
+  }
+
+  closeDialog(e: boolean) {
+    if (e) {
+      this.addresses &#x3D; this.removeAddress(this.toBeDeleted);
+      this.delete.emit(this.toBeDeleted);
+      this.toBeDeleted &#x3D; undefined;
+      this.editing &#x3D; false;
+    }
+  }
+
+  remove(e: Address) {
+    this.toBeDeleted &#x3D; e;
+    this.openDialog(ConfirmDeleteComponent);
+  }
+
+  edit(e: Address) {
+    this.current &#x3D; e;
+    this.editing &#x3D; true;
+  }
+
+  save(e: Address) {
+    if (!this.addressExists(e)) {
+      this.addresses &#x3D; this.setActiveDates(this.addAddress(e));
+      if (e.id) {
+        this.add.emit(e);
+      } else {
+        this.update.emit(e);
+      }
+      this.editing &#x3D; false;
+    } else if (!this.toBeDeleted) {
+      this.flashAddressExistsMessage();
+    }
+  }
+
+  private addAddress(address: Address): Address[] {
+    return this.reorder([
+      address,
+      ...this.addresses
+        .filter(x &#x3D;&gt; x.id &#x3D;&#x3D;&#x3D; 0 || x.id !&#x3D;&#x3D; address.id)
+        .map(x &#x3D;&gt;
+          address.isPrimaryAddress &amp;&amp; x.isPrimaryAddress &amp;&amp; x.id !&#x3D;&#x3D; address.id
+            ? build(Address, x, { isPrimaryAddress: false })
+            : build(Address, x)
+        )
+    ]);
+  }
+
+  private removeAddress(address: Address): Address[] {
+    return this.addresses.filter(x &#x3D;&gt; x !&#x3D;&#x3D; address);
+  }
+
+  private reorder(addresses: Address[]): Address[] {
+    return addresses.reduce(
+      (acc, x) &#x3D;&gt; (x.isPrimaryAddress ? [x, ...acc] : [...acc, x]),
+      []
+    );
+  }
+
+  private setActiveDates(addresses: Address[]): Address[] {
+    const ordered &#x3D; addresses
+      .sort((a, b) &#x3D;&gt; compareDates(a.effectiveDate, b.effectiveDate))
+      .reverse();
+    const now &#x3D; new Date();
+    return ordered.map((x, i) &#x3D;&gt; {
+      const startDate &#x3D; x.effectiveDate;
+      const endDate &#x3D;
+        ordered[i + 1] &amp;&amp;
+        ordered[i + 1].effectiveDate &amp;&amp;
+        ordered[i + 1].effectiveDate &gt; x.effectiveDate
+          ? ordered[i + 1].effectiveDate
+          : null;
+      const isPrimaryAddress &#x3D;
+        x.isPrimaryAddress || (startDate &lt; now &amp;&amp; endDate &gt; now ? true : false);
+      return build(Address, x, { startDate, endDate, isPrimaryAddress });
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card address scrollable&quot;&gt;
+  &lt;div class&#x3D;&quot;card-header&quot;&gt;
+    &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Address Information&lt;/h4&gt;
+  &lt;/div&gt;
+
+  &lt;button
+    mat-mini-fab
+    color&#x3D;&quot;primary&quot;
+    class&#x3D;&quot;action-icon&quot;
+    *ngIf&#x3D;&quot;!editing&quot;
+    (click)&#x3D;&quot;addNew()&quot;
+  &gt;
+    &lt;mat-icon&gt;add&lt;/mat-icon&gt;
+  &lt;/button&gt;
+
+  &lt;button
+    mat-mini-fab
+    color&#x3D;&quot;primary&quot;
+    class&#x3D;&quot;action-icon&quot;
+    *ngIf&#x3D;&quot;editing&quot;
+    (click)&#x3D;&quot;back()&quot;
+  &gt;
+    &lt;mat-icon&gt;arrow_back&lt;/mat-icon&gt;
+  &lt;/button&gt;
+
+  &lt;div *ngIf&#x3D;&quot;!editing&quot; class&#x3D;&quot;card-body&quot;&gt;
+    &lt;div class&#x3D;&quot;card-header&quot;&gt;
+      &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Current Address&lt;/h4&gt;
+    &lt;/div&gt;
+    &lt;div *ngIf&#x3D;&quot;primaryAddress&quot; class&#x3D;&quot;card-body&quot;&gt;
+      &lt;div class&#x3D;&quot;body-content&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col&quot;&gt;
+            &lt;iu-inline-address
+              [address]&#x3D;&quot;primaryAddress&quot;
+              [canActivate]&#x3D;&quot;false&quot;
+              [canDelete]&#x3D;&quot;true&quot;
+              [canEdit]&#x3D;&quot;true&quot;
+              [showName]&#x3D;&quot;showName&quot;
+              (delete)&#x3D;&quot;remove($event)&quot;
+              (edit)&#x3D;&quot;edit($event)&quot;
+            &gt;&lt;/iu-inline-address&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;card-header&quot;&gt;
+      &lt;h4 class&#x3D;&quot;card-title&quot;&gt;Other Addresses&lt;/h4&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+      &lt;div class&#x3D;&quot;body-content choose-address&quot;&gt;
+        &lt;iu-inline-address
+          *ngFor&#x3D;&quot;let choice of choices&quot;
+          [canActivate]&#x3D;&quot;hasPrimaryAddress&quot;
+          [canDelete]&#x3D;&quot;true&quot;
+          [canEdit]&#x3D;&quot;true&quot;
+          [showName]&#x3D;&quot;showName&quot;
+          [address]&#x3D;&quot;choice&quot;
+          (activate)&#x3D;&quot;makePrimary($event)&quot;
+          (delete)&#x3D;&quot;remove($event)&quot;
+          (edit)&#x3D;&quot;edit($event)&quot;
+        &gt;&lt;/iu-inline-address&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;iu-address-form
+    *ngIf&#x3D;&quot;editing&quot;
+    [address]&#x3D;&quot;current&quot;
+    [canDelete]&#x3D;&quot;true&quot;
+    [hasPrimaryAddress]&#x3D;&quot;hasPrimaryAddress&quot;
+    [showName]&#x3D;&quot;showName&quot;
+    [manager]&#x3D;&quot;true&quot;
+    [requireEffectiveDate]&#x3D;&quot;requireEffectiveDate&quot;
+    [zipPlus4]&#x3D;&quot;zipPlus4&quot;
+    [debug]&#x3D;&quot;debug&quot;
+    (save)&#x3D;&quot;save($event)&quot;
+    (delete)&#x3D;&quot;remove($event)&quot;
+  &gt;&lt;/iu-address-form&gt;
+  &lt;span id&#x3D;&quot;error-message&quot;&gt;{{ errorMessage }}&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./address.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.address {
+    position: relative;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin-bottom: 10px;
+    width: 100%;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding-bottom: 25px;
+    overflow: auto;
+
+    .card-header {
+        padding: 15px 15px 0;
+        margin-bottom: 0;
+        background-color: #FFFFFF;
+        border-bottom: none !important;
+
+        .card-title {
+            padding-left: 5px;
+            margin: 0;
+            color: #333333;
+            font-weight: 300;
+            font-size: 14px;
+            letter-spacing: 1px;
+            line-height: 24px;
+            text-decoration: none;
+            background-color: #F5F5F6;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-color: rgba(0, 0, 0, 0.06);
+            text-align: -webkit-match-parent;
+        }
+    }
+
+    .card-body {
+        padding: 15px 15px 10px 15px;
+        min-width: 300px;
+    }
+
+    .item {
+        color: #1b1b1b;
+        font-size: 14px;
+    }
+
+    .edit-icon {
+        font-size: 10pt;
+        color: #1b1b1b;
+    }
+
+    .activate-text {
+        color: #6d6d6d;
+    }
+
+    .edit-icon:hover {
+        color: #aebfbe;
+    }
+
+    h2 {
+        font-size: 14px;
+        letter-spacing: 1px;
+        line-height: 24px;
+        text-decoration: none;
+        color: #6d6d6d;
+        background-color: #F5F5F6;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        margin: 0;
+        margin-left: 5px;
+        border-color: rgba(0, 0, 0, 0.06);
+        text-align: -webkit-match-parent;
+    }
+
+    p {
+        font-size: 14px;
+        color: #1b1b1b;
+        margin: 5px 5px 0 20px;
+    }
+
+    mat-card-header {
+        background-color: #aebfbe;
+
+        .example-form-field {
+            width: 200px;
+            float: right;
+        }
+    }
+
+    mat-list-item {
+        width: 100%;
+    }
+
+    td {
+        font-size: 10pt;
+        color: #1b1b1b;
+        margin: 5px 5px 0 20px;
+    }
+
+    button.action-icon {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 14px;
+        right: 28px;
+
+        .mat-button-wrapper {
+            padding: 8px 0;
+            display: inline-block;
+            line-height: 24px;
+        }
+
+        mat-icon {
+            color: #fff;
+        }
+    }
+
+    #error-message {
+        color: red;
+        position: absolute;
+        bottom: 10px;
+        left: 50px;
+        font-size: 18px;
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="card address scrollable">  <div class="card-header">    <h4 class="card-title">Address Information</h4>  </div>  <button    mat-mini-fab    color="primary"    class="action-icon"    *ngIf="!editing"    (click)="addNew()"  >    <mat-icon>add</mat-icon>  </button>  <button    mat-mini-fab    color="primary"    class="action-icon"    *ngIf="editing"    (click)="back()"  >    <mat-icon>arrow_back</mat-icon>  </button>  <div *ngIf="!editing" class="card-body">    <div class="card-header">      <h4 class="card-title">Current Address</h4>    </div>    <div *ngIf="primaryAddress" class="card-body">      <div class="body-content">        <div class="row">          <div class="col">            <iu-inline-address              [address]="primaryAddress"              [canActivate]="false"              [canDelete]="true"              [canEdit]="true"              [showName]="showName"              (delete)="remove($event)"              (edit)="edit($event)"            ></iu-inline-address>          </div>        </div>      </div>    </div>    <div class="card-header">      <h4 class="card-title">Other Addresses</h4>    </div>    <div class="card-body">      <div class="body-content choose-address">        <iu-inline-address          *ngFor="let choice of choices"          [canActivate]="hasPrimaryAddress"          [canDelete]="true"          [canEdit]="true"          [showName]="showName"          [address]="choice"          (activate)="makePrimary($event)"          (delete)="remove($event)"          (edit)="edit($event)"        ></iu-inline-address>      </div>    </div>  </div>  <iu-address-form    *ngIf="editing"    [address]="current"    [canDelete]="true"    [hasPrimaryAddress]="hasPrimaryAddress"    [showName]="showName"    [manager]="true"    [requireEffectiveDate]="requireEffectiveDate"    [zipPlus4]="zipPlus4"    [debug]="debug"    (save)="save($event)"    (delete)="remove($event)"  ></iu-address-form>  <span id="error-message">{{ errorMessage }}</span></div></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'iu-accordion'},{'name': 'AccordionDemoComponent', 'selector': 'docs-accordion-demo'},{'name': 'AddressComponent', 'selector': 'iu-address'},{'name': 'AddressFormComponent', 'selector': 'iu-address-form'},{'name': 'AppComponent', 'selector': 'docs-root'},{'name': 'AuditFieldsComponent', 'selector': 'iu-audit-fields'},{'name': 'AuditHistoryComponent', 'selector': 'iu-audit-history'},{'name': 'AuditHistoryLinkComponent', 'selector': 'iu-audit-history-link'},{'name': 'AutoLogoutComponent', 'selector': 'iu-auto-logout'},{'name': 'BreadcrumbsComponent', 'selector': 'iu-breadcrumbs'},{'name': 'CalendarComponent', 'selector': 'iu-calendar'},{'name': 'CalendarDayComponent', 'selector': 'iu-calendar-day'},{'name': 'CalendarDayEditComponent', 'selector': 'iu-calendar-day-edit'},{'name': 'CalendarDayEventsComponent', 'selector': 'iu-calendar-day-events'},{'name': 'CalendarDaysComponent', 'selector': 'iu-calendar-days'},{'name': 'CalendarDayViewComponent', 'selector': 'iu-calendar-day-view'},{'name': 'CalendarDemoComponent', 'selector': 'docs-calendar-demo'},{'name': 'CalendarEventComponent', 'selector': 'iu-calendar-event'},{'name': 'CalendarEventFormComponent', 'selector': 'iu-calendar-event-form'},{'name': 'CalendarEventViewComponent', 'selector': 'iu-calendar-event-view'},{'name': 'CalendarFormComponent', 'selector': 'iu-calendar-form'},{'name': 'CalendarKeyComponent', 'selector': 'iu-calendar-key'},{'name': 'CalendarViewComponent', 'selector': 'iu-calendar-view'},{'name': 'CollageComponent', 'selector': 'iu-collage'},{'name': 'ConfirmDeleteComponent', 'selector': 'iu-confirm-delete'},{'name': 'ContainerComponent', 'selector': 'iu-container'},{'name': 'DatepickerComponent', 'selector': 'iu-datepicker'},{'name': 'DaterangeComponent', 'selector': 'iu-daterange'},{'name': 'DateTimeControlComponent', 'selector': 'iu-datetime-control'},{'name': 'DialogComponent', 'selector': 'iu-dialog'},{'name': 'EditorComponent', 'selector': 'iu-editor'},{'name': 'EditorDemoComponent', 'selector': 'docs-editor-demo'},{'name': 'EditorWindowComponent', 'selector': 'iu-editor-window'},{'name': 'FileControlComponent', 'selector': 'iu-file-control'},{'name': 'FilePreviewComponent', 'selector': 'iu-file-preview'},{'name': 'FileUploadComponent', 'selector': 'iu-file-upload'},{'name': 'FileUploadDemoComponent', 'selector': 'docs-file-upload-demo'},{'name': 'GridCellComponent', 'selector': 'iu-grid-cell'},{'name': 'GridColumnComponent', 'selector': 'iu-grid-column'},{'name': 'GridComponent', 'selector': 'iu-grid'},{'name': 'HeaderComponent', 'selector': 'iu-header'},{'name': 'InlineAddressComponent', 'selector': 'iu-inline-address'},{'name': 'LibraryComponent', 'selector': 'iu-library'},{'name': 'NavbarComponent', 'selector': 'iu-navbar'},{'name': 'NotFoundComponent', 'selector': 'iu-not-found'},{'name': 'PhoneNumberComponent', 'selector': 'iu-phone-number'},{'name': 'SidenavComponent', 'selector': 'iu-sidenav'},{'name': 'SimpleGridComponent', 'selector': 'iu-simple-grid'},{'name': 'SocialIconsComponent', 'selector': 'iu-social-icons'},{'name': 'StatePickerComponent', 'selector': 'iu-state-picker'},{'name': 'TileComponent', 'selector': 'iu-tile'},{'name': 'TimeControlComponent', 'selector': 'iu-time-control'},{'name': 'TimerComponent', 'selector': 'iu-timer'},{'name': 'UnsavedChangesComponent', 'selector': 'iu-unsaved-changes'},{'name': 'UploadComponent', 'selector': 'iu-upload'},{'name': 'UploaderComponent', 'selector': 'iu-uploader'},{'name': 'UploadsComponent', 'selector': 'iu-uploads'},{'name': 'WallpaperComponent', 'selector': 'iu-wallpaper'},{'name': 'WidgetComponent', 'selector': 'iu-widget'},{'name': 'WidgetsMenuComponent', 'selector': 'iu-widgets-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AddressComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AddressComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

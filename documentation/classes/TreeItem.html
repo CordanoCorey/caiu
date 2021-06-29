@@ -1,0 +1,842 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caiu documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caiu documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>TreeItem</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/library/src/lib/shared/tree.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#id">id</a>
+                            </li>
+                            <li>
+                                <a href="#index">index</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#item">item</a>
+                            </li>
+                            <li>
+                                <a href="#order">order</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#parent">parent</a>
+                            </li>
+                            <li>
+                                <a href="#parentId">parentId</a>
+                            </li>
+                            <li>
+                                <a href="#treeId">treeId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#Build">Build</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#hasParent">hasParent</a>
+                                </li>
+                                <li>
+                                    <a href="#sortOrder">sortOrder</a>
+                                </li>
+                                <li>
+                                    <a href="#treeOrder">treeOrder</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(item: T, parent?: T)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/library/src/lib/shared/tree.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>item</td>
+                                                  
+                                                        <td>
+                                                                    <code>T</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>parent</td>
+                                                  
+                                                        <td>
+                                                                    <code>T</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="id"></a>
+                        <span class="name">
+                            <b>
+                            id</b>
+                            <a href="#id"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">projects/library/src/lib/shared/tree.ts:6</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="index"></a>
+                        <span class="name">
+                            <b>
+                            index</b>
+                            <a href="#index"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/library/src/lib/shared/tree.ts:10</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="item"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            item</b>
+                            <a href="#item"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>T</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/library/src/lib/shared/tree.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="order"></a>
+                        <span class="name">
+                            <b>
+                            order</b>
+                            <a href="#order"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">projects/library/src/lib/shared/tree.ts:7</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="parent"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                                <span class="modifier">Optional</span>
+                            parent</b>
+                            <a href="#parent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>T</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/library/src/lib/shared/tree.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="parentId"></a>
+                        <span class="name">
+                            <b>
+                            parentId</b>
+                            <a href="#parentId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">projects/library/src/lib/shared/tree.ts:8</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="treeId"></a>
+                        <span class="name">
+                            <b>
+                            treeId</b>
+                            <a href="#treeId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">projects/library/src/lib/shared/tree.ts:9</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Build"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            Build
+                        </b>
+                        <a href="#Build"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>Build(item: T)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">projects/library/src/lib/shared/tree.ts:12</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>T</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                            <code>T</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>TreeItem&lt;T&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hasParent"></a>
+                        <span class="name"><b>hasParent</b><a href="#hasParent"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hasParent()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/library/src/lib/shared/tree.ts:25</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sortOrder"></a>
+                        <span class="name"><b>sortOrder</b><a href="#sortOrder"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sortOrder()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/library/src/lib/shared/tree.ts:29</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="treeOrder"></a>
+                        <span class="name"><b>treeOrder</b><a href="#treeOrder"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>treeOrder()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/library/src/lib/shared/tree.ts:33</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { TypeConstructor } from &#x27;./models&#x27;;
+import { compareNumbers } from &#x27;./utils&#x27;;
+
+export class TreeItem&lt;T&gt; {
+
+    id &#x3D; 0;
+    order &#x3D; 0;
+    parentId &#x3D; 0;
+    treeId &#x3D; 0;
+    index &#x3D; 0; // overall order within the flattened tree
+
+    static Build&lt;T&gt;(item: T): TreeItem&lt;T&gt; {
+        return &lt;TreeItem&lt;T&gt;&gt;{
+            item: item,
+            id: item[&#x27;id&#x27;],
+            order: item[&#x27;order&#x27;],
+            parentId: item[&#x27;parentId&#x27;]
+        };
+    }
+
+    constructor(public item: T, public parent?: T) {
+
+    }
+
+    get hasParent(): boolean {
+        return this.parentId ? true : false;
+    }
+
+    get sortOrder(): number {
+        return this.parentId ? this.treeId + (.1 * this.order) : this.treeId;
+    }
+
+    get treeOrder(): number {
+        return this.parentId ? this.order : 0;
+    }
+}
+
+export class Tree&lt;T&gt; {
+    _activeId &#x3D; 0;
+    _activeIndex &#x3D; -1;
+
+    static FindParent&lt;T&gt;(items: TreeItem&lt;T&gt;[], item: TreeItem&lt;T&gt;): TreeItem&lt;T&gt; {
+        return items.find(x &#x3D;&gt; x.id &#x3D;&#x3D;&#x3D; item.parentId) || new TreeItem&lt;T&gt;(&lt;T&gt;{});
+    }
+
+    static FindParentOrder&lt;T&gt;(items: TreeItem&lt;T&gt;[], item: TreeItem&lt;T&gt;): number {
+        const parent &#x3D; Tree.FindParent(items, item);
+        return parent.order;
+    }
+
+    static Build&lt;T&gt;(items: TreeItem&lt;T&gt;[], ctor: TypeConstructor&lt;T&gt;): Tree&lt;T&gt; {
+        const treeItems &#x3D; items.reduce((acc, item) &#x3D;&gt; {
+            item.treeId &#x3D; item.parentId ? Tree.FindParentOrder(items, item) : item.order;
+            const treeItem &#x3D; Object.assign(new TreeItem&lt;T&gt;(&lt;T&gt;{}), item);
+            return [...acc, treeItem];
+        }, []);
+        const orderedItems &#x3D; items.sort((a, b) &#x3D;&gt; compareNumbers(a.sortOrder, b.sortOrder))
+            .reduce((acc: TreeItem&lt;T&gt;[], treeItem: TreeItem&lt;T&gt;, index: number) &#x3D;&gt; {
+                const item &#x3D; treeItem.item;
+                const parent &#x3D; treeItem.parent;
+                return [...acc, &lt;TreeItem&lt;T&gt;&gt;Object.assign(new TreeItem&lt;T&gt;(item, parent), treeItem, { index })];
+            }, []);
+        return new Tree&lt;T&gt;(orderedItems, ctor);
+    }
+
+    constructor(private _treeItems: TreeItem&lt;T&gt;[], public ctor: TypeConstructor&lt;T&gt;) {
+    }
+
+    get activeId(): number {
+        return this._activeId;
+    }
+
+    set activeId(id: number) {
+        this._activeId &#x3D; id;
+        this._activeIndex &#x3D; this.getIndexById(id);
+    }
+
+    get activeIndex(): number {
+        return this._activeIndex;
+    }
+
+    set activeIndex(index: number) {
+        this._activeIndex &#x3D; index;
+        this._activeId &#x3D; this.getIdByIndex(index);
+    }
+
+    get copy(): Tree&lt;T&gt; {
+        return Object.assign(new Tree&lt;T&gt;(this._treeItems, this.ctor), this);
+    }
+
+    get instance(): T {
+        return new this.ctor() || &lt;T&gt;{};
+    }
+
+    get next(): TreeItem&lt;T&gt; {
+        return this.getNext(this.activeIndex);
+    }
+
+    get nextId(): number {
+        return this.next.id;
+    }
+
+    get nextIndex(): number {
+        return this.activeIndex + 1;
+    }
+
+    get previous(): TreeItem&lt;T&gt; {
+        return this.getPrevious(this.activeIndex);
+    }
+
+    get previousId(): number {
+        return this.previous.id;
+    }
+
+    get previousIndex(): number {
+        return this.activeIndex - 1;
+    }
+
+    get items(): T[] {
+        return this._treeItems.map(x &#x3D;&gt; x.item);
+    }
+
+    get treeItems(): TreeItem&lt;T&gt;[] {
+        return this._treeItems;
+    }
+
+    get orderedItems(): TreeItem&lt;T&gt;[] {
+        return this.treeItems.sort((a, b) &#x3D;&gt; compareNumbers(a.index, b.index));
+    }
+
+    get subtrees(): Tree&lt;T&gt;[] {
+        const trees &#x3D; this.treeItems.reduce((acc, item) &#x3D;&gt; {
+            const treeId &#x3D; item.treeId;
+            const subitems &#x3D; acc[treeId] || [];
+            acc[treeId] &#x3D; [...subitems, item];
+            return acc;
+        }, {});
+        return Object.keys(trees).map(key &#x3D;&gt; Tree.Build(trees[key], this.ctor));
+    }
+
+    get subtreeItems(): TreeItem&lt;T&gt;[][] {
+        return this.subtrees.map(tree &#x3D;&gt; tree.treeItems.sort((a, b) &#x3D;&gt; compareNumbers(a.index, b.index)));
+    }
+
+    getIdByIndex(index: number): number {
+        const item &#x3D; this.getItemByIndex(index);
+        return item.id;
+    }
+
+    getIndexById(id: number): number {
+        return this.getItemById(id).index;
+    }
+
+    getItemById(id: number): TreeItem&lt;T&gt; {
+        return this.treeItems.find(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; id) || new TreeItem&lt;T&gt;(this.instance);
+    }
+
+    getItemByIndex(index: number): TreeItem&lt;T&gt; {
+        return this.treeItems.find(item &#x3D;&gt; item.index &#x3D;&#x3D;&#x3D; index) || new TreeItem&lt;T&gt;(this.instance);
+    }
+
+    getNext(index: number): TreeItem&lt;T&gt; {
+        return this.getItemByIndex(index + 1);
+    }
+
+    getNextId(index: number): number {
+        return this.getNext(index).id;
+    }
+
+    getPrevious(index: number): TreeItem&lt;T&gt; {
+        return this.getItemByIndex(index - 1);
+    }
+
+    getPreviousId(index: number): number {
+        return this.getPrevious(index).id;
+    }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'TreeItem.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

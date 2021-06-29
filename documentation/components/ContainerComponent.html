@@ -1,0 +1,1281 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caiu documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caiu documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ContainerComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/library/src/lib/components/container/container.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code>SmartComponent</code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>iu-container</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./container.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./container.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_hasWallpaper">_hasWallpaper</a>
+                            </li>
+                            <li>
+                                <a href="#_images">_images</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#store">store</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#backgroundImage">backgroundImage</a>
+                            </li>
+                            <li>
+                                <a href="#hasWallpaper">hasWallpaper</a>
+                            </li>
+                            <li>
+                                <a href="#navbar">navbar</a>
+                            </li>
+                            <li>
+                                <a href="#showHelp">showHelp</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#window:load">window:load</a>
+                            </li>
+                            <li>
+                                <a href="#window:resize">window:resize</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#hasWallpaper">hasWallpaper</a>
+                                </li>
+                                <li>
+                                    <a href="#hasBackgroundImage">hasBackgroundImage</a>
+                                </li>
+                                <li>
+                                    <a href="#images">images</a>
+                                </li>
+                                <li>
+                                    <a href="#contentWidth">contentWidth</a>
+                                </li>
+                                <li>
+                                    <a href="#mobile">mobile</a>
+                                </li>
+                                <li>
+                                    <a href="#offsetLeft">offsetLeft</a>
+                                </li>
+                                <li>
+                                    <a href="#offsetTop">offsetTop</a>
+                                </li>
+                                <li>
+                                    <a href="#menuWidth">menuWidth</a>
+                                </li>
+                                <li>
+                                    <a href="#windowHeight">windowHeight</a>
+                                </li>
+                                <li>
+                                    <a href="#windowWidth">windowWidth</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(store: Store<any>, dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;any&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="backgroundImage"></a>
+                        <b>backgroundImage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:16</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hasWallpaper"></a>
+                        <b>hasWallpaper</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:28</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="navbar"></a>
+                        <b>navbar</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:18</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showHelp"></a>
+                        <b>showHelp</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:17</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="window:load"></a>
+                    <span class="name">
+                        <b>
+                            window:load
+                        </b>
+                        <a href="#window:load"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>window:load(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:90</a></div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="window:resize"></a>
+                    <span class="name">
+                        <b>
+                            window:resize
+                        </b>
+                        <a href="#window:resize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>window:resize(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:97</a></div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_hasWallpaper"></a>
+                        <span class="name">
+                            <b>
+                            _hasWallpaper</b>
+                            <a href="#_hasWallpaper"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>true</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_images"></a>
+                        <span class="name">
+                            <b>
+                            _images</b>
+                            <a href="#_images"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Image.html" target="_self" >Image[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="store"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            store</b>
+                            <a href="#store"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Store&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hasWallpaper"></a>
+                        <span class="name"><b>hasWallpaper</b><a href="#hasWallpaper"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hasWallpaper()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:32</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>hasWallpaper(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:28</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hasBackgroundImage"></a>
+                        <span class="name"><b>hasBackgroundImage</b><a href="#hasBackgroundImage"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>hasBackgroundImage()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:36</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="images"></a>
+                        <span class="name"><b>images</b><a href="#images"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>images()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:44</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>images(value: [])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:40</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="contentWidth"></a>
+                        <span class="name"><b>contentWidth</b><a href="#contentWidth"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>contentWidth()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:48</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mobile"></a>
+                        <span class="name"><b>mobile</b><a href="#mobile"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>mobile()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:52</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="offsetLeft"></a>
+                        <span class="name"><b>offsetLeft</b><a href="#offsetLeft"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>offsetLeft()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:56</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="offsetTop"></a>
+                        <span class="name"><b>offsetTop</b><a href="#offsetTop"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>offsetTop()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:60</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="menuWidth"></a>
+                        <span class="name"><b>menuWidth</b><a href="#menuWidth"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>menuWidth()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:64</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="windowHeight"></a>
+                        <span class="name"><b>windowHeight</b><a href="#windowHeight"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>windowHeight()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:68</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>windowHeight(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:72</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="windowWidth"></a>
+                        <span class="name"><b>windowWidth</b><a href="#windowWidth"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>windowWidth()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:76</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>windowWidth(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/library/src/lib/components/container/container.component.ts:80</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, HostListener, Input } from &#x27;@angular/core&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+
+import { SmartComponent } from &#x27;../../shared/component&#x27;;
+import { Image } from &#x27;../../shared/models&#x27;;
+import { truthy } from &#x27;../../shared/utils&#x27;;
+
+@Component({
+  selector: &#x27;iu-container&#x27;,
+  templateUrl: &#x27;./container.component.html&#x27;,
+  styleUrls: [&#x27;./container.component.scss&#x27;]
+})
+export class ContainerComponent extends SmartComponent implements OnInit {
+
+  @Input() backgroundImage: string;
+  @Input() showHelp &#x3D; true;
+  @Input() navbar;
+  _hasWallpaper &#x3D; true;
+  _images: Image[] &#x3D; [];
+
+  constructor(
+    public store: Store&lt;any&gt;,
+    public dialog: MatDialog) {
+    super(store);
+  }
+
+  @Input() set hasWallpaper(value: boolean) {
+    this._hasWallpaper &#x3D; value;
+  }
+
+  get hasWallpaper(): boolean {
+    return this._hasWallpaper;
+  }
+
+  get hasBackgroundImage(): boolean {
+    return truthy(this.backgroundImage) &amp;&amp; !this.hasWallpaper;
+  }
+
+  set images(value: Image[]) {
+    this._images &#x3D; value;
+  }
+
+  get images(): Image[] {
+    return this.mobile ? this._images.filter((x, i) &#x3D;&gt; i &lt; 20) : this._images;
+  }
+
+  get contentWidth(): number {
+    return this.windowWidth - this.offsetLeft;
+  }
+
+  get mobile(): boolean {
+    return this.windowWidth &lt; 1000;
+  }
+
+  get offsetLeft(): number {
+    return 0;
+  }
+
+  get offsetTop(): number {
+    return this.navbar ? 130 : 64;
+  }
+
+  get menuWidth(): number {
+    return this.windowWidth;
+  }
+
+  get windowHeight(): number {
+    return parseInt(localStorage.getItem(&#x27;WINDOW_HEIGHT&#x27;), 10) - 64;
+  }
+
+  set windowHeight(value: number) {
+    localStorage.setItem(&#x27;WINDOW_HEIGHT&#x27;, value.toString());
+  }
+
+  get windowWidth(): number {
+    return parseInt(localStorage.getItem(&#x27;WINDOW_WIDTH&#x27;), 10);
+  }
+
+  set windowWidth(value: number) {
+    localStorage.setItem(&#x27;WINDOW_WIDTH&#x27;, value.toString());
+  }
+
+  ngOnInit() {
+    this.windowHeight &#x3D; parseInt(localStorage.getItem(&#x27;WINDOW_HEIGHT&#x27;), 10);
+    this.windowWidth &#x3D; parseInt(localStorage.getItem(&#x27;WINDOW_WIDTH&#x27;), 10);
+  }
+
+  @HostListener(&#x27;window:load&#x27;, [&#x27;$event&#x27;])
+  onLoad(e: any) {
+    this.windowHeight &#x3D; e &amp;&amp; e.currentTarget &amp;&amp; e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    this.windowWidth &#x3D; e &amp;&amp; e.currentTarget &amp;&amp; e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    // console.log(&#x27;\n\nwindow:load&#x27;, this.windowWidth, this.windowHeight);
+  }
+
+  @HostListener(&#x27;window:resize&#x27;, [&#x27;$event&#x27;])
+  onResize(e: any) {
+    this.windowHeight &#x3D; e &amp;&amp; e.currentTarget &amp;&amp; e.currentTarget.innerHeight ? e.currentTarget.innerHeight : 0;
+    this.windowWidth &#x3D; e &amp;&amp; e.currentTarget &amp;&amp; e.currentTarget.innerWidth ? e.currentTarget.innerWidth : 0;
+    // console.log(&#x27;\n\nwindow:resize&#x27;, this.windowWidth, this.windowHeight);
+  }
+
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- &lt;iu-header [windowWidth]&#x3D;&quot;contentWidth&quot; [offsetLeft]&#x3D;&quot;offsetLeft&quot; [mobile]&#x3D;&quot;mobile&quot;&gt;&lt;/iu-header&gt;
+&lt;iu-navbar *ngIf&#x3D;&quot;navbar&quot;&gt;
+  &lt;iu-breadcrumbs *ngIf&#x3D;&quot;breadcrumbs&quot;&gt;&lt;/iu-breadcrumbs&gt;
+&lt;/iu-navbar&gt;
+&lt;iu-sidenav *ngIf&#x3D;&quot;!mobile&quot; [style.height.px]&#x3D;&quot;sidenavHeight&quot;&gt;&lt;/iu-sidenav&gt;
+
+&lt;div id&#x3D;&quot;content&quot; class&#x3D;&quot;scrollable&quot; [style.height.px]&#x3D;&quot;windowHeight&quot; [style.width.px]&#x3D;&quot;contentWidth&quot; [style.left.px]&#x3D;&quot;offsetLeft&quot;
+  [style.background-image]&#x3D;&quot;hasBackgroundImage ? &#x27;url(&#x27; + backgroundImage + &#x27;)&#x27; : &#x27;none&#x27;&quot;&gt;
+  &lt;ng-content&gt;&lt;/ng-content&gt;
+  &lt;iu-wallpaper *ngIf&#x3D;&quot;hasWallpaper&quot; [images]&#x3D;&quot;images&quot; [imageOpacity]&#x3D;&quot;0.6&quot; [shuffle]&#x3D;&quot;true&quot; [offsetLeft]&#x3D;&quot;offsetLeft&quot;
+    [offsetTop]&#x3D;&quot;offsetTop&quot;&gt;&lt;/iu-wallpaper&gt;
+&lt;/div&gt; --&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./container.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- <iu-header [windowWidth]="contentWidth" [offsetLeft]="offsetLeft" [mobile]="mobile"></iu-header><iu-navbar *ngIf="navbar">  <iu-breadcrumbs *ngIf="breadcrumbs"></iu-breadcrumbs></iu-navbar><iu-sidenav *ngIf="!mobile" [style.height.px]="sidenavHeight"></iu-sidenav><div id="content" class="scrollable" [style.height.px]="windowHeight" [style.width.px]="contentWidth" [style.left.px]="offsetLeft"  [style.background-image]="hasBackgroundImage ? \'url(\' + backgroundImage + \')\' : \'none\'">  <ng-content></ng-content>  <iu-wallpaper *ngIf="hasWallpaper" [images]="images" [imageOpacity]="0.6" [shuffle]="true" [offsetLeft]="offsetLeft"    [offsetTop]="offsetTop"></iu-wallpaper></div> --></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'iu-accordion'},{'name': 'AccordionDemoComponent', 'selector': 'docs-accordion-demo'},{'name': 'AddressComponent', 'selector': 'iu-address'},{'name': 'AddressFormComponent', 'selector': 'iu-address-form'},{'name': 'AppComponent', 'selector': 'docs-root'},{'name': 'AuditFieldsComponent', 'selector': 'iu-audit-fields'},{'name': 'AuditHistoryComponent', 'selector': 'iu-audit-history'},{'name': 'AuditHistoryLinkComponent', 'selector': 'iu-audit-history-link'},{'name': 'AutoLogoutComponent', 'selector': 'iu-auto-logout'},{'name': 'BreadcrumbsComponent', 'selector': 'iu-breadcrumbs'},{'name': 'CalendarComponent', 'selector': 'iu-calendar'},{'name': 'CalendarDayComponent', 'selector': 'iu-calendar-day'},{'name': 'CalendarDayEditComponent', 'selector': 'iu-calendar-day-edit'},{'name': 'CalendarDayEventsComponent', 'selector': 'iu-calendar-day-events'},{'name': 'CalendarDaysComponent', 'selector': 'iu-calendar-days'},{'name': 'CalendarDayViewComponent', 'selector': 'iu-calendar-day-view'},{'name': 'CalendarDemoComponent', 'selector': 'docs-calendar-demo'},{'name': 'CalendarEventComponent', 'selector': 'iu-calendar-event'},{'name': 'CalendarEventFormComponent', 'selector': 'iu-calendar-event-form'},{'name': 'CalendarEventViewComponent', 'selector': 'iu-calendar-event-view'},{'name': 'CalendarFormComponent', 'selector': 'iu-calendar-form'},{'name': 'CalendarKeyComponent', 'selector': 'iu-calendar-key'},{'name': 'CalendarViewComponent', 'selector': 'iu-calendar-view'},{'name': 'CollageComponent', 'selector': 'iu-collage'},{'name': 'ConfirmDeleteComponent', 'selector': 'iu-confirm-delete'},{'name': 'ContainerComponent', 'selector': 'iu-container'},{'name': 'DatepickerComponent', 'selector': 'iu-datepicker'},{'name': 'DaterangeComponent', 'selector': 'iu-daterange'},{'name': 'DateTimeControlComponent', 'selector': 'iu-datetime-control'},{'name': 'DialogComponent', 'selector': 'iu-dialog'},{'name': 'EditorComponent', 'selector': 'iu-editor'},{'name': 'EditorDemoComponent', 'selector': 'docs-editor-demo'},{'name': 'EditorWindowComponent', 'selector': 'iu-editor-window'},{'name': 'FileControlComponent', 'selector': 'iu-file-control'},{'name': 'FilePreviewComponent', 'selector': 'iu-file-preview'},{'name': 'FileUploadComponent', 'selector': 'iu-file-upload'},{'name': 'FileUploadDemoComponent', 'selector': 'docs-file-upload-demo'},{'name': 'GridCellComponent', 'selector': 'iu-grid-cell'},{'name': 'GridColumnComponent', 'selector': 'iu-grid-column'},{'name': 'GridComponent', 'selector': 'iu-grid'},{'name': 'HeaderComponent', 'selector': 'iu-header'},{'name': 'InlineAddressComponent', 'selector': 'iu-inline-address'},{'name': 'LibraryComponent', 'selector': 'iu-library'},{'name': 'NavbarComponent', 'selector': 'iu-navbar'},{'name': 'NotFoundComponent', 'selector': 'iu-not-found'},{'name': 'PhoneNumberComponent', 'selector': 'iu-phone-number'},{'name': 'SidenavComponent', 'selector': 'iu-sidenav'},{'name': 'SimpleGridComponent', 'selector': 'iu-simple-grid'},{'name': 'SocialIconsComponent', 'selector': 'iu-social-icons'},{'name': 'StatePickerComponent', 'selector': 'iu-state-picker'},{'name': 'TileComponent', 'selector': 'iu-tile'},{'name': 'TimeControlComponent', 'selector': 'iu-time-control'},{'name': 'TimerComponent', 'selector': 'iu-timer'},{'name': 'UnsavedChangesComponent', 'selector': 'iu-unsaved-changes'},{'name': 'UploadComponent', 'selector': 'iu-upload'},{'name': 'UploaderComponent', 'selector': 'iu-uploader'},{'name': 'UploadsComponent', 'selector': 'iu-uploads'},{'name': 'WallpaperComponent', 'selector': 'iu-wallpaper'},{'name': 'WidgetComponent', 'selector': 'iu-widget'},{'name': 'WidgetsMenuComponent', 'selector': 'iu-widgets-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ContainerComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ContainerComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

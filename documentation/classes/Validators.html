@@ -1,0 +1,1500 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caiu documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caiu documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>Validators</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>projects/library/src/lib/forms/validators.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#compose">compose</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#composeAsync">composeAsync</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#email">email</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#exactLength">exactLength</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#max">max</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#maxLength">maxLength</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#min">min</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#minLength">minLength</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#nullValidator">nullValidator</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#numeric">numeric</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#pattern">pattern</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#phone">phone</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#required">required</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#requiredTrue">requiredTrue</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#zip">zip</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="compose"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            compose
+                        </b>
+                        <a href="#compose"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>compose(validators: (ValidatorFn | null | undefined)[] | null)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:14</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>validators</td>
+                                    <td>
+                                            <code>(ValidatorFn | null | undefined)[] | null</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>ValidatorFn | null</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="composeAsync"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            composeAsync
+                        </b>
+                        <a href="#composeAsync"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>composeAsync(validators: (AsyncValidatorFn | null)[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:20</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>validators</td>
+                                    <td>
+                                            <code>(AsyncValidatorFn | null)[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>AsyncValidatorFn | null</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="email"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            email
+                        </b>
+                        <a href="#email"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>email(control: <a href="../undefineds/Control.html">AbstractControl</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>control</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/functions.html#Control" target="_self" >AbstractControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Error.html" target="_self" >ValidationErrors | null</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exactLength"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            exactLength
+                        </b>
+                        <a href="#exactLength"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exactLength(exactLength: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>exactLength</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="max"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            max
+                        </b>
+                        <a href="#max"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>max(max: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>max</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="maxLength"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            maxLength
+                        </b>
+                        <a href="#maxLength"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>maxLength(maxLength: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>maxLength</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="min"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            min
+                        </b>
+                        <a href="#min"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>min(min: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>min</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="minLength"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            minLength
+                        </b>
+                        <a href="#minLength"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>minLength(minLength: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>minLength</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nullValidator"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            nullValidator
+                        </b>
+                        <a href="#nullValidator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>nullValidator(control: <a href="../undefineds/Control.html">AbstractControl</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>control</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/functions.html#Control" target="_self" >AbstractControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Error.html" target="_self" >ValidationErrors | null</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numeric"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            numeric
+                        </b>
+                        <a href="#numeric"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>numeric(maxLength: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>maxLength</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>0</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pattern"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            pattern
+                        </b>
+                        <a href="#pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>pattern(pattern: string | RegExp)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pattern</td>
+                                    <td>
+                                            <code>string | RegExp</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="phone"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            phone
+                        </b>
+                        <a href="#phone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>phone(control: <a href="../undefineds/Control.html">AbstractControl</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>control</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/functions.html#Control" target="_self" >AbstractControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Error.html" target="_self" >ValidationErrors | null</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="required"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            required
+                        </b>
+                        <a href="#required"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>required(control: <a href="../undefineds/Control.html">AbstractControl</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>control</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/functions.html#Control" target="_self" >AbstractControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Error.html" target="_self" >ValidationErrors | null</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="requiredTrue"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            requiredTrue
+                        </b>
+                        <a href="#requiredTrue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>requiredTrue(control: <a href="../undefineds/Control.html">AbstractControl</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>control</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/functions.html#Control" target="_self" >AbstractControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Error.html" target="_self" >ValidationErrors | null</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="zip"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            zip
+                        </b>
+                        <a href="#zip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>zip(control: <a href="../undefineds/Control.html">AbstractControl</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">projects/library/src/lib/forms/validators.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>control</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/functions.html#Control" target="_self" >AbstractControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Error.html" target="_self" >ValidationErrors | null</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Validators as AngularValidators,
+  AbstractControl,
+  ValidatorFn,
+  ValidationErrors,
+  AsyncValidatorFn,
+  FormControl,
+  FormGroup
+} from &#x27;@angular/forms&#x27;;
+
+import { falsy, isNumericAndHasLength } from &#x27;../shared/utils&#x27;;
+
+export class Validators {
+  static compose(
+    validators: (ValidatorFn | null | undefined)[] | null
+  ): ValidatorFn | null {
+    return AngularValidators.compose(validators);
+  }
+
+  static composeAsync(
+    validators: (AsyncValidatorFn | null)[]
+  ): AsyncValidatorFn | null {
+    return AngularValidators.composeAsync(validators);
+  }
+
+  static email(control: AbstractControl): ValidationErrors | null {
+    if (falsy(control.value)) {
+      return null;
+    }
+    return AngularValidators.email(control);
+  }
+
+  static exactLength(exactLength: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } &#x3D;&gt; {
+      return Validators.maxLength(exactLength)(control) &#x3D;&#x3D;&#x3D; null &amp;&amp;
+        Validators.minLength(exactLength)(control) &#x3D;&#x3D;&#x3D; null
+        ? null
+        : { exactLength: { value: control.value } };
+    };
+  }
+
+  static max(max: number): ValidatorFn {
+    return AngularValidators.max(max);
+  }
+
+  static maxLength(maxLength: number): ValidatorFn {
+    return AngularValidators.maxLength(maxLength);
+  }
+
+  static min(min: number): ValidatorFn {
+    return AngularValidators.min(min);
+  }
+
+  static minLength(minLength: number): ValidatorFn {
+    return AngularValidators.minLength(minLength);
+  }
+
+  static numeric(maxLength &#x3D; 0): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } &#x3D;&gt; {
+      const numeric &#x3D; typeof control.value &#x3D;&#x3D;&#x3D; &#x27;number&#x27;;
+      const toInt &#x3D; parseInt(control.value, 10);
+      const valid &#x3D; maxLength
+        ? numeric &amp;&amp; toInt &lt; Math.pow(10, maxLength)
+        : numeric;
+      return !valid ? { numeric: { value: control.value } } : null;
+    };
+  }
+
+  static nullValidator(control: AbstractControl): ValidationErrors | null {
+    return AngularValidators.nullValidator(control);
+  }
+
+  static pattern(pattern: string | RegExp): ValidatorFn {
+    return AngularValidators.pattern(pattern);
+  }
+
+  static phone(control: AbstractControl): ValidationErrors | null {
+    if (falsy(control.value)) {
+      return null;
+    }
+    const toInt &#x3D; parseInt(control.value, 10);
+    const numeric &#x3D; typeof toInt &#x3D;&#x3D;&#x3D; &#x27;number&#x27; &amp;&amp; toInt &gt; 999999999;
+    return !numeric ? { phone: { value: control.value } } : null;
+  }
+
+  static required(control: AbstractControl): ValidationErrors | null {
+    return AngularValidators.required(control);
+  }
+
+  static requiredTrue(control: AbstractControl): ValidationErrors | null {
+    return AngularValidators.requiredTrue(control);
+  }
+
+  static zip(control: AbstractControl): ValidationErrors | null {
+    if (falsy(control.value)) {
+      return null;
+    }
+    return Validators.exactLength(5)(control) &#x3D;&#x3D;&#x3D; null
+      ? null
+      : { zip: { value: control.value } };
+  }
+}
+
+export function atLeastOneAlphaNumericValidator(c: FormControl) {
+  return c.value ? /^(?&#x3D;.*[a-zA-Z].*)([a-zA-Z0-9]+)$/i.test(c.value.replace(/[^\w\s]/gi, &#x27;&#x27;).replace(/\s/g, &#x27;&#x27;).replace(/_/g, &#x27;&#x27;)) ? null : {
+    atLeastOneAlphaNumeric: true
+  } : null;
+}
+
+export function confirmPasswordValidator(fg: FormGroup) {
+  const pass &#x3D; fg.controls[&#x27;password&#x27;];
+  const confirm &#x3D; fg.controls[&#x27;confirmPassword&#x27;];
+  if (pass.value !&#x3D;&#x3D; confirm.value) {
+    confirm.setErrors({ confirmPwdFail: true });
+    return { confirmPwdFail: true };
+  }
+  return null;
+}
+
+export function numericValidator(length: number, key &#x3D; &#x27;numeric&#x27;): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } &#x3D;&gt; {
+    const toInt &#x3D; parseInt(control.value, 10);
+    const isNumber &#x3D; /^\d+$/.test(control.value);
+    const numeric &#x3D;
+      isNumber &amp;&amp; typeof toInt &#x3D;&#x3D;&#x3D; &#x27;number&#x27; &amp;&amp; control.value.length &#x3D;&#x3D;&#x3D; length;
+    return !numeric &amp;&amp; !falsy(control.value)
+      ? { [key]: { value: control.value } }
+      : null;
+  };
+}
+
+export function passwordValidator(ctrl: FormControl) {
+  // const lengthReq &#x3D; &#x27;{6,100}&#x27;;
+  // const atleastOneNumberReq &#x3D; &#x27;(?&#x3D;.*[0-9])&#x27;;
+  // {6,100}           - Assert password is between 6 and 100 characters
+  // (?&#x3D;.*[0-9])       - Assert a string has at least one number
+  if (
+    ctrl.value &amp;&amp;
+    ctrl.value.match(/^(?&#x3D;.*[0-9])[a-zA-Z0-9!@#$%^&amp;*]{6,100}$/)
+  ) {
+    return null;
+  }
+
+  return { password: true };
+}
+
+export function phoneNumberValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } &#x3D;&gt; {
+    const formatted &#x3D; /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(control.value);
+    return !formatted ? { phoneNumber: { value: control.value } } : null;
+  };
+}
+
+export function zipCodeValidator(control: FormControl) {
+  const val &#x3D; control.value.replace(/\s/g, &#x27;&#x27;);
+  if (!val) {
+    return { zipCode: &#x27;Please enter a zip code.&#x27; };
+  }
+  if (val.length &gt;&#x3D; 5 &amp;&amp; val.length &lt; 9) {
+    return isNumericAndHasLength(
+      val.indexOf(&#x27;-&#x27;) &#x3D;&#x3D;&#x3D; -1 ? val : val.substring(0, val.indexOf(&#x27;-&#x27;)),
+      5
+    )
+      ? null
+      : { zipCode: &#x27;Please enter a valid zip code.&#x27; };
+  }
+  if (val.length &#x3D;&#x3D;&#x3D; 9) {
+    return isNumericAndHasLength(val.substring(0, 5), 5) &amp;&amp;
+      isNumericAndHasLength(val.substring(5), 4)
+      ? null
+      : { zipCode: &#x27;Please enter a valid zip code.&#x27; };
+  }
+  if (val.length &#x3D;&#x3D;&#x3D; 10) {
+    return isNumericAndHasLength(val.substring(0, 5), 5) &amp;&amp;
+      isNumericAndHasLength(val.substring(6), 4)
+      ? null
+      : { zipCode: &#x27;Please enter a valid zip code.&#x27; };
+  }
+  return { zipCode: &#x27;Please enter a valid zip code.&#x27; };
+}
+
+export function zipPlus4Validator() {
+  return numericValidator(4, &#x27;zipPlus4&#x27;);
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'Validators.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

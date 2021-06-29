@@ -1,0 +1,1511 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>caiu documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">caiu documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AuditHistoryLinkComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code>DumbComponent</code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>iu-audit-history-link</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./audit-history-link.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./audit-history-link.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_columns">_columns</a>
+                            </li>
+                            <li>
+                                <a href="#_data">_data</a>
+                            </li>
+                            <li>
+                                <a href="#_placeholderText">_placeholderText</a>
+                            </li>
+                            <li>
+                                <a href="#_requestData">_requestData</a>
+                            </li>
+                            <li>
+                                <a href="#columnMetadata$">columnMetadata$</a>
+                            </li>
+                            <li>
+                                <a href="#columnsSubject">columnsSubject</a>
+                            </li>
+                            <li>
+                                <a href="#dataSource$">dataSource$</a>
+                            </li>
+                            <li>
+                                <a href="#dataSourceSubject">dataSourceSubject</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#http">http</a>
+                            </li>
+                            <li>
+                                <a href="#requestUrl$">requestUrl$</a>
+                            </li>
+                            <li>
+                                <a href="#requestUrlClicksSubject">requestUrlClicksSubject</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#refreshData">refreshData</a>
+                            </li>
+                            <li>
+                                <a href="#viewHistory">viewHistory</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#columns">columns</a>
+                            </li>
+                            <li>
+                                <a href="#data">data</a>
+                            </li>
+                            <li>
+                                <a href="#mapper">mapper</a>
+                            </li>
+                            <li>
+                                <a href="#placeholderText">placeholderText</a>
+                            </li>
+                            <li>
+                                <a href="#preloadData">preloadData</a>
+                            </li>
+                            <li>
+                                <a href="#requestUrl">requestUrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dataLoaded">dataLoaded</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#columns">columns</a>
+                                </li>
+                                <li>
+                                    <a href="#data">data</a>
+                                </li>
+                                <li>
+                                    <a href="#placeholderText">placeholderText</a>
+                                </li>
+                                <li>
+                                    <a href="#requestData">requestData</a>
+                                </li>
+                                <li>
+                                    <a href="#requestData$">requestData$</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialog: MatDialog, http: <a href="../injectables/HttpService.html">HttpService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HttpService.html" target="_self" >HttpService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="columns"></a>
+                        <b>columns</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:60</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <b>data</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:69</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mapper"></a>
+                        <b>mapper</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="placeholderText"></a>
+                        <b>placeholderText</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:79</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="preloadData"></a>
+                        <b>preloadData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:25</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="requestUrl"></a>
+                        <b>requestUrl</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:26</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataLoaded"></a>
+                        <b>dataLoaded</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Event.html" target="_self" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:27</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshData"></a>
+                    <span class="name">
+                        <b>
+                            refreshData
+                        </b>
+                        <a href="#refreshData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:117</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="viewHistory"></a>
+                    <span class="name">
+                        <b>
+                            viewHistory
+                        </b>
+                        <a href="#viewHistory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>viewHistory()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_columns"></a>
+                        <span class="name">
+                            <b>
+                            _columns</b>
+                            <a href="#_columns"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ColumnMetadata[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_data"></a>
+                        <span class="name">
+                            <b>
+                            _data</b>
+                            <a href="#_data"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Audit.html" target="_self" >Audited[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_placeholderText"></a>
+                        <span class="name">
+                            <b>
+                            _placeholderText</b>
+                            <a href="#_placeholderText"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_requestData"></a>
+                        <span class="name">
+                            <b>
+                            _requestData</b>
+                            <a href="#_requestData"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Audit.html" target="_self" >Audited[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="columnMetadata$"></a>
+                        <span class="name">
+                            <b>
+                            columnMetadata$</b>
+                            <a href="#columnMetadata$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;ColumnMetadata[]&gt;</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="columnsSubject"></a>
+                        <span class="name">
+                            <b>
+                            columnsSubject</b>
+                            <a href="#columnsSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject&lt;ColumnMetadata[]&gt;([])</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataSource$"></a>
+                        <span class="name">
+                            <b>
+                            dataSource$</b>
+                            <a href="#dataSource$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Audit.html" target="_self" >Observable&lt;Audited[]&gt;</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataSourceSubject"></a>
+                        <span class="name">
+                            <b>
+                            dataSourceSubject</b>
+                            <a href="#dataSourceSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject&lt;Audited[]&gt;([])</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="http"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            http</b>
+                            <a href="#http"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/HttpService.html" target="_self" >HttpService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="requestUrl$"></a>
+                        <span class="name">
+                            <b>
+                            requestUrl$</b>
+                            <a href="#requestUrl$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;string&gt;</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="requestUrlClicksSubject"></a>
+                        <span class="name">
+                            <b>
+                            requestUrlClicksSubject</b>
+                            <a href="#requestUrlClicksSubject"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject&lt;string&gt;(null)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="columns"></a>
+                        <span class="name"><b>columns</b><a href="#columns"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>columns()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:65</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>columns(value: [])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:60</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <span class="name"><b>data</b><a href="#data"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>data()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:74</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>data(value: [])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:69</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="placeholderText"></a>
+                        <span class="name"><b>placeholderText</b><a href="#placeholderText"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>placeholderText()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:83</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>placeholderText(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:79</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="requestData"></a>
+                        <span class="name"><b>requestData</b><a href="#requestData"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>requestData()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:93</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>requestData(value: [])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:87</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="requestData$"></a>
+                        <span class="name"><b>requestData$</b><a href="#requestData$"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>requestData$()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">projects/library/src/lib/components/audit/audit-history-link/audit-history-link.component.ts:97</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { BehaviorSubject, Observable, combineLatest } from &#x27;rxjs&#x27;;
+import { distinctUntilChanged, switchMap, map, filter } from &#x27;rxjs/operators&#x27;;
+
+import { AuditHistoryComponent } from &#x27;../audit-history/audit-history.component&#x27;;
+import { Audited, AuditHistory } from &#x27;../audit.model&#x27;;
+import { HttpService } from &#x27;../../../http/http.service&#x27;;
+import { DumbComponent } from &#x27;../../../shared/component&#x27;;
+import { ColumnMetadata } from &#x27;../../../shared/models&#x27;;
+import {
+  build,
+  toArray,
+  truthy,
+  buildColumnsFromMetadata
+} from &#x27;../../../shared/utils&#x27;;
+
+@Component({
+  selector: &#x27;iu-audit-history-link&#x27;,
+  templateUrl: &#x27;./audit-history-link.component.html&#x27;,
+  styleUrls: [&#x27;./audit-history-link.component.scss&#x27;]
+})
+export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
+  @Input() mapper: (data: any) &#x3D;&gt; Audited;
+  @Input() preloadData &#x3D; false;
+  @Input() requestUrl &#x3D; &#x27;&#x27;;
+  @Output() dataLoaded &#x3D; new EventEmitter&lt;Audited[]&gt;();
+  columnMetadata$: Observable&lt;ColumnMetadata[]&gt;;
+  columnsSubject &#x3D; new BehaviorSubject&lt;ColumnMetadata[]&gt;([]);
+  dataSourceSubject &#x3D; new BehaviorSubject&lt;Audited[]&gt;([]);
+  dataSource$: Observable&lt;Audited[]&gt;;
+  requestUrl$: Observable&lt;string&gt;;
+  requestUrlClicksSubject &#x3D; new BehaviorSubject&lt;string&gt;(null);
+  _columns: ColumnMetadata[] &#x3D; [];
+  _data: Audited[] &#x3D; [];
+  _placeholderText &#x3D; &#x27;&#x27;;
+  _requestData: Audited[];
+  constructor(public dialog: MatDialog, public http: HttpService) {
+    super();
+    this.requestUrl$ &#x3D; this.requestUrlClicksSubject.asObservable().pipe(
+      filter(x &#x3D;&gt; truthy(x)),
+      distinctUntilChanged()
+    );
+    this.dataSource$ &#x3D; this.dataSourceSubject
+      .asObservable()
+      .pipe(map(x &#x3D;&gt; toArray(x)));
+    this.columnMetadata$ &#x3D; combineLatest(
+      this.dataSource$,
+      this.columnsSubject.asObservable(),
+      (dataSource, columns) &#x3D;&gt; {
+        return Array.isArray(columns) &amp;&amp; columns.length &gt; 1
+          ? columns
+          : buildColumnsFromMetadata(dataSource, &#x27;history&#x27;).filter(
+              x &#x3D;&gt; x.name !&#x3D;&#x3D; &#x27;startDate&#x27; &amp;&amp; x.name !&#x3D;&#x3D; &#x27;endDate&#x27;
+            );
+      }
+    );
+  }
+
+  @Input() set columns(value: ColumnMetadata[]) {
+    this._columns &#x3D; value;
+    this.columnsSubject.next(value);
+  }
+
+  get columns(): ColumnMetadata[] {
+    return this._columns;
+  }
+
+  @Input() set data(value: Audited[]) {
+    this._data &#x3D; value;
+    this.dataSourceSubject.next(value);
+  }
+
+  get data(): Audited[] {
+    return this._data;
+  }
+
+  @Input()
+  set placeholderText(value: string) {
+    this._placeholderText &#x3D; value;
+  }
+
+  get placeholderText() {
+    return this._placeholderText || &#x27;View Audit History&#x27;;
+  }
+
+  set requestData(value: Audited[]) {
+    this._requestData &#x3D; value;
+    this.dataSourceSubject.next(value);
+    this.dataLoaded.emit(value);
+  }
+
+  get requestData(): Audited[] {
+    return this._requestData;
+  }
+
+  get requestData$(): Observable&lt;Audited[]&gt; {
+    return this.requestUrl$.pipe(
+      switchMap(url &#x3D;&gt; this.http.get(url)),
+      map(x &#x3D;&gt;
+        toArray(x).map(y &#x3D;&gt;
+          this.mapper &amp;&amp; typeof this.mapper &#x3D;&#x3D;&#x3D; &#x27;function&#x27;
+            ? this.mapper(y)
+            : build(Audited, y)
+        )
+      )
+    );
+  }
+
+  ngOnInit() {
+    this.sync([&#x27;requestData&#x27;]);
+    if (this.preloadData) {
+      this.refreshData();
+    }
+  }
+
+  refreshData() {
+    this.requestUrlClicksSubject.next(this.requestUrl);
+  }
+
+  viewHistory() {
+    if (!this.preloadData) {
+      this.refreshData();
+    }
+    this.openDialog(AuditHistoryComponent, {
+      data: build(AuditHistory, {
+        dataSource: this.dataSource$,
+        columns: this.columnMetadata$
+      })
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;button mat-button color&#x3D;&quot;primary&quot; (click)&#x3D;&quot;viewHistory()&quot;&gt;
+  {{ placeholderText }}
+&lt;/button&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./audit-history-link.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><button mat-button color="primary" (click)="viewHistory()">  {{ placeholderText }}</button></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'iu-accordion'},{'name': 'AccordionDemoComponent', 'selector': 'docs-accordion-demo'},{'name': 'AddressComponent', 'selector': 'iu-address'},{'name': 'AddressFormComponent', 'selector': 'iu-address-form'},{'name': 'AppComponent', 'selector': 'docs-root'},{'name': 'AuditFieldsComponent', 'selector': 'iu-audit-fields'},{'name': 'AuditHistoryComponent', 'selector': 'iu-audit-history'},{'name': 'AuditHistoryLinkComponent', 'selector': 'iu-audit-history-link'},{'name': 'AutoLogoutComponent', 'selector': 'iu-auto-logout'},{'name': 'BreadcrumbsComponent', 'selector': 'iu-breadcrumbs'},{'name': 'CalendarComponent', 'selector': 'iu-calendar'},{'name': 'CalendarDayComponent', 'selector': 'iu-calendar-day'},{'name': 'CalendarDayEditComponent', 'selector': 'iu-calendar-day-edit'},{'name': 'CalendarDayEventsComponent', 'selector': 'iu-calendar-day-events'},{'name': 'CalendarDaysComponent', 'selector': 'iu-calendar-days'},{'name': 'CalendarDayViewComponent', 'selector': 'iu-calendar-day-view'},{'name': 'CalendarDemoComponent', 'selector': 'docs-calendar-demo'},{'name': 'CalendarEventComponent', 'selector': 'iu-calendar-event'},{'name': 'CalendarEventFormComponent', 'selector': 'iu-calendar-event-form'},{'name': 'CalendarEventViewComponent', 'selector': 'iu-calendar-event-view'},{'name': 'CalendarFormComponent', 'selector': 'iu-calendar-form'},{'name': 'CalendarKeyComponent', 'selector': 'iu-calendar-key'},{'name': 'CalendarViewComponent', 'selector': 'iu-calendar-view'},{'name': 'CollageComponent', 'selector': 'iu-collage'},{'name': 'ConfirmDeleteComponent', 'selector': 'iu-confirm-delete'},{'name': 'ContainerComponent', 'selector': 'iu-container'},{'name': 'DatepickerComponent', 'selector': 'iu-datepicker'},{'name': 'DaterangeComponent', 'selector': 'iu-daterange'},{'name': 'DateTimeControlComponent', 'selector': 'iu-datetime-control'},{'name': 'DialogComponent', 'selector': 'iu-dialog'},{'name': 'EditorComponent', 'selector': 'iu-editor'},{'name': 'EditorDemoComponent', 'selector': 'docs-editor-demo'},{'name': 'EditorWindowComponent', 'selector': 'iu-editor-window'},{'name': 'FileControlComponent', 'selector': 'iu-file-control'},{'name': 'FilePreviewComponent', 'selector': 'iu-file-preview'},{'name': 'FileUploadComponent', 'selector': 'iu-file-upload'},{'name': 'FileUploadDemoComponent', 'selector': 'docs-file-upload-demo'},{'name': 'GridCellComponent', 'selector': 'iu-grid-cell'},{'name': 'GridColumnComponent', 'selector': 'iu-grid-column'},{'name': 'GridComponent', 'selector': 'iu-grid'},{'name': 'HeaderComponent', 'selector': 'iu-header'},{'name': 'InlineAddressComponent', 'selector': 'iu-inline-address'},{'name': 'LibraryComponent', 'selector': 'iu-library'},{'name': 'NavbarComponent', 'selector': 'iu-navbar'},{'name': 'NotFoundComponent', 'selector': 'iu-not-found'},{'name': 'PhoneNumberComponent', 'selector': 'iu-phone-number'},{'name': 'SidenavComponent', 'selector': 'iu-sidenav'},{'name': 'SimpleGridComponent', 'selector': 'iu-simple-grid'},{'name': 'SocialIconsComponent', 'selector': 'iu-social-icons'},{'name': 'StatePickerComponent', 'selector': 'iu-state-picker'},{'name': 'TileComponent', 'selector': 'iu-tile'},{'name': 'TimeControlComponent', 'selector': 'iu-time-control'},{'name': 'TimerComponent', 'selector': 'iu-timer'},{'name': 'UnsavedChangesComponent', 'selector': 'iu-unsaved-changes'},{'name': 'UploadComponent', 'selector': 'iu-upload'},{'name': 'UploaderComponent', 'selector': 'iu-uploader'},{'name': 'UploadsComponent', 'selector': 'iu-uploads'},{'name': 'WallpaperComponent', 'selector': 'iu-wallpaper'},{'name': 'WidgetComponent', 'selector': 'iu-widget'},{'name': 'WidgetsMenuComponent', 'selector': 'iu-widgets-menu'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AuditHistoryLinkComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuditHistoryLinkComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
