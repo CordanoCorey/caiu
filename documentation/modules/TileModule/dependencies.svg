@@ -24,13 +24,13 @@
 <title>cluster_TileModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="119,-70 119,-268 377,-268 377,-70 119,-70"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_TileModule_imports</title>
-<polygon fill="none" stroke="black" points="255,-78 255,-130 369,-130 369,-78 255,-78"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_TileModule_exports</title>
 <polygon fill="none" stroke="black" points="186,-208 186,-260 310,-260 310,-208 186,-208"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_TileModule_imports</title>
+<polygon fill="none" stroke="black" points="255,-78 255,-130 369,-130 369,-78 255,-78"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_TileModule_declarations</title>

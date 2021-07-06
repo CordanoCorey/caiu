@@ -24,71 +24,71 @@
 <title>cluster_DialogModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 829,-268 829,-70 8,-70"/>
 </g>
+<g id="clust7" class="cluster">
+<title>cluster_DialogModule_imports</title>
+<polygon fill="none" stroke="black" points="707,-78 707,-130 821,-130 821,-78 707,-78"/>
+</g>
 <g id="clust2" class="cluster">
 <title>cluster_DialogModule_declarations</title>
-<polygon fill="none" stroke="black" points="138,-78 138,-130 821,-130 821,-78 138,-78"/>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 699,-130 699,-78 16,-78"/>
 </g>
 <g id="clust8" class="cluster">
 <title>cluster_DialogModule_exports</title>
 <polygon fill="none" stroke="black" points="70,-208 70,-260 767,-260 767,-208 70,-208"/>
 </g>
-<g id="clust7" class="cluster">
-<title>cluster_DialogModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 130,-130 130,-78 16,-78"/>
-</g>
 <!-- AutoLogoutComponent -->
 <g id="node1" class="node">
 <title>AutoLogoutComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="812.77,-122 663.23,-122 663.23,-86 812.77,-86 812.77,-122"/>
-<text text-anchor="middle" x="738" y="-99.8" font-family="Times,serif" font-size="14.00">AutoLogoutComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="690.77,-122 541.23,-122 541.23,-86 690.77,-86 690.77,-122"/>
+<text text-anchor="middle" x="616" y="-99.8" font-family="Times,serif" font-size="14.00">AutoLogoutComponent</text>
 </g>
 <!-- DialogModule -->
 <g id="node5" class="node">
 <title>DialogModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="450.65,-187 447.65,-191 426.65,-191 423.65,-187 353.35,-187 353.35,-151 450.65,-151 450.65,-187"/>
-<text text-anchor="middle" x="402" y="-164.8" font-family="Times,serif" font-size="14.00">DialogModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="488.65,-187 485.65,-191 464.65,-191 461.65,-187 391.35,-187 391.35,-151 488.65,-151 488.65,-187"/>
+<text text-anchor="middle" x="440" y="-164.8" font-family="Times,serif" font-size="14.00">DialogModule</text>
 </g>
 <!-- AutoLogoutComponent&#45;&gt;DialogModule -->
 <g id="edge1" class="edge">
 <title>AutoLogoutComponent&#45;&gt;DialogModule</title>
-<path fill="none" stroke="black" d="M710.88,-122.11C710.88,-141.34 710.88,-169 710.88,-169 710.88,-169 460.94,-169 460.94,-169"/>
-<polygon fill="black" stroke="black" points="460.94,-165.5 450.94,-169 460.94,-172.5 460.94,-165.5"/>
+<path fill="none" stroke="black" d="M564.26,-122.03C564.26,-138.4 564.26,-160 564.26,-160 564.26,-160 498.75,-160 498.75,-160"/>
+<polygon fill="black" stroke="black" points="498.75,-156.5 488.75,-160 498.75,-163.5 498.75,-156.5"/>
 </g>
 <!-- ConfirmDeleteComponent -->
 <g id="node2" class="node">
 <title>ConfirmDeleteComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="644.8,-122 479.2,-122 479.2,-86 644.8,-86 644.8,-122"/>
-<text text-anchor="middle" x="562" y="-99.8" font-family="Times,serif" font-size="14.00">ConfirmDeleteComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="522.8,-122 357.2,-122 357.2,-86 522.8,-86 522.8,-122"/>
+<text text-anchor="middle" x="440" y="-99.8" font-family="Times,serif" font-size="14.00">ConfirmDeleteComponent</text>
 </g>
 <!-- ConfirmDeleteComponent&#45;&gt;DialogModule -->
 <g id="edge2" class="edge">
 <title>ConfirmDeleteComponent&#45;&gt;DialogModule</title>
-<path fill="none" stroke="black" d="M533.38,-122.03C533.38,-138.4 533.38,-160 533.38,-160 533.38,-160 460.92,-160 460.92,-160"/>
-<polygon fill="black" stroke="black" points="460.92,-156.5 450.92,-160 460.92,-163.5 460.92,-156.5"/>
+<path fill="none" stroke="black" d="M440,-122.11C440,-122.11 440,-140.99 440,-140.99"/>
+<polygon fill="black" stroke="black" points="436.5,-140.99 440,-150.99 443.5,-140.99 436.5,-140.99"/>
 </g>
 <!-- DialogComponent -->
 <g id="node3" class="node">
 <title>DialogComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="461.94,-122 342.06,-122 342.06,-86 461.94,-86 461.94,-122"/>
-<text text-anchor="middle" x="402" y="-99.8" font-family="Times,serif" font-size="14.00">DialogComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="339.94,-122 220.06,-122 220.06,-86 339.94,-86 339.94,-122"/>
+<text text-anchor="middle" x="280" y="-99.8" font-family="Times,serif" font-size="14.00">DialogComponent</text>
 </g>
 <!-- DialogComponent&#45;&gt;DialogModule -->
 <g id="edge3" class="edge">
 <title>DialogComponent&#45;&gt;DialogModule</title>
-<path fill="none" stroke="black" d="M402,-122.11C402,-122.11 402,-140.99 402,-140.99"/>
-<polygon fill="black" stroke="black" points="398.5,-140.99 402,-150.99 405.5,-140.99 398.5,-140.99"/>
+<path fill="none" stroke="black" d="M308.62,-122.03C308.62,-138.4 308.62,-160 308.62,-160 308.62,-160 381.08,-160 381.08,-160"/>
+<polygon fill="black" stroke="black" points="381.08,-163.5 391.08,-160 381.08,-156.5 381.08,-163.5"/>
 </g>
 <!-- UnsavedChangesComponent -->
 <g id="node4" class="node">
 <title>UnsavedChangesComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="324.02,-122 145.98,-122 145.98,-86 324.02,-86 324.02,-122"/>
-<text text-anchor="middle" x="235" y="-99.8" font-family="Times,serif" font-size="14.00">UnsavedChangesComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="202.02,-122 23.98,-122 23.98,-86 202.02,-86 202.02,-122"/>
+<text text-anchor="middle" x="113" y="-99.8" font-family="Times,serif" font-size="14.00">UnsavedChangesComponent</text>
 </g>
 <!-- UnsavedChangesComponent&#45;&gt;DialogModule -->
 <g id="edge4" class="edge">
 <title>UnsavedChangesComponent&#45;&gt;DialogModule</title>
-<path fill="none" stroke="black" d="M300.9,-122.03C300.9,-138.4 300.9,-160 300.9,-160 300.9,-160 343.23,-160 343.23,-160"/>
-<polygon fill="black" stroke="black" points="343.23,-163.5 353.23,-160 343.23,-156.5 343.23,-163.5"/>
+<path fill="none" stroke="black" d="M140.12,-122.11C140.12,-141.34 140.12,-169 140.12,-169 140.12,-169 381.15,-169 381.15,-169"/>
+<polygon fill="black" stroke="black" points="381.15,-172.5 391.15,-169 381.15,-165.5 381.15,-172.5"/>
 </g>
 <!-- AutoLogoutComponent  -->
 <g id="node7" class="node">
@@ -99,8 +99,8 @@
 <!-- DialogModule&#45;&gt;AutoLogoutComponent  -->
 <g id="edge6" class="edge">
 <title>DialogModule&#45;&gt;AutoLogoutComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M450.66,-178C516.28,-178 625.01,-178 625.01,-178 625.01,-178 625.01,-205.97 625.01,-205.97"/>
-<polygon fill="black" stroke="black" points="621.51,-205.97 625.01,-215.97 628.51,-205.97 621.51,-205.97"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M488.8,-178C550.31,-178 648.12,-178 648.12,-178 648.12,-178 648.12,-205.97 648.12,-205.97"/>
+<polygon fill="black" stroke="black" points="644.63,-205.97 648.12,-215.97 651.63,-205.97 644.63,-205.97"/>
 </g>
 <!-- ConfirmDeleteComponent  -->
 <g id="node8" class="node">
@@ -111,8 +111,8 @@
 <!-- DialogModule&#45;&gt;ConfirmDeleteComponent  -->
 <g id="edge7" class="edge">
 <title>DialogModule&#45;&gt;ConfirmDeleteComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M434.71,-187.11C434.71,-187.11 434.71,-205.99 434.71,-205.99"/>
-<polygon fill="black" stroke="black" points="431.21,-205.99 434.71,-215.99 438.21,-205.99 431.21,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M453.71,-187.11C453.71,-187.11 453.71,-205.99 453.71,-205.99"/>
+<polygon fill="black" stroke="black" points="450.21,-205.99 453.71,-215.99 457.21,-205.99 450.21,-205.99"/>
 </g>
 <!-- DialogComponent  -->
 <g id="node9" class="node">
@@ -123,8 +123,8 @@
 <!-- DialogModule&#45;&gt;DialogComponent  -->
 <g id="edge8" class="edge">
 <title>DialogModule&#45;&gt;DialogComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M376.82,-187.11C376.82,-187.11 376.82,-205.99 376.82,-205.99"/>
-<polygon fill="black" stroke="black" points="373.32,-205.99 376.82,-215.99 380.32,-205.99 373.32,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M395.82,-187.11C395.82,-187.11 395.82,-205.99 395.82,-205.99"/>
+<polygon fill="black" stroke="black" points="392.32,-205.99 395.82,-215.99 399.32,-205.99 392.32,-205.99"/>
 </g>
 <!-- UnsavedChangesComponent  -->
 <g id="node10" class="node">
@@ -135,20 +135,20 @@
 <!-- DialogModule&#45;&gt;UnsavedChangesComponent  -->
 <g id="edge9" class="edge">
 <title>DialogModule&#45;&gt;UnsavedChangesComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M353.29,-178C294.34,-178 202.88,-178 202.88,-178 202.88,-178 202.88,-205.97 202.88,-205.97"/>
-<polygon fill="black" stroke="black" points="199.38,-205.97 202.88,-215.97 206.38,-205.97 199.38,-205.97"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M391.11,-178C331.94,-178 240.15,-178 240.15,-178 240.15,-178 240.15,-205.97 240.15,-205.97"/>
+<polygon fill="black" stroke="black" points="236.65,-205.97 240.15,-215.97 243.65,-205.97 236.65,-205.97"/>
 </g>
 <!-- SharedModule -->
 <g id="node6" class="node">
 <title>SharedModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="122.42,-122 119.42,-126 98.42,-126 95.42,-122 23.58,-122 23.58,-86 122.42,-86 122.42,-122"/>
-<text text-anchor="middle" x="73" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="813.42,-122 810.42,-126 789.42,-126 786.42,-122 714.58,-122 714.58,-86 813.42,-86 813.42,-122"/>
+<text text-anchor="middle" x="764" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
 </g>
 <!-- SharedModule&#45;&gt;DialogModule -->
 <g id="edge5" class="edge">
 <title>SharedModule&#45;&gt;DialogModule</title>
-<path fill="none" stroke="black" d="M100.1,-122.11C100.1,-141.34 100.1,-169 100.1,-169 100.1,-169 343.16,-169 343.16,-169"/>
-<polygon fill="black" stroke="black" points="343.16,-172.5 353.16,-169 343.16,-165.5 343.16,-172.5"/>
+<path fill="none" stroke="black" d="M736.71,-122.11C736.71,-141.34 736.71,-169 736.71,-169 736.71,-169 498.66,-169 498.66,-169"/>
+<polygon fill="black" stroke="black" points="498.66,-165.5 488.66,-169 498.66,-172.5 498.66,-165.5"/>
 </g>
 </g>
 </svg>

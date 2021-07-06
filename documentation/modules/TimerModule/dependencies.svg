@@ -24,83 +24,83 @@
 <title>cluster_TimerModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="66.5,-70 66.5,-268 429.5,-268 429.5,-70 66.5,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_TimerModule_exports</title>
-<polygon fill="none" stroke="black" points="134.5,-208 134.5,-260 366.5,-260 366.5,-208 134.5,-208"/>
+<g id="clust5" class="cluster">
+<title>cluster_TimerModule_imports</title>
+<polygon fill="none" stroke="black" points="307.5,-78 307.5,-130 421.5,-130 421.5,-78 307.5,-78"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_TimerModule_declarations</title>
-<polygon fill="none" stroke="black" points="196.5,-78 196.5,-130 421.5,-130 421.5,-78 196.5,-78"/>
+<polygon fill="none" stroke="black" points="74.5,-78 74.5,-130 299.5,-130 299.5,-78 74.5,-78"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_TimerModule_imports</title>
-<polygon fill="none" stroke="black" points="74.5,-78 74.5,-130 188.5,-130 188.5,-78 74.5,-78"/>
+<g id="clust6" class="cluster">
+<title>cluster_TimerModule_exports</title>
+<polygon fill="none" stroke="black" points="130.5,-208 130.5,-260 362.5,-260 362.5,-208 130.5,-208"/>
 </g>
 <!-- TimerComponent -->
 <g id="node1" class="node">
 <title>TimerComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="413.04,-122 297.96,-122 297.96,-86 413.04,-86 413.04,-122"/>
-<text text-anchor="middle" x="355.5" y="-99.8" font-family="Times,serif" font-size="14.00">TimerComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="291.04,-122 175.96,-122 175.96,-86 291.04,-86 291.04,-122"/>
+<text text-anchor="middle" x="233.5" y="-99.8" font-family="Times,serif" font-size="14.00">TimerComponent</text>
 </g>
 <!-- TimerModule -->
 <g id="node3" class="node">
 <title>TimerModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="289.26,-187 286.26,-191 265.26,-191 262.26,-187 195.74,-187 195.74,-151 289.26,-151 289.26,-187"/>
-<text text-anchor="middle" x="242.5" y="-164.8" font-family="Times,serif" font-size="14.00">TimerModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="280.26,-187 277.26,-191 256.26,-191 253.26,-187 186.74,-187 186.74,-151 280.26,-151 280.26,-187"/>
+<text text-anchor="middle" x="233.5" y="-164.8" font-family="Times,serif" font-size="14.00">TimerModule</text>
 </g>
 <!-- TimerComponent&#45;&gt;TimerModule -->
 <g id="edge1" class="edge">
 <title>TimerComponent&#45;&gt;TimerModule</title>
-<path fill="none" stroke="black" d="M297.7,-104C290.01,-104 284.71,-104 284.71,-104 284.71,-104 284.71,-140.89 284.71,-140.89"/>
-<polygon fill="black" stroke="black" points="281.21,-140.89 284.71,-150.89 288.21,-140.89 281.21,-140.89"/>
+<path fill="none" stroke="black" d="M233.5,-122.11C233.5,-122.11 233.5,-140.99 233.5,-140.99"/>
+<polygon fill="black" stroke="black" points="230,-140.99 233.5,-150.99 237,-140.99 230,-140.99"/>
 </g>
 <!-- TimerPipe -->
 <g id="node2" class="node">
 <title>TimerPipe</title>
-<polygon fill="#ffffb3" stroke="black" points="280.1,-122 204.9,-122 204.9,-86 280.1,-86 280.1,-122"/>
-<text text-anchor="middle" x="242.5" y="-99.8" font-family="Times,serif" font-size="14.00">TimerPipe</text>
+<polygon fill="#ffffb3" stroke="black" points="158.1,-122 82.9,-122 82.9,-86 158.1,-86 158.1,-122"/>
+<text text-anchor="middle" x="120.5" y="-99.8" font-family="Times,serif" font-size="14.00">TimerPipe</text>
 </g>
 <!-- TimerPipe&#45;&gt;TimerModule -->
 <g id="edge2" class="edge">
 <title>TimerPipe&#45;&gt;TimerModule</title>
-<path fill="none" stroke="black" d="M242.5,-122.11C242.5,-122.11 242.5,-140.99 242.5,-140.99"/>
-<polygon fill="black" stroke="black" points="239,-140.99 242.5,-150.99 246,-140.99 239,-140.99"/>
+<path fill="none" stroke="black" d="M148.12,-122.11C148.12,-141.34 148.12,-169 148.12,-169 148.12,-169 176.32,-169 176.32,-169"/>
+<polygon fill="black" stroke="black" points="176.32,-172.5 186.32,-169 176.32,-165.5 176.32,-172.5"/>
 </g>
 <!-- TimerComponent  -->
 <g id="node5" class="node">
 <title>TimerComponent </title>
-<polygon fill="#fb8072" stroke="black" points="358.04,-252 238.96,-252 238.96,-216 358.04,-216 358.04,-252"/>
-<text text-anchor="middle" x="298.5" y="-229.8" font-family="Times,serif" font-size="14.00">TimerComponent </text>
+<polygon fill="#fb8072" stroke="black" points="354.04,-252 234.96,-252 234.96,-216 354.04,-216 354.04,-252"/>
+<text text-anchor="middle" x="294.5" y="-229.8" font-family="Times,serif" font-size="14.00">TimerComponent </text>
 </g>
 <!-- TimerModule&#45;&gt;TimerComponent  -->
 <g id="edge4" class="edge">
 <title>TimerModule&#45;&gt;TimerComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M264.18,-187.11C264.18,-187.11 264.18,-205.99 264.18,-205.99"/>
-<polygon fill="black" stroke="black" points="260.68,-205.99 264.18,-215.99 267.68,-205.99 260.68,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M257.68,-187.11C257.68,-187.11 257.68,-205.99 257.68,-205.99"/>
+<polygon fill="black" stroke="black" points="254.18,-205.99 257.68,-215.99 261.18,-205.99 254.18,-205.99"/>
 </g>
 <!-- TimerPipe  -->
 <g id="node6" class="node">
 <title>TimerPipe </title>
-<polygon fill="#fb8072" stroke="black" points="220.6,-252 142.4,-252 142.4,-216 220.6,-216 220.6,-252"/>
-<text text-anchor="middle" x="181.5" y="-229.8" font-family="Times,serif" font-size="14.00">TimerPipe </text>
+<polygon fill="#fb8072" stroke="black" points="216.6,-252 138.4,-252 138.4,-216 216.6,-216 216.6,-252"/>
+<text text-anchor="middle" x="177.5" y="-229.8" font-family="Times,serif" font-size="14.00">TimerPipe </text>
 </g>
 <!-- TimerModule&#45;&gt;TimerPipe  -->
 <g id="edge5" class="edge">
 <title>TimerModule&#45;&gt;TimerPipe </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M208.21,-187.11C208.21,-187.11 208.21,-205.99 208.21,-205.99"/>
-<polygon fill="black" stroke="black" points="204.71,-205.99 208.21,-215.99 211.71,-205.99 204.71,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M201.71,-187.11C201.71,-187.11 201.71,-205.99 201.71,-205.99"/>
+<polygon fill="black" stroke="black" points="198.21,-205.99 201.71,-215.99 205.21,-205.99 198.21,-205.99"/>
 </g>
 <!-- SharedModule -->
 <g id="node4" class="node">
 <title>SharedModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="180.92,-122 177.92,-126 156.92,-126 153.92,-122 82.08,-122 82.08,-86 180.92,-86 180.92,-122"/>
-<text text-anchor="middle" x="131.5" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="413.92,-122 410.92,-126 389.92,-126 386.92,-122 315.08,-122 315.08,-86 413.92,-86 413.92,-122"/>
+<text text-anchor="middle" x="364.5" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
 </g>
 <!-- SharedModule&#45;&gt;TimerModule -->
 <g id="edge3" class="edge">
 <title>SharedModule&#45;&gt;TimerModule</title>
-<path fill="none" stroke="black" d="M180.76,-104C191.78,-104 200.29,-104 200.29,-104 200.29,-104 200.29,-140.89 200.29,-140.89"/>
-<polygon fill="black" stroke="black" points="196.79,-140.89 200.29,-150.89 203.79,-140.89 196.79,-140.89"/>
+<path fill="none" stroke="black" d="M334.65,-122.11C334.65,-141.34 334.65,-169 334.65,-169 334.65,-169 290.52,-169 290.52,-169"/>
+<polygon fill="black" stroke="black" points="290.52,-165.5 280.52,-169 290.52,-172.5 290.52,-165.5"/>
 </g>
 </g>
 </svg>

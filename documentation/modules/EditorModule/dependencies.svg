@@ -24,123 +24,123 @@
 <title>cluster_EditorModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-333 781,-333 781,-70 8,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_EditorModule_imports</title>
-<polygon fill="none" stroke="black" points="430,-143 430,-195 773,-195 773,-143 430,-143"/>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_EditorModule_EditorComponent_providers</title>
-<polygon fill="none" stroke="black" points="204,-78 204,-195 422,-195 422,-78 204,-78"/>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_EditorModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-143 16,-195 196,-195 196,-143 16,-143"/>
+<polygon fill="none" stroke="black" points="555,-78 555,-195 773,-195 773,-78 555,-78"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_EditorModule_exports</title>
-<polygon fill="none" stroke="black" points="314,-273 314,-325 636,-325 636,-273 314,-273"/>
+<polygon fill="none" stroke="black" points="129,-273 129,-325 451,-325 451,-273 129,-273"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_EditorModule_declarations</title>
+<polygon fill="none" stroke="black" points="367,-143 367,-195 547,-195 547,-143 367,-143"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_EditorModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-143 16,-195 359,-195 359,-143 16,-143"/>
 </g>
 <!-- EditorComponent -->
 <g id="node1" class="node">
 <title>EditorComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="392.33,-187 275.67,-187 275.67,-151 392.33,-151 392.33,-187"/>
-<text text-anchor="middle" x="334" y="-164.8" font-family="Times,serif" font-size="14.00">EditorComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="700.33,-187 583.67,-187 583.67,-151 700.33,-151 700.33,-187"/>
+<text text-anchor="middle" x="642" y="-164.8" font-family="Times,serif" font-size="14.00">EditorComponent</text>
 </g>
 <!-- EditorModule -->
 <g id="node3" class="node">
 <title>EditorModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="534.05,-252 531.05,-256 510.05,-256 507.05,-252 439.95,-252 439.95,-216 534.05,-216 534.05,-252"/>
-<text text-anchor="middle" x="487" y="-229.8" font-family="Times,serif" font-size="14.00">EditorModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="349.05,-252 346.05,-256 325.05,-256 322.05,-252 254.95,-252 254.95,-216 349.05,-216 349.05,-252"/>
+<text text-anchor="middle" x="302" y="-229.8" font-family="Times,serif" font-size="14.00">EditorModule</text>
 </g>
 <!-- EditorComponent&#45;&gt;EditorModule -->
 <g id="edge1" class="edge">
 <title>EditorComponent&#45;&gt;EditorModule</title>
-<path fill="none" stroke="black" d="M357.07,-187.02C357.07,-204.37 357.07,-228 357.07,-228 357.07,-228 429.73,-228 429.73,-228"/>
-<polygon fill="black" stroke="black" points="429.73,-231.5 439.73,-228 429.73,-224.5 429.73,-231.5"/>
+<path fill="none" stroke="black" d="M642,-187.28C642,-208.32 642,-240 642,-240 642,-240 359.28,-240 359.28,-240"/>
+<polygon fill="black" stroke="black" points="359.28,-236.5 349.28,-240 359.28,-243.5 359.28,-236.5"/>
 </g>
 <!-- EditorWindowComponent -->
 <g id="node2" class="node">
 <title>EditorWindowComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="188.04,-187 23.96,-187 23.96,-151 188.04,-151 188.04,-187"/>
-<text text-anchor="middle" x="106" y="-164.8" font-family="Times,serif" font-size="14.00">EditorWindowComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="539.04,-187 374.96,-187 374.96,-151 539.04,-151 539.04,-187"/>
+<text text-anchor="middle" x="457" y="-164.8" font-family="Times,serif" font-size="14.00">EditorWindowComponent</text>
 </g>
 <!-- EditorWindowComponent&#45;&gt;EditorModule -->
 <g id="edge3" class="edge">
 <title>EditorWindowComponent&#45;&gt;EditorModule</title>
-<path fill="none" stroke="black" d="M106,-187.28C106,-208.32 106,-240 106,-240 106,-240 429.9,-240 429.9,-240"/>
-<polygon fill="black" stroke="black" points="429.9,-243.5 439.9,-240 429.9,-236.5 429.9,-243.5"/>
+<path fill="none" stroke="black" d="M408.82,-187.02C408.82,-204.37 408.82,-228 408.82,-228 408.82,-228 359.16,-228 359.16,-228"/>
+<polygon fill="black" stroke="black" points="359.16,-224.5 349.16,-228 359.16,-231.5 359.16,-224.5"/>
 </g>
 <!-- EditorComponent  -->
 <g id="node8" class="node">
 <title>EditorComponent </title>
-<polygon fill="#fb8072" stroke="black" points="627.83,-317 508.17,-317 508.17,-281 627.83,-281 627.83,-317"/>
-<text text-anchor="middle" x="568" y="-294.8" font-family="Times,serif" font-size="14.00">EditorComponent </text>
+<polygon fill="#fb8072" stroke="black" points="442.83,-317 323.17,-317 323.17,-281 442.83,-281 442.83,-317"/>
+<text text-anchor="middle" x="383" y="-294.8" font-family="Times,serif" font-size="14.00">EditorComponent </text>
 </g>
 <!-- EditorModule&#45;&gt;EditorComponent  -->
 <g id="edge7" class="edge">
 <title>EditorModule&#45;&gt;EditorComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M521.18,-252.11C521.18,-252.11 521.18,-270.99 521.18,-270.99"/>
-<polygon fill="black" stroke="black" points="517.68,-270.99 521.18,-280.99 524.68,-270.99 517.68,-270.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M336.18,-252.11C336.18,-252.11 336.18,-270.99 336.18,-270.99"/>
+<polygon fill="black" stroke="black" points="332.68,-270.99 336.18,-280.99 339.68,-270.99 332.68,-270.99"/>
 </g>
 <!-- EditorWindowComponent  -->
 <g id="node9" class="node">
 <title>EditorWindowComponent </title>
-<polygon fill="#fb8072" stroke="black" points="490.04,-317 321.96,-317 321.96,-281 490.04,-281 490.04,-317"/>
-<text text-anchor="middle" x="406" y="-294.8" font-family="Times,serif" font-size="14.00">EditorWindowComponent </text>
+<polygon fill="#fb8072" stroke="black" points="305.04,-317 136.96,-317 136.96,-281 305.04,-281 305.04,-317"/>
+<text text-anchor="middle" x="221" y="-294.8" font-family="Times,serif" font-size="14.00">EditorWindowComponent </text>
 </g>
 <!-- EditorModule&#45;&gt;EditorWindowComponent  -->
 <g id="edge8" class="edge">
 <title>EditorModule&#45;&gt;EditorWindowComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M464.87,-252.11C464.87,-252.11 464.87,-270.99 464.87,-270.99"/>
-<polygon fill="black" stroke="black" points="461.37,-270.99 464.87,-280.99 468.37,-270.99 461.37,-270.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M279.87,-252.11C279.87,-252.11 279.87,-270.99 279.87,-270.99"/>
+<polygon fill="black" stroke="black" points="276.37,-270.99 279.87,-280.99 283.37,-270.99 276.37,-270.99"/>
 </g>
 <!-- EDITOR_ACCESSOR -->
 <g id="node4" class="node">
 <title>EDITOR_ACCESSOR</title>
-<ellipse fill="#fdb462" stroke="black" cx="313" cy="-104" rx="101.32" ry="18"/>
-<text text-anchor="middle" x="313" y="-99.8" font-family="Times,serif" font-size="14.00">EDITOR_ACCESSOR</text>
+<ellipse fill="#fdb462" stroke="black" cx="664" cy="-104" rx="101.32" ry="18"/>
+<text text-anchor="middle" x="664" y="-99.8" font-family="Times,serif" font-size="14.00">EDITOR_ACCESSOR</text>
 </g>
 <!-- EDITOR_ACCESSOR&#45;&gt;EditorComponent -->
 <g id="edge2" class="edge">
 <title>EDITOR_ACCESSOR&#45;&gt;EditorComponent</title>
-<path fill="none" stroke="black" d="M334,-121.76C334,-121.76 334,-140.81 334,-140.81"/>
-<polygon fill="black" stroke="black" points="330.5,-140.81 334,-150.81 337.5,-140.81 330.5,-140.81"/>
+<path fill="none" stroke="black" d="M642,-121.76C642,-121.76 642,-140.81 642,-140.81"/>
+<polygon fill="black" stroke="black" points="638.5,-140.81 642,-150.81 645.5,-140.81 638.5,-140.81"/>
 </g>
 <!-- DialogModule -->
 <g id="node5" class="node">
 <title>DialogModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="764.65,-187 761.65,-191 740.65,-191 737.65,-187 667.35,-187 667.35,-151 764.65,-151 764.65,-187"/>
-<text text-anchor="middle" x="716" y="-164.8" font-family="Times,serif" font-size="14.00">DialogModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="350.65,-187 347.65,-191 326.65,-191 323.65,-187 253.35,-187 253.35,-151 350.65,-151 350.65,-187"/>
+<text text-anchor="middle" x="302" y="-164.8" font-family="Times,serif" font-size="14.00">DialogModule</text>
 </g>
 <!-- DialogModule&#45;&gt;EditorModule -->
 <g id="edge4" class="edge">
 <title>DialogModule&#45;&gt;EditorModule</title>
-<path fill="none" stroke="black" d="M716,-187.28C716,-208.32 716,-240 716,-240 716,-240 544.17,-240 544.17,-240"/>
-<polygon fill="black" stroke="black" points="544.17,-236.5 534.17,-240 544.17,-243.5 544.17,-236.5"/>
+<path fill="none" stroke="black" d="M302,-187.11C302,-187.11 302,-205.99 302,-205.99"/>
+<polygon fill="black" stroke="black" points="298.5,-205.99 302,-215.99 305.5,-205.99 298.5,-205.99"/>
 </g>
 <!-- FormsModule -->
 <g id="node6" class="node">
 <title>FormsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="649.83,-187 646.83,-191 625.83,-191 622.83,-187 554.17,-187 554.17,-151 649.83,-151 649.83,-187"/>
-<text text-anchor="middle" x="602" y="-164.8" font-family="Times,serif" font-size="14.00">FormsModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="235.83,-187 232.83,-191 211.83,-191 208.83,-187 140.17,-187 140.17,-151 235.83,-151 235.83,-187"/>
+<text text-anchor="middle" x="188" y="-164.8" font-family="Times,serif" font-size="14.00">FormsModule</text>
 </g>
 <!-- FormsModule&#45;&gt;EditorModule -->
 <g id="edge5" class="edge">
 <title>FormsModule&#45;&gt;EditorModule</title>
-<path fill="none" stroke="black" d="M591.12,-187.02C591.12,-204.37 591.12,-228 591.12,-228 591.12,-228 544.19,-228 544.19,-228"/>
-<polygon fill="black" stroke="black" points="544.19,-224.5 534.19,-228 544.19,-231.5 544.19,-224.5"/>
+<path fill="none" stroke="black" d="M188,-187.02C188,-204.37 188,-228 188,-228 188,-228 244.64,-228 244.64,-228"/>
+<polygon fill="black" stroke="black" points="244.64,-231.5 254.64,-228 244.64,-224.5 244.64,-231.5"/>
 </g>
 <!-- SharedModule -->
 <g id="node7" class="node">
 <title>SharedModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="536.42,-187 533.42,-191 512.42,-191 509.42,-187 437.58,-187 437.58,-151 536.42,-151 536.42,-187"/>
-<text text-anchor="middle" x="487" y="-164.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="122.42,-187 119.42,-191 98.42,-191 95.42,-187 23.58,-187 23.58,-151 122.42,-151 122.42,-187"/>
+<text text-anchor="middle" x="73" y="-164.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
 </g>
 <!-- SharedModule&#45;&gt;EditorModule -->
 <g id="edge6" class="edge">
 <title>SharedModule&#45;&gt;EditorModule</title>
-<path fill="none" stroke="black" d="M487,-187.11C487,-187.11 487,-205.99 487,-205.99"/>
-<polygon fill="black" stroke="black" points="483.5,-205.99 487,-215.99 490.5,-205.99 483.5,-205.99"/>
+<path fill="none" stroke="black" d="M73,-187.28C73,-208.32 73,-240 73,-240 73,-240 244.83,-240 244.83,-240"/>
+<polygon fill="black" stroke="black" points="244.83,-243.5 254.83,-240 244.83,-236.5 244.83,-243.5"/>
 </g>
 </g>
 </svg>

@@ -24,10 +24,6 @@
 <title>cluster_NavbarModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="110,-70 110,-268 386,-268 386,-70 110,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_NavbarModule_exports</title>
-<polygon fill="none" stroke="black" points="177,-208 177,-260 319,-260 319,-208 177,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_NavbarModule_declarations</title>
 <polygon fill="none" stroke="black" points="240,-78 240,-130 378,-130 378,-78 240,-78"/>
@@ -35,6 +31,10 @@
 <g id="clust4" class="cluster">
 <title>cluster_NavbarModule_imports</title>
 <polygon fill="none" stroke="black" points="118,-78 118,-130 232,-130 232,-78 118,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_NavbarModule_exports</title>
+<polygon fill="none" stroke="black" points="177,-208 177,-260 319,-260 319,-208 177,-208"/>
 </g>
 <!-- NavbarComponent -->
 <g id="node1" class="node">
