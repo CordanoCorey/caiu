@@ -1,4 +1,4 @@
-import { build, toInt, integerArray } from './utils';
+import { build, toInt, integerArray } from "./utils";
 
 export class DateRange {
   startDate: Date = null;
@@ -7,24 +7,42 @@ export class DateRange {
 
 export class Month {
   index = 0;
-  name = '';
-  abbreviation = '';
-  initial = '';
+  name = "";
+  abbreviation = "";
+  initial = "";
 }
 
 export class Weekday {
   index = 0;
-  name = '';
-  abbreviation = '';
-  initial = '';
+  name = "";
+  abbreviation = "";
+  initial = "";
 }
 
 export class DateHelper {
-  static MonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  static MonthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-  static BuildStartTime(startDate: Date, startHours: number, startMinutes: number, startMeridian: 'AM' | 'PM'): Date {
+  static BuildStartTime(
+    startDate: Date,
+    startHours: number,
+    startMinutes: number,
+    startMeridian: "AM" | "PM"
+  ): Date {
     const startTime = new Date(startDate);
-    const hours = startMeridian === 'AM' ? startHours : startHours + 12;
+    const hours = startMeridian === "AM" ? startHours : startHours + 12;
     startTime.setHours(hours);
     startTime.setMinutes(startMinutes);
     return startTime;
@@ -38,18 +56,22 @@ export class DateHelper {
   }
 
   static CalendarDaySpan(startDate: Date, endDate: Date): Date[] {
-    const daysBetween = Math.ceil(DateHelper.DaysBetween(startDate, endDate) + 1);
+    const daysBetween = Math.ceil(
+      DateHelper.DaysBetween(startDate, endDate) + 1
+    );
     return daysBetween && daysBetween > 0
-      ? integerArray(daysBetween).map(i => {
-        const d = new Date(startDate);
-        d.setDate(new Date(startDate).getDate() + i);
-        return d;
-      })
+      ? integerArray(daysBetween).map((i) => {
+          const d = new Date(startDate);
+          d.setDate(new Date(startDate).getDate() + i);
+          return d;
+        })
       : [new Date(startDate)];
   }
 
   static CalendarDayStringSpan(startDate: Date, endDate: Date): string[] {
-    return DateHelper.CalendarDaySpan(startDate, endDate).map(d => DateHelper.ToDayString(d));
+    return DateHelper.CalendarDaySpan(startDate, endDate).map((d) =>
+      DateHelper.ToDayString(d)
+    );
   }
 
   static CountDaysInMonth(date: Date): number {
@@ -58,7 +80,11 @@ export class DateHelper {
 
   static DaysBetween(startDate: Date, endDate: Date): number {
     const millisecondsPerDay = 24 * 60 * 60 * 1000;
-    return (DateHelper.TreatAsUTC(new Date(endDate)).getTime() - DateHelper.TreatAsUTC(new Date(startDate)).getTime()) / millisecondsPerDay;
+    return (
+      (DateHelper.TreatAsUTC(new Date(endDate)).getTime() -
+        DateHelper.TreatAsUTC(new Date(startDate)).getTime()) /
+      millisecondsPerDay
+    );
   }
 
   static DaysInMonth(date: Date): Date[] {
@@ -74,43 +100,43 @@ export class DateHelper {
 
   static FormatDate(date: Date): string {
     const d = new Date(date);
-    const month = '' + (d.getMonth() + 1);
-    const day = '' + d.getDate();
+    const month = "" + (d.getMonth() + 1);
+    const day = "" + d.getDate();
     const year = d.getFullYear();
 
-    return month && day && year ? [month, day, year].join('/') : null;
+    return month && day && year ? [month, day, year].join("/") : null;
   }
 
   static FormatDateDashes(date: Date): string {
     const d = new Date(date);
-    let month = '' + (d.getMonth() + 1);
-    let day = '' + d.getDate();
+    let month = "" + (d.getMonth() + 1);
+    let day = "" + d.getDate();
     const year = d.getFullYear();
 
     if (month.length < 2) {
-      month = '0' + month;
+      month = "0" + month;
     }
     if (day.length < 2) {
-      day = '0' + day;
+      day = "0" + day;
     }
 
-    return [year, month, day].join('-');
+    return [year, month, day].join("-");
   }
 
   static FormatDateSlashes(date: Date): string {
     const d = new Date(date);
-    let month = '' + (d.getMonth() + 1);
-    let day = '' + d.getDate();
+    let month = "" + (d.getMonth() + 1);
+    let day = "" + d.getDate();
     const year = d.getFullYear();
 
     if (month.length < 2) {
-      month = '0' + month;
+      month = "0" + month;
     }
     if (day.length < 2) {
-      day = '0' + day;
+      day = "0" + day;
     }
 
-    return [month, day, year].join('/');
+    return [month, day, year].join("/");
   }
 
   static FromMonthYear(monthYear: string): Date {
@@ -144,9 +170,9 @@ export class DateHelper {
     return d.getHours();
   }
 
-  static GetMeridian(date: Date): 'AM' | 'PM' {
+  static GetMeridian(date: Date): "AM" | "PM" {
     const hour = DateHelper.GetHour(date);
-    return hour >= 12 ? 'PM' : 'AM';
+    return hour >= 12 ? "PM" : "AM";
   }
 
   static GetMinute(date: Date): number {
@@ -161,12 +187,18 @@ export class DateHelper {
 
   static GetMonthName(date: Date): string {
     const d = new Date(date);
-    return build(Month, DateHelper.Months.find(x => x.index === d.getMonth())).name;
+    return build(
+      Month,
+      DateHelper.Months.find((x) => x.index === d.getMonth())
+    ).name;
   }
 
   static GetShortMonthName(date: Date): string {
     const d = new Date(date);
-    return build(Month, DateHelper.Months.find(x => x.index === d.getMonth())).abbreviation;
+    return build(
+      Month,
+      DateHelper.Months.find((x) => x.index === d.getMonth())
+    ).abbreviation;
   }
 
   static GetWeekdayIndex(date: Date): number {
@@ -191,11 +223,15 @@ export class DateHelper {
   static IsBetween(d: Date, startDate: Date, endDate: Date): boolean {
     const date = new Date(d);
     const calculatedEndDate = endDate || startDate;
-    return startDate && date > new Date(startDate) && date < new Date(calculatedEndDate);
+    return (
+      startDate &&
+      date > new Date(startDate) &&
+      date < new Date(calculatedEndDate)
+    );
   }
 
   static IsDate(date: any): boolean {
-    return Object.prototype.toString.call(date) === '[object Date]';
+    return Object.prototype.toString.call(date) === "[object Date]";
   }
 
   static IsValidDate(date: any): boolean {
@@ -229,38 +265,40 @@ export class DateHelper {
   }
 
   static ParseDateDashes(date: string): Date {
-    const arr = date.split('-');
+    const arr = date.split("-");
     return new Date(toInt(arr[0]), toInt(arr[1]) - 1, toInt(arr[2]));
   }
 
   static TimeAgo(date: Date): string {
     if (!date) {
-      return '';
+      return "";
     }
-    const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+    const seconds = Math.floor(
+      (new Date().getTime() - new Date(date).getTime()) / 1000
+    );
 
     let interval = Math.floor(seconds / 31536000);
 
     if (interval > 1) {
-      return interval + ' years';
+      return interval + " years";
     }
     interval = Math.floor(seconds / 2592000);
     if (interval > 1) {
-      return interval + ' months';
+      return interval + " months";
     }
     interval = Math.floor(seconds / 86400);
     if (interval > 1) {
-      return interval + ' days';
+      return interval + " days";
     }
     interval = Math.floor(seconds / 3600);
     if (interval > 1) {
-      return interval + ' hours';
+      return interval + " hours";
     }
     interval = Math.floor(seconds / 60);
     if (interval > 1) {
-      return interval + ' minutes';
+      return interval + " minutes";
     }
-    return Math.floor(seconds) + ' seconds';
+    return Math.floor(seconds) + " seconds";
   }
 
   static TimeBetween(startDate: Date, endDate: Date): number {
@@ -269,7 +307,7 @@ export class DateHelper {
 
   static ToDayString(d: Date): string {
     const date = new Date(d);
-    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   }
 
   static ToMonthName(d: Date): string {
@@ -304,7 +342,7 @@ export class DateHelper {
     const date = new Date(d);
     const month = DateHelper.ToMonthName(date);
     const year = date.getFullYear();
-    return month && year ? `${month} ${year}` : '';
+    return month && year ? `${month} ${year}` : "";
   }
 
   static ToYearNumberFromMonthYear(monthYear: string): number {
@@ -327,7 +365,9 @@ export class DateHelper {
   }
 
   static get MonthNumbers(): any {
-    return DateHelper.MonthNames.reduce((acc, x, i) => Object.assign({}, acc, { [x]: i }));
+    return DateHelper.MonthNames.reduce((acc, x, i) =>
+      Object.assign({}, acc, { [x]: i })
+    );
   }
 
   static get Year(): number {
@@ -383,17 +423,25 @@ export class DateHelper {
   static DateChanged(d1: Date, d2: Date): boolean {
     const date1 = new Date(d1);
     const date2 = new Date(d2);
-    return date1.getDate() !== date2.getDate() || date1.getMonth() !== date2.getMonth() || date1.getFullYear() !== date2.getFullYear();
+    return (
+      date1.getDate() !== date2.getDate() ||
+      date1.getMonth() !== date2.getMonth() ||
+      date1.getFullYear() !== date2.getFullYear()
+    );
   }
 
   static IsSameDay(d1: Date, d2: Date): boolean {
     const date1 = new Date(d1);
     const date2 = new Date(d2);
-    return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
+    return (
+      date1.getDate() === date2.getDate() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getFullYear() === date2.getFullYear()
+    );
   }
 
   static get YearStartDate(): Date {
-    if (DateHelper.Month < 7) {
+    if (DateHelper.Month < 6) {
       return DateHelper.BuildDate(DateHelper.Year - 1, 6, 1);
     } else {
       return DateHelper.BuildDate(DateHelper.Year, 6, 1);
@@ -401,7 +449,7 @@ export class DateHelper {
   }
 
   static get PreviousYearStartDate(): Date {
-    if (DateHelper.Month < 7) {
+    if (DateHelper.Month < 6) {
       return DateHelper.BuildDate(DateHelper.Year - 2, 6, 1);
     } else {
       return DateHelper.BuildDate(DateHelper.Year - 1, 6, 1);
@@ -413,7 +461,7 @@ export class DateHelper {
   }
 
   static get YearEndDate(): Date {
-    if (DateHelper.Month < 7) {
+    if (DateHelper.Month < 6) {
       return DateHelper.BuildDate(DateHelper.Year, 5, 30);
     } else {
       return DateHelper.BuildDate(DateHelper.Year + 1, 5, 30);
@@ -421,7 +469,7 @@ export class DateHelper {
   }
 
   static get PreviousYearEndDate(): Date {
-    if (DateHelper.Month < 7) {
+    if (DateHelper.Month < 6) {
       return DateHelper.BuildDate(DateHelper.Year - 1, 5, 30);
     } else {
       return DateHelper.BuildDate(DateHelper.Year, 5, 30);
@@ -486,65 +534,65 @@ export class DateHelper {
 
   static get Months() {
     return [
-      build(Month, { name: 'January', abbreviation: 'Jan', index: 0 }),
-      build(Month, { name: 'February', abbreviation: 'Feb', index: 1 }),
-      build(Month, { name: 'March', abbreviation: 'Mar', index: 2 }),
-      build(Month, { name: 'April', abbreviation: 'Apr', index: 3 }),
-      build(Month, { name: 'May', abbreviation: 'May', index: 4 }),
-      build(Month, { name: 'June', abbreviation: 'June', index: 5 }),
-      build(Month, { name: 'July', abbreviation: 'July', index: 6 }),
-      build(Month, { name: 'August', abbreviation: 'Aug', index: 7 }),
-      build(Month, { name: 'September', abbreviation: 'Sept', index: 8 }),
-      build(Month, { name: 'October', abbreviation: 'Oct', index: 9 }),
-      build(Month, { name: 'November', abbreviation: 'Nov', index: 10 }),
-      build(Month, { name: 'December', abbreviation: 'Dec', index: 11 })
+      build(Month, { name: "January", abbreviation: "Jan", index: 0 }),
+      build(Month, { name: "February", abbreviation: "Feb", index: 1 }),
+      build(Month, { name: "March", abbreviation: "Mar", index: 2 }),
+      build(Month, { name: "April", abbreviation: "Apr", index: 3 }),
+      build(Month, { name: "May", abbreviation: "May", index: 4 }),
+      build(Month, { name: "June", abbreviation: "June", index: 5 }),
+      build(Month, { name: "July", abbreviation: "July", index: 6 }),
+      build(Month, { name: "August", abbreviation: "Aug", index: 7 }),
+      build(Month, { name: "September", abbreviation: "Sept", index: 8 }),
+      build(Month, { name: "October", abbreviation: "Oct", index: 9 }),
+      build(Month, { name: "November", abbreviation: "Nov", index: 10 }),
+      build(Month, { name: "December", abbreviation: "Dec", index: 11 }),
     ];
   }
 
   static get Weekdays() {
     return [
       build(Weekday, {
-        name: 'Sunday',
-        abbreviation: 'Sun',
-        initial: 'Su',
-        index: 0
+        name: "Sunday",
+        abbreviation: "Sun",
+        initial: "Su",
+        index: 0,
       }),
       build(Weekday, {
-        name: 'Monday',
-        abbreviation: 'Mon',
-        initial: 'M',
-        index: 1
+        name: "Monday",
+        abbreviation: "Mon",
+        initial: "M",
+        index: 1,
       }),
       build(Weekday, {
-        name: 'Tuesday',
-        abbreviation: 'Tues',
-        initial: 'T',
-        index: 2
+        name: "Tuesday",
+        abbreviation: "Tues",
+        initial: "T",
+        index: 2,
       }),
       build(Weekday, {
-        name: 'Wednesday',
-        abbreviation: 'Wed',
-        initial: 'W',
-        index: 3
+        name: "Wednesday",
+        abbreviation: "Wed",
+        initial: "W",
+        index: 3,
       }),
       build(Weekday, {
-        name: 'Thursday',
-        abbreviation: 'Thurs',
-        initial: 'Th',
-        index: 4
+        name: "Thursday",
+        abbreviation: "Thurs",
+        initial: "Th",
+        index: 4,
       }),
       build(Weekday, {
-        name: 'Friday',
-        abbreviation: 'Fri',
-        initial: 'F',
-        index: 5
+        name: "Friday",
+        abbreviation: "Fri",
+        initial: "F",
+        index: 5,
       }),
       build(Weekday, {
-        name: 'Saturday',
-        abbreviation: 'Sat',
-        initial: 'S',
-        index: 6
-      })
+        name: "Saturday",
+        abbreviation: "Sat",
+        initial: "S",
+        index: 6,
+      }),
     ];
   }
 }
