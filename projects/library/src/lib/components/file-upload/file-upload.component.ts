@@ -113,6 +113,10 @@ export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAcces
     this.uploads = this.uploads.map(x => x.name === f.name ? f : x);
   }
 
+  clear() {
+    this.uploads = [];
+  }
+
   emit() {
     if (this.value.length > 0) {
       if (this.multiple) {

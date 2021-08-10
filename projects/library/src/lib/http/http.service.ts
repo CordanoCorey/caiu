@@ -24,7 +24,7 @@ export class HttpService {
   private authTokenChanges: Subscription;
   private baseUrlChanges: Subscription;
   headers = {};
-  logEvents = true;
+  logEvents = false;
   useDefaultHeaders = true;
 
   constructor(
@@ -162,16 +162,16 @@ export class HttpService {
       headers
     });
     return obs
-    // .pipe(
-    //   tap(x => {
-    //     console.log(x);
-    //   }),
-    //   catchError(err => this.onError(err ? err.error : err)),
-    //   finalize(() => {
-    //     this.onComplete("GET", url);
-    //   })
-    // )
-    ;
+      // .pipe(
+      //   tap(x => {
+      //     console.log(x);
+      //   }),
+      //   catchError(err => this.onError(err ? err.error : err)),
+      //   finalize(() => {
+      //     this.onComplete("GET", url);
+      //   })
+      // )
+      ;
   }
 
   /**
