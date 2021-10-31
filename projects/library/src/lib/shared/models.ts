@@ -409,7 +409,7 @@ export class BaseQueryModel extends QueryModel<any> {
 }
 
 export class Search<T> {
-  query?: QueryModel<T>
+  query?: QueryModel<T>;
   results: T[] = [];
   total = 0;
 }
