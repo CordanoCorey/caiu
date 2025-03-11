@@ -1,4 +1,4 @@
-@import '~@angular/material/_theming';
+@import '@angular/material/_theming';
 @import 'common';
 @include mat-core();
 $primary-palette: mat-palette($material-primary-color);

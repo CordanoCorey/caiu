@@ -1,244 +1,207 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  ViewChild,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef,
-  OnInit
+   ChangeDetectionStrategy,
+   Component,
+   forwardRef,
+   Input,
+   ViewChild,
+   Output,
+   EventEmitter,
+   ChangeDetectorRef,
+   OnInit
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
 import { DatepickerComponent } from '../datepicker.component';
 import { DateRange } from '../../../shared/date';
 import { build } from '../../../shared/utils';
 
 export const DATERANGE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => DaterangeComponent),
-  multi: true
+   provide: NG_VALUE_ACCESSOR,
+   useExisting: forwardRef(() => DaterangeComponent),
+   multi: true
 };
 
 @Component({
-  selector: 'iu-daterange',
-  templateUrl: './daterange.component.html',
-  styleUrls: ['./daterange.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [DATERANGE_ACCESSOR]
+   selector: 'iu-daterange',
+   templateUrl: './daterange.component.html',
+   styleUrls: ['./daterange.component.scss'],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   providers: [DATERANGE_ACCESSOR]
 })
+
 export class DaterangeComponent implements ControlValueAccessor, OnInit {
-  @Input() debug = false;
-  @Input() inline = false;
-  @Input() min: Date;
-  @Input() max: Date;
-  @Input() startAt: Date;
-  @Input() startLabel = 'Start Date';
-  @Input() endLabel = 'End Date';
-  @Input() startView;
-  @Input() touchUi;
-  @Output() startDateChanged = new EventEmitter<Date>();
-  @Output() endDateChanged = new EventEmitter<Date>();
-  @ViewChild('startDate', { static: true })
-  startDatepicker: DatepickerComponent;
-  @ViewChild('endDate', { static: true }) endDatepicker: DatepickerComponent;
-  private onModelChange: Function;
-  private onTouch: Function;
-  _value: DateRange = new DateRange();
-  focused: DateRange = new DateRange();
-  now = new Date();
+   @Input() debug = false;
+   @Input() inline = false;
+   @Input() min: Date;
+   @Input() max: Date; 
+   @Input() required: boolean = false;
+   @Input() startAt: Date;
+   @Input() startLabel = 'Start Date';
+   @Input() endLabel = 'End Date';
+   @Input() startView;
+   @Input() touchUi;
+   @Output() startDateChanged = new EventEmitter<Date>();
+   @Output() endDateChanged = new EventEmitter<Date>();
+   @ViewChild('startDate', { static: true })
+   startDatepicker: DatepickerComponent;
+   @ViewChild('endDate', { static: true }) endDatepicker: DatepickerComponent;
+   private onModelChange: Function;
+   private onTouch: Function;
+   _value: DateRange = new DateRange();
+   focused: DateRange = new DateRange();
+   now = new Date();
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
-  ngOnInit() {
-    if (this.debug && this.endDateValue) {
-      console.dir(this.endDateValue.getDate());
-      console.dir(this.endDateValue.getMonth());
-      console.dir(this.endDateValue.getFullYear());
-    }
-  }
+   ngOnInit() {}
 
-  get value(): DateRange {
-    return this._value;
-  }
+   get value(): DateRange {
+      return this._value;
+   }
 
-  @Input()
-  set value(val: DateRange) {
-    this._value = val;
-    if (this.startDatepicker) {
-      this.startDatepicker.value = val.startDate;
-    }
-    if (this.endDatepicker) {
-      this.endDatepicker.value = val.endDate;
-    }
-    if (
-      this &&
-      this.changeDetectorRef &&
-      !this.changeDetectorRef['destroyed']
-    ) {
-      this.changeDetectorRef.detectChanges();
-    }
-  }
+   @Input()
+   set value(val: DateRange) {
+      this._value = val;
+      if (this.startDatepicker) {
+         this.startDatepicker.value = val?.startDate;
+      }
+      if (this.endDatepicker) {
+         this.endDatepicker.value = val?.endDate;
+      }
+      if (
+         this &&
+         this.changeDetectorRef &&
+         !this.changeDetectorRef['destroyed']
+      ) {
+         this.changeDetectorRef.detectChanges();
+      }
+   }
 
-  get startDateId() {
-    return this.startDatepicker.id;
-  }
+   get startDateId() {
+      return this.startDatepicker.id;
+   }
 
-  get startDateOpened() {
-    return this.startDatepicker.opened;
-  }
+   get startDateOpened() {
+      return this.startDatepicker.opened;
+   }
 
-  get endDateId() {
-    return this.endDatepicker.id;
-  }
+   get endDateId() {
+      return this.endDatepicker.id;
+   }
 
-  get endDateOpened() {
-    return this.endDatepicker.opened;
-  }
+   get endDateOpened() {
+      return this.endDatepicker.opened;
+   }
 
-  get startDateValue(): Date {
-    return this.value.startDate ? new Date(this.value.startDate) : null;
-  }
+   get startDateValue(): Date {
+      return this.value.startDate ? new Date(this.value.startDate) : null;
+   }
 
-  set startDateValue(value: Date) {
-    this.changeStartDate(value);
-  }
+   set startDateValue(value: Date) {
+      this.changeStartDate(value);
+   }
 
-  get endDateValue(): Date {
-    return this.value.endDate ? new Date(this.value.endDate) : null;
-  }
+   get endDateValue(): Date {
+      return this.value.endDate ? new Date(this.value.endDate) : null;
+   }
 
-  set endDateValue(value: Date) {
-    this.changeEndDate(value);
-  }
+   set endDateValue(value: Date) {
+      this.changeEndDate(value);
+   }
 
-  get startDateLastDay() {
-    return new Date(
-      this.startDateValue.getFullYear(),
-      this.startDateValue.getMonth() + 1,
-      0
-    );
-  }
+   get startDateLastDay() {
+      return new Date(
+         this.startDateValue.getFullYear(),
+         this.startDateValue.getMonth() + 1,
+         0
+      );
+   }
 
-  filter = (d: Date): boolean => {
-    return this.ifMonthSame(d) || this.ifMonthDifferent(d);
-  };
+   filter(d: Date): boolean {
+      return this.ifMonthSame(d) || this.ifMonthDifferent(d);
+   };
 
-  changeStartDate(date: Date) {
-    // const endDate = this.endDateValue.getDate();
-    // const endMonth = this.endDateValue.getMonth();
-    // const endYear = this.endDateValue.getFullYear();
-    this.onChange(
-      build(DateRange, {
-        endDate: this.value.endDate,
-        startDate: date
-      })
-    );
-    this.startDateChanged.emit(date);
-    // if (
-    //   endDate <= date.getDate() &&
-    //   endMonth <= date.getMonth() &&
-    //   endYear <= date.getFullYear()
-    // ) {
-    //   this.onChange(
-    //     build(DateRange, {
-    //       endDate: date,
-    //       startDate: date
-    //     })
-    //   );
-    // }
-  }
+   changeStartDate(date: Date) {
+      this.onChange(
+         build(DateRange, {
+            endDate: this.value.endDate,
+            startDate: date
+         })
+      );
+      this.startDateChanged.emit(date);
+   }
 
-  ifMonthSame(d: Date) {
-    return (
-      d.getMonth() === this.startDateValue.getMonth() &&
-      d.getDate() >= this.startDateValue.getDate() &&
-      d.getFullYear() === this.startDateValue.getFullYear()
-    );
-  }
+   ifMonthSame(d: Date) {
+      return (
+         d.getMonth() === this.startDateValue.getMonth() &&
+         d.getDate() >= this.startDateValue.getDate() &&
+         d.getFullYear() === this.startDateValue.getFullYear()
+      );
+   }
 
-  ifMonthDifferent(d: Date) {
-    return (
-      (d.getMonth() > this.startDateValue.getMonth() &&
-        d.getFullYear() >= this.startDateValue.getFullYear() &&
-        (1 < d.getDate() ||
-          this.startDateValue.getDate() <= this.startDateLastDay.getDate())) ||
-      d.getFullYear() > this.startDateValue.getFullYear()
-    );
-  }
+   ifMonthDifferent(d: Date) {
+      return (
+         (d.getMonth() > this.startDateValue.getMonth() &&
+            d.getFullYear() >= this.startDateValue.getFullYear() &&
+            (1 < d.getDate() ||
+               this.startDateValue.getDate() <= this.startDateLastDay.getDate())) ||
+         d.getFullYear() > this.startDateValue.getFullYear()
+      );
+   }
 
-  closeStartDate() {
-    this.startDatepicker.close();
-  }
+   closeStartDate() {
+      this.startDatepicker.close();
+   }
 
-  openStateDate() {
-    this.startDatepicker.open();
-  }
+   openStateDate() {
+      this.startDatepicker.open();
+   }
 
-  changeEndDate(date: Date) {
-    // const startDate = this.startDateValue.getDate();
-    // const startMonth = this.startDateValue.getMonth();
-    // const startYear = this.startDateValue.getFullYear();
-    this.onChange(
-      build(DateRange, {
-        endDate: date,
-        startDate: this.value.startDate
-      })
-    );
-    this.endDateChanged.emit(date);
-    // if (
-    //   startDate >= date.getDate() &&
-    //   startMonth >= date.getMonth() &&
-    //   startYear >= date.getFullYear()
-    // ) {
-    //   this.onChange(
-    //     build(DateRange, {
-    //       endDate: date,
-    //       startDate: date
-    //     })
-    //   );
-    // }
-    if (this.debug) {
-      console.dir('changeEndDate ran');
-      console.dir('Start Date: ' + this.startDateValue);
-      console.dir('End Date:' + date);
-    }
-  }
+   changeEndDate(date: Date) {
+      this.onChange(
+         build(DateRange, {
+            endDate: date,
+            startDate: this.value.startDate
+         })
+      );
+      this.endDateChanged.emit(date);
+      if (this.debug) {
+         console.dir('changeEndDate ran');
+         console.dir('Start Date: ' + this.startDateValue);
+         console.dir('End Date:' + date);
+      }
+   }
 
-  closeEndDate() {
-    this.endDatepicker.close();
-  }
+   closeEndDate() {
+      this.endDatepicker.close();
+   }
 
-  openEndDate() {
-    this.endDatepicker.open();
-  }
+   openEndDate() {
+      this.endDatepicker.open();
+   }
 
-  registerOnChange(fn: Function) {
-    this.onModelChange = fn;
-  }
+   registerOnChange(fn: Function) {
+      this.onModelChange = fn;
+   }
 
-  registerOnTouched(fn: Function) {
-    this.onTouch = fn;
-  }
+   registerOnTouched(fn: Function) {
+      this.onTouch = fn;
+   }
 
-  writeValue(value: DateRange) {
-    this.value = value;
-  }
+   writeValue(value: DateRange) {
+      this.value = value;
+   }
 
-  onChange(value: DateRange) {
-    this.value = value;
-    if (this.onModelChange) {
-      this.onModelChange(value);
-    }
-  }
+   onChange(value: DateRange) {
+      this.value = value;
+      if (this.onModelChange) {
+         this.onModelChange(value);
+      }
+   }
 
-  onBlur(value: DateRange) { }
-
-  onFocus(value: DateRange) {
-    this.focused = value;
-    if (this.onTouch) {
-      this.onTouch();
-    }
-  }
+   onFocus(value: DateRange) {
+      this.focused = value;
+      if (this.onTouch) {
+         this.onTouch();
+      }
+   }
 }

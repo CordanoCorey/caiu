@@ -47,7 +47,7 @@ export class AuditHistoryComponent extends SmartComponent implements OnInit {
   }
 
   getDate(date: Date): Date {
-    return new Date(date);
+    return date === null ? null : new Date(date);
   }
 
   getList(list: any[]): string[] {

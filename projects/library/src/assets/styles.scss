@@ -1,4 +1,4 @@
-@import '~@angular/material/_theming';
+@import '@angular/material/_theming';
 @mixin iu-palette($primary, $accent) {
     .iu-primary {
         color: mat-color($primary, 500);

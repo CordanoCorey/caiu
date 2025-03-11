@@ -1,0 +1,1 @@
+{"ast":null,"code":"var getTinymce = function getTinymce() {\n  var w = typeof window !== 'undefined' ? window : undefined;\n  return w && w.tinymce ? w.tinymce : null;\n};\n\nexport { getTinymce };","map":null,"metadata":{},"sourceType":"module"}

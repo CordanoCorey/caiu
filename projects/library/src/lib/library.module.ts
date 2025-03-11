@@ -11,7 +11,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-
 import { LibraryComponent } from './library.component';
 import { AccordionModule } from './components/accordion/accordion.module';
 import { AddressModule } from './components/address/address.module';
@@ -34,6 +33,7 @@ import { SharedModule } from './shared/shared.module';
     AccordionModule,
     AddressModule,
     AuditModule,
+    
     ContainerModule,
     DatepickerModule,
     DialogModule,

@@ -1,8 +1,17 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ContentChild, TemplateRef, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { 
+  Component, 
+  OnInit, 
+  Input, 
+  EventEmitter, 
+  Output, 
+  ViewChild, 
+  ContentChild, 
+  TemplateRef, 
+  ElementRef, 
+  ChangeDetectionStrategy 
+} from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MatDialog } from '@angular/material/dialog';
-import { SafeUrl } from '@angular/platform-browser';
-
 import { Calendar, CalendarDay, CalendarEventType, CalendarEvent } from './calendar.model';
 import { CalendarDaysComponent } from './calendar-days/calendar-days.component';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
@@ -13,6 +22,7 @@ import { CalendarFormComponent } from './calendar-form/calendar-form.component';
 import { build, inArray, toArray } from '../../shared/utils';
 import { COLORS } from '../../shared/lookup';
 import { TypeConstructor } from '../../shared/models';
+import { SafeUrl } from '@angular/platform-browser/platform-browser';
 
 @Component({
   selector: 'iu-calendar',

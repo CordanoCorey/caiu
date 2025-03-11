@@ -1,0 +1,1 @@
+{"css":"#audit-history{max-height:400px;overflow:auto}#audit-history table{width:100%;min-width:500px}#audit-history table th,#audit-history table td{padding:0 5px}#audit-history .bold{font-weight:700}#audit-history .active{color:green}\n","warnings":[]}

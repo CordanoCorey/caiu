@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { distinctUntilChanged, switchMap, map, filter } from 'rxjs/operators';
-
 import { AuditHistoryComponent } from '../audit-history/audit-history.component';
 import { Audited, AuditHistory } from '../audit.model';
 import { HttpService } from '../../../http/http.service';
@@ -20,6 +19,7 @@ import {
   templateUrl: './audit-history-link.component.html',
   styleUrls: ['./audit-history-link.component.scss']
 })
+
 export class AuditHistoryLinkComponent extends DumbComponent implements OnInit {
   @Input() mapper: (data: any) => Audited;
   @Input() preloadData = false;

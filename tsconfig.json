@@ -21,12 +21,6 @@
     },
     {
       "path": "./projects/library/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/grid/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/grid/tsconfig.spec.json"
     }
   ]
 }

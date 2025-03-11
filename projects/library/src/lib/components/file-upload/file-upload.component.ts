@@ -11,6 +11,7 @@ export const FILE_UPLOAD_ACCESSOR: any = {
   useExisting: forwardRef(() => FileUploadComponent),
   multi: true
 };
+
 @Component({
   selector: 'iu-file-upload',
   templateUrl: './file-upload.component.html',
@@ -18,6 +19,7 @@ export const FILE_UPLOAD_ACCESSOR: any = {
   providers: [FILE_UPLOAD_ACCESSOR],
   encapsulation: ViewEncapsulation.None
 })
+
 export class FileUploadComponent implements OnInit, OnDestroy, ControlValueAccessor, OnChanges {
   @Input() id = `files-${guid()}`;
   @Input() debug = false;

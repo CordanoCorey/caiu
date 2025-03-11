@@ -11,11 +11,11 @@ import {
   Timer,
   TimerComponent,
   LookupValue,
-  SchedulerCalendar,
-  SchedulerCalendarEvent,
-  SchedulerCalendarDay,
-  CalendarTime,
-  SchedulerComponent,
+  Calendar,
+  CalendarEvent,
+  CalendarDay,
+  Time,
+  CalendarComponent,
   SmartComponent,
   ColumnMetadata,
   ConfigActions,
@@ -32,8 +32,8 @@ import { ExampleForm, environment, AuditHistoryRow } from './shared/models';
 })
 export class AppComponent extends SmartComponent implements OnInit {
   @Control(ExampleForm) form: FormGroup;
-  @ViewChild(SchedulerComponent, { static: true })
-  schedulerCmpt: SchedulerComponent;
+  @ViewChild(CalendarComponent, { static: true })
+  schedulerCmpt: CalendarComponent;
   @ViewChild(TimerComponent, { static: true }) timer: TimerComponent;
   activeDemo = 'time';
   addresses = [
@@ -173,28 +173,28 @@ export class AppComponent extends SmartComponent implements OnInit {
     }
   ];
   calendars = [
-    build(SchedulerCalendar, {
+    build(Calendar, {
       calendarId: 0,
       calendarName: 'Master Calendar',
       isMaster: true,
       isAllDayDefault: false,
       isAllDayEnforced: false
     }),
-    build(SchedulerCalendar, {
+    build(Calendar, {
       calendarId: 1,
       calendarName: 'All Day Enforced',
       isMaster: false,
       isAllDayDefault: true,
       isAllDayEnforced: true
     }),
-    build(SchedulerCalendar, {
+    build(Calendar, {
       calendarId: 2,
       calendarName: 'All Day Default',
       isMaster: false,
       isAllDayDefault: true,
       isAllDayEnforced: false,
       days: [
-        build(SchedulerCalendarDay, {
+        build(CalendarDay, {
           date: new Date(),
           instructionalDayNumber: 1
         })
@@ -202,7 +202,7 @@ export class AppComponent extends SmartComponent implements OnInit {
     })
   ];
   calendarEvents = [
-    build(SchedulerCalendarEvent, {
+    build(CalendarEvent, {
       allDay: false,
       description: 'In Session Description',
       eventId: 1,
@@ -212,18 +212,18 @@ export class AppComponent extends SmartComponent implements OnInit {
       monthOf: new Date(new Date()).getMonth(),
       dayOf: new Date(new Date()).getDate(),
       yearOf: new Date(new Date()).getFullYear(),
-      startTime: build(CalendarTime, {
+      startTime: build(Time, {
         hour: '1',
         minute: '0',
-        timePeriod: 'PM'
+        meridian: 'PM'
       }),
-      endTime: build(CalendarTime, {
+      endTime: build(Time, {
         hour: '1',
         minute: '30',
-        timePeriod: 'PM'
+        meridian: 'PM'
       })
     }),
-    build(SchedulerCalendarEvent, {
+    build(CalendarEvent, {
       allDay: false,
       description: 'Graduation Ceremony Description',
       eventId: 2,
@@ -233,15 +233,15 @@ export class AppComponent extends SmartComponent implements OnInit {
       monthOf: new Date(new Date()).getMonth(),
       dayOf: new Date(new Date()).getDate(),
       yearOf: new Date(new Date()).getFullYear(),
-      startTime: build(CalendarTime, {
+      startTime: build(Time, {
         hour: '2',
         minute: '0',
-        timePeriod: 'PM'
+        meridian: 'PM'
       }),
-      endTime: build(CalendarTime, {
+      endTime: build(Time, {
         hour: '2',
         minute: '30',
-        timePeriod: 'PM'
+        meridian: 'PM'
       })
     })
   ];
@@ -329,7 +329,7 @@ export class AppComponent extends SmartComponent implements OnInit {
     }; */
     const pdfStrings = [html, css];
 
-    this.schedulerCmpt.exportToPDF(pdfStrings);
+   //  this.schedulerCmpt.exportToPDF(pdfStrings);
 
     function getContainerElements(container) {
       // tslint:disable-next-line: deprecation
@@ -441,8 +441,8 @@ export class AppComponent extends SmartComponent implements OnInit {
     this.opened = !this.opened;
   }
 
-  printCalendar() {
-    console.log(this.schedulerCmpt.html);
-    this.print(this.schedulerCmpt.html);
-  }
+//   printCalendar() {
+//     console.log(this.schedulerCmpt.html);
+//     this.print(this.schedulerCmpt.html);
+//   }
 }

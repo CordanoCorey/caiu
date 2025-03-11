@@ -1,0 +1,1 @@
+{"css":".event-view{display:flex;flex-direction:row;justify-content:flex-start;margin:10px 0}.event-view .timeframe{margin-left:10px}.event-view .event-name{margin:0 10px;font-weight:700}.event-view .event-description{font-style:italic}.event-view .mat-icon{cursor:pointer;line-height:12px;margin:0 10px}.event-view .mat-icon:hover{font-weight:700}\n","warnings":[]}

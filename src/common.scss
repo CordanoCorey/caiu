@@ -1,4 +1,4 @@
-@import '~@angular/material/_theming';
+@import '@angular/material/_theming';
 $mat-am-blue: (50: #e5eef3, 100: #E9F0F8, 200: #99bbd1, 300: #6699ba, 400: #3277a3, 500: #00568c, 600: #004d7e, 700: #004470, 800: #003c62, 900: #003354, A100: #0085d9, A200: #0075bf, A400: #0066a6, A700: #003759, contrast: (50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: $black-87-opacity, 400: $black-87-opacity, 500: white, 600: white, 700: white, 800: $white-87-opacity, 900: $white-87-opacity, A100: $black-87-opacity, A200: white, A400: white, A700: white, ));
 $mat-am-green: (50: #f1f8e9, 100: #dcedc8, 200: #c5e1a5, 300: #aed581, 400: #9ccc65, 500: #8bc34a, 600: #7cb342, 700: #689f38, 800: #558b2f, 900: #33691e, A100: #ccff90, A200: #b2ff59, A400: #76ff03, A700: #64dd17, contrast: (50: $black-87-opacity, 100: $black-87-opacity, 200: $black-87-opacity, 300: $black-87-opacity, 400: $black-87-opacity, 500: $black-87-opacity, 600: $black-87-opacity, 700: $black-87-opacity, 800: white, 900: white, A100: $black-87-opacity, A200: $black-87-opacity, A400: $black-87-opacity, A700: $black-87-opacity, ));
 $material-primary-color: $mat-am-blue;
@@ -78,7 +78,7 @@ $container-color: $sky-blue;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8bc34a', endColorstr='#c5e1a5', GradientType=0);
 }
 
-@import '~@angular/material/_theming';
+@import '@angular/material/_theming';
 
 @mixin iu-palette($primary, $accent) {
   .iu-primary {

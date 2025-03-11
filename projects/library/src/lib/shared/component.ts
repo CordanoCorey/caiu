@@ -71,18 +71,44 @@ export class DumbComponent implements OnDestroy {
     audio.play();
   }
 
-  print(html: string) {
-    const iframe = document.createElement('iframe');
+  print( html: string ) {
+    const iframe = document.createElement( 'iframe' )
 
-    iframe.onload = function () {
-      const doc = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
-      doc.getElementsByTagName('body')[0].innerHTML = html;
+    iframe.onload = () => {
+      const iframeDocument = iframe.contentDocument
+        ? iframe.contentDocument
+        : iframe.contentWindow.document
 
-      iframe.contentWindow.focus(); // This is key, the iframe must have focus first
-      iframe.contentWindow.print();
-    };
+      iframeDocument.querySelector( 'body' ).innerHTML = html
 
-    document.getElementsByTagName('body')[0].appendChild(iframe);
+      const doPrint = ( iframe: HTMLIFrameElement ) => {
+        //* This is key, the iframe must have focus first
+        iframe.contentWindow.focus()
+        iframe.contentWindow.print()
+      }
+
+      //* AM [17865] - Added logic to dynamically wait for any images
+      //*  to load before firing the print command.
+      const images = iframeDocument.querySelectorAll( 'image, img' ) as NodeListOf<HTMLImageElement>
+
+      if ( images && images.length ) {
+        const promises = []
+
+        for ( let i = 0; i < images.length; i += 1 ) {
+          promises.push( new Promise<void>( ( resolve, reject ) => {
+            images[ i ].onload = () => resolve()
+          } ) )
+        }
+
+        Promise.allSettled( promises ).then( () => {
+          doPrint( iframe )
+        } )
+      } else {
+        doPrint( iframe )
+      }
+    }
+
+    document.querySelector( 'body' ).appendChild( iframe )
   }
 
   removeSubscriptions() {

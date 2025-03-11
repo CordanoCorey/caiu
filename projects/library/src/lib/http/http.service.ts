@@ -294,7 +294,9 @@ export class HttpService {
           ? res["json"]()
           : res
       ),
-      catchError(err => this.onError(err)),
+      catchError(err => {
+        return this.onError(err ? err.error : err);
+      }),
       finalize(() => {
         this.onComplete("POST FORM URL-ENCODED", url);
       })

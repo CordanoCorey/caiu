@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { map } from 'rxjs/operators';\nexport function errorsSelector(store) {\n  return store.select(function (s) {\n    return s['errors'];\n  });\n}\nexport function errorSelector(store, key) {\n  return errorsSelector(store).pipe(map(function (errors) {\n    return errors[key];\n  }));\n}","map":null,"metadata":{},"sourceType":"module"}

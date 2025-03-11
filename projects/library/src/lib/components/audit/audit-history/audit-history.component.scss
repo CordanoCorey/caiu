@@ -1,17 +1,32 @@
 #audit-history {
-    max-height: 400px;
-    overflow: auto;
-    table {
-        width: 100%;
-        min-width: 500px;
-        th,
-        td {
-            padding: 0 5px;
+    min-width: 1300px;
+    max-height: 500px;
+
+    .audit-history-table {
+        min-width: 1300px;
+        max-height: 500px;
+        margin: 10px;
+        border: 4px solid #9ea1a378;
+        border-radius: 10px;
+        overflow-y: auto;
+
+        .mat-header-row {
+            border: none;
+            background-color: #e1e2e1;
+        }
+
+        .mat-cell,
+        .mat-footer-cell,
+        .mat-header-cell {
+            justify-content: center;
+            text-align: center;
         }
     }
+
     .bold {
         font-weight: bold;
     }
+
     .active {
         color: green;
     }

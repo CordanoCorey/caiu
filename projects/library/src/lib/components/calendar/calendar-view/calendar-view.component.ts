@@ -10,7 +10,6 @@ import {
   EventEmitter
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
 import {
   CalendarDay,
   CalendarEvent,
@@ -25,6 +24,7 @@ import { DateHelper } from '../../../shared/date';
   styleUrls: ['./calendar-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class CalendarViewComponent extends DumbComponent implements OnInit {
   @ViewChild('wrapper', { static: true }) wrapper: ElementRef;
   @Input() activeDate: Date = new Date();
